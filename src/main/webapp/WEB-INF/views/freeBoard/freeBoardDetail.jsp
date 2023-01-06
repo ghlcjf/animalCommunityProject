@@ -25,7 +25,7 @@
 		<td colspan="2">작성일자 : <fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
 	</tr>
 	<tr>
-		<td colspan="3">${freeBoard.boardContent} sdajfjsdakljnsdf;lkjsdag;kljsdakljgskdagvshdagolh
+		<td colspan="3">${freeBoard.boardContent}
 		</td>
 	</tr>
 	<tr>
