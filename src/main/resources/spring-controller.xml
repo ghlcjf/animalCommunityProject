@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	
+	
+	<!-- <context:component-scan base-package="spring.controller"></context:component-scan> -->
+	<!--  
+		namespace에 context등록 사용가능 
+		지정된 패키지에 빈으로 등록가능한 어노테이션이 붙어 있는 모든 클래스를 스캔해서 빈으로 등록해준다.
+	-->
+	
+	
+	<bean id="freeBoardController" class="animal.controller.FreeBoardController">
+		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardList"></property>
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	<bean class="animal.commons.CommonExceptionHandler"></bean>
+	
+	<bean id="gbrController" class="animal.controller.GBRController">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	
+	<bean id="InsertFreeCommentController" class="animal.controller.InsertFreeCommentController">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	
+	<!-- 이슈 -->
+	<bean id="issueController" class="animal.controller.IssueController" />
+	<bean id="issueCommentController" class="animal.controller.IssueCommentController" />
+	<bean id="issueWriteController" class="animal.controller.IssueWriteController" />
+	
+	
+	
+	
+	<!-- 동물 소개 -->
+	
+	<bean id="animalInfoController" class="animal.controller.AnimalInfoController">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	
+	
+	<!--로그인 컨트롤러 -->
+	<bean id="loginController" class="animal.controller.LoginController">
+			<property name="loginService" ref="loginService"/>
+	</bean>
+	<bean id="logoutController" class="animal.controller.LogoutController"/>
+	
+	<!--회원가입 컨트롤러 -->	
+	<bean id="registerController" class="animal.controller.RegisterController">
+		<property name="memberRegisterService" ref="memberRegSvc"/>
+	</bean>		
+	<bean class="animal.commons.CommonExceptionHandler"></bean>
+	
+	
+	
+</beans>

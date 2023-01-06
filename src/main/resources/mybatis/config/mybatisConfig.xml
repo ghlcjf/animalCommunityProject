@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+
+ 	<typeAliases>
+		<typeAlias type="animal.vo.FreeBoard" alias="freeBoard"/>
+		<typeAlias type="animal.vo.FreeComment" alias="freeComment"/>
+		<typeAlias type="animal.vo.FreeCommentCommand" alias="freeCommentCommand"/>
+		<typeAlias type="animal.vo.Issue" alias="issue"/>
+		<typeAlias type="animal.vo.IssueComment" alias="issueComment"/>
+		<typeAlias type="animal.vo.AnimalInfo" alias="animalInfo"/>
+		<typeAlias type="animal.vo.User" alias="user"/>
+		<typeAlias type="animal.vo.LoginCommand" alias="loginCommand"/>
+	</typeAliases>
+
+
+
+
+
+
+</configuration>

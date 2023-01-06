@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+   <context:annotation-config />
+
+   <tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- @Transactional 자동으로 검색해서(빈) 트랜젝션 적용을 해준다. -->
+
+	<bean id="transactionManager" 
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	
+	<bean id="selectAllFreeBoardList" class="animal.service.SelectAllFreeBoardListService"></bean>
+	
+	<!--로그인-->
+	<bean id="loginService" class="animal.service.LoginService">
+		<property name="animalDao" ref="animalDao"/>
+	</bean>
+	
+	<!--회원가입-->
+	<bean id="memberRegSvc" class="animal.service.MemberRegisterService">
+		<constructor-arg ref="animalDao"/>
+	</bean>
+
+</beans>

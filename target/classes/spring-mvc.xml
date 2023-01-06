@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<mvc:annotation-driven />
+
+	<mvc:default-servlet-handler/>
+	
+	<mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/views/"/>
+	</mvc:view-resolvers>
+	
+	<mvc:view-controller path="/main" view-name="main"/>
+	<!--   http://localhost:8085/ex00/main 경로를 찾으면  /WEB-INF/views/main.jsp로 연결-->
+	<mvc:view-controller path="/" view-name="main"/>
+	<!--   http://localhost:8085/ex00/    ===> /WEB-INF/views/main.jsp로 연결-->
+
+	<!-- 메시지 읽어오기 위한 빈 -->
+	<bean id="messageSource"
+	class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:message/label</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+</beans>
+
+
+
+
+

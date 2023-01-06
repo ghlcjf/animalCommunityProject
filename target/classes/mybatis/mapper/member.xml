@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="mybatis.mapper.member"> <!-- 여러 개의 매퍼 중 특정 한 개를 찾을 때 쓰는 것..?/ MemberDao에서 찾을 때 사용하는 이름 -->
+										   <!-- return sqlSession.selectList("mybatis.mapper.member.selectAll"); namespace="mybatis.mapper.member"-->
+										   
+										   
+	<!-- <resultMap type="member" id="memVo">
+		<result column="id" property="id"/>
+		<result column="email" property="email"/>
+		<result column="password" property="password"/>
+		<result column="name" property="name"/>
+		<result column="regdate" property="registerDate"/>
+	</resultMap>									 
+	
+	<sql id="selectAllMember">
+		SELECT * FROM membersTbl
+	</sql>
+	
+	
+	<select id="selectByEmail" resultMap="memVo" parameterType="String">
+		<include refid="selectAllMember" />
+		WHERE email=#{email}
+	</select>
+	
+	<select id="selectByRegDate" resultMap="memVo" parameterType="spring.vo.ListCommand">
+		<include refid="selectAllMember" />
+		WHERE regdate BETWEEN #{from} AND #{to} 
+		ORDER BY regdate ASC
+	</select>
+	
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO membersTbl 
+		VALUES(membersTbl_seq.nextval,#{email},#{password},#{name},sysdate)
+	</insert>
+	
+	<update id="updateMember" parameterType="member">
+		UPDATE membersTbl SET name=#{name}, password=#{password} WHERE email=#{email}
+	</update>
+	 -->
+	
+	
+	<select id="selectAllFreeBoard" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl ORDER BY boardNum DESC
+	</select>
+	
+	<select id="selectByFreeBoardNum" resultType="freeBoard" parameterType="long">
+		SELECT * FROM freeBoardTbl WHERE boardNum=#{boardNum}
+	</select>
+	
+	<update id="updateViewCountFreeBoard" parameterType="freeBoard">
+		UPDATE freeBoardTbl SET viewCount = #{viewCount}+1 WHERE boardNum=#{boardNum}
+	</update>
+	
+	<update id="updateGoodCountFreeBoard" parameterType="freeBoard">
+		UPDATE freeBoardTbl SET good = #{good}+1 WHERE boardNum=#{boardNum}
+	</update>
+	
+	<update id="updateBadCountFreeBoard" parameterType="freeBoard">
+		UPDATE freeBoardTbl SET bad = #{bad}+1 WHERE boardNum=#{boardNum}
+	</update>
+	
+	<update id="updateReportCountFreeBoard" parameterType="freeBoard">
+		UPDATE freeBoardTbl SET report = #{report}+1 WHERE boardNum=#{boardNum}
+	</update>
+	
+	<select id="selectAllFreeComment" parameterType="long" resultType="freeComment">
+		SELECT c.* 
+		FROM freeBoardTbl b INNER JOIN freeCommentTbl c
+		ON b.boardNum = c.boardNum
+		WHERE c.boardNum=#{boardNum}
+		ORDER BY c.commentNum ASC
+	</select>
+	<select id="selectAllFreeComment2" parameterType="String" resultType="freeComment">
+		SELECT c.* 
+		FROM freeBoardTbl b INNER JOIN freeCommentTbl c
+		ON b.boardNum = c.boardNum
+		WHERE c.boardNum=#{boardNum}
+		ORDER BY c.commentNum DESC
+	</select>
+	
+	<insert id="insertFreeComment" parameterType="freeCommentCommand">
+		INSERT INTO freeCommentTbl
+		Values(FREECOMMENT_SEQ.nextval,#{boardNum},#{commentContent},#{name},sysdate)
+	</insert>
+	
+	
+	
+	<!-- 이슈 -->
+	<sql id="selectAllIssue">
+		SELECT * FROM issueTbl
+	</sql>
+	
+	<select id="selectAllIssueList" resultType="issue">
+		SELECT * FROM IssueTbl ORDER BY issueNum DESC
+	</select>										   
+
+	<select id="selectByIssueNum" resultType="issue">
+		<include refid="selectAllIssue" />
+		WHERE issueNum=#{issueNum}
+	</select>
+	
+	<update id="updateViewCount" parameterType="issue">
+		UPDATE issueTbl SET viewCount = #{viewCount}+1 WHERE issueNum=#{issueNum}
+	</update>
+
+	<select id="selectByIssue" resultType="issue">
+		<include refid="selectAllIssue" />
+		WHERE issueNum=#{issueNum}
+	</select>
+	
+	<select id="getIssueComments" resultType="issueComment">
+		SELECT c.*
+		FROM issueTbl i INNER JOIN issueCommentTbl c 
+		ON i.issueNum=c.boardNum
+		WHERE c.boardNum=#{issueNum} 	
+	</select>
+	<insert id="insertComment" parameterType="issueComment">
+		INSERT INTO issueCommentTbl
+		VALUES(ISSUECOMMENT_SEQ.nextval,#{boardNum},#{commentContent},#{name},sysdate);
+	</insert>
+	
+	
+	<!-- 동물 소개 -->
+	<select id="selectAllAniaml" resultType="animalInfo">
+		SELECT * FROM animalInfoTbl ORDER BY animalNum DESC
+	</select>
+	
+	<select id="selectByAnimalNum" resultType="animalInfo" parameterType="int">
+		SELECT * FROM animalInfoTbl 
+ 		WHERE animalNum=#{animalNum}
+ 	</select>
+	
+	<update id="addViewCount" parameterType="animalInfo"> 
+		UPDATE animalInfoTbl SET viewCount = #{viewCount}+1 
+		WHERE animalNum=#{animalNum} 
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	<sql id="selectAllMember">
+		select * from userTbl	
+	</sql>
+	
+	<select id="selectAll" resultType="user">
+		<include refid="selectAllMember"/>
+		order by id ASC
+	</select>
+	
+	<select id="selectByEmail" resultType="user" parameterType="String">
+		<include refid="selectAllMember"/>
+		where email=#{email}
+	</select>
+	
+	<select id="selectById" resultType="user" parameterType="String">
+		<include refid="selectAllMember"/>
+		where id=#{id}
+	</select>
+	
+	<insert id="insertMember" parameterType="user">
+		insert into userTbl
+		values(#{id},#{password},#{name},#{email},#{phone},0)
+	</insert>
+	
+	
+	
+</mapper>
