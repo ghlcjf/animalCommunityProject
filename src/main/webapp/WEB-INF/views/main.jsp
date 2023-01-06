@@ -13,6 +13,6 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <h1> [메인 페이지 나중에 할 것.] <spring:message code="email"/></h1>
-<h2>메인페이지-김회철</h2>
+<h2>메인페이지-이은진 수정</h2>
 </body>
 </html>
