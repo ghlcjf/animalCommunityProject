@@ -14,7 +14,7 @@
 	<c:when test="${empty animl.animalUrl }">
 	</c:when>
 	<c:otherwise> --%>
-		<img src="/display?name=${animal.animalUrl }"/>
+		<img src="<c:url value='/resources/img/${animal.animalUrl }.png'/>" >
 		<img src='<c:url value="/resources/img/noImage.png" />'${animal.animalUrl }>
 	<%-- </c:otherwise>
 	</c:choose> --%>
