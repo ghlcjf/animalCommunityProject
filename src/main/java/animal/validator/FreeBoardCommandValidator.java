@@ -20,6 +20,7 @@ public class FreeBoardCommandValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "boardContent", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "boardCategory", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
+		//ValidationUtils.rejectIfEmpty(errors, "boardUrl", "required");
 		
 		
 		

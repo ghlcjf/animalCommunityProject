@@ -29,6 +29,10 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 	
+	<!-- fileupload -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</bean>
+	
 </beans>
 
 
