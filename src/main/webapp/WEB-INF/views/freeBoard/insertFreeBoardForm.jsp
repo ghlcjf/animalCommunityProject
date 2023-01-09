@@ -11,7 +11,7 @@
 
 <h2>[자유게시판] 게시글 작성하기</h2>
 
-<form:form action="insertFreeBoard" modelAttribute="freeBoardCommand">
+<form:form action="insertFreeBoard" modelAttribute="freeBoardCommand" enctype="multiple/form-data" id="insertFreeBoardForm">
 	<table border="1">
 		<tr>
 			<td>카테고리</td>
@@ -36,7 +36,7 @@
 		<tr>
 			<td>이미지</td>
 			<td>
-				<input type="file" id="boardUrl" name="boardUrl">
+				<input type="file" id="boardUrl" name="boardUrl" multiple="multiple">
 			</td>
 		</tr>
 		<tr>

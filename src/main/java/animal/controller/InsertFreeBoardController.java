@@ -8,6 +8,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import animal.service.InsertFreeBoardService;
 import animal.validator.FreeBoardCommandValidator;
@@ -24,7 +27,7 @@ public class InsertFreeBoardController {
 		this.insertFreeBoardService = insertFreeBoardService;
 	}
 	
-	
+	private final String uploadDir = "";
 	
 
 	@GetMapping("/freeBoard/insertFreeBoardForm")
@@ -42,15 +45,12 @@ public class InsertFreeBoardController {
 	
 	@PostMapping("/freeBoard/insertFreeBoard")
 	public String insertFreeBoard(@ModelAttribute("freeBoardCommand") FreeBoardCommand bc,
-			Errors errors,HttpSession session) {
+			Errors errors,HttpSession session, MultipartHttpServletRequest request,
+			@RequestParam MultipartFile file) {
+		
+		
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		bc.setName(userInfo.getName());
-		
-		System.out.println(bc.getBoardCategory());
-		System.out.println(bc.getBoardContent());
-		System.out.println(bc.getBoardTitle());
-		System.out.println(bc.getName());
-		
 		
 		new FreeBoardCommandValidator().validate(bc, errors);
 		

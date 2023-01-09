@@ -5,6 +5,13 @@ public class FreeBoardCommand {
 	private String boardContent;
 	private String boardCategory;
 	private String name;
+	private String boardUrl;
+	public String getBoardUrl() {
+		return boardUrl;
+	}
+	public void setBoardUrl(String boardUrl) {
+		this.boardUrl = boardUrl;
+	}
 	public String getBoardTitle() {
 		return boardTitle;
 	}
