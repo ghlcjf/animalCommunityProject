@@ -1,7 +1,9 @@
 package animal.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,19 +22,26 @@ public class IssueCommentController {
 	}
 	
 	
-	@PostMapping("/comment") // http://localhost:8090/animalCommunity/comment
-	public String addComment(@RequestParam("commentContent") String commentContent,
-							@RequestParam("name") String name,
+	@RequestMapping("/comment") // http://localhost:8090/animalCommunity/comment
+	public IssueComment addComment(@RequestParam("name") String name,
+							@RequestParam("commentContent") String commentContent,
 							@RequestParam("boardNum") String boardNum) {
-		System.out.println("호출 성공");
+//		System.out.println("호출 성공");
+//		System.out.println(name);
+//		System.out.println(commentContent);
+//		System.out.println(boardNum);
+		
 		IssueComment issueComment = new IssueComment();
+		
 		issueComment.setCommentContent(commentContent);
 		issueComment.setName(name);
 		issueComment.setBoardNum(Integer.parseInt(boardNum));
 		
-		animalDao.insertComment(issueComment);
+		animalDao.insertIssueComment(issueComment);
 		
-		return "/main";
+		List<IssueComment> issueComments = animalDao.getIssueComments2(boardNum);
+		
+		return issueComments.get(0);
 	}
 	
 //	@PostMapping("/comment/{boardNum}")

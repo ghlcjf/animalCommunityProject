@@ -2,11 +2,14 @@ package animal.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class IssueComment {
 	private int commentNum;
     private int boardNum;
     private String commentContent;
     private String name;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private Date writeDate;
 	public int getCommentNum() {
 		return commentNum;

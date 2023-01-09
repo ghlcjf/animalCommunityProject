@@ -27,39 +27,80 @@
 	${issue.issueContent}
 </div>
 <hr>
-<form action="comment">
+
+<table border="1" id="commentTbl">
+	<tr>
+		<td colspan="3">
+			<form>
+				<input type="hidden" id="name" value="홍길동">
+				<textarea rows="4" cols="30" id="commentContent" placeholder="댓글을 입력해 주세요"></textarea>
+				<button type="button" onclick="insertComment(${issue.issueNum})">댓글 등록</button>
+			</form>
+		</td>
+	</tr>
+	<c:choose>
+		<c:when test="${empty issueComment}">
+			<tr>
+				<td colspan="3">댓글이 없습니다.</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${issueComment}" var="issueComment">
+				<tr>
+					<td>${issueComment.name }</td>
+					<td>${issueComment.commentContent }</td>
+					<td><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+				</tr>
+			
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+</table>
+<%-- <form action="comment">
+	<label>
+		<input type="hidden" id="name" value="홍길동">
+	</label>
 	<label> 댓글 :
 		<textarea rows="5" cols="50" id="commentContent"></textarea> 
-	</label>
-	<label>
-		<input type="hidden" id="name" value="0">
 	</label>
 	<button type="button" onclick="insertComment(${issue.issueNum})">등록</button>
 </form>
 <hr>
-<c:forEach items="${issueComment}" var="comment" varStatus="b">
+<c:choose>
+	<c:when test="${empty issueComment}">
+		<tr>
+			<td colspan="3">댓글이 없습니다.</td>
+		</tr>
+	</c:when>
+	<c:otherwise>
+		<c:forEach items="${issueComment}" var="issueComment">
+			<tr>
+				<td>${issueComment.name }</td>
+				<td>${issueComment.commentContent }</td>
+				<td><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+			</tr>
+		
+		</c:forEach>
+	</c:otherwise>
+</c:choose> --%>
+<%-- <c:forEach items="${issueComment}" var="comment" varStatus="b">
 	<tr>
 		<td>${comment.name}</td>
 		<td>${comment.commentContent}</td>
 		<td><fmt:formatDate value="${comment.writeDate}" pattern="yyyy-MM-dd"/></td><br>
 	</tr>
 
-</c:forEach>
+</c:forEach> --%>
+
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set> 
 
 <script type="text/javascript">
 
 
-function insertComment(Num) {
+/* function insertComment(Num) {
 	let commentContent = $('#commentContent').val();
 	let name = $('#name').val();
 	let boardNum = Num;
-	
-	/* let comment = {
-		"commentContent":commentContent,
-		"name":name,
-		"boardNum":boardNum
-	}; */
 	
 	console.log(commentContent);
 	console.log(name);
@@ -77,6 +118,44 @@ function insertComment(Num) {
 			
 		}
 
+	}); */
+function insertComment(num) {
+	let boardNum = num;
+	let name = $('#name').val(); 
+	let comment = $('#commentContent').val();
+	if(comment==null || comment.length==0){
+		alert('댓글을 입력해 주세요');
+		return;
+	}
+	
+	console.log(boardNum);
+	console.log(name);
+	console.log(comment);
+	$.ajax({
+		type:"GET",
+		url:"${context}/comment",
+		data:{
+			"name":name,
+			"commentContent":comment,
+			"boardNum":boardNum
+		},
+		dateType:JSON,
+		success:function(data){
+			
+			
+			let tbl = document.getElementById('commentTbl');
+			let cr = document.createElement('tr');
+			cr.innerHTML = '<td>'+data.name+'</td>';
+			cr.innerHTML += '<td>'+data.commentContent+'</td>';
+			cr.innerHTML += '<td>'+data.writeDate+'</td>';
+			tbl.appendChild(cr);
+			
+			
+		},
+		complete:function(){
+			$('#comment').value='';
+		}
+		
 	});
 }
 <%-- //-------------------여기부터 실제 jsp 작성한 것-----------------------------------------------------------

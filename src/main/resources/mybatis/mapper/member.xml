@@ -118,9 +118,18 @@
 		ON i.issueNum=c.boardNum
 		WHERE c.boardNum=#{issueNum} 	
 	</select>
-	<insert id="insertComment" parameterType="issueComment">
+	
+	<select id="getIssueComments2" parameterType="String" resultType="issueComment">
+		SELECT c.*
+		FROM issueTbl i INNER JOIN issueCommentTbl c 
+		ON i.issueNum=c.boardNum
+		WHERE c.boardNum=#{issueNum} 	
+		ORDER BY c.commentNum DESC
+	</select>
+	
+	<insert id="insertIssueComment" parameterType="issueComment">
 		INSERT INTO issueCommentTbl
-		VALUES(ISSUECOMMENT_SEQ.nextval,#{boardNum},#{commentContent},#{name},sysdate);
+		Values(issueComment_seq.nextval,#{boardNum},#{commentContent},#{name},sysdate)
 	</insert>
 	
 	

@@ -97,9 +97,14 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectByIssue",issueNum);
 	}
 
-	public void insertComment(IssueComment issueComment) {
+	public void insertIssueComment(IssueComment issueComment) {
 		
-		sqlSession.insert("mybatis.mapper.member.insertComment",issueComment);
+		sqlSession.insert("mybatis.mapper.member.insertIssueComment",issueComment);
+	}
+
+	public List<IssueComment> getIssueComments2(String boardNum) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.getIssueComments2",boardNum);
 	}
 	
 	//--------------------동물 소개------------------------------------------------------
@@ -141,6 +146,8 @@ public class AnimalDao {
 	public User selectById(String id) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectById", id);
 	}
+
+
 	
 	
 	
