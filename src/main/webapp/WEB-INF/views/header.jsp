@@ -3,8 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <header>
+
+<!--메인으로 이동하는 로고-->
+<a href='<c:url value="/main"/>'>메인으로이동(나중에 이미지로 로고 넣어주기)</a>
+
 <ul>
-	<ul>
 	<!-- 세션이 없으면 -->
 	<c:if test="${empty userInfo}">
 		<li><a href='<c:url value="/register/step1"/>'>회원가입</a></li>
@@ -18,7 +21,7 @@
 	</c:if>
 </ul>
 	
-</ul>
+	
 <ul>
 	<li><a href='<c:url value="/freeBoard/freeBoardList"/>'>자유게시판</a></li>
 	<li><a href='<c:url value="/animalInfo"/>'>동물 소개</a></li>

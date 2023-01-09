@@ -45,8 +45,7 @@ public class InsertFreeBoardController {
 	
 	@PostMapping("/freeBoard/insertFreeBoard")
 	public String insertFreeBoard(@ModelAttribute("freeBoardCommand") FreeBoardCommand bc,
-			Errors errors,HttpSession session, MultipartHttpServletRequest request,
-			@RequestParam MultipartFile file) {
+			Errors errors,HttpSession session) {
 		
 		
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");

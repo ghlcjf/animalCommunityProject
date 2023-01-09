@@ -37,10 +37,12 @@
 					</th>
 				</tr>
 			</table>
-			
+	
+
 			<button  type="submit">
 				<spring:message code="login.btn"/>
 			</button>
+			
 		</form:form>
 	</c:if>
 		<!--로그인 실패하면 로그인 페이지로 넘어가기전에 경고창에:아이디 혹은 비밀번호가 맞지않습니다 출력-->
@@ -49,75 +51,61 @@
 
 <!--자유게시판(기본 이미지, 작성자, 제목, 추천수-->
 	<h3>자유게시판</h3>
-	<c:choose>
-		<c:when test="${empty freeBoardList}">
-			<p>등록된 게시글이 없습니다.</p>
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${freeBoardList}" var="board">
-				<table border="1">
-					<tr>
-						<td>이미지</td>
-						<td>이미지</td>
-						<td>이미지</td>
-						<td>이미지</td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-						<td>작성자</td>
-						<td>작성자</td>
-						<td>작성자</td>
-					</tr>
-					<tr>
-						<td>글 제목</td>
-						<td>글 제목</td>
-						<td>글 제목</td>
-						<td>글 제목</td>
-					</tr>	
-					<tr>
-						<td>추천수 댓글수</td>
-						<td>추천수 댓글수</td>
-						<td>추천수 댓글수</td>
-						<td>추천수 댓글수</td>
-					</tr>		
-				</table>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>			
+	<c:if test="${empty freeBoardList}">
+		<p>등록된 게시글이 없습니다.</p>
+	</c:if>
+	<c:if test="${!empty freeBoardList}">
+		<c:forEach items="${freeBoardList}" var="board">
+			<table border="1">
+				<tr>
+					<td>
+						<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
+						${board.boardTitle}이미지(기본이나 게시물이미지)</a>
+					</td>
+				</tr>
+				<tr>
+					<td>${board.name}</td>
+				</tr>
+				<tr>
+					<td>${board.boardTitle}</td>
+				</tr>	
+				<tr>
+					<td>${freeBoard.good}</td>
+				</tr>		
+			</table>
+		</c:forEach>
+	</c:if>
 <!--이슈게시판(기본이미지 또는 제목이 곧 이미지ㅡ 작성자, 제목-->
 	<h3>이슈게시판</h3>
-		<c:choose>
-			<c:when test="${empty issue}">
-				<p>등록된 게시글이 없습니다.</p>
-			</c:when>
-			<c:otherwise>	
-			<table border="1">
-				<c:forEach items="${issue}" var="board" varStatus="b">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</table>
-		</c:otherwise>
-	</c:choose>
+
+	<c:if test="${empty issue}">
+		<p>등록된 게시글이 없습니다.</p>
+	</c:if>
+	<c:if test="${!empty issue}">
+		<table border="1">
+			<c:forEach items="${issue}" var="board" varStatus="b">
+				<tr>
+					<td>
+						<a href="<c:url value='/issue/detail/${board.issueNum}' />">
+						${board.issueTitle} 이미지(기본이나 게시물이미지)</a>
+					</td>
+				</tr>
+				<tr>
+					<td>${board.name}</td>
+				</tr>
+				<tr>
+					<td> ${board.issueTitle}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
+	
+	
 <!--인기글 top10개: 추천수+조회수 등으로 순위매김, 숫자같을때는 어떻게할지도-->
 	<h4>커뮤니티 인기 Top10</h4>
-	
+	<c:if test="${empty freeBoardList}">
+		<p>등록된 게시글이 없습니다.</p>
+	</c:if>
 
 
 
