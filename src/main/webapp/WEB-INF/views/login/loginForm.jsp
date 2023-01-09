@@ -23,7 +23,7 @@
 		<p>
 			<label>
 				<spring:message code="password"/>: <br>
-				<form:input path="password"/>
+				<form:input path="password" type="password"/>
 				<form:errors path="password"/>
 			</label>
 		</p>
