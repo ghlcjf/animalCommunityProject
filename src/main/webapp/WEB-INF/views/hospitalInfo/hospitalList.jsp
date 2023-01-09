@@ -27,8 +27,8 @@
 					추천: ${hospital.good }<br>
 					반대: ${hospital.bad }<br>
 					<form>
-					<input type="button" id="goodBtn" value="추천 ${hospital.good}" onclick="addGood(${hospital.boardNum})">
-					<input type="button" id="badBtn" value="반대 ${hospital.bad}" onclick="addBad(${hospital.boardNum})">
+					<input type="button" id="goodBtn" value="추천 <%-- ${hospital.good} --%>" onclick="addGood(${hospital.boardNum})">
+					<input type="button" id="badBtn" value="반대 <%-- ${hospital.bad} --%>" onclick="addBad(${hospital.boardNum})">
 					</form><br>
 				</c:forEach>
 			</c:otherwise>
@@ -43,7 +43,7 @@
 			url:"${context}/hospitalGood/"+boardNum,
 			dateType:JSON,
 			success : function(data){
-				$('#goodBtn').val("추천 "+JSON.parse(data));
+				$('#goodBtn').val("추천 "/* +JSON.parse(data) */);
 			}
 		});
 	}
@@ -54,7 +54,7 @@
 			url:"${context}/hospitalBad/"+boardNum,
 			dateType:JSON,
 			success : function(data){
-				$('#badBtn').val("반대"+JSON.parse(data));
+				$('#badBtn').val("반대"/* JSON.parse(data) */);
 			}
 		});
 	}
