@@ -151,8 +151,7 @@ public class AnimalDao {
 	//-----------------------------병원소개-------------------------------------------------
 	
 		public List<HospitalInfo> selectAllHospital() {
-			return null;
-//			return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
+			return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
 		}
 
 

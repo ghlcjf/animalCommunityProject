@@ -9,6 +9,7 @@ public class HospitalInfo {
     private int good;
     private int bad;
     private String name;
+    
 	public int getBoardNum() {
 		return boardNum;
 	}
