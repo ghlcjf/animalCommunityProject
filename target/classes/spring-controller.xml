@@ -67,11 +67,9 @@
 	<!-- 병원 정보 -->
 	<bean id="hospitalInfoController" class="animal.controller.HospitalInfoController">
 		<property name="animalDao" ref="animalDao"></property>
+	</bean>
 
 	<!--메인 컨트롤러-->
-	<bean id="main" class="animal.controller.MainController">
-		
-
-	</bean>
+	<bean id="main" class="animal.controller.MainController"></bean>
 	
 </beans>
