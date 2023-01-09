@@ -1,12 +1,13 @@
 package animal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 
 import animal.dao.AnimalDao;
 import animal.exception.IdPasswordNotMatchingException;
 import animal.vo.LoginCommand;
-import animal.vo.User;
 import animal.vo.LoginUserInfo;
+import animal.vo.User;
 
 public class LoginService {
 	//로그인 기능 담당 객체

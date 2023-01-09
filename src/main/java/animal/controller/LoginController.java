@@ -5,10 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import animal.exception.IdPasswordNotMatchingException;
@@ -16,7 +16,6 @@ import animal.service.LoginService;
 import animal.validator.LoginCommandValidator;
 import animal.vo.LoginCommand;
 import animal.vo.LoginUserInfo;
-import animal.vo.RegisterRequest;
 
 @Controller
 public class LoginController {

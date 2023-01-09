@@ -13,10 +13,10 @@
 		<mvc:jsp prefix="/WEB-INF/views/"/>
 	</mvc:view-resolvers>
 	
-	<mvc:view-controller path="/main" view-name="main"/>
-	<!--   http://localhost:8085/ex00/main 경로를 찾으면  /WEB-INF/views/main.jsp로 연결-->
-	<mvc:view-controller path="/" view-name="main"/>
-	<!--   http://localhost:8085/ex00/    ===> /WEB-INF/views/main.jsp로 연결-->
+<!-- 	<mvc:view-controller path="/main" view-name="main"/> -->
+	<!--   http://localhost:8085/animalCommunity/main 경로를 찾으면  /WEB-INF/views/main.jsp로 연결-->
+<!-- 	<mvc:view-controller path="/" view-name="main"/> -->
+	<!--   http://localhost:8085/animalCommunity/    ===> /WEB-INF/views/main.jsp로 연결-->
 
 	<!-- 메시지 읽어오기 위한 빈 -->
 	<bean id="messageSource"

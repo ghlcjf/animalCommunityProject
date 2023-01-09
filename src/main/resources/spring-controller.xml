@@ -53,7 +53,7 @@
 	
 	<!--로그인 컨트롤러 -->
 	<bean id="loginController" class="animal.controller.LoginController">
-			<property name="loginService" ref="loginService"/>
+		<property name="loginService" ref="loginService"/>
 	</bean>
 	<bean id="logoutController" class="animal.controller.LogoutController"/>
 	
@@ -63,9 +63,15 @@
 	</bean>		
 	<bean class="animal.commons.CommonExceptionHandler"></bean>
 	
+
 	<!-- 병원 정보 -->
 	<bean id="hospitalInfoController" class="animal.controller.HospitalInfoController">
 		<property name="animalDao" ref="animalDao"></property>
+
+	<!--메인 컨트롤러-->
+	<bean id="main" class="animal.controller.MainController">
+		
+
 	</bean>
 	
 </beans>

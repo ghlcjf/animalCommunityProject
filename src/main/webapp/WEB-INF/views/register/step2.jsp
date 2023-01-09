@@ -40,14 +40,14 @@
 		</p>
 		<p>
 			<label><spring:message code="email"/>
-				<form:input path="email"/>
+				<form:input path="email" type="email"/>
 				<form:errors path="email"/>
 				<!-- <input type="checkbox" name="advertise" value=""> -->
 			</label>		
 		</p>
 		<p>
 			<label><spring:message code="phone"/>
-				<form:input path="phone"/>
+				<form:input path="phone" placeholder="-하이폰을 입력해주세요"/>
 				<form:errors path="phone"/>
 			</label>
 		</p>
