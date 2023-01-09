@@ -154,6 +154,11 @@
 		WHERE animalNum=#{animalNum} 
 	</update>
 	
+	<!-- 병원 정보 -->
+	<select id="selectAllHospital" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl
+	</select>
+	 
 	
 	
 	
