@@ -11,7 +11,6 @@
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 	
-	
 	<c:choose>
 		<c:when test="${empty animal.animalUrl }">
 			<img src="<c:url value='/resources/image/noImage.png' />"${animal.animalUrl }><br>
@@ -20,7 +19,6 @@
 			<img src="<c:url value='/resources/image/${animal.animalUrl }' />" ><br>
 		</c:otherwise>
 	</c:choose>
-	
 	
 	게시글 번호: ${animal.animalNum}<br>
 	이름: ${animal.animalTitle}<br>

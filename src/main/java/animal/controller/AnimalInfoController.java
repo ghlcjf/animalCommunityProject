@@ -32,7 +32,7 @@ public class AnimalInfoController {
 	}
 	
 	@GetMapping("/animal/detail/{animalNum}")
-	public String detail(@PathVariable("animalNum") int animalNum, Model model) {
+	public String detail(@PathVariable("animalNum") long animalNum, Model model) {
 		AnimalInfo updateAnimalInfo = animalDao.selectByNum(animalNum);
 		animalDao.addViewCount(updateAnimalInfo);
 		

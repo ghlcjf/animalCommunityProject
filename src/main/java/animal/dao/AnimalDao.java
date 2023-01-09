@@ -114,7 +114,7 @@ public class AnimalDao {
 		return sqlSession.selectList("mybatis.mapper.member.selectAllAniaml");
 	}
 	
-	public AnimalInfo selectByNum(int animalNum) {
+	public AnimalInfo selectByNum(long animalNum) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectByAnimalNum", animalNum);
 	}
 
@@ -150,9 +150,21 @@ public class AnimalDao {
 
 	//-----------------------------병원소개-------------------------------------------------
 	
-		public List<HospitalInfo> selectAllHospital() {
-			return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
-		}
+	public List<HospitalInfo> selectAllHospital() {
+		return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
+	}
+	
+	public HospitalInfo selectByHospitalNum(long boardNum) { 
+		return sqlSession.selectOne("mybatis.mapper.member.selectByHospitalNum", boardNum);
+	}
+	 
+	public void addGoodCount(HospitalInfo updateHospitalInfo) {
+		sqlSession.update("mybatis.mapper.member.updateGoodCountHospitalInfo", updateHospitalInfo);
+	}
+
+	public void addBadCount(HospitalInfo updateHospitalInfo) {
+		sqlSession.update("mybatis.mapper.member.updateBadCountHospitalInfo", updateHospitalInfo);
+	}
 
 
 	
