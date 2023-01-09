@@ -53,7 +53,8 @@ public class InsertFreeBoardController {
 			Errors errors,HttpSession session
 			) throws Exception, IOException {
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
+		// 이미지 경로 맞춰줘야 하고 톰캣 서버 context.xml 파일 설정 추가해야 함.
+		String uploadDir = "C:\\Users\\ghlcj\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 

@@ -14,8 +14,17 @@
 <h2>자유게시판 상세보기</h2>
 
 <table border="1">
-	<tr>
-		<td rowspan="7">이미지 들어갈 곳</td>
+	<tr> <!-- 자유게시판 같은 경우 글 내용과 이미지를 한 곳에 보여줘도 괜찮을듯? -->
+		<td rowspan="7">
+			<c:choose>
+				<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
+					<img src="<c:url value='/resources/image/noImage.png' />"><br>
+				</c:when>
+				<c:otherwise>
+					<img src="<c:url value='/resources/freeBoardImage/${freeBoard.boardUrl }' />" ><br>
+				</c:otherwise>
+			</c:choose>
+		</td>
 		<td>글 번호 : ${freeBoard.boardNum}</td>
 		<th>${freeBoard.boardTitle }</th>
 		<td>조회수 : ${freeBoard.viewCount}</td>
