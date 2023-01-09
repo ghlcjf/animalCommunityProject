@@ -43,6 +43,8 @@
 	 -->
 	
 	
+	
+	<!-- 자유게시판 -->
 	<select id="selectAllFreeBoard" resultType="freeBoard">
 		SELECT * FROM freeBoardTbl ORDER BY boardNum DESC
 	</select>
@@ -87,6 +89,10 @@
 		Values(FREECOMMENT_SEQ.nextval,#{boardNum},#{commentContent},#{name},sysdate)
 	</insert>
 	
+	<insert id="insertFreeBoard" parameterType="freeBoardCommand">
+		INSERT INTO freeBoardTbl
+		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},null,0,0,0,0)
+	</insert>
 	
 	
 	<!-- 이슈 -->

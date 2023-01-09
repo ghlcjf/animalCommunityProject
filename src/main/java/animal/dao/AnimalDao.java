@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import animal.vo.AnimalInfo;
 import animal.vo.FreeBoard;
+import animal.vo.FreeBoardCommand;
 import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
 import animal.vo.Issue;
@@ -147,6 +148,10 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectById", id);
 	}
 
+
+	public void insertFreeBoard(FreeBoardCommand bc) {
+		sqlSession.insert("mybatis.mapper.member.insertFreeBoard", bc);
+	}
 
 	
 	

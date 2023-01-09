@@ -21,7 +21,14 @@
 	<li><a>파충류</a></li>
 	<li><a>기타</a></li>
 </ul>
-<table>
+<table border="1">
+	<c:if test="${!empty userInfo}">
+		<tr>
+			<td colspan="5" align="right">
+				<a href="<%=request.getContextPath() %>/freeBoard/insertFreeBoardForm">[글 작성하기]</a>
+			</td>
+		</tr>
+	</c:if>
 	<tr>
 		<th>글번호</th>
 		<th>글제목</th>

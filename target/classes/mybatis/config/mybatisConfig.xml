@@ -14,6 +14,7 @@
 		<typeAlias type="animal.vo.AnimalInfo" alias="animalInfo"/>
 		<typeAlias type="animal.vo.User" alias="user"/>
 		<typeAlias type="animal.vo.LoginCommand" alias="loginCommand"/>
+		<typeAlias type="animal.vo.FreeBoardCommand" alias="freeBoardCommand"/>
 	</typeAliases>
 
 
