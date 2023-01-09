@@ -8,6 +8,7 @@ import animal.vo.AnimalInfo;
 import animal.vo.FreeBoard;
 import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
+import animal.vo.HospitalInfo;
 import animal.vo.Issue;
 import animal.vo.IssueComment;
 import animal.vo.User;
@@ -146,6 +147,13 @@ public class AnimalDao {
 	public User selectById(String id) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectById", id);
 	}
+
+	//-----------------------------병원소개-------------------------------------------------
+	
+		public List<HospitalInfo> selectAllHospital() {
+			return null;
+//			return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
+		}
 
 
 	
