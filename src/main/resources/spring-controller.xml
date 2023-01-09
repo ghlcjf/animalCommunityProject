@@ -16,6 +16,8 @@
 	-->
 	
 	
+	
+	<!-- 자유게시판 -->
 	<bean id="freeBoardController" class="animal.controller.FreeBoardController">
 		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardList"></property>
 		<property name="animalDao" ref="animalDao"></property>
@@ -28,6 +30,10 @@
 	
 	<bean id="InsertFreeCommentController" class="animal.controller.InsertFreeCommentController">
 		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	
+	<bean id="insertFreeBoardController" class="animal.controller.InsertFreeBoardController">
+		<property name="insertFreeBoardService" ref="insertFreeBoardService"></property>
 	</bean>
 	
 	<!-- 이슈 -->

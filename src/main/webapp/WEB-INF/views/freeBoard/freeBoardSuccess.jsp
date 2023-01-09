@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +9,8 @@
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
-
-<h1> [메인 페이지 나중에 할 것.] <spring:message code="email"/></h1>
-<h2>메인페이지</h2>
-
+<h2>게시글 작성이 완료됐습니다.</h2>
+<a href='<c:url value="/freeBoard/freeBoardList" />'>목록으로 돌아가기</a>
 
 </body>
 </html>

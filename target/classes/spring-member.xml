@@ -17,8 +17,11 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	
+	<!-- 자유게시판 -->
 	<bean id="selectAllFreeBoardList" class="animal.service.SelectAllFreeBoardListService"></bean>
+	<bean id="insertFreeBoardService" class="animal.service.InsertFreeBoardService">
+		<property name="animalDao" ref="animalDao"/>
+	</bean>
 	
 	<!--로그인-->
 	<bean id="loginService" class="animal.service.LoginService">
