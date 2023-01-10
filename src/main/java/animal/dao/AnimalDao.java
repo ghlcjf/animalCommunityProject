@@ -188,8 +188,6 @@ public class AnimalDao {
 	public List<HospitalInfo> selectAllHospital() {
 		return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
 	}
-<<<<<<< HEAD
-=======
 	
 	public HospitalInfo selectByHospitalNum(long boardNum) { 
 		return sqlSession.selectOne("mybatis.mapper.member.selectByHospitalNum", boardNum);
@@ -218,7 +216,6 @@ public class AnimalDao {
 	public List<HospitalInfo> selectHospitalDaejeon() {
 		return sqlSession.selectList("mybatis.mapper.member.selectHospitalDaejeon");
 	}
->>>>>>> refs/remotes/origin/jwg0615-2
 
 		
 
