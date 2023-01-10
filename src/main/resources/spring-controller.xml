@@ -72,4 +72,8 @@
 	<!--메인 컨트롤러-->
 	<bean id="main" class="animal.controller.MainController"></bean>
 	
+	<bean id="hospitalGBController" class="animal.controller.HospitalGBController">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	
 </beans>
