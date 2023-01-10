@@ -9,6 +9,7 @@ public class HospitalInfo {
     private int good;
     private int bad;
     private String name;
+    private String detailedAddress;
     
 	public int getBoardNum() {
 		return boardNum;
@@ -58,8 +59,11 @@ public class HospitalInfo {
 	public void setName(String name) {
 		this.name = name;
 	}
-    
-    
-    
+	public String getDetailedAddress() {
+		return detailedAddress;
+	}
+	public void setDetailedAddress(String detailedAddress) {
+		this.detailedAddress = detailedAddress;
+	}
     
 }
