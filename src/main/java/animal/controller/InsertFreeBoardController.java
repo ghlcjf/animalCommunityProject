@@ -63,7 +63,7 @@ public class InsertFreeBoardController {
         }else {
         	freeBoardCommand.setBoardUrl("null");
         }
-		
+
 		
 		
 		// bc에 세션 정보 넣어주기
