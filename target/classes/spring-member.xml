@@ -22,6 +22,9 @@
 	<bean id="insertFreeBoardService" class="animal.service.InsertFreeBoardService">
 		<property name="animalDao" ref="animalDao"/>
 	</bean>
+	<bean id="selectAllNoticeListService" class="animal.service.SelectAllNoticeListService">
+		<property name="animalDao" ref="animalDao"/>
+	</bean>
 	
 	<!--로그인-->
 	<bean id="loginService" class="animal.service.LoginService">
@@ -32,5 +35,14 @@
 	<bean id="memberRegSvc" class="animal.service.MemberRegisterService">
 		<constructor-arg ref="animalDao"/>
 	</bean>
+	
+	
+	<!-- 매니저 게시판 -->
+	
+	<bean id="insertIssueBoardService" class="animal.service.InsertIssueBoardService">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	
+	
 
 </beans>

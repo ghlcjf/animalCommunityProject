@@ -46,7 +46,7 @@
 	
 	<!-- 자유게시판 -->
 	<select id="selectAllFreeBoard" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	
 	<select id="selectByFreeBoardNum" resultType="freeBoard" parameterType="long">
@@ -96,22 +96,25 @@
 	
 	
 	<select id="selectDogFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='dog' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='dog' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectCatFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='cat' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='cat' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectReptileFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='reptile' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='reptile' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectBirdsFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='birds' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='birds' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectFishFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='fish' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='fish' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectOtherFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='other' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='other' AND boardCategory!='notice' ORDER BY boardNum DESC
+	</select>
+	<select id="selectAllNoticeList" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE boardCategory='notice' ORDER BY boardNum DESC
 	</select>
 	
 	
@@ -210,6 +213,14 @@
 		values(#{id},#{password},#{name},#{email},#{phone},0)
 	</insert>
 	
+	
+	<!-- 매니저페이지 -->
+	<insert id="insertIssueBoard" parameterType="issueBoardCommand">
+		INSERT INTO issueTbl
+		VALUES (ISSUEBOARD_SEQ.nextval,#{issueTitle},#{issueContent},#{name},#{issueUrl},sysdate,0)
+		
+
+	</insert>
 	
 	
 </mapper>

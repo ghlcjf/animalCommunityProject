@@ -32,6 +32,19 @@
 		<th>작성자</th>
 		<th>작성일자</th>
 	</tr>
+	<c:if test="${!empty noticeList}">
+		<c:forEach items="${noticeList}" var="notice">
+				<tr>
+					<td>${notice.boardNum }</td>
+					<td>
+						<a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle }</a>
+					</td>
+					<td>${notice.viewCount }</td>
+					<td>${notice.name }</td>
+					<td><fmt:formatDate value="${notice.writeDate}" pattern="yyyy-MM-dd"/></td>
+				</tr>
+			</c:forEach>
+	</c:if>
 	<c:choose>
 		<c:when test="${empty freeBoardList}">
 			<p>등록한 게시글이 없습니다.</p>

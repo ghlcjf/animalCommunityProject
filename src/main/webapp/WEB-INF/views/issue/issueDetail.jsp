@@ -24,6 +24,9 @@
 </div>
 <hr>
 <div>
+	<c:if test="${!empty issue.issueUrl }">
+		<img src="<c:url value='/resources/issueBoardImage/${issue.issueUrl }' />" ><br>
+	</c:if>
 	${issue.issueContent}
 </div>
 <hr>

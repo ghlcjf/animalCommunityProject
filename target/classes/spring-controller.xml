@@ -20,6 +20,7 @@
 	<!-- 자유게시판 -->
 	<bean id="freeBoardController" class="animal.controller.FreeBoardController">
 		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardList"></property>
+		<property name="selectAllNoticeListService" ref="selectAllNoticeListService"></property>
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
 	<bean class="animal.commons.CommonExceptionHandler"></bean>
@@ -71,5 +72,13 @@
 
 	<!--메인 컨트롤러-->
 	<bean id="main" class="animal.controller.MainController"></bean>
+	
+	
+	
+	<bean id="manager" class="animal.controller.ManagerController">
+		<property name="insertFreeBoardService" ref="insertFreeBoardService"></property>
+		<property name="insertIssueBoardService" ref="insertIssueBoardService"></property>
+		
+	</bean>
 	
 </beans>
