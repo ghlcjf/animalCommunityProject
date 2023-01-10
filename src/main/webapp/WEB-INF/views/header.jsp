@@ -20,7 +20,7 @@
 	
 </ul>
 <ul>
-	<li><a href='<c:url value="/freeBoard/freeBoardList"/>'>자유게시판</a></li>
+	<li><a href='<c:url value="/freeBoard/freeBoardList/main"/>'>자유게시판</a></li>
 	<li><a href='<c:url value="/animalInfo"/>'>동물 소개</a></li>
 	<li><a href='<c:url value="/hospitalInfo"/>'>동물 병원 정보</a></li>
 	<li><a href='<c:url value="/issue"/>'>이슈</a></li>

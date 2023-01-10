@@ -14,13 +14,9 @@
 <jsp:include page="../header.jsp"></jsp:include>
 
 <h2>자유게시판</h2>
-<ul>
-	<li><a>강아지</a></li>
-	<li><a>고양이</a></li>
-	<li><a>조류</a></li>
-	<li><a>파충류</a></li>
-	<li><a>기타</a></li>
-</ul>
+
+<jsp:include page="freeBoardMenu.jsp"></jsp:include>
+
 <table border="1">
 	<c:if test="${!empty userInfo}">
 		<tr>
