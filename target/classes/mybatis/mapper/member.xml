@@ -91,7 +91,7 @@
 	
 	<insert id="insertFreeBoard" parameterType="freeBoardCommand">
 		INSERT INTO freeBoardTbl
-		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},null,0,0,0,0)
+		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},#{boardUrl},0,0,0,0)
 	</insert>
 	
 	

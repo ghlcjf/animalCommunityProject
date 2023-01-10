@@ -6,6 +6,7 @@ public class FreeBoardCommand {
 	private String boardCategory;
 	private String name;
 	private String boardUrl;
+	
 	public String getBoardUrl() {
 		return boardUrl;
 	}
