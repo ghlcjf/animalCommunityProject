@@ -164,7 +164,7 @@
 		SELECT * FROM animalInfoTbl ORDER BY animalNum DESC
 	</select>
 	
-	<select id="selectByAnimalNum" resultType="animalInfo" parameterType="int">
+	<select id="selectByAnimalNum" resultType="animalInfo" parameterType="long">
 		SELECT * FROM animalInfoTbl 
  		WHERE animalNum=#{animalNum}
  	</select>
@@ -176,16 +176,38 @@
 	
 	<!-- 병원 정보 -->
 	<select id="selectAllHospital" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl ORDER BY boardNum ASC
+	</select>
+	
+	<select id="selectByHospitalNum" resultType="hospitalInfo" parameterType="long">
 		SELECT * FROM hospitalInfoTbl
+ 		WHERE boardNum=#{boardNum}
+ 	</select>
+	
+	<update id="updateGoodCountHospitalInfo" parameterType="hospitalInfo">
+		UPDATE hospitalInfoTbl SET good = #{good}+1 WHERE boardNum=#{boardNum}
+	</update>
+	
+	<update id="updateBadCountHospitalInfo" parameterType="hospitalInfo">
+		UPDATE hospitalInfoTbl SET bad = #{bad}+1 WHERE boardNum=#{boardNum}
+	</update>
+	
+	<select id="selectHospitalSeoul" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '서울'
+	</select>
+	
+	<select id="selectHospitalGyeongi" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경기'
+	</select>
+	
+	<select id="selectHospitalIncheon" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '인천'
+	</select>
+	
+	<select id="selectHospitalDaejeon" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '대전'
 	</select>
 	 
-	
-	
-	
-	
-	
-	
-	
 	<sql id="selectAllMember">
 		select * from userTbl	
 	</sql>
