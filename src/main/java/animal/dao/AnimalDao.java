@@ -72,6 +72,37 @@ public class AnimalDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mybatis.mapper.member.selectAllFreeComment2",boardNum);
 	}
+	public void insertFreeBoard(FreeBoardCommand bc) {
+		sqlSession.insert("mybatis.mapper.member.insertFreeBoard", bc);
+	}
+
+	public List<FreeBoard> selectDogFreeBoardList() {
+		// 강아지 게시글 불러오기
+		return sqlSession.selectList("mybatis.mapper.member.selectDogFreeBoardList");
+	}
+
+	public List<FreeBoard> selectCatFreeBoardList() {
+		// 고양이 게시글 불러오기
+		return sqlSession.selectList("mybatis.mapper.member.selectCatFreeBoardList");
+	}
+
+	public List<FreeBoard> selectReptileFreeBoardList() {
+		// 파충류 게시글 불러오기
+		return sqlSession.selectList("mybatis.mapper.member.selectReptileFreeBoardList");
+	}
+
+	public List<FreeBoard> selectBirdsFreeBoardList() {
+		// 조류 게시글 불러오기
+		return sqlSession.selectList("mybatis.mapper.member.selectBirdsFreeBoardList");
+	}
+	public List<FreeBoard> selectFishFreeBoardList() {
+		// 어류 게시글 불러오기
+		return sqlSession.selectList("mybatis.mapper.member.selectFishFreeBoardList");
+	}
+	public List<FreeBoard> selectOtherFreeBoardList() {
+		// 기타 게시글 불러오기
+		return sqlSession.selectList("mybatis.mapper.member.selectOtherFreeBoardList");
+	}
 	
 //-------------------이슈-------------------------------------------------------------------------
 	public List<Issue> selectAllIssueList() {
@@ -148,6 +179,8 @@ public class AnimalDao {
 	public User selectById(String id) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectById", id);
 	}
+	
+	
 
 	//-----------------------------병원소개-------------------------------------------------
 	
@@ -155,10 +188,11 @@ public class AnimalDao {
 			return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
 		}
 
+		
 
-	public void insertFreeBoard(FreeBoardCommand bc) {
-		sqlSession.insert("mybatis.mapper.member.insertFreeBoard", bc);
-	}
+
+	
+	
 
 	
 	

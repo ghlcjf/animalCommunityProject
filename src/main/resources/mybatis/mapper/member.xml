@@ -95,6 +95,26 @@
 	</insert>
 	
 	
+	<select id="selectDogFreeBoardList" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE boardCategory='dog' ORDER BY boardNum DESC
+	</select>
+	<select id="selectCatFreeBoardList" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE boardCategory='cat' ORDER BY boardNum DESC
+	</select>
+	<select id="selectReptileFreeBoardList" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE boardCategory='reptile' ORDER BY boardNum DESC
+	</select>
+	<select id="selectBirdsFreeBoardList" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE boardCategory='birds' ORDER BY boardNum DESC
+	</select>
+	<select id="selectFishFreeBoardList" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE boardCategory='fish' ORDER BY boardNum DESC
+	</select>
+	<select id="selectOtherFreeBoardList" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE boardCategory='other' ORDER BY boardNum DESC
+	</select>
+	
+	
 	<!-- 이슈 -->
 	<sql id="selectAllIssue">
 		SELECT * FROM issueTbl

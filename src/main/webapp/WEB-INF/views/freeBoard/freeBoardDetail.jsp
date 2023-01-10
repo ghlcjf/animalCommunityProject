@@ -15,7 +15,19 @@
 
 <table border="1">
 	<tr>
-		<td rowspan="7">이미지 들어갈 곳</td>
+		<td rowspan="7">
+			<c:choose>
+			
+				<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
+					<img src="<c:url value='/resources/image/noImage.png' />"><br>
+				</c:when>
+				
+				<c:otherwise>
+					<img src="<c:url value='/resources/freeBoardImage/${freeBoard.boardUrl }' />" ><br>
+				</c:otherwise>
+				
+			</c:choose>
+		</td>
 		<td>글 번호 : ${freeBoard.boardNum}</td>
 		<th>${freeBoard.boardTitle }</th>
 		<td>조회수 : ${freeBoard.viewCount}</td>

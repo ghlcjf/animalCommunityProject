@@ -32,10 +32,27 @@ public class FreeBoardController {
 
 
 
-	@RequestMapping("/freeBoard/freeBoardList")
-	public String boardList(Model model) {
+	@RequestMapping("/freeBoard/freeBoardList/{animal}")
+	public String boardList(@PathVariable("animal") String animal, Model model) {
+		List<FreeBoard> freeBoardList = null;;
 		
-		List<FreeBoard> freeBoardList = selectAllFreeBoardListService.selectAllFreeBoardList();
+		if(animal.equals("main")) {
+			freeBoardList = selectAllFreeBoardListService.selectAllFreeBoardList();
+		}else if(animal.equals("dog")) {
+			freeBoardList = animalDao.selectDogFreeBoardList();
+		}else if(animal.equals("cat")) {
+			freeBoardList = animalDao.selectCatFreeBoardList();
+		}else if(animal.equals("reptile")) {
+			freeBoardList = animalDao.selectReptileFreeBoardList();
+		}else if(animal.equals("birds")) {
+			freeBoardList = animalDao.selectBirdsFreeBoardList();
+		}else if(animal.equals("fish")) {
+			freeBoardList = animalDao.selectFishFreeBoardList();
+		}else if(animal.equals("other")) {
+			freeBoardList = animalDao.selectOtherFreeBoardList();
+		}
+		
+		
 		
 		model.addAttribute("freeBoardList", freeBoardList);
 		return "freeBoard/freeBoardList";
