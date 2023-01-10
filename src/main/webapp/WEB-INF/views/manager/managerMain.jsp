@@ -12,7 +12,7 @@
 	<h2>관리자 페이지</h2>
 	<a href="<c:url value='/main' />">메인 페이지</a>
 	<ul>
-		<li><a href='<c:url value=""/>'>회원관리</a></li>
+		<li><a href='<c:url value="/memberManagement"/>'>회원관리</a></li>
 		<li><a href='<c:url value=""/>'>게시판 작성</a></li>
 		<li><a href='<c:url value=""/>'>동물 소개 작성</a></li>
 		<li><a href='<c:url value=""/>'>동물 병원 정보 작성</a></li>

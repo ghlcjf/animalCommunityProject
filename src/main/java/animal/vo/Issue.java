@@ -10,6 +10,7 @@ public class Issue {
     private String issueUrl;
     private Date writeDate;
     private int viewCount;
+    
 	public String getIssueUrl() {
 		return issueUrl;
 	}

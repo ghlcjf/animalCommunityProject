@@ -68,4 +68,8 @@
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
 	
+	<!-- 관리자 -->
+	<bean id="managerController" class="animal.controller.ManagerController" />
+
+	
 </beans>

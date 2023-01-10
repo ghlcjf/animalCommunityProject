@@ -5,11 +5,14 @@ public class LoginUserInfo {
 	private String id;
 	private String email;
 	private String name;
-	
-	public LoginUserInfo(String id, String email, String name) {
+	private int admin;
+
+	public LoginUserInfo(String id, String email, String name, int admin) {
+		super();
 		this.id = id;
 		this.email = email;
 		this.name = name;
+		this.admin = admin;
 	}
 
 	public LoginUserInfo() {} //클래스 빌더 스타일 
@@ -26,6 +29,10 @@ public class LoginUserInfo {
 		this.email = email;
 		return this;
 	}
+	public LoginUserInfo setAdmin(int admin) {
+		this.admin = admin;
+		return this;
+	}
 
 	public String getId() {
 		return id;
@@ -38,7 +45,12 @@ public class LoginUserInfo {
 	public String getName() {
 		return name;
 	}
+	
+	public int getAdmin() {
+		return admin;
+	}
 
 	
 	
 }
+

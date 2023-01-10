@@ -31,7 +31,8 @@ public class LoginService {
 		LoginUserInfo userInfo = new LoginUserInfo()
 							.setEmail(user.getEmail())
 							.setId(user.getId())
-							.setName(user.getName());
+							.setName(user.getName())
+							.setAdmin(user.getAdmin());							
 		return userInfo;
 	}
 

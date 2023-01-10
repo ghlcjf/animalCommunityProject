@@ -12,6 +12,7 @@ import animal.vo.FreeCommentCommand;
 import animal.vo.HospitalInfo;
 import animal.vo.Issue;
 import animal.vo.IssueComment;
+import animal.vo.SearchMemberCommand;
 import animal.vo.User;
 
 //import spring.vo.Member;
@@ -151,13 +152,46 @@ public class AnimalDao {
 
 	//-----------------------------병원소개-------------------------------------------------
 	
-		public List<HospitalInfo> selectAllHospital() {
-			return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
-		}
+	public List<HospitalInfo> selectAllHospital() {
+		return sqlSession.selectList("mybatis.mapper.member.selectAllHospital");
+	}
 
 
 	public void insertFreeBoard(FreeBoardCommand bc) {
 		sqlSession.insert("mybatis.mapper.member.insertFreeBoard", bc);
+	}
+
+	
+	//----------------------------관리자 회원관리----------------------------------------
+	public List<User> memberList() {
+		
+		return sqlSession.selectList("mybatis.mapper.member.memberList");
+	}
+
+	public List<User> searchMember(SearchMemberCommand search) {
+
+		return sqlSession.selectList("mybatis.mapper.member.searchMember", search);
+	}
+
+	public User selectByMemberName(String name) {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.selectByMemberName", name);
+	}
+
+	public List<FreeBoard> getboardList(String name) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.getboardList", name);
+	}
+
+	public void boardDelete(long boardNum) {
+		
+		sqlSession.delete("mybatis.mapper.member.boardDelete", boardNum);
+	}
+
+	public String selectName(long boardNum) {
+		 
+		return sqlSession.selectOne("mybatis.mapper.member.selectName", boardNum);
+		
 	}
 
 	
