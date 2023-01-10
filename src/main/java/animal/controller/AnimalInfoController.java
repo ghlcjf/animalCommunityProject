@@ -18,7 +18,6 @@ public class AnimalInfoController {
 	
 	private AnimalDao animalDao;
 	
-	@Autowired
 	public void setAnimalDao(AnimalDao animalDao) {
 		this.animalDao = animalDao;
 	}
@@ -27,7 +26,9 @@ public class AnimalInfoController {
 	public String animalList(Model model) {
 		
 		List<AnimalInfo> animalList = animalDao.selectAllAniaml();
+		
 		model.addAttribute("animals", animalList);
+		
 		return "animalInfo/animalList";
 	}
 	

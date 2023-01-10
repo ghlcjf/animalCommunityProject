@@ -166,6 +166,21 @@
 		UPDATE hospitalInfoTbl SET bad = #{bad}+1 WHERE boardNum=#{boardNum}
 	</update>
 	
+	<select id="selectHospitalSeoul" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '서울'
+	</select>
+	
+	<select id="selectHospitalGyeongi" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경기'
+	</select>
+	
+	<select id="selectHospitalIncheon" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '인천'
+	</select>
+	
+	<select id="selectHospitalDaejeon" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '대전'
+	</select>
 	 
 	<sql id="selectAllMember">
 		select * from userTbl	

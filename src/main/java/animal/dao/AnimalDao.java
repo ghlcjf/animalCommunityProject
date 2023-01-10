@@ -166,6 +166,22 @@ public class AnimalDao {
 		sqlSession.update("mybatis.mapper.member.updateBadCountHospitalInfo", updateHospitalInfo);
 	}
 
+	public List<HospitalInfo> selectHospitalSeoul() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalSeoul");
+	}
+
+	public List<HospitalInfo> selectHospitalGyeongi() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalGyeongi");
+	}
+
+	public List<HospitalInfo> selectHospitalIncheon() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalIncheon");
+	}
+
+	public List<HospitalInfo> selectHospitalDaejeon() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalDaejeon");
+	}
+
 
 	
 	

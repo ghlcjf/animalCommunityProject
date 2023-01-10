@@ -7,57 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 
 <h2>병원 정보</h2>
-		<c:choose>
-			<c:when test="${empty hospitals}">
-				<p>등록된 병원정보가 없습니다.</p>
-			</c:when>
-			<c:otherwise>
-				<c:forEach items="${hospitals }" var="hospital">
-					병원 이름: ${hospital.hospitalName }<br>
-					위치: ${hospital.hospitalLoc }<br>
-					전화번호: ${hospital.hospitalTel }<br>
-					정보: ${hospital.hospitalInfo }<br>
-					작성자: ${hospital.name }<br>
-					추천: ${hospital.good }<br>
-					반대: ${hospital.bad }<br>
-					<form>
-					<input type="button" id="goodBtn" value="추천 <%-- ${hospital.good} --%>" onclick="addGood(${hospital.boardNum})">
-					<input type="button" id="badBtn" value="반대 <%-- ${hospital.bad} --%>" onclick="addBad(${hospital.boardNum})">
-					</form><br>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
+<a href='<c:url value="/hospitalInfo/seoul"/>'>서울</a>
+<a href='<c:url value="/hospitalInfo/gyeongi"/>'>경기</a>
+<a href='<c:url value="/hospitalInfo/incheon"/>'>인천</a>
+<a href='<c:url value="/hospitalInfo/daejeon"/>'>대전</a><br><br>
+
+	<c:choose>
+		<c:when test="${empty hospitals}">
+			<p>등록된 병원정보가 없습니다.</p>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${hospitals }" var="hospital">
+				<a href="<c:url value='/hospital/detail/${hospital.boardNum }' />"> ${hospital.hospitalName }<br></a>
+				병원 위치: ${hospital.hospitalLoc }<br>
+				전화번호: ${hospital.hospitalTel }<br>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose><br>
 	
-	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
-			
-	<script type="text/javascript">
-	function addGood(boardNum){
-		$.ajax({
-			type:"GET",
-			url:"${context}/hospitalGood/"+boardNum,
-			dateType:JSON,
-			success : function(data){
-				$('#goodBtn').val("추천 "/* +JSON.parse(data) */);
-			}
-		});
-	}
-		
-	function addBad(boardNum){
-		$.ajax({
-			type:"GET",
-			url:"${context}/hospitalBad/"+boardNum,
-			dateType:JSON,
-			success : function(data){
-				$('#badBtn').val("반대"/* JSON.parse(data) */);
-			}
-		});
-	}
-	</script>
+	<a href='<c:url value="/hospitalInfo/main" />'>전체 보기</a>
 </body>
 </html>
