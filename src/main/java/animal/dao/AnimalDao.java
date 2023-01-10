@@ -11,6 +11,7 @@ import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
 import animal.vo.HospitalInfo;
 import animal.vo.Issue;
+import animal.vo.IssueBoardCommand;
 import animal.vo.IssueComment;
 import animal.vo.SearchMemberCommand;
 import animal.vo.User;
@@ -103,6 +104,10 @@ public class AnimalDao {
 	public List<FreeBoard> selectOtherFreeBoardList() {
 		// 기타 게시글 불러오기
 		return sqlSession.selectList("mybatis.mapper.member.selectOtherFreeBoardList");
+	}
+	public List<FreeBoard> selectAllNoticeList() {
+		// 공지사항 불러오기
+		return sqlSession.selectList("mybatis.mapper.member.selectAllNoticeList");
 	}
 	
 //-------------------이슈-------------------------------------------------------------------------
@@ -215,6 +220,16 @@ public class AnimalDao {
 
 	public List<HospitalInfo> selectHospitalDaejeon() {
 		return sqlSession.selectList("mybatis.mapper.member.selectHospitalDaejeon");
+	}
+
+
+		
+
+	//--------------------------------매니저 페이지----------------------------------------------
+		
+	public void insertIssueBoard(IssueBoardCommand issueBoardCommand) {
+		
+		sqlSession.insert("mybatis.mapper.member.insertIssueBoard", issueBoardCommand);
 	}
 
 

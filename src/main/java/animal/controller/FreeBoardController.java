@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import animal.dao.AnimalDao;
 import animal.service.SelectAllFreeBoardListService;
+import animal.service.SelectAllNoticeListService;
 import animal.vo.FreeBoard;
 import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
@@ -27,6 +28,11 @@ public class FreeBoardController {
 	
 	public void setAnimalDao(AnimalDao animalDao) {
 		this.animalDao = animalDao;
+	}
+	
+	private SelectAllNoticeListService selectAllNoticeListService;
+	public void setSelectAllNoticeListService(SelectAllNoticeListService selectAllNoticeListService) {
+		this.selectAllNoticeListService = selectAllNoticeListService;
 	}
 
 
@@ -52,8 +58,9 @@ public class FreeBoardController {
 			freeBoardList = animalDao.selectOtherFreeBoardList();
 		}
 		
+		List<FreeBoard> noticeList = selectAllNoticeListService.selectAllNoticeList();
 		
-		
+		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("freeBoardList", freeBoardList);
 		return "freeBoard/freeBoardList";
 		
