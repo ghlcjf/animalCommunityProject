@@ -8,12 +8,23 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <%-- 나중에 이미지 슬라이더 css여기다가 옮겨놓을것임 
 <link href="${pageContext.request.contextPath}/resources/css/mainImage.css" rel="stylesheet" type="text/css"> --%>
 
 	<style>
+        *{
+            margin: 0;
+            padding: 0;
+        }	
+
+
+		img{
+			height: 320px;
+		
+		}
 
 	</style>
 	
@@ -22,29 +33,28 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<h2>메인페이지</h2>
 	
-<!--이미지 슬라이드(이미지배너:제이쿼리(aJax)사용해야함-->
-	<div id="container">
-		<div class="slide_wrap">
-			<div class="slide_box"><!--이미지-->
-			    <div class="slide_list clearfix">
-					<img class="silde_content" src="./resources/image/사진1.PNG" alt="사진1">
-					<img class="silde_content" src="./resources/image/사진2.PNG" alt="사진2">
-					<img class="silde_content" src="./resources/image/사진3.PNG" alt="사진3">
-				</div>
-			</div>
-			
-				<!--버튼-->
-            <ul class="slide_pagination"></ul>
-	 	</div>
- 	</div>
- 	
- 	
- 	
-	<script type="text/javascript">
-
-	</script>
-
-
+	
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  		<div class="carousel-inner">
+    		<div class="carousel-item active">
+      			<img src="./resources/image/사진1.PNG" class="d-block w-100" alt="사진1">
+    	</div>
+    	<div class="carousel-item">
+      		<img src="./resources/image/사진2.PNG" class="d-block w-100" alt="사진2">
+    	</div>
+    	<div class="carousel-item">
+      		<img src="./resources/image/사진3.PNG" class="d-block w-100" alt="사진3">
+    	</div>
+  	</div>
+ 	<button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+    	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    	<span class="sr-only">Previous</span>
+  	</button>
+  	<button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    	<span class="sr-only">Next</span>
+  	</button>
+	</div>
 
 	
 <!--작은 로그인폼, 세션이 없을때만 나타나게-->

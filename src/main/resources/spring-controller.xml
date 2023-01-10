@@ -69,8 +69,7 @@
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
 
-	<!--메인 컨트롤러-->
-
+	
 	
 	
 	<!-- 관리자 -->
@@ -80,6 +79,8 @@
 	<bean id="hospitalGBController" class="animal.controller.HospitalGBController">
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
+	
+	<!--메인 컨트롤러-->
 	<bean id="main" class="animal.controller.MainController">
 		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardList"/>
 		<property name="animalDao" ref="animalDao"/> 
