@@ -92,6 +92,7 @@
 	<bean id="managerController" class="animal.controller.ManagerController">
 		<property name="insertFreeBoardService" ref="insertFreeBoardService"></property>
 		<property name="insertIssueBoardService" ref="insertIssueBoardService"></property>
+		<property name="insertHospitalInfoService" ref="insertHospitalInfoService"></property>
 		
 	</bean>
 	

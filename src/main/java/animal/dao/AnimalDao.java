@@ -10,6 +10,7 @@ import animal.vo.FreeBoardCommand;
 import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
 import animal.vo.HospitalInfo;
+import animal.vo.HospitalInfoCommand;
 import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.IssueComment;
@@ -232,7 +233,9 @@ public class AnimalDao {
 		sqlSession.insert("mybatis.mapper.member.insertIssueBoard", issueBoardCommand);
 	}
 
-
+	public void insertHospitalInfo(HospitalInfoCommand hospitalInfoCommand) {
+		sqlSession.insert("mybatis.mapper.member.insertHospitalInfo", hospitalInfoCommand);
+	}
 		
 
 
@@ -271,6 +274,8 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectName", boardNum);
 		
 	}
+
+	
 
 	
 	

@@ -42,7 +42,9 @@
 	<bean id="insertIssueBoardService" class="animal.service.InsertIssueBoardService">
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
-	
+	<bean id="insertHospitalInfoService" class="animal.service.InsertHospitalInfoService">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
 	
 
 

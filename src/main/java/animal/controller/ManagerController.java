@@ -1,50 +1,37 @@
 package animal.controller;
 
 
-import java.io.UnsupportedEncodingException;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.File;
-import java.io.IOException;
-
-import javax.servlet.http.HttpSession;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-
 import org.springframework.validation.Errors;
-
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import animal.dao.AnimalDao;
-import animal.vo.FreeBoard;
-import animal.vo.SearchMemberCommand;
-import animal.vo.User;
-
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import animal.dao.AnimalDao;
 import animal.service.InsertFreeBoardService;
+import animal.service.InsertHospitalInfoService;
 import animal.service.InsertIssueBoardService;
 import animal.validator.FreeBoardCommandValidator;
+import animal.validator.HospitalInfoCommandValidator;
 import animal.validator.IssueBoardCommandValidator;
+import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
+import animal.vo.HospitalInfoCommand;
 import animal.vo.IssueBoardCommand;
 import animal.vo.LoginUserInfo;
+import animal.vo.SearchMemberCommand;
+import animal.vo.User;
 
 
 @Controller
@@ -70,6 +57,14 @@ public class ManagerController {
 		this.insertIssueBoardService = insertIssueBoardService;
 
 	}
+	
+	private InsertHospitalInfoService insertHospitalInfoService;
+	
+
+	public void setInsertHospitalInfoService(InsertHospitalInfoService insertHospitalInfoService) {
+		this.insertHospitalInfoService = insertHospitalInfoService;
+	}
+
 
 	@GetMapping("/manager/managerMain")
 	public String manager(HttpSession session) {
@@ -138,6 +133,9 @@ public class ManagerController {
 		}else if(kind.equals("issue")) {
 			model.addAttribute("issueBoardCommand", new IssueBoardCommand());
 			url = "manager/issueForm";
+		}else if(kind.equals("hospitalInfo")) {
+			model.addAttribute("hospitalInfoCommand", new HospitalInfoCommand());
+			url = "manager/hospitalInfoForm";
 		}
 		
 		
@@ -215,6 +213,27 @@ public class ManagerController {
 		
 		
 		return "manager/success";
+	}
+	
+	@PostMapping("/manager/writeHospitalInfo")
+	public String insertHospitalInfo(HospitalInfoCommand hospitalInfoCommand,
+			Errors errors,HttpSession session) {
+		
+		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
+		hospitalInfoCommand.setName(userInfo.getName());
+		
+		new HospitalInfoCommandValidator().validate(hospitalInfoCommand, errors);
+		
+		if(errors.hasErrors()) {
+			return "redirect:/manager/writeForm/hospitalInfo";
+		}
+		
+		
+		insertHospitalInfoService.insertHospitalInfo(hospitalInfoCommand);
+		
+		
+		return "manager/success";
+		
 	}
 
 	

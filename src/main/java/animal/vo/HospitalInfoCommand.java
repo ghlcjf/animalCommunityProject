@@ -1,13 +1,10 @@
 package animal.vo;
 
-public class HospitalInfo {
-	private int boardNum;
-    private String hospitalName;
+public class HospitalInfoCommand {
+	private String hospitalName;
     private String hospitalLoc;
     private String hospitalTel;
     private String hospitalInfo;
-    private int good;
-    private int bad;
     private String name;
     private String detailedAddress;
     
@@ -16,12 +13,6 @@ public class HospitalInfo {
 	}
 	public void setDetailedAddress(String detailedAddress) {
 		this.detailedAddress = detailedAddress;
-	}
-	public int getBoardNum() {
-		return boardNum;
-	}
-	public void setBoardNum(int boardNum) {
-		this.boardNum = boardNum;
 	}
 	public String getHospitalName() {
 		return hospitalName;
@@ -47,26 +38,12 @@ public class HospitalInfo {
 	public void setHospitalInfo(String hospitalInfo) {
 		this.hospitalInfo = hospitalInfo;
 	}
-	public int getGood() {
-		return good;
-	}
-	public void setGood(int good) {
-		this.good = good;
-	}
-	public int getBad() {
-		return bad;
-	}
-	public void setBad(int bad) {
-		this.bad = bad;
-	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-    
-    
     
     
 }

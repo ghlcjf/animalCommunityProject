@@ -274,8 +274,10 @@
 	<insert id="insertIssueBoard" parameterType="issueBoardCommand">
 		INSERT INTO issueTbl
 		VALUES (ISSUEBOARD_SEQ.nextval,#{issueTitle},#{issueContent},#{name},#{issueUrl},sysdate,0)
-		
-
+	</insert>
+	<insert id="insertHospitalInfo" parameterType="hospitalInfoCommand">
+		INSERT INTO hospitalInfoTbl
+		VALUES (HOSPITALINFO_SEQ.nextval,#{hospitalName},#{hospitalLoc},#{hospitalTel},#{hospitalInfo},0,0,#{name},#{detailedAddress})
 	</insert>
 
 	
