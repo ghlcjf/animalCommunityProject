@@ -13,6 +13,7 @@
 		<property name="url"  value="${db.real.jdbcUrl}"/>
 		<property name="username"  value="${db.real.user}"/>
 		<property name="password"  value="${db.real.password}"/>
+		<property name="poolMaximumActiveConnections" value="100"/>
 	</bean>
 	
 	<!-- 두번째 빈 : SqlSessionFactory -->

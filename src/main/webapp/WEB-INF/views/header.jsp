@@ -13,7 +13,10 @@
 	
 	<!-- 세션이 있으면 -->
 	<c:if test="${!empty userInfo}">
-	<p>${userInfo.name}님</p>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
+		<p>${userInfo.name}님</p>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
+		<c:if test="${userInfo.admin eq 1 }">
+			<li><a href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
+		</c:if>
 		<li><a href='<c:url value="/logout"/>'>로그아웃</a></li>
 	</c:if>
 </ul>

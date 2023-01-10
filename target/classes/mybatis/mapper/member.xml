@@ -211,5 +211,38 @@
 	</insert>
 	
 	
+	<!-- 관리자 회원관리 -->
+	<select id="memberList" resultType="user">
+		<include refid="selectAllMember"/>
+		WHERE admin=0
+	</select>
+	
+	<select id="searchMember" resultType="user">
+		<include refid="selectAllMember"/>
+		WHERE name=#{search} OR
+		id=#{search} OR
+		email=#{search} OR
+		phone=#{search}
+	</select>
+	
+	<select id="selectByMemberName" resultType="user">
+		<include refid="selectAllMember"/>
+		WHERE name=#{name}
+	</select>
+	
+	<select id="getboardList" resultType="freeBoard">
+		SELECT f.boardNum, f.boardTitle, f.writeDate, f.viewCount
+		FROM userTbl u, freeboardTbl f
+		WHERE u.name=#{name} AND u.name=f.name
+	</select>
+	
+	<delete id="boardDelete" parameterType="long" timeout="20">
+		DELETE FROM freeBoardTbl WHERE boardNum=#{boardNum}
+	</delete>
+	
+	<select id="selectName" parameterType="long" resultType="String">
+		select name FROM freeBoardTbl WHERE boardNum=#{boardNum}
+	</select>
+	
 	
 </mapper>

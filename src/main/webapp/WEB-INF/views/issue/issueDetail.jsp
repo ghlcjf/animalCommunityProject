@@ -29,15 +29,17 @@
 <hr>
 
 <table border="1" id="commentTbl">
-	<tr>
-		<td colspan="3">
-			<form>
-				<input type="hidden" id="name" value="홍길동">
-				<textarea rows="4" cols="30" id="commentContent" placeholder="댓글을 입력해 주세요"></textarea>
-				<button type="button" onclick="insertComment(${issue.issueNum})">댓글 등록</button>
-			</form>
-		</td>
-	</tr>
+	<c:if test="${!empty userInfo}">
+		<tr>
+			<td colspan="3">
+				<form>
+					<input type="hidden" id="name" value="${userInfo.name}">
+					<textarea rows="4" cols="30" id="commentContent" placeholder="댓글을 입력해 주세요"></textarea>
+					<button type="button" onclick="insertComment(${issue.issueNum})">댓글 등록</button>
+				</form>
+			</td>
+		</tr>
+	</c:if>		
 	<c:choose>
 		<c:when test="${empty issueComment}">
 			<tr>

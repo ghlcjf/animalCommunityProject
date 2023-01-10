@@ -26,15 +26,14 @@
 					<td colspan="5" align="right"><a href="<c:url value='/board/write'/>">[게시글 작성]</a></td>
 				</tr>
 			</c:if> 
-		
+			--%>
 			
 			<tr>
 				<th>글번호</th>
 				<th>글제목</th>
 				<th>작성자</th>
 				<th>조회수</th>
-				<th>작성일자</th>
-			</tr> --%>
+			</tr>
 			<c:forEach items="${issue}" var="board" varStatus="b">
 				<tr>
 					<td>${board.issueNum}</td>

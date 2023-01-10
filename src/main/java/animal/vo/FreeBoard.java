@@ -2,6 +2,8 @@ package animal.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class FreeBoard {
 	private int boardNum;
 	private String boardTitle;
