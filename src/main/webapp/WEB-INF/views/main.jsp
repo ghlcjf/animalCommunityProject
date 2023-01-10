@@ -8,16 +8,44 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<%-- 나중에 이미지 슬라이더 css여기다가 옮겨놓을것임 
+<link href="${pageContext.request.contextPath}/resources/css/mainImage.css" rel="stylesheet" type="text/css"> --%>
+
+	<style>
+
+	</style>
+	
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
-
 	<h2>메인페이지</h2>
 	
 <!--이미지 슬라이드(이미지배너:제이쿼리(aJax)사용해야함-->
-	
-	
+	<div id="container">
+		<div class="slide_wrap">
+			<div class="slide_box"><!--이미지-->
+			    <div class="slide_list clearfix">
+					<img class="silde_content" src="./resources/image/사진1.PNG" alt="사진1">
+					<img class="silde_content" src="./resources/image/사진2.PNG" alt="사진2">
+					<img class="silde_content" src="./resources/image/사진3.PNG" alt="사진3">
+				</div>
+			</div>
+			
+				<!--버튼-->
+            <ul class="slide_pagination"></ul>
+	 	</div>
+ 	</div>
+ 	
+ 	
+ 	
+	<script type="text/javascript">
+
+	</script>
+
+
+
 	
 <!--작은 로그인폼, 세션이 없을때만 나타나게-->
 	<c:if test="${empty userInfo}">
@@ -55,7 +83,7 @@
 		<p>등록된 게시글이 없습니다.</p>
 	</c:if>
 	<c:if test="${!empty freeBoardList}">
-		<c:forEach items="${freeBoardList}" var="board">
+		<c:forEach items="${freeBoardList}" var="board" begin="0" end="3">
 			<table border="1">
 				<tr>
 					<td>
@@ -70,7 +98,7 @@
 					<td>${board.boardTitle}</td>
 				</tr>	
 				<tr>
-					<td>${freeBoard.good}</td>
+					<td>${board.good}</td>
 				</tr>		
 			</table>
 		</c:forEach>

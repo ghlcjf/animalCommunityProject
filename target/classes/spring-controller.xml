@@ -70,8 +70,8 @@
 	</bean>
 	<!--메인 컨트롤러-->
 	<bean id="main" class="animal.controller.MainController">
-		
-
+		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardList"/>
+		<!-- <property name="animalDao" ref="selectAllIssueList"></property> -->
 	</bean>
 	
 </beans>
