@@ -29,11 +29,17 @@ public class HospitalInfoController {
 			hospitalList = animalDao.selectAllHospital();
 		} else if(location.equals("seoul")) {
 			hospitalList = animalDao.selectHospitalSeoul();
-		} else if (location.equals("gyeongi")) {
+		} else if (location.equals("gyeonggi")) {
 			hospitalList = animalDao.selectHospitalGyeongi();
-		} else if (location.equals("incheon")) {
+		} else if (location.equals("gangwon")) {
 			hospitalList = animalDao.selectHospitalIncheon();
-		} else if (location.equals("daejeon")) {
+		} else if (location.equals("chungcheong")) {
+			hospitalList = animalDao.selectHospitalDaejeon();
+		} else if (location.equals("gyeongsang")) {
+			hospitalList = animalDao.selectHospitalDaejeon();
+		} else if (location.equals("jeolla")) {
+			hospitalList = animalDao.selectHospitalDaejeon();
+		} else if (location.equals("jeju")) {
 			hospitalList = animalDao.selectHospitalDaejeon();
 		}
 		

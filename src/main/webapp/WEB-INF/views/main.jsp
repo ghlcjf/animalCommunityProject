@@ -10,6 +10,7 @@
 <title>메인페이지</title>
 </head>
 <body>
+
 	<jsp:include page="header.jsp"></jsp:include>
 
 
@@ -118,9 +119,6 @@
 <!--인기글 top10개: 추천수+조회수 등으로 순위매김, 숫자같을때는 어떻게할지도-->
 	<h4>커뮤니티 인기 Top10</h4>
 	
-
-
-
 </body>
 </html>
 

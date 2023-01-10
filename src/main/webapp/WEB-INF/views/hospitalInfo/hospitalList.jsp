@@ -13,9 +13,12 @@
 
 <h2>병원 정보</h2>
 <a href='<c:url value="/hospitalInfo/seoul"/>'>서울</a>
-<a href='<c:url value="/hospitalInfo/gyeongi"/>'>경기</a>
-<a href='<c:url value="/hospitalInfo/incheon"/>'>인천</a>
-<a href='<c:url value="/hospitalInfo/daejeon"/>'>대전</a><br><br>
+<a href='<c:url value="/hospitalInfo/gyeonggi"/>'>경기도</a>
+<a href='<c:url value="/hospitalInfo/gangwon"/>'>강원도</a>
+<a href='<c:url value="/hospitalInfo/chungcheong"/>'>충청도</a>
+<a href='<c:url value="/hospitalInfo/gyeongsang"/>'>경상도</a>
+<a href='<c:url value="/hospitalInfo/jeolla"/>'>전라도</a>
+<a href='<c:url value="/hospitalInfo/jeju"/>'>제주도</a><br><br>
 
 	<c:choose>
 		<c:when test="${empty hospitals}">
