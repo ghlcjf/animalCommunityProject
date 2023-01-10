@@ -136,6 +136,8 @@ public class ManagerController {
 		}else if(kind.equals("hospitalInfo")) {
 			model.addAttribute("hospitalInfoCommand", new HospitalInfoCommand());
 			url = "manager/hospitalInfoForm";
+		}else if(kind.equals("animalInfo")) {
+			url = "manager/animalInfoForm";
 		}
 		
 		
@@ -236,6 +238,9 @@ public class ManagerController {
 		
 	}
 
+	@PostMapping("/manager/writeAnimalInfo")
+	public String 
+	
 	
 	
 }
