@@ -19,8 +19,9 @@
 	
 	<!-- 자유게시판 -->
 	<bean id="freeBoardController" class="animal.controller.FreeBoardController">
-		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardList"></property>
+		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardListService"></property>
 		<property name="selectAllNoticeListService" ref="selectAllNoticeListService"></property>
+		<property name="freeBoardService" ref="freeBoardService"></property>
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
 	<bean class="animal.commons.CommonExceptionHandler"></bean>
@@ -34,7 +35,12 @@
 	</bean>
 	
 	<bean id="insertFreeBoardController" class="animal.controller.InsertFreeBoardController">
-		<property name="insertFreeBoardService" ref="insertFreeBoardService"></property>
+		<property name="freeBoardService" ref="freeBoardService"></property>
+	</bean>
+	
+	<bean id="updateFreeBoardController" class="animal.controller.UpdateFreeBoardController">
+		<property name="selectFreeBoardByBoardNumService" ref="selectFreeBoardByBoardNumService"></property>
+		<property name="freeBoardService" ref="freeBoardService"></property>
 	</bean>
 	
 	<!-- 이슈 -->
@@ -82,7 +88,7 @@
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
 	<bean id="main" class="animal.controller.MainController">
-		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardList"/>
+		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardListService"/>
 		<property name="animalDao" ref="animalDao"/> 
 
 	</bean>
@@ -90,10 +96,11 @@
 	
 	
 	<bean id="managerController" class="animal.controller.ManagerController">
-		<property name="insertFreeBoardService" ref="insertFreeBoardService"></property>
-		<property name="insertIssueBoardService" ref="insertIssueBoardService"></property>
-		<property name="insertHospitalInfoService" ref="insertHospitalInfoService"></property>
-		
+		<property name="freeBoardService" ref="freeBoardService"></property>
+		<property name="animalInfoService" ref="animalInfoService"></property>
+		<property name="hospitalInfoService" ref="hospitalInfoService"></property>
+		<property name="issueBoardService" ref="issueBoardService"></property>
+		<property name="selectAllNoticeService" ref="selectAllNoticeListService"></property>
 	</bean>
 	
 </beans>

@@ -33,22 +33,13 @@ public class InsertFreeCommentController {
 			@RequestParam("boardNum") String boardNum) {
 		
 		
-		System.out.println(name);
-		System.out.println(commentContent);
-		System.out.println(boardNum);
-		
 		FreeCommentCommand fcc = new FreeCommentCommand();
 		
 		fcc.setBoardNum(Integer.parseInt(boardNum));
 		fcc.setCommentContent(commentContent);
 		fcc.setName(name);
 		
-//		new FreeCommentCommandValidator().validate(fcc, errors);
 //		
-//		if(errors.hasErrors()) {
-//			return null;
-//		}
-		
 		
 		// 데이터 베이스로 보내기
 		animalDao.insertFreeComment(fcc);

@@ -6,7 +6,14 @@ public class FreeBoardCommand {
 	private String boardCategory;
 	private String name;
 	private String boardUrl;
+	private int boardNum;
 	
+	public int getBoardNum() {
+		return boardNum;
+	}
+	public void setBoardNum(int boardNum) {
+		this.boardNum = boardNum;
+	}
 	public String getBoardUrl() {
 		return boardUrl;
 	}

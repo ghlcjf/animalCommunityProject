@@ -6,6 +6,15 @@ public class IssueBoardCommand {
     private String issueContent;
     private String name;
     private String issueUrl;
+    private int issueNum;
+    
+    
+	public int getIssueNum() {
+		return issueNum;
+	}
+	public void setIssueNum(int issueNum) {
+		this.issueNum = issueNum;
+	}
 	public String getIssueTitle() {
 		return issueTitle;
 	}

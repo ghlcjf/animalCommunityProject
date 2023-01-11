@@ -14,12 +14,12 @@
 	<ul>
 
 		<li><a href='<c:url value="/memberManagement"/>'>회원관리</a></li>
-		<li><a href='<c:url value="/manager/writeForm"/>'>게시판 작성</a></li>
-		<li><a href='<c:url value="/manager/writeForm/animalInfo"/>'>동물 소개 작성</a></li>
-		<li><a href='<c:url value="/manager/writeForm/hospitalInfo"/>'>동물 병원 정보 작성</a></li>
-		<li><a href='<c:url value="/manager/writeForm/issue"/>'>이슈 작성</a></li>
-		<li><a href='<c:url value="/manager/writeForm/notice"/>'>공지사항 작성</a></li>
-
+		<li><a href='<c:url value="/boardManagement/animalInfo"/>'>동물 소개</a></li>
+		<li><a href='<c:url value="/boardManagement/hospitalInfo"/>'>동물 병원 정보</a></li>
+		<li><a href='<c:url value="/boardManagement/issue"/>'>이슈</a></li>
+		<li><a href='<c:url value="/boardManagement/notice"/>'>공지사항</a></li>
+		
+		
 	</ul>
 
 </body>

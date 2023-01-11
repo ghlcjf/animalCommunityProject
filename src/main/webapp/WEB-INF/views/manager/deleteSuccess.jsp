@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<h2>게시글 작성이 완료됐습니다.</h2>
-<a href='<c:url value="/freeBoard/freeBoardList/main" />'>목록으로 돌아가기</a>
+<h2>삭제가 완료됐습니다.</h2>
+<a href='<c:url value="/manager/managerMain" />'>목록으로 돌아가기</a>
 
 </body>
 </html>

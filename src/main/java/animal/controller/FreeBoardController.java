@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import animal.dao.AnimalDao;
+import animal.service.FreeBoardService;
 import animal.service.SelectAllFreeBoardListService;
 import animal.service.SelectAllNoticeListService;
 import animal.vo.FreeBoard;
@@ -18,6 +19,15 @@ import animal.vo.FreeCommentCommand;
 @Controller
 public class FreeBoardController {
 	
+	
+	private FreeBoardService freeBoardService;
+	public void setFreeBoardService(FreeBoardService freeBoardService) {
+		this.freeBoardService = freeBoardService;
+	}
+	
+	
+	
+
 	private SelectAllFreeBoardListService selectAllFreeBoardListService;
 	
 	public void setSelectAllFreeBoardListService(SelectAllFreeBoardListService selectAllFreeBoardListService) {
@@ -72,9 +82,9 @@ public class FreeBoardController {
 	@GetMapping("/freeBoard/readFreeBoard/{boardNum}")
 	public String readFreeBoard(@PathVariable("boardNum") long boardNum,Model model) {
 		
-		FreeBoard updateFreeBoard = animalDao.selectByFreeBoardNum(boardNum);//올리기 전
+		FreeBoard updateFreeBoard = freeBoardService.selectFreeBoardByBoardNum(boardNum); //올리기 전
 		animalDao.addViewConutFreeBoard(updateFreeBoard);// 가져온 걸로 조회수 올리는 메서드
-		FreeBoard freeBoard = animalDao.selectByFreeBoardNum(boardNum);// 올려진 게시글 가져오는 메서드
+		FreeBoard freeBoard = freeBoardService.selectFreeBoardByBoardNum(boardNum); // 올려진 게시글 가져오는 메서드
 		
 		
 		// 댓글 가져오기
@@ -90,7 +100,13 @@ public class FreeBoardController {
 	
 	
 	
-	
+	@RequestMapping("/freeBoard/deleteFreeBoard/{boardNum}")
+	public String deleteFreeBoard(@PathVariable("boardNum") long boardNum) {
+		
+		freeBoardService.deleteFreeBoardByBoardNum(boardNum);
+		
+		return "redirect:/freeBoard/freeBoardList/main";
+	}
 	
 	
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import animal.vo.AnimalInfo;
+import animal.vo.AnimalInfoCommand;
 import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.FreeComment;
@@ -34,29 +35,29 @@ public class AnimalDao {
 	}
 
 	public FreeBoard selectByFreeBoardNum(long boardNum) {
-		
+		//
 		return sqlSession.selectOne("mybatis.mapper.member.selectByFreeBoardNum", boardNum);
 	}
 
 	public void addViewConutFreeBoard(FreeBoard freeBoard) {
-		
+		// 조회수를 늘리는 메서드
 		sqlSession.update("mybatis.mapper.member.updateViewCountFreeBoard", freeBoard);
 	}
 
 	public void addGoodCount(FreeBoard updateFreeBoard) {
-		
+		// 추천 수를 늘리는 메서드
 		sqlSession.update("mybatis.mapper.member.updateGoodCountFreeBoard", updateFreeBoard);
 		
 	}
 
 	public void addBadCount(FreeBoard updateFreeBoard) {
-		
+		// 반대 수를 늘리는 메서드
 		sqlSession.update("mybatis.mapper.member.updateBadCountFreeBoard", updateFreeBoard);
 		
 	}
 
 	public void addReportCount(FreeBoard updateFreeBoard) {
-		
+		// 신고 수를 늘리는 메서드
 		sqlSession.update("mybatis.mapper.member.updateReportCountFreeBoard", updateFreeBoard);
 	}
 
@@ -66,18 +67,30 @@ public class AnimalDao {
 	}
 
 	public void insertFreeComment(FreeCommentCommand fcc) {
-		
+		// 댓글 저장하기
 		sqlSession.insert("mybatis.mapper.member.insertFreeComment", fcc);
 		
 	}
+	
+	
 
 	public List<FreeComment> selectAllFreeComment2(String boardNum) {
-		// TODO Auto-generated method stub
+		// 글 번호를 이용해 댓글 불러오기 (역순으로 불러와 index 0번만 쓸 용도)
 		return sqlSession.selectList("mybatis.mapper.member.selectAllFreeComment2",boardNum);
 	}
 	public void insertFreeBoard(FreeBoardCommand bc) {
+		// 게시글 저장하기
 		sqlSession.insert("mybatis.mapper.member.insertFreeBoard", bc);
 	}
+	
+	public void updateFreeBoard(FreeBoardCommand freeBoardCommand) {
+		// 게시글 수정하기
+		sqlSession.update("mybatis.mapper.member.updateFreeBoard", freeBoardCommand);
+		
+	}
+
+	
+	
 
 	public List<FreeBoard> selectDogFreeBoardList() {
 		// 강아지 게시글 불러오기
@@ -237,6 +250,30 @@ public class AnimalDao {
 		sqlSession.insert("mybatis.mapper.member.insertHospitalInfo", hospitalInfoCommand);
 	}
 		
+	public void insertAnimalInfo(AnimalInfoCommand animalInfoCommand) {
+		sqlSession.insert("mybatis.mapper.member.insertAniamlInfo", animalInfoCommand);
+	}
+	
+	public void updateIssueBoard(IssueBoardCommand issueBoardCommand) {
+		sqlSession.update("mybatis.mapper.member.updateIssueBoard", issueBoardCommand);
+	}
+	public void updateAnimalInfo(AnimalInfoCommand animalInfoCommand) {
+		sqlSession.update("mybatis.mapper.member.updateAnimalInfo", animalInfoCommand);
+	}
+	public void updateHospitalInfo(HospitalInfoCommand hospitalInfoCommand) {
+		sqlSession.update("mybatis.mapper.member.updateHospitalInfo", hospitalInfoCommand);
+	}
+	public void deleteIssueBoardByBoardNum(long issueNum) {
+		sqlSession.delete("mybatis.mapper.member.deleteIssueBoardByBoardNum", issueNum);
+	}
+	public void deleteAnimalInfoByBoardNum(long animalNum) {
+		sqlSession.delete("mybatis.mapper.member.deleteAnimalInfoByBoardNum", animalNum);
+	}
+	public void deleteHospitalInfoByBoardNum(long boardNum) {
+		sqlSession.delete("mybatis.mapper.member.deleteHospitalInfoByBoardNum", boardNum);
+	}
+
+
 
 
 	
@@ -274,6 +311,22 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectName", boardNum);
 		
 	}
+
+	
+
+	
+	
+	
+	
+
+	
+
+	
+
+	
+	
+
+	
 
 	
 

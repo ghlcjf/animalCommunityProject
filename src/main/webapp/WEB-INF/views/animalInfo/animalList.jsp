@@ -26,7 +26,7 @@
 					</c:when>
 					<c:otherwise>
 						<a href="<c:url value='/animal/detail/${animal.animalNum }' />"> 
-						<img src="<c:url value='/resources/image/${animal.animalUrl }' />"><br></a>
+						<img src="<c:url value='/resources/animalInfoImage/${animal.animalUrl }' />"><br></a>
 						${animal.animalTitle}<br>
 					</c:otherwise>
 				</c:choose>

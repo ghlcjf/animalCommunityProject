@@ -16,7 +16,7 @@
 			<img src="<c:url value='/resources/image/noImage.png' />"${animal.animalUrl }><br>
 		</c:when>
 		<c:otherwise>
-			<img src="<c:url value='/resources/image/${animal.animalUrl }' />" ><br>
+			<img src="<c:url value='/resources/animalInfoImage/${animal.animalUrl }' />" ><br>
 		</c:otherwise>
 	</c:choose>
 	

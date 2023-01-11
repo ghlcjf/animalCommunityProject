@@ -2,71 +2,77 @@ package animal.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import animal.service.FreeBoardService;
+import animal.service.SelectFreeBoardByBoardNumService;
 import animal.validator.FreeBoardCommandValidator;
+import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.LoginUserInfo;
 
-
 @Controller
-public class InsertFreeBoardController {
+public class UpdateFreeBoardController {
 	
+	private SelectFreeBoardByBoardNumService selectFreeBoardByBoardNumService;
+	
+	public void setSelectFreeBoardByBoardNumService(SelectFreeBoardByBoardNumService selectFreeBoardByBoardNumService) {
+		this.selectFreeBoardByBoardNumService = selectFreeBoardByBoardNumService;
+	}
+
 	private FreeBoardService freeBoardService;
 	
 	public void setFreeBoardService(FreeBoardService freeBoardService) {
 		this.freeBoardService = freeBoardService;
 	}
-	
-	
-	
 
-	@GetMapping("/freeBoard/insertFreeBoardForm")
-	public String insertFreeBoardForm(Model model, HttpSession session) {
-		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
+
+
+	@RequestMapping("/freeBoard/updateFreeBoardForm/{boardNum}")
+	public String updateFreeBoardForm(@PathVariable("boardNum") long BoardNum,Model model) {
 		
-		if(userInfo ==null) {
-			return "redirect:/login";
-		}
+		FreeBoard freeBoard = selectFreeBoardByBoardNumService.selectFreeBoardByBoardNum(BoardNum);
 		
-		model.addAttribute("freeBoardCommand", new FreeBoardCommand());
 		
-		return "freeBoard/insertFreeBoardForm";
+		model.addAttribute("freeBoard", freeBoard);
+		return "freeBoard/updateFreeBoardForm";
 	}
 	
-	@PostMapping("/freeBoard/insertFreeBoard")
-	public String insertFreeBoard(@RequestParam(value="boardUrl2") MultipartFile file,
+	
+	
+	@PostMapping("/freeBoard/updateFreeBoard")
+	public String updateFreeBoard(@RequestParam(value="boardUrl2") MultipartFile file,
 			FreeBoardCommand freeBoardCommand,
-			Errors errors,HttpSession session
-			) throws Exception, IOException {
+			Errors errors,HttpSession session,
+			HttpServletRequest request) throws Exception, IOException {
+		
 		
 		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
+		
+		
+		
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 
-            
             freeBoardCommand.setBoardUrl(filename);
             file.transferTo(new File(uploadDir,filename));
         }else {
-        	freeBoardCommand.setBoardUrl("null");
+        	String filename = request.getParameter("originPic");
+        	freeBoardCommand.setBoardUrl(filename);
+        	
         }
-
 		
-		
-		// bc에 세션 정보 넣어주기
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		if(userInfo!=null) {
 			freeBoardCommand.setName(userInfo.getName());
@@ -81,13 +87,15 @@ public class InsertFreeBoardController {
 			
 			return "redirect:/freeBoard/insertFreeBoardForm";
 		}
+
 		
-		
-		freeBoardService.insertFreeBoard(freeBoardCommand);
-		
+		freeBoardService.updateFreeBoard(freeBoardCommand);
 		
 		
 		return "freeBoard/freeBoardSuccess";
+		
 	}
+	
+	
 
 }
