@@ -25,8 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import animal.service.FreeBoardService;
 
-import animal.validator.FreeBoardCommandValidator;
-
 import animal.vo.FreeBoardCommand;
 import animal.vo.LoginUserInfo;
 
@@ -88,14 +86,6 @@ public class UpdateFreeBoardController {
 			return "redirect:/login";
 		}
 		
-		
-		new FreeBoardCommandValidator().validate(freeBoardCommand, errors);
-		
-		if(errors.hasErrors()) {
-			
-			return "redirect:/freeBoard/insertFreeBoardForm";
-		}
-
 		
 		freeBoardService.updateFreeBoard(freeBoardCommand);
 		

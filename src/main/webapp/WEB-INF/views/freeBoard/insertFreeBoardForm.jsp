@@ -49,14 +49,14 @@
 			</td>
 		</tr>
 	</table>
-	<button type="submit" onclick="return insertFreeBoardcheck()">글 등록</button>
+	<button type="submit" onclick="return insertFreeBoardCheck()">글 등록</button>
 	
 </form:form>
 
 
 </body>
 <script type="text/javascript">
-	function insertFreeBoardcheck() {
+	function insertFreeBoardCheck() {
 		
 		if($('#boardTitle').val()==''){
 			alert('제목을 입력해 주세요');

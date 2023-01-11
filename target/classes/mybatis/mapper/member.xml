@@ -123,6 +123,33 @@
 		SELECT * FROM freeBoardTbl WHERE boardCategory='공지사항' ORDER BY boardNum DESC
 	</select>
 	
+	<select id="selectAllNumFreeBoard" resultType="int" parameterType="sectionPage">
+		SELECT COUNT(*) FROM freeBoardTbl
+	</select>
+	<select id="selectAnimalNumFreeBoard" resultType="int" parameterType="sectionPage">
+		SELECT COUNT(*) FROM freeBoardTbl WHERE boardCategory=#{boardCategory}
+	</select>
+
+	<select id="selectTargetFreeBoards" parameterType="sectionPage" resultType="freeBoard">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM freeBoardTbl 
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10) 
+	</select>
+	
+	<select id="selectAnimalTargetFreeBoards" parameterType="sectionPage" resultType="freeBoard">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM freeBoardTbl 
+				WHERE boardCategory=#{boardCategory} 
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10) 
+	</select>
 	
 	<!-- 이슈 -->
 	<sql id="selectAllIssue">
@@ -285,7 +312,8 @@
 	</insert>
 	<insert id="insertHospitalInfo" parameterType="hospitalInfoCommand">
 		INSERT INTO hospitalInfoTbl
-		VALUES (HOSPITALINFO_SEQ.nextval,#{hospitalName},#{hospitalLoc},#{hospitalTel},#{hospitalInfo},0,0,#{name},#{detailedAddress})
+		VALUES (HOSPITALINFO_SEQ.nextval,#{hospitalName},#{hospitalLoc},
+		#{hospitalTel},#{hospitalInfo},0,0,#{name},#{detailedAddress})
 	</insert>
 	<insert id="insertAniamlInfo" parameterType="animalInfoCommand">
 		INSERT INTO animalInfoTbl

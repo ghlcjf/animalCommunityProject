@@ -43,9 +43,6 @@
 		<property name="freeBoardService" ref="freeBoardService"></property>
 	</bean>
 	
-	<bean id="updateFreeBoardController" class="animal.controller.UpdateFreeBoardController">
-		<property name="selectFreeBoardByBoardNumService" ref="selectFreeBoardByBoardNumService"></property>
-	</bean>
 	
 	<!-- 이슈 -->
 	<bean id="issueController" class="animal.controller.IssueController" />

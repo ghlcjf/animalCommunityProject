@@ -16,6 +16,7 @@ import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.IssueComment;
 import animal.vo.SearchMemberCommand;
+import animal.vo.SectionPage;
 import animal.vo.User;
 
 //import spring.vo.Member;
@@ -122,6 +123,25 @@ public class AnimalDao {
 	public List<FreeBoard> selectAllNoticeList() {
 		// 공지사항 불러오기
 		return sqlSession.selectList("mybatis.mapper.member.selectAllNoticeList");
+	}
+	
+	
+	public int selectAllNumFreeBoard() {
+		// 자유게시판 내의 게시글의 총 수를 불러오는 메서드
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumFreeBoard");
+	}
+	public int selectAnimalNumFreeBoard(SectionPage sectionPage) {
+		
+		return  sqlSession.selectOne("mybatis.mapper.member.selectAnimalNumFreeBoard", sectionPage);
+	}
+	
+	public List<FreeBoard> selectTargetFreeBoards(SectionPage sectionPage) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.selectTargetFreeBoards", sectionPage);
+	}
+	public List<FreeBoard> selectAnimalTargetFreeBoards(SectionPage sectionPage) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("mybatis.mapper.member.selectAnimalTargetFreeBoards", sectionPage);
 	}
 	
 //-------------------이슈-------------------------------------------------------------------------
@@ -307,6 +327,16 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectName", boardNum);
 		
 	}
+
+	
+
+	
+
+	
+
+	
+
+	
 
 	
 

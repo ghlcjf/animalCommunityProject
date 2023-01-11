@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -51,7 +52,7 @@
 			<td>
 				이미지 변경을 원할 때만 수정해 주세요!<br>
 				<input type="file" id="animalUrl2" name="animalUrl2">
-				<input type="hidden" name="originPic" value="${freeBoard.boardUrl}"> 
+				<input type="hidden" name="originPic" value="${animalInfo.animalUrl}"> 
 			</td>
 		</tr>
 		<tr>
@@ -63,12 +64,27 @@
 		</tr>
 	</table>
 	<form:hidden path="animalNum"/>
-	<button type="submit">글 등록</button>
+	<button type="submit" onclick="return insertAnimalInfoCheck()">글 등록</button>
 	
 </form:form>
 
-
-
-
 </body>
+<script type="text/javascript">
+	function insertAnimalInfoCheck() {
+		
+		if($('#animalTitle').val()==''){
+			alert('제목을 입력해 주세요');
+			return false;
+		}
+		if($('#animalContent').val()==0){
+			alert('내용을 입력해 주세요');
+			return false;
+		}
+		
+		let cc = confirm('게시글을 작성하시겠습니까?');
+		
+		return cc;
+	}
+
+</script>
 </html>

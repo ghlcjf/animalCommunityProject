@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -35,9 +36,27 @@
 			</td>
 		</tr>
 	</table>
-	<button type="submit">글 등록</button>
+	<button type="submit" onclick="return insertIssueBoardCheck()">글 등록</button>
 	
 </form:form>
 
 </body>
+<script type="text/javascript">
+	function insertIssueBoardCheck() {
+		
+		if($('#issueTitle').val()==''){
+			alert('제목을 입력해 주세요');
+			return false;
+		}
+		if($('#issueContent').val()==0){
+			alert('내용을 입력해 주세요');
+			return false;
+		}
+		
+		let cc = confirm('게시글을 작성하시겠습니까?');
+		
+		return cc;
+	}
+
+</script>
 </html>

@@ -102,7 +102,7 @@
 </table>
 
 
-<a href='<c:url value="/freeBoard/freeBoardList/main" />'>목록으로 돌아가기</a>
+<a href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'>목록으로 돌아가기</a>
 </body>
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
@@ -184,7 +184,7 @@
 				
 			},
 			complete:function(){
-				$('#comment').value='';
+				$('#comment').val()='';
 			}
 			
 		});

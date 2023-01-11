@@ -24,10 +24,6 @@ import animal.service.FreeBoardService;
 import animal.service.HospitalInfoService;
 import animal.service.IssueBoardService;
 import animal.service.SelectAllNoticeListService;
-import animal.validator.AnimalInfoCommandValidator;
-import animal.validator.FreeBoardCommandValidator;
-import animal.validator.HospitalInfoCommandValidator;
-import animal.validator.IssueBoardCommandValidator;
 import animal.vo.AnimalInfo;
 import animal.vo.AnimalInfoCommand;
 import animal.vo.FreeBoard;
@@ -229,21 +225,12 @@ public class ManagerController {
         	freeBoardCommand.setBoardUrl("null");
         }
 		
-		
-		
-		// bc에 세션 정보 넣어주기
+		// 세션 정보 넣어주기
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		if(userInfo!=null) {
 			freeBoardCommand.setName(userInfo.getName());
 		}else {
 			return "redirect:/login";
-		}
-		
-		
-		new FreeBoardCommandValidator().validate(freeBoardCommand, errors);
-		
-		if(errors.hasErrors()) {
-			return "redirect:manager/writeForm/notice";
 		}
 		
 		
@@ -272,7 +259,7 @@ public class ManagerController {
         }
 		
 		
-		// bc에 세션 정보 넣어주기
+		// 세션 정보 넣어주기
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		if(userInfo!=null) {
 			issueBoardCommand.setName(userInfo.getName());
@@ -280,11 +267,6 @@ public class ManagerController {
 			return "redirect:/login";
 		}
 		
-		new IssueBoardCommandValidator().validate(issueBoardCommand, errors);
-		
-		if(errors.hasErrors()) {
-			return "redirect:/manager/writeForm/issue";
-		}
 		
 		issueBoardService.insertIssueBoard(issueBoardCommand);
 		
@@ -296,18 +278,12 @@ public class ManagerController {
 	public String insertHospitalInfo(HospitalInfoCommand hospitalInfoCommand,
 			Errors errors,HttpSession session) {
 		
-		// bc에 세션 정보 넣어주기
+		// 세션 정보 넣어주기
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		if(userInfo!=null) {
 			hospitalInfoCommand.setName(userInfo.getName());
 		}else {
 			return "redirect:/login";
-		}
-		
-		new HospitalInfoCommandValidator().validate(hospitalInfoCommand, errors);
-		
-		if(errors.hasErrors()) {
-			return "redirect:/manager/writeForm/hospitalInfo";
 		}
 		
 		
@@ -335,7 +311,7 @@ public class ManagerController {
         	animalInfoCommand.setAnimalUrl("null");
         }
 		
-		// bc에 세션 정보 넣어주기
+		// 세션 정보 넣어주기
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		if(userInfo!=null) {
 			animalInfoCommand.setName(userInfo.getName());
@@ -343,11 +319,6 @@ public class ManagerController {
 			return "redirect:/login";
 		}
 		
-		new AnimalInfoCommandValidator().validate(animalInfoCommand, errors);
-		
-		if(errors.hasErrors()) {
-			return "redirect:/manager/writeForm/animalInfo";
-		}
 		
 		animalInfoService.insertAnimalInfo(animalInfoCommand);
 		
@@ -396,7 +367,6 @@ public class ManagerController {
 		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
 		
 		
-		
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 
@@ -415,13 +385,6 @@ public class ManagerController {
 			return "redirect:/login";
 		}
 		
-		
-		new FreeBoardCommandValidator().validate(freeBoardCommand, errors);
-		
-		if(errors.hasErrors()) {
-			
-			return "redirect:/freeBoard/insertFreeBoardForm";
-		}
 
 		
 		freeBoardService.updateFreeBoard(freeBoardCommand);
@@ -460,13 +423,6 @@ public class ManagerController {
 		}
 		
 		
-		new IssueBoardCommandValidator().validate(issueBoardCommand, errors);
-		
-		if(errors.hasErrors()) {
-			
-			return "redirect:/freeBoard/insertFreeBoardForm";
-		}
-
 		
 		issueBoardService.updateIssueBoard(issueBoardCommand);
 		
@@ -503,14 +459,6 @@ public class ManagerController {
 		}
 		
 		
-		new AnimalInfoCommandValidator().validate(animalInfoCommand, errors);
-		
-		if(errors.hasErrors()) {
-			
-			return "redirect:/freeBoard/insertFreeBoardForm";
-		}
-
-		
 		animalInfoService.updateAnimalInfo(animalInfoCommand);
 		
 		return "manager/success";
@@ -530,14 +478,6 @@ public class ManagerController {
 			return "redirect:/login";
 		}
 		
-		
-		new HospitalInfoCommandValidator().validate(hospitalInfoCommand, errors);
-		
-		if(errors.hasErrors()) {
-			
-			return "redirect:/freeBoard/insertFreeBoardForm";
-		}
-
 		
 		hospitalInfoService.updateHospitalInfo(hospitalInfoCommand);
 		
