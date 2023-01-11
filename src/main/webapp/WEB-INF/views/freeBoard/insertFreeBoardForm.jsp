@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판 게시글 작성하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -17,12 +18,12 @@
 			<td>카테고리</td>
 			<td>
 				<form:select path="boardCategory">
-					<form:option value="dog">강아지</form:option>
-					<form:option value="cat">고양이</form:option>
-					<form:option value="reptile">파충류</form:option>
-					<form:option value="birds">조류</form:option>
-					<form:option value="fish">어류</form:option>
-					<form:option value="other">기타</form:option>
+					<form:option value="강아지">강아지</form:option>
+					<form:option value="고양이">고양이</form:option>
+					<form:option value="파충류">파충류</form:option>
+					<form:option value="조류">조류</form:option>
+					<form:option value="어류">어류</form:option>
+					<form:option value="기타">기타</form:option>
 				</form:select>
 			</td>
 		</tr>
@@ -48,10 +49,29 @@
 			</td>
 		</tr>
 	</table>
-	<button type="submit">글 등록</button>
+	<button type="submit" onclick="return insertFreeBoardcheck()">글 등록</button>
 	
 </form:form>
 
 
 </body>
+<script type="text/javascript">
+	function insertFreeBoardcheck() {
+		
+		if($('#boardTitle').val()==''){
+			alert('제목을 입력해 주세요');
+			return false;
+		}
+		if($('#boardContent').val()==0){
+			alert('내용을 입력해 주세요');
+			return false;
+		}
+		
+		let cc = confirm('게시글을 작성하시겠습니까?');
+		
+		return cc;
+	}
+
+</script>
+
 </html>

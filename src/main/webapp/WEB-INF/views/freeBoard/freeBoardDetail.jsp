@@ -21,7 +21,8 @@
 				<form>
 					<c:url value="/freeBoard/updateFreeBoardForm/${freeBoard.boardNum}" var="updateUrl" />
 					<button type="button" onclick="location.href='${updateUrl}'">수정</button>
-					<button type="button" onclick="location.href=''">삭제</button>
+					<c:url value="/freeBoard/deleteFreeBoard/${freeBoard.boardNum}" var="deleteUrl" />
+						<button type="button" onclick="location.href='${deleteUrl}'">삭제</button>
 				</form>
 			</td>
 		</tr>

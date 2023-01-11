@@ -18,8 +18,8 @@
 	</bean>
 
 	<!-- 자유게시판 -->
-	<bean id="selectAllFreeBoardList" class="animal.service.SelectAllFreeBoardListService"></bean>
-	<bean id="insertFreeBoardService" class="animal.service.InsertFreeBoardService">
+	<bean id="selectAllFreeBoardListService" class="animal.service.SelectAllFreeBoardListService"></bean>
+	<bean id="freeBoardService" class="animal.service.FreeBoardService">
 		<property name="animalDao" ref="animalDao"/>
 	</bean>
 	<bean id="selectAllNoticeListService" class="animal.service.SelectAllNoticeListService">
@@ -40,17 +40,23 @@
 	</bean>
 	
 	
-	<!-- 매니저 게시판 -->
+	<!-- 동물 소개 게시판 -->
+	<bean id="animalInfoService" class="animal.service.AnimalInfoService">
+		<property name="animalDao" ref="animalDao"/>
+	</bean>
 	
-	<bean id="insertIssueBoardService" class="animal.service.InsertIssueBoardService">
-		<property name="animalDao" ref="animalDao"></property>
+	
+	<!-- 병원 정보 게시판 -->
+	<bean id="hospitalInfoService" class="animal.service.HospitalInfoService">
+		<property name="animalDao" ref="animalDao"/>
 	</bean>
-	<bean id="insertHospitalInfoService" class="animal.service.InsertHospitalInfoService">
-		<property name="animalDao" ref="animalDao"></property>
+	
+	
+	<!-- 이슈 게시판 -->
+	<bean id="issueBoardService" class="animal.service.IssueBoardService">
+		<property name="animalDao" ref="animalDao"/>
 	</bean>
-	<bean id="insertAnimalInfoService" class="animal.service.InsertAnimalInfoService">
-		<property name="animalDao" ref="animalDao"></property>
-	</bean>
+
 
 
 </beans>

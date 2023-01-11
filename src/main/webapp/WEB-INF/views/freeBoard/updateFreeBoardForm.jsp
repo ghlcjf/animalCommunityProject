@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -32,12 +33,12 @@
 			<td>카테고리</td>
 			<td>
 				<form:select path="boardCategory">
-					<form:option value="dog">강아지</form:option>
-					<form:option value="cat">고양이</form:option>
-					<form:option value="reptile">파충류</form:option>
-					<form:option value="birds">조류</form:option>
-					<form:option value="fish">어류</form:option>
-					<form:option value="other">기타</form:option>
+					<form:option value="강아지">강아지</form:option>
+					<form:option value="고양이">고양이</form:option>
+					<form:option value="파충류">파충류</form:option>
+					<form:option value="조류">조류</form:option>
+					<form:option value="어류">어류</form:option>
+					<form:option value="기타">기타</form:option>
 				</form:select>
 			</td>
 		</tr>
@@ -51,8 +52,9 @@
 		<tr>
 			<td>이미지</td>
 			<td>
+				이미지 변경을 원할 때만 수정해 주세요!<br>
 				<input type="file" id="boardUrl2" name="boardUrl2">
-				<form:errors path="boardUrl" />
+				<input type="hidden" name="originPic" value="${freeBoard.boardUrl}"> 
 			</td>
 		</tr>
 		<tr>
@@ -63,10 +65,29 @@
 			</td>
 		</tr>
 	</table>
-	<button type="submit">글 등록</button>
+	<form:hidden path="boardNum"/>
+	<button type="submit" onclick="return updateFreeBoardcheck()">글 등록</button>
 	
 </form:form>
 
 
 </body>
+<script type="text/javascript">
+	function updateFreeBoardcheck() {
+		
+		if($('#boardTitle').val()==''){
+			alert('제목을 입력해 주세요');
+			return false;
+		}
+		if($('#boardContent').val()==0){
+			alert('내용을 입력해 주세요');
+			return false;
+		}
+		
+		let cc = confirm('게시글을 수정하시겠습니까?');
+		
+		return cc;
+	}
+
+</script>
 </html>

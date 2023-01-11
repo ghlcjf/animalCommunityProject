@@ -82,6 +82,15 @@ public class AnimalDao {
 		// 게시글 저장하기
 		sqlSession.insert("mybatis.mapper.member.insertFreeBoard", bc);
 	}
+	
+	public void updateFreeBoard(FreeBoardCommand freeBoardCommand) {
+		// 게시글 수정하기
+		sqlSession.update("mybatis.mapper.member.updateFreeBoard", freeBoardCommand);
+		
+	}
+
+	
+	
 
 	public List<FreeBoard> selectDogFreeBoardList() {
 		// 강아지 게시글 불러오기
@@ -245,8 +254,26 @@ public class AnimalDao {
 		sqlSession.insert("mybatis.mapper.member.insertAniamlInfo", animalInfoCommand);
 	}
 
-	
-	
+	public void updateIssueBoard(IssueBoardCommand issueBoardCommand) {
+		sqlSession.update("mybatis.mapper.member.updateIssueBoard", issueBoardCommand);
+	}
+	public void updateAnimalInfo(AnimalInfoCommand animalInfoCommand) {
+		sqlSession.update("mybatis.mapper.member.updateAnimalInfo", animalInfoCommand);
+	}
+	public void updateHospitalInfo(HospitalInfoCommand hospitalInfoCommand) {
+		sqlSession.update("mybatis.mapper.member.updateHospitalInfo", hospitalInfoCommand);
+	}
+	public void deleteIssueBoardByBoardNum(long issueNum) {
+		sqlSession.delete("mybatis.mapper.member.deleteIssueBoardByBoardNum", issueNum);
+	}
+	public void deleteAnimalInfoByBoardNum(long animalNum) {
+		sqlSession.delete("mybatis.mapper.member.deleteAnimalInfoByBoardNum", animalNum);
+	}
+	public void deleteHospitalInfoByBoardNum(long boardNum) {
+		sqlSession.delete("mybatis.mapper.member.deleteHospitalInfoByBoardNum", boardNum);
+	}
+
+
 
 	
 	//----------------------------관리자 회원관리----------------------------------------
@@ -281,6 +308,22 @@ public class AnimalDao {
 		
 	}
 
+	
+
+	
+
+	
+
+	
+	
+	
+	
+
+	
+
+	
+
+	
 	
 
 	

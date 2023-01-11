@@ -6,6 +6,14 @@ public class AnimalInfoCommand {
     private String animalCategory;
     private String animalUrl;
     private String name;
+
+    private int animalNum;
+	public int getAnimalNum() {
+		return animalNum;
+	}
+	public void setAnimalNum(int animalNum) {
+		this.animalNum = animalNum;
+	}
 	public String getName() {
 		return name;
 	}
@@ -36,8 +44,6 @@ public class AnimalInfoCommand {
 	public void setAnimalUrl(String animalUrl) {
 		this.animalUrl = animalUrl;
 	}
-    
-    
     
 
 }

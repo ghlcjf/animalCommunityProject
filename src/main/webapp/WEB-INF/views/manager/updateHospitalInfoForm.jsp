@@ -9,9 +9,9 @@
 </head>
 <body>
 
-<h2>병원 정보 글 작성하기</h2>
+<h2>병원 정보 수정 페이지</h2>
 
-<form:form action="/animalCommunity/manager/writeHospitalInfo" modelAttribute="hospitalInfoCommand">
+<form:form action="/animalCommunity/manager/updateHospitalInfo" modelAttribute="hospitalInfo">
 	<table border="1">
 		<tr>
 			<td>병원 이름</td>
@@ -57,7 +57,7 @@
 			</td>
 		</tr>
 	</table>
-	<form:hidden path="name"/>
+	<form:hidden path="boardNum"/>
 	<button type="submit">글 등록</button>
 
 </form:form>
