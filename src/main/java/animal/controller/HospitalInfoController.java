@@ -27,20 +27,27 @@ public class HospitalInfoController {
 		
 		if(location.equals("main")) {
 			hospitalList = animalDao.selectAllHospital();
+			
 		} else if(location.equals("seoul")) {
 			hospitalList = animalDao.selectHospitalSeoul();
+			
 		} else if (location.equals("gyeonggi")) {
-			hospitalList = animalDao.selectHospitalGyeongi();
+			hospitalList = animalDao.selectHospitalGyeonggi();
+			
 		} else if (location.equals("gangwon")) {
-			hospitalList = animalDao.selectHospitalIncheon();
+			hospitalList = animalDao.selectHospitalGangwon();
+			
 		} else if (location.equals("chungcheong")) {
-			hospitalList = animalDao.selectHospitalDaejeon();
+			hospitalList = animalDao.selectHospitalChungcheong();
+			
 		} else if (location.equals("gyeongsang")) {
-			hospitalList = animalDao.selectHospitalDaejeon();
+			hospitalList = animalDao.selectHospitalGyeongsang();
+			
 		} else if (location.equals("jeolla")) {
-			hospitalList = animalDao.selectHospitalDaejeon();
+			hospitalList = animalDao.selectHospitalJeolla();
+			
 		} else if (location.equals("jeju")) {
-			hospitalList = animalDao.selectHospitalDaejeon();
+			hospitalList = animalDao.selectHospitaljeju();
 		}
 		
 		model.addAttribute("hospitals", hospitalList);
