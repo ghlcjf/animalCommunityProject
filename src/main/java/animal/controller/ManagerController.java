@@ -19,12 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import animal.dao.AnimalDao;
+import animal.service.InsertAnimalInfoService;
 import animal.service.InsertFreeBoardService;
 import animal.service.InsertHospitalInfoService;
 import animal.service.InsertIssueBoardService;
+import animal.validator.AnimalInfoCommandValidator;
 import animal.validator.FreeBoardCommandValidator;
 import animal.validator.HospitalInfoCommandValidator;
 import animal.validator.IssueBoardCommandValidator;
+import animal.vo.AnimalInfoCommand;
 import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.HospitalInfoCommand;
@@ -63,6 +66,13 @@ public class ManagerController {
 
 	public void setInsertHospitalInfoService(InsertHospitalInfoService insertHospitalInfoService) {
 		this.insertHospitalInfoService = insertHospitalInfoService;
+	}
+	
+	
+	private InsertAnimalInfoService insertAnimalInfoService;
+	
+	public void setInsertAnimalInfoService(InsertAnimalInfoService insertAnimalInfoService) {
+		this.insertAnimalInfoService = insertAnimalInfoService;
 	}
 
 
@@ -137,6 +147,7 @@ public class ManagerController {
 			model.addAttribute("hospitalInfoCommand", new HospitalInfoCommand());
 			url = "manager/hospitalInfoForm";
 		}else if(kind.equals("animalInfo")) {
+			model.addAttribute("animalInfoCommand", new AnimalInfoCommand());
 			url = "manager/animalInfoForm";
 		}
 		
@@ -239,7 +250,38 @@ public class ManagerController {
 	}
 
 	@PostMapping("/manager/writeAnimalInfo")
-	public String 
+	public String insertAnimalInfo(@RequestParam(value="animalUrl2") MultipartFile file,
+			AnimalInfoCommand animalInfoCommand,
+			Errors errors,
+			HttpSession session) throws Exception, IOException {
+		
+		// 이미지 경로 모두 통일해야 함
+		String uploadDir = "C:\\\\Users\\\\GREEN\\\\git\\\\animalCommunityProject\\\\src\\\\main\\\\webapp\\\\resources\\\\freeBoardImage";
+		if (!file.isEmpty()) {
+            String filename = file.getOriginalFilename();
+
+            animalInfoCommand.setAnimalUrl(filename);
+            file.transferTo(new File(uploadDir,filename));
+        }else {
+        	animalInfoCommand.setAnimalUrl("null");
+        }
+		
+		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
+		animalInfoCommand.setName(userInfo.getName());
+		
+		
+		new AnimalInfoCommandValidator().validate(animalInfoCommand, errors);
+		
+		if(errors.hasErrors()) {
+			return "redirect:/manager/writeForm/animalInfo";
+		}
+		
+		insertAnimalInfoService.insertAnimalInfo(animalInfoCommand);
+		
+		
+		
+		return "manager/success";
+	}
 	
 	
 	

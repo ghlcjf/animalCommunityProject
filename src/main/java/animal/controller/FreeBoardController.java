@@ -76,7 +76,7 @@ public class FreeBoardController {
 		animalDao.addViewConutFreeBoard(updateFreeBoard);// 가져온 걸로 조회수 올리는 메서드
 		FreeBoard freeBoard = animalDao.selectByFreeBoardNum(boardNum);// 올려진 게시글 가져오는 메서드
 		
-		
+		// 커밋하려고 아무거나 써봄
 		// 댓글 가져오기
 		List<FreeComment> freeComments = animalDao.selectAllFreeComment(boardNum);
 		

@@ -10,7 +10,7 @@
 <body>
 <h2>동물 소개 게시글 작성하기</h2>
 
-<form:form action="/animalCommunity/manager/writeAnimalInfo" modelAttribute="" enctype="multipart/form-data">
+<form:form action="/animalCommunity/manager/writeAnimalInfo" modelAttribute="animalInfoCommand" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<td>동물 이름</td>

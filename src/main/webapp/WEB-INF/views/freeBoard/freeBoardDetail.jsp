@@ -14,6 +14,19 @@
 <h2>자유게시판 상세보기</h2>
 
 <table border="1">
+
+	<c:if test="${freeBoard.name == userInfo.name }">
+		<tr>
+			<td colspan="4">
+				<form>
+					<c:url value="/freeBoard/updateFreeBoardForm/${freeBoard.boardNum}" var="updateUrl" />
+					<button type="button" onclick="location.href='${updateUrl}'">수정</button>
+					<button type="button" onclick="location.href=''">삭제</button>
+				</form>
+			</td>
+		</tr>
+		
+	</c:if>
 	<tr>
 		<td rowspan="7">
 			<c:choose>

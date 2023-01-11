@@ -279,7 +279,10 @@
 		INSERT INTO hospitalInfoTbl
 		VALUES (HOSPITALINFO_SEQ.nextval,#{hospitalName},#{hospitalLoc},#{hospitalTel},#{hospitalInfo},0,0,#{name},#{detailedAddress})
 	</insert>
-
+	<insert id="insertAniamlInfo" parameterType="animalInfoCommand">
+		INSERT INTO animalInfoTbl
+		VALUES (ANIMALINFO_SEQ.nextval,#{animalTitle},#{animalContent},#{animalCategory},#{animalUrl},#{name},0)
+	</insert>
 	
 	
 </mapper>
