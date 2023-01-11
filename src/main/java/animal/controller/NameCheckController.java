@@ -17,9 +17,7 @@ public class NameCheckController {
 	}
 
 
-
-
-	@RequestMapping("/nameCheck")
+	@RequestMapping(value="/nameCheck",produces = "application/text; charset=UTF-8")
 	public String nameCheck(@RequestParam("name") String name) {
 		
 		String nickName = nameCheckService.nameCheck(name);
@@ -28,6 +26,6 @@ public class NameCheckController {
 			return "사용가능한 닉네임 입니다.";
 		}
 		
-		return "중복된 닉네임 입니다.";
+		return "이미 사용중인 닉네임 입니다.";
 	}
 }

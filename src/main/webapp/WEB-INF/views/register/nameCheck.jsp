@@ -10,20 +10,17 @@
 </head>
 <body>
 	<h2>닉네임 중복 체크</h2>
-	<form action="/nameCheck" method="GET" name="frm">
+	<form action="/nameCheck" method="GET" id="frm">
 		아이디 : <input type="text" name="name" id="name" value="${name}">
-		<button type="button" onclick="nameCheck()">중복 체크</button><br>
-		
-		
+		<button type="button" onclick="nameCheck()">중복 체크</button><br>	
 	</form>
-	
+	<div id="result">
+	</div>
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript">
 		function nameCheck() {
 			let name = document.getElementById('name').value;
-			
-			console.log(name);
-			
+	
 			$.ajax({
 				type:"GET",
 				url:"${context}/nameCheck",
@@ -31,6 +28,8 @@
 				dateType:JSON,
 				success:function(data){
 					
+					console.log(data);
+					$("#result").html(data);
 					
 				}
 			})	
