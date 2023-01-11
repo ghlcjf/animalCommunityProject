@@ -69,6 +69,14 @@
 	<bean id="hospitalInfoController" class="animal.controller.HospitalInfoController">
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
+	
+	<!-- 마이 페이지 -->
+	<bean id="myPageController" class="animal.controller.MyPageController" >
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	<bean id="nameCheckController" class="animal.controller.NameCheckController">
+		<property name="nameCheckService" ref="nameCheckService"></property>
+	</bean>
 
 	<!--메인 컨트롤러-->
 

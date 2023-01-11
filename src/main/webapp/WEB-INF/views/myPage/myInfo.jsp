@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 정보 상세보기</title>
+<title>마이 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-	<h2>사용자 정보</h2>
+	<h2>${user.name}님 마이페이지</h2>
 	<table border="1">
 		<tr>
 			<th>이름</th>
@@ -20,12 +20,15 @@
 		</tr>
 		<tr>
 	
-			<td>${member.name }</td>
-			<td>${member.id }</td>
-			<td>${member.email }</td>
-			<td>${member.phone }</td>
+			<td>${user.name }</td>
+			<td>${user.id }</td>
+			<td>${user.email }</td>
+			<td>${user.phone }</td>
 		</tr>
 	</table>
+	<form action="<c:url value='/checkPassword' />">
+		<button type="submit" onclick="newWindow()">개인정보 수정하기</button>
+	</form>
 	<h2>게시글 목록</h2>
 	<c:choose>
 		<c:when test="${empty board}">
@@ -37,6 +40,7 @@
 					<th>글제목</th>
 					<th>작성일</th>
 					<th>조회수</th>
+					<th>글수정</th>
 					<th>글삭제</th>
 				</tr>
 				<c:forEach items="${board}" var="board">
@@ -45,8 +49,14 @@
 						<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 						<td>${board.viewCount }</td>
 						<td>
-							<form action="<c:url value='/board/delete/${board.boardNum}' />">
+							<form action="<c:url value='' />">
+								<button type="submit">수정</button>
+							</form>
+						</td>
+						<td>
+							<form action="<c:url value='/myPage/delete/${board.boardNum}' />">
 								<button type="submit" onclick="return boardDelete()">삭제</button>
+								<%-- <input type="hidden" name="boardNum" value="${board.boardNum}"> --%>
 							</form>
 						</td>
 					</tr>
@@ -54,21 +64,21 @@
 			</table>
 		</c:otherwise>
 	</c:choose>
-	<form action="<c:url value='/member/drop/${member.id}' />">
-		<button type="submit" onclick="return memberDrop('${member.name}')">회원강제탈퇴</button>
-	</form>
-	<a href='<c:url value="/memberManagement" />'>목록으로 돌아가기</a>
+	<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
+	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	
 	<script type="text/javascript">
-	
 		function boardDelete(){
-			return confirm('게시글을 삭제 하시겠습니까?');
+			 return confirm('게시글을 삭제 하시겠습니까?');
 		}
 		
-		function memberDrop(name){
-			console.log(name);
-			return confirm(name+'님을 탈퇴 시키겠습니까?');
-		}
+		/* function newWindow(){
+			
+			let url = "${context}/checkPassword";
+			
+			window.open(url,'_blank_1',
+			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
+		} */
 		
 	</script>
 </body>

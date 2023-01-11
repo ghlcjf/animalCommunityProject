@@ -40,7 +40,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href='<c:url value="/manager/managerMain" />'>관리자 메인페이지로 돌아가기</a>
+	<a href='<c:url value="/manager/managerMain" />'>이전으로 돌아가기</a>
 <script type="text/javascript">
 	function searchMember() {
 		let search = $('#search').val();

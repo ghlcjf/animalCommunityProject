@@ -272,6 +272,16 @@ public class AnimalDao {
 		
 	}
 
+	public void dropMember(String id) {
+		
+		sqlSession.delete("mybatis.mapper.member.dropMember", id);
+	}
+
+	public String nameCheck(String name) {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.nameCheck",name);
+	}
+
 	
 	
 	

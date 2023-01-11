@@ -30,7 +30,7 @@
 	<li><a href='<c:url value="/animalInfo"/>'>동물 소개</a></li>
 	<li><a href='<c:url value="/hospitalInfo/main"/>'>동물 병원 정보</a></li>
 	<li><a href='<c:url value="/issue"/>'>이슈</a></li>
-	<li><a href='<c:url value=""/>'>마이페이지</a></li>
+	<li><a href='<c:url value="/myPage"/>'>마이페이지</a></li>
 
 </ul>
 <hr>

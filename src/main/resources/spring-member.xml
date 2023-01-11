@@ -36,6 +36,10 @@
 		<constructor-arg ref="animalDao"/>
 	</bean>
 	
+	<!-- 마이페이지 -->
+	<bean id="nameCheckService" class="animal.service.NameCheckService">
+		<property name="animalDao" ref="animalDao"/>
+	</bean>
 	
 	<!-- 매니저 게시판 -->
 	
