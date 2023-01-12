@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 약관동의 페이지</title>
+
 </head>
 <body>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<h2>약관동의 페이지</h2>
 	<p>
 		<strong>Animal Community 이용약관</strong><br>
