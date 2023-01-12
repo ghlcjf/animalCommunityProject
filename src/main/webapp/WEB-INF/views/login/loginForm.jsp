@@ -38,11 +38,7 @@
 			<spring:message code="login.btn"/>
 		</button>
 	</form:form>
-
-
-
-
-
+	
 </body>
 </html>
 

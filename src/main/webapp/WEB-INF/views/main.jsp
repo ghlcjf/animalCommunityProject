@@ -30,6 +30,7 @@
 	
 </head>
 <body>
+
 	<jsp:include page="header.jsp"></jsp:include>
 	<h2>메인페이지</h2>
 	
@@ -141,9 +142,11 @@
 	
 <!--인기글 top10개: 추천수+조회수 등으로 순위매김, 숫자같을때는 어떻게할지도-->
 	<h4>커뮤니티 인기 Top10</h4>
+
 	<c:if test="${empty freeBoardList}">
 		<p>등록된 게시글이 없습니다.</p>
 	</c:if>
+
 
 
 

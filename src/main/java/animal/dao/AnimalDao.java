@@ -244,17 +244,30 @@ public class AnimalDao {
 		return sqlSession.selectList("mybatis.mapper.member.selectHospitalSeoul");
 	}
 
-	public List<HospitalInfo> selectHospitalGyeongi() {
-		return sqlSession.selectList("mybatis.mapper.member.selectHospitalGyeongi");
+	public List<HospitalInfo> selectHospitalGyeonggi() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalGyeonggi");
 	}
 
-	public List<HospitalInfo> selectHospitalIncheon() {
-		return sqlSession.selectList("mybatis.mapper.member.selectHospitalIncheon");
+	public List<HospitalInfo> selectHospitalGangwon() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalGangwon");
 	}
 
-	public List<HospitalInfo> selectHospitalDaejeon() {
-		return sqlSession.selectList("mybatis.mapper.member.selectHospitalDaejeon");
+	public List<HospitalInfo> selectHospitalChungcheong() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalChungcheong");
 	}
+
+	public List<HospitalInfo> selectHospitalGyeongsang() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalGyeongsang");
+	}
+
+	public List<HospitalInfo> selectHospitalJeolla() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitalJeolla");
+	}
+
+	public List<HospitalInfo> selectHospitaljeju() {
+		return sqlSession.selectList("mybatis.mapper.member.selectHospitaljeju");
+	}
+
 
 
 		
@@ -328,6 +341,7 @@ public class AnimalDao {
 		
 	}
 
+
 	public void dropMember(String id) {
 		
 		sqlSession.delete("mybatis.mapper.member.dropMember", id);
@@ -338,40 +352,6 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.nameCheck",name);
 	}
 
-	
 
-	
 
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	
-	
-	
-
-	
-
-	
-
-	
-	
-
-	
-
-	
-
-	
-	
-	
-	
 }

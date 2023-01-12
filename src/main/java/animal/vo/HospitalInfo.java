@@ -11,12 +11,7 @@ public class HospitalInfo {
     private String name;
     private String detailedAddress;
     
-	public String getDetailedAddress() {
-		return detailedAddress;
-	}
-	public void setDetailedAddress(String detailedAddress) {
-		this.detailedAddress = detailedAddress;
-	}
+	
 	public int getBoardNum() {
 		return boardNum;
 	}
@@ -65,8 +60,11 @@ public class HospitalInfo {
 	public void setName(String name) {
 		this.name = name;
 	}
-    
-    
-    
+	public String getDetailedAddress() {
+		return detailedAddress;
+	}
+	public void setDetailedAddress(String detailedAddress) {
+		this.detailedAddress = detailedAddress;
+	}
     
 }

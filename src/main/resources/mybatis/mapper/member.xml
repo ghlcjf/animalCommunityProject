@@ -234,17 +234,30 @@
 		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '서울'
 	</select>
 	
-	<select id="selectHospitalGyeongi" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경기'
+	<select id="selectHospitalGyeonggi" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경기도'
 	</select>
 	
-	<select id="selectHospitalIncheon" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '인천'
+	<select id="selectHospitalGangwon" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '강원도'
 	</select>
 	
-	<select id="selectHospitalDaejeon" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '대전'
+	<select id="selectHospitalChungcheong" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '충청도'
 	</select>
+	
+	<select id="selectHospitalGyeongsang" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경상도'
+	</select>
+	
+	<select id="selectHospitalJeolla" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '전라도'
+	</select>
+	
+	<select id="selectHospitaljeju" resultType="hospitalInfo">
+		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '제주도'
+	</select>
+
 	 
 	<sql id="selectAllMember">
 		select * from userTbl	

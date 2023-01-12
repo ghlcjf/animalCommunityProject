@@ -7,29 +7,54 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<style type="text/css">
+	a {
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 
 <h2>병원 정보</h2>
-<a href='<c:url value="/hospitalInfo/seoul"/>'>서울</a>
-<a href='<c:url value="/hospitalInfo/gyeongi"/>'>경기</a>
-<a href='<c:url value="/hospitalInfo/incheon"/>'>인천</a>
-<a href='<c:url value="/hospitalInfo/daejeon"/>'>대전</a><br><br>
+	<a href='<c:url value="/hospitalInfo/seoul"/>'>서울</a>
+	<a href='<c:url value="/hospitalInfo/gyeonggi"/>'>경기도</a>
+	<a href='<c:url value="/hospitalInfo/gangwon"/>'>강원도</a>
+	<a href='<c:url value="/hospitalInfo/chungcheong"/>'>충청도</a>
+	<a href='<c:url value="/hospitalInfo/gyeongsang"/>'>경상도</a>
+	<a href='<c:url value="/hospitalInfo/jeolla"/>'>전라도</a>
+	<a href='<c:url value="/hospitalInfo/jeju"/>'>제주도</a>
+	<a href='<c:url value="/hospitalInfo/main" />'>전체 보기</a>
 
 	<c:choose>
 		<c:when test="${empty hospitals}">
 			<p>등록된 병원정보가 없습니다.</p>
 		</c:when>
 		<c:otherwise>
+		<table class="table">
+			<thead>
+    			<tr>
+	    			<th scope="col">#</th>
+	    			<th scope="col">병원 이름</th>
+	    			<th scope="col">병원 위치</th>
+	      			<th scope="col">전화 번호</th>
+      			</tr>
+   			</thead>
 			<c:forEach items="${hospitals }" var="hospital">
-				<a href="<c:url value='/hospital/detail/${hospital.boardNum }' />"> ${hospital.hospitalName }<br></a>
-				병원 위치: ${hospital.hospitalLoc }<br>
-				전화번호: ${hospital.hospitalTel }<br>
+      			<tbody>
+      				<tr>
+	     				<th scope="row">${hospital.boardNum }</th>
+	     				<td><a href="<c:url value='/hospital/detail/${hospital.boardNum }' />"> ${hospital.hospitalName }</a></td>
+	     				<td>${hospital.hospitalLoc }</td>
+	     				<td>${hospital.hospitalTel }</td>
+      				</tr>
+      			</tbody>
 			</c:forEach>
+		</table>
 		</c:otherwise>
-	</c:choose><br>
+	</c:choose>
 	
-	<a href='<c:url value="/hospitalInfo/main" />'>전체 보기</a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>	
 </body>
 </html>
