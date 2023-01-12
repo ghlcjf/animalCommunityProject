@@ -7,7 +7,14 @@ public class HospitalInfoCommand {
     private String hospitalInfo;
     private String name;
     private String detailedAddress;
+    private int boardNum;
     
+	public int getBoardNum() {
+		return boardNum;
+	}
+	public void setBoardNum(int boardNum) {
+		this.boardNum = boardNum;
+	}
 	public String getDetailedAddress() {
 		return detailedAddress;
 	}

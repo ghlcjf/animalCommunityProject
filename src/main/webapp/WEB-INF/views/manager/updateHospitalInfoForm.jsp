@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<h2>병원 정보 글 작성하기</h2>
+<h2>병원 정보 수정 페이지</h2>
 
-<form:form action="/animalCommunity/manager/writeHospitalInfo" modelAttribute="hospitalInfoCommand">
+<form:form action="/animalCommunity/manager/updateHospitalInfo" modelAttribute="hospitalInfo">
 	<table border="1">
 		<tr>
 			<td>병원 이름</td>
@@ -58,7 +58,7 @@
 			</td>
 		</tr>
 	</table>
-	<form:hidden path="name"/>
+	<form:hidden path="boardNum"/>
 	<button type="submit" onclick="return insertHospitalCheck()">글 등록</button>
 
 </form:form>
@@ -80,18 +80,17 @@
 			alert('전화번호를 입력해 주세요');
 			return false;
 		}
-		console.log($('#hospitalInfo').val());
-		if($('#hospitalInfo').val()==0){
+		/* modelAttribute와 textarea의 아이디가 같아서 네임값을 이용해 값 가져오기 */
+		let hospitalInfo = document.getElementsByName('hospitalInfo')[0].value;
+		if(hospitalInfo==''){
 			alert('내용을 입력해 주세요');
 			return false;
-		}
-		
+		}		
 		let cc = confirm('게시글을 작성하시겠습니까?');
 		
 		return cc;
 	}
 
 </script>
-
 
 </html>

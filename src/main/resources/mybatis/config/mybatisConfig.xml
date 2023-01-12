@@ -18,6 +18,8 @@
 		<typeAlias type="animal.vo.HospitalInfo" alias="hospitalInfo"/>
 		<typeAlias type="animal.vo.IssueBoardCommand" alias="issueBoardCommand"/>
 		<typeAlias type="animal.vo.HospitalInfoCommand" alias="hospitalInfoCommand"/>
+		<typeAlias type="animal.vo.AnimalInfoCommand" alias="animalInfoCommand"/>
+		<typeAlias type="animal.vo.SectionPage" alias="sectionPage"/>
 	</typeAliases>
 
 

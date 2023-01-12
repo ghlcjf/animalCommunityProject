@@ -93,30 +93,63 @@
 		INSERT INTO freeBoardTbl
 		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},#{boardUrl},0,0,0,0)
 	</insert>
+	<update id="updateFreeBoard" parameterType="freeBoardCommand">
+		UPDATE freeBoardTbl 
+		SET boardTitle=#{boardTitle}, boardContent=#{boardContent}, 
+		boardCategory=#{boardCategory}, boardUrl=#{boardUrl}
+		WHERE boardNum=#{boardNum}
+	</update>
 	
 	
 	<select id="selectDogFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='dog' AND boardCategory!='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='강아지' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectCatFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='cat' AND boardCategory!='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='고양이' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectReptileFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='reptile' AND boardCategory!='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='파충류' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectBirdsFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='birds' AND boardCategory!='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='조류' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectFishFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='fish' AND boardCategory!='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='어류' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectOtherFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='other' AND boardCategory!='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='기타' AND boardCategory!='notice' ORDER BY boardNum DESC
 	</select>
 	<select id="selectAllNoticeList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='공지사항' ORDER BY boardNum DESC
 	</select>
 	
+	<select id="selectAllNumFreeBoard" resultType="int" parameterType="sectionPage">
+		SELECT COUNT(*) FROM freeBoardTbl
+	</select>
+	<select id="selectAnimalNumFreeBoard" resultType="int" parameterType="sectionPage">
+		SELECT COUNT(*) FROM freeBoardTbl WHERE boardCategory=#{boardCategory}
+	</select>
+
+	<select id="selectTargetFreeBoards" parameterType="sectionPage" resultType="freeBoard">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM freeBoardTbl 
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10) 
+	</select>
+	
+	<select id="selectAnimalTargetFreeBoards" parameterType="sectionPage" resultType="freeBoard">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM freeBoardTbl 
+				WHERE boardCategory=#{boardCategory} 
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10) 
+	</select>
 	
 	<!-- 이슈 -->
 	<sql id="selectAllIssue">
@@ -160,6 +193,8 @@
 		INSERT INTO issueCommentTbl
 		Values(issueComment_seq.nextval,#{boardNum},#{commentContent},#{name},sysdate)
 	</insert>
+	
+	
 	
 	
 	<!-- 동물 소개 -->
@@ -277,8 +312,44 @@
 	</insert>
 	<insert id="insertHospitalInfo" parameterType="hospitalInfoCommand">
 		INSERT INTO hospitalInfoTbl
-		VALUES (HOSPITALINFO_SEQ.nextval,#{hospitalName},#{hospitalLoc},#{hospitalTel},#{hospitalInfo},0,0,#{name},#{detailedAddress})
+		VALUES (HOSPITALINFO_SEQ.nextval,#{hospitalName},#{hospitalLoc},
+		#{hospitalTel},#{hospitalInfo},0,0,#{name},#{detailedAddress})
 	</insert>
+	<insert id="insertAniamlInfo" parameterType="animalInfoCommand">
+		INSERT INTO animalInfoTbl
+		VALUES (ANIMALINFO_SEQ.nextval,#{animalTitle},#{animalContent},#{animalCategory},#{animalUrl},#{name},0)
+	</insert>
+
+	<update id="updateIssueBoard" parameterType="issueBoardCommand">
+		UPDATE issueTbl
+		SET issueTitle=#{issueTitle}, issueContent=#{issueContent}, 
+		issueUrl=#{issueUrl}
+		WHERE issueNum=#{issueNum}
+	</update>
+	<update id="updateAnimalInfo" parameterType="animalInfoCommand">
+		UPDATE animalInfoTbl
+		SET animalTitle=#{animalTitle}, animalContent=#{animalContent}, 
+		animalCategory=#{animalCategory}, animalUrl=#{animalUrl}
+		WHERE animalNum=#{animalNum}
+	</update>
+	<update id="updateHospitalInfo" parameterType="hospitalInfoCommand">
+		UPDATE hospitalInfoTbl
+		SET hospitalName=#{hospitalName}, hospitalInfo=#{hospitalInfo}, 
+		hospitalLoc=#{hospitalLoc}, detailedAddress=#{detailedAddress},
+		hospitalTel=#{hospitalTel}
+		WHERE boardNum=#{boardNum}
+	</update>
+	<delete id="deleteIssueBoardByBoardNum" parameterType="long" timeout="20">
+		DELETE FROM issueTbl WHERE issueNum=#{issueNum}
+	</delete>
+	<delete id="deleteAnimalInfoByBoardNum" parameterType="long" timeout="20">
+		DELETE FROM animalInfoTbl WHERE animalNum=#{animalNum}
+	</delete>
+	<delete id="deleteHospitalInfoByBoardNum" parameterType="long" timeout="20">
+		DELETE FROM hospitalInfoTbl WHERE boardNum=#{boardNum}
+	</delete>
+	
+	
 
 	
 	

@@ -5,23 +5,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자유게시판 게시글 작성하기</title>
+<title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<style>
-	
-</style>
 </head>
-
 <body>
+<h2>동물 소개 게시글 작성하기</h2>
 
-<h2>[자유게시판] 게시글 작성하기</h2>
-
-<form:form action="insertFreeBoard" modelAttribute="freeBoardCommand" enctype="multipart/form-data">
+<form:form action="/animalCommunity/manager/writeAnimalInfo" modelAttribute="animalInfoCommand" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
-			<td>카테고리</td>
+			<td>동물 이름</td>
 			<td>
-				<form:select path="boardCategory">
+				<form:input path="animalTitle"/>
+				<form:errors path="animalTitle" />
+			</td>
+		</tr>
+		<tr>
+			<td>동물 종류</td>
+			<td>
+				<form:select path="animalCategory">
 					<form:option value="강아지">강아지</form:option>
 					<form:option value="고양이">고양이</form:option>
 					<form:option value="파충류">파충류</form:option>
@@ -29,44 +31,35 @@
 					<form:option value="어류">어류</form:option>
 					<form:option value="기타">기타</form:option>
 				</form:select>
-			</td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td>
-				<form:input path="boardTitle"/>
-				<form:errors path="boardTitle" />
+				<form:errors path="animalCategory" />
 			</td>
 		</tr>
 		<tr>
 			<td>이미지</td>
 			<td>
-				<input type="file" id="boardUrl2" name="boardUrl2">
-				<form:errors path="boardUrl" />
+				<input type="file" id="animalUrl2" name="animalUrl2">
+				<form:errors path="animalUrl" />
 			</td>
 		</tr>
 		<tr>
-			<td>내용</td>
+			<td>특징</td>
 			<td>
-				<form:textarea path="boardContent"/>
-				<form:errors path="boardContent" />
+				<form:textarea path="animalContent"/>
+				<form:errors path="animalContent" />
 			</td>
 		</tr>
 	</table>
-	<button type="submit" onclick="return insertFreeBoardCheck()">글 등록</button>
-	
+	<button type="submit" onclick="return insertAnimalInfoCheck()">글 등록</button>
 </form:form>
-
-
 </body>
 <script type="text/javascript">
-	function insertFreeBoardCheck() {
+	function insertAnimalInfoCheck() {
 		
-		if($('#boardTitle').val()==''){
+		if($('#animalTitle').val()==''){
 			alert('제목을 입력해 주세요');
 			return false;
 		}
-		if($('#boardContent').val()==0){
+		if($('#animalContent').val()==0){
 			alert('내용을 입력해 주세요');
 			return false;
 		}
@@ -77,5 +70,4 @@
 	}
 
 </script>
-
 </html>

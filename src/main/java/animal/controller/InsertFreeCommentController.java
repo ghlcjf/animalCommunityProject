@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import animal.dao.AnimalDao;
 import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
@@ -33,21 +31,11 @@ public class InsertFreeCommentController {
 			@RequestParam("boardNum") String boardNum) {
 		
 		
-		System.out.println(name);
-		System.out.println(commentContent);
-		System.out.println(boardNum);
-		
 		FreeCommentCommand fcc = new FreeCommentCommand();
 		
 		fcc.setBoardNum(Integer.parseInt(boardNum));
 		fcc.setCommentContent(commentContent);
 		fcc.setName(name);
-		
-//		new FreeCommentCommandValidator().validate(fcc, errors);
-//		
-//		if(errors.hasErrors()) {
-//			return null;
-//		}
 		
 		
 		// 데이터 베이스로 보내기
@@ -59,13 +47,6 @@ public class InsertFreeCommentController {
 		
 		return freeComments.get(0);
 		
-		
-		
-		
-		
-		
-		
-		// request.getRequestDispatcher("/freeBoard/readFreeBoard/"+boardNum).forward(request, response);
 	}
 
 }

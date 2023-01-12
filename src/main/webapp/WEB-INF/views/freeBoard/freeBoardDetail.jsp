@@ -14,6 +14,20 @@
 <h2>자유게시판 상세보기</h2>
 
 <table border="1">
+
+	<c:if test="${freeBoard.name == userInfo.name }">
+		<tr>
+			<td colspan="4">
+				<form>
+					<c:url value="/freeBoard/updateFreeBoardForm/${freeBoard.boardNum}" var="updateUrl" />
+					<button type="button" onclick="location.href='${updateUrl}'">수정</button>
+					<c:url value="/freeBoard/deleteFreeBoard/${freeBoard.boardNum}" var="deleteUrl" />
+						<button type="button" onclick="location.href='${deleteUrl}'">삭제</button>
+				</form>
+			</td>
+		</tr>
+		
+	</c:if>
 	<tr>
 		<td rowspan="7">
 			<c:choose>
@@ -88,7 +102,7 @@
 </table>
 
 
-<a href='<c:url value="/freeBoard/freeBoardList/main" />'>목록으로 돌아가기</a>
+<a href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'>목록으로 돌아가기</a>
 </body>
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
@@ -170,7 +184,7 @@
 				
 			},
 			complete:function(){
-				$('#comment').value='';
+				$('#comment').val()='';
 			}
 			
 		});
