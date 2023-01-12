@@ -24,7 +24,7 @@
 	</c:if>
 </ul>
 	
-	
+	 
 <ul>
 	<li><a href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>'>자유게시판</a></li>
 	<li><a href='<c:url value="/animalInfo"/>'>동물 소개</a></li>

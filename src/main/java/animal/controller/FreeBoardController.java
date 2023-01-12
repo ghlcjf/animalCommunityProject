@@ -72,19 +72,24 @@ public class FreeBoardController {
 			freeBoardList = freeBoardService.selectAnimalTargetFreeBoards(sectionPage);
 		}else if(animal.equals("cat")) {
 			sectionPage.setBoardCategory("고양이");
-			freeBoardList = animalDao.selectCatFreeBoardList();
+			totalCnt = freeBoardService.selectAnimalNumFreeBoard(sectionPage);
+			freeBoardList = freeBoardService.selectAnimalTargetFreeBoards(sectionPage);
 		}else if(animal.equals("reptile")) {
 			sectionPage.setBoardCategory("파충류");
-			freeBoardList = animalDao.selectReptileFreeBoardList();
+			totalCnt = freeBoardService.selectAnimalNumFreeBoard(sectionPage);
+			freeBoardList = freeBoardService.selectAnimalTargetFreeBoards(sectionPage);
 		}else if(animal.equals("birds")) {
 			sectionPage.setBoardCategory("조류");
-			freeBoardList = animalDao.selectBirdsFreeBoardList();
+			totalCnt = freeBoardService.selectAnimalNumFreeBoard(sectionPage);
+			freeBoardList = freeBoardService.selectAnimalTargetFreeBoards(sectionPage);
 		}else if(animal.equals("fish")) {
 			sectionPage.setBoardCategory("어류");
-			freeBoardList = animalDao.selectFishFreeBoardList();
+			totalCnt = freeBoardService.selectAnimalNumFreeBoard(sectionPage);
+			freeBoardList = freeBoardService.selectAnimalTargetFreeBoards(sectionPage);
 		}else if(animal.equals("other")) {
 			sectionPage.setBoardCategory("기타");
-			freeBoardList = animalDao.selectOtherFreeBoardList();
+			totalCnt = freeBoardService.selectAnimalNumFreeBoard(sectionPage);
+			freeBoardList = freeBoardService.selectAnimalTargetFreeBoards(sectionPage);
 		}
 		
 		List<FreeBoard> noticeList = selectAllNoticeListService.selectAllNoticeList();

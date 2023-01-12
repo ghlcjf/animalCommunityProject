@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 <title>자유게시판 게시글 작성하기</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<style>
+	
+</style>
 </head>
+
 <body>
 
 <h2>[자유게시판] 게시글 작성하기</h2>
