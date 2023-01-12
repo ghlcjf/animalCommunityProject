@@ -51,20 +51,29 @@
 			</label>
 		</p>
 	
-		<button type="submit" onclick="return loginCheck()">
+		<button type="button" onclick="loginCheck()">
 			<spring:message code="login.btn"/>
 		</button>
 	</form:form>
 
 
-
-</body>
 <script type="text/javascript">
 	function loginCheck() {
-		alert('123');
 		let id = $('#id').val();
 		let pw = $('#password').val();
-		아이디 비밀번호를 location.href="";
+		$.ajax({
+			type: "POST",
+			url: '${context}/loginCheck',
+			data: {"id":id, "password":password},
+			success: function(data) {
+				if(data == "false")
+					alert('아이디 또는 비밀번호가 틀립니다');
+				else
+					location.href = "/main"
+			}
+		})
+		
+		/* 아이디 비밀번호를 location.href="";
 		컨트롤러 받아온 아이디랑 비밀번호 서비스객체로 보내줘요
 		서비스객체에서 아이디 비밀번호 DAO로 연결
 		아이디를 먼저 찾아요
@@ -73,7 +82,7 @@
 		아이디도 있고 비밀번호도 맞다면 true를 반환하는 메서드
 		아니라면 false
 		
-		/* let id = document.getElementById('id').value;
+		let id = document.getElementById('id').value;
 		let idCheck = document.getElementById('idCheck').value; 
 		let password = document.getElementById('password').value;
 		let passwordCheck = document.getElementById('passwordCheck').value;
@@ -96,9 +105,9 @@
 			alert('아이디 또는 비밀번호가 틀립니다');
 			return false;
 		}
-		return true; */
-		return false;
+		return true;
+		return false; */
 	}
 </script>
+</body>
 </html>
-

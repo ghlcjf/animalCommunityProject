@@ -8,7 +8,8 @@ public class User {
 	 private String phone;
 	 private int admin;
 	 
-	 
+	public User() {}
+	
 	public User(String id, String password, String name, String email, String phone, int admin) {
 		super();
 		this.id = id;
@@ -18,6 +19,7 @@ public class User {
 		this.phone = phone;
 		this.admin = admin;
 	}
+	
 	public String getId() {
 		return id;
 	}
