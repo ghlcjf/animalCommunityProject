@@ -301,6 +301,10 @@
 		DELETE FROM freeBoardTbl WHERE boardNum=#{boardNum}
 	</delete>
 	
+	<delete id="dropMember" parameterType="String">
+		DELETE FROM UserTbl WHERE id=#{id}
+	</delete>
+	
 	<select id="selectName" parameterType="long" resultType="String">
 		select name FROM freeBoardTbl WHERE boardNum=#{boardNum}
 	</select>
@@ -351,6 +355,11 @@
 	
 	
 
+	<!-- 마이페이지 -->
+	<select id="nameCheck" resultType="String" parameterType="String">
+		SELECT name
+		FROM userTbl WHERE name=#{name}
+	</select>
 	
 	
 </mapper>
