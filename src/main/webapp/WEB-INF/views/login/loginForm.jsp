@@ -63,7 +63,16 @@
 	function loginCheck() {
 		alert('123');
 		let id = $('#id').val();
-		console.log($('#password'));
+		let pw = $('#password').val();
+		아이디 비밀번호를 location.href="";
+		컨트롤러 받아온 아이디랑 비밀번호 서비스객체로 보내줘요
+		서비스객체에서 아이디 비밀번호 DAO로 연결
+		아이디를 먼저 찾아요
+		(데이터베이스에서 가져온 아이디)아이디가 있다면
+		(사용자가 입력한 비밀번호와 데이터베이스에서 가져온 비밀번호 맞는지 확인)
+		아이디도 있고 비밀번호도 맞다면 true를 반환하는 메서드
+		아니라면 false
+		
 		/* let id = document.getElementById('id').value;
 		let idCheck = document.getElementById('idCheck').value; 
 		let password = document.getElementById('password').value;
