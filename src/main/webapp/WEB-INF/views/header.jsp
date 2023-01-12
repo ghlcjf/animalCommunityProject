@@ -55,7 +55,7 @@
 				</ul>
 				<div class="menu_bar">
 					<ul class="nav justify-content-center">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main"/>' style="color:white;">자유게시판</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>' style="color:white;">자유게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo"/>' style="color:white;">동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main"/>' style="color:white;">동물 병원 정보</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>' style="color:white;">이슈</a></li>

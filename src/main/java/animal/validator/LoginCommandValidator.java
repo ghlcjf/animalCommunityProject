@@ -16,8 +16,8 @@ public class LoginCommandValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		//아이디와 비번을 입력했는지
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id", "required");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required");
 		
 	}
 

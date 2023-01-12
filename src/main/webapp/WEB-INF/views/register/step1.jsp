@@ -20,11 +20,29 @@
 	
 	<form action="step2" method="post">
 		<label>
-			<input type="checkbox" name="agree" value="true">
+			<input type="checkbox" name="agree" value="true" id="checkbox">
 			<spring:message code="term.agree"/>
 		</label><br>
-		<button type="submit"><spring:message code="next.btn"/></button>
+		<button type="submit" onclick="confirmCheckbox()"><spring:message code="next.btn"/></button>
 	</form>
 	
+<script type="text/javascript">
+	
+	function confirmCheckbox() {
+		
+		let checkbox = document.getElementById('checkbox').value;
+		
+		/* if (checkbox = false) {
+			alert('약관동의에 체크해주세요');
+			return false;
+		} */
+		
+		if (!checkbox) {
+			alert('약관동의에 체크해주세요');
+			return false;
+		}
+	}
+	
+</script>
 </body>
 </html>

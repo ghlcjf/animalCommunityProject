@@ -56,7 +56,7 @@
 				</td>
 			</tr>
 		</table>
-		<button type="submit">글 등록</button>
+		<button type="submit" >글 등록</button>
 		
 	</form:form>
 
