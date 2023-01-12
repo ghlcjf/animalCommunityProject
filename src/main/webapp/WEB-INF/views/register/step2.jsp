@@ -10,6 +10,7 @@
 <title>회원가입 페이지</title>
 </head>
 <body>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<h2>회원가입</h2>
 	<form:form action="step3" modelAttribute="formData">
 		<p>
@@ -28,13 +29,13 @@
 	
 		<p>
 			<label><spring:message code="password"/>
-				<form:input path="password"/>
+				<form:input path="password" type="password"/>
 				<form:errors path="password"/>
 			</label>
 		</p>
 		<p>
 			<label><spring:message code="password.confirm"/>
-				<form:input path="confirmPassword"/>
+				<form:input path="confirmPassword" type="password"/>
 				<form:errors path="confirmPassword"/>
 			</label>
 		</p>

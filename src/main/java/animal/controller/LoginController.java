@@ -37,7 +37,7 @@ public class LoginController {
 		return "login/loginForm";
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/login")	
 	public String submit(LoginCommand loginCommand,Errors errors, HttpSession session, HttpServletResponse response) {
 		//1.아이디와 비번이 일치하는지 확인
 		new LoginCommandValidator().validate(loginCommand,errors);
@@ -70,6 +70,7 @@ public class LoginController {
 		}catch(IdPasswordNotMatchingException e) {
 			errors.reject("idPasswordNotMatching");
 			//글로벌 에러
+
 			return "login/loginForm";
 		}
 
