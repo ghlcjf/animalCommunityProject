@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import animal.exception.AlreadyExistingMemberException;
 import animal.service.MemberRegisterService;
-import animal.validator.RegisterRequestValidator;
+//import animal.validator.RegisterRequestValidator;
 import animal.vo.RegisterRequest;
 
 @Controller
@@ -56,7 +56,7 @@ public class RegisterController {
 		//전달받은 데이터 읽어오기(객체에 파라미터와 이름이 같은 set메서드가 반드시 존재해야함)
 		
 		//RegisterRequest 객체 검증
-		new RegisterRequestValidator().validate(regReq, errors);
+//		new RegisterRequestValidator().validate(regReq, errors);
 		
 		if(errors.hasErrors()) {
 			//에러 객체에 에러가 하나라도 검출이 되었다면
@@ -66,7 +66,7 @@ public class RegisterController {
 		//받아온 데이터 -> DB
 		try {
 			memberRegisterService.regist(regReq);
-			return "register/step3";
+			return "redirect:/main";
 		}catch(AlreadyExistingMemberException e) {//아이디 중복되는 경우 
 			errors.rejectValue("id", "duplicate");
 			return "register/step2";

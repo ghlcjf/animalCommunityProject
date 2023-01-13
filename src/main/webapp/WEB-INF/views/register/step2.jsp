@@ -16,47 +16,41 @@
 	<form:form action="step3" modelAttribute="formData">
 		<p>
 			<label><spring:message code="name"/>
-				<%-- <form:input path="name"/> --%>
-				<input type="text" name="name" id="name">
-				<form:errors path="name"/>
+				<form:input path="name"/>
+				<!-- <input type="text" name="name" id="name"> -->
 			</label>
 		</p>
 		
 		<p>
 			<label><spring:message code="id"/>
-				<%-- <form:input path="id"/> --%>
-				<input type="text" name="id" id="id">
-				<form:errors path="id"/>
+				<form:input path="id"/>
+				<!-- <input type="text" name="id" id="id"> -->
 			</label>
 		</p>
 	
 		<p>
 			<label><spring:message code="password"/>
-				<%-- <form:input path="password" type="password"/> --%>
-				<input type="password" name="password" id="password">
-				<form:errors path="password"/>
+				<form:input path="password" type="password"/>
+				<!-- <input type="password" name="password" id="password"> -->
 			</label>
 		</p>
 		<p>
 			<label><spring:message code="password.confirm"/>
-				<%-- <form:input path="confirmPassword" type="password"/> --%>
-				<input type="password" name="confirmPassword" id="confirmPassword">
-				<form:errors path="confirmPassword"/>
+				<form:input path="confirmPassword" type="password"/>
+				<!-- <input type="password" name="confirmPassword" id="confirmPassword"> -->
 			</label>
 		</p>
 		<p>
 			<label><spring:message code="email"/>
-				<%-- <form:input path="email" type="email"/> --%>
-				<input type="email" name="email" id="email">
-				<form:errors path="email"/>
+				<form:input path="email" type="email"/>
+				<!-- <input type="email" name="email" id="email"> -->
 				<!-- <input type="checkbox" name="advertise" value=""> -->
 			</label>		
 		</p>
 		<p>
 			<label><spring:message code="phone"/>
-				<%-- <form:input path="phone" placeholder="-하이폰을 입력해주세요"/> --%>
-				<input type="tel" name="phone" id="phone">
-				<form:errors path="phone"/>
+				<form:input path="phone" placeholder="-하이폰을 입력해주세요"/>
+				<!-- <input type="tel" name="phone" id="phone"> -->
 			</label>
 		</p>
 		
@@ -66,46 +60,51 @@
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>	
 	<script type="text/javascript">
-	
 	function registerCheck() {
 		
-		let name = document.getElementById('name').value;
-		let id = document.getElementById('id').value;
-		let password = document.getElementById('password').value;
-		let confirmPassword = document.getElementById('confirmPassword').value;
-		let email = document.getElementById('email').value;
-		let phone = document.getElementById('phone').value;
+		let name = $('#name').val();
+		let id = $('#id').val();
+		let password = $('#password').val();
+		let confirmPassword = $('#confirmPassword').val();
+		let email = $('#email').val();
+		let phone = $('#phone').val();
 		
-		if (name.length==0) {
+		if(name==''){
 			alert('이름을 입력해주세요');
-			name.focus();
+			($('#name').focus());
 			return false;
 		}
-		if (id.length==0) {
+		/* 
+		if($('#id').val()==''){
 			alert('아이디를 입력해주세요');
-			id.focus();
+			($('#id').focus());
 			return false;
 		}
-		if (password.length==0) {
+		
+		if($('#password').val()==''){
 			alert('비밀번호를 입력해주세요');
-			password.focus();
+			($('#password').focus());
 			return false;
 		}
-		if (password!=confirmPassword) {
+		
+		if(password!=confirmPassword){
 			alert('비밀번호가 일치하지 않습니다');
-			password.focus();
+			($('#password').focus());
 			return false;
 		}
-		if (email.length==0) {
+		
+		if($('#email').val()==''){
 			alert('이메일을 입력해주세요');
-			email.focus();
+			($('#email').focus());
 			return false;
 		}
-		if (phone.length==0) {
+		
+		if($('#phone').val()==''){
 			alert('전화번호를 입력해주세요');
-			phone.focus();
+			($('#phone').focus());
 			return false;
-		}
+		} */
+		return true;
 	}
 </script>	
 </body>

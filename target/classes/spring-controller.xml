@@ -63,7 +63,12 @@
 	<bean id="loginController" class="animal.controller.LoginController">
 		<property name="loginService" ref="loginService"/>
 	</bean>
+	
 	<bean id="logoutController" class="animal.controller.LogoutController"/>
+	
+	<bean id="loginCheckController" class="animal.controller.LoginCheckController">
+		<property name="loginCheckService" ref="loginCheckService" />
+	</bean>
 	
 	<!--회원가입 컨트롤러 -->	
 	<bean id="registerController" class="animal.controller.RegisterController">
@@ -89,8 +94,6 @@
 	
 	
 	<!-- 관리자 -->
-	
-
 	
 	<bean id="hospitalGBController" class="animal.controller.HospitalGBController">
 		<property name="animalDao" ref="animalDao"></property>

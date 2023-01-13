@@ -1,7 +1,5 @@
 package animal.service;
 
-import org.apache.ibatis.session.SqlSession;
-
 import animal.dao.AnimalDao;
 import animal.vo.User;
 
@@ -12,9 +10,31 @@ public class LoginCheckService {
 	public void setAnimalDao(AnimalDao animalDao) {
 		this.animalDao = animalDao;
 	}
-
-	public User userLogin(User user) {
-		return animalDao.selectById(SqlSession, user);
+//
+//	public boolean logincheck(User user) {
+//		String id = user.getId();
+//				
+//		User checkUser = animalDao.selectById(id);
+//		
+//		if(checkUser!=null) {
+//			if(checkUser.getPassword().equals(user.getPassword())) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+	
+	public boolean loginCheck(User user) {
+		String id = user.getId();
+		
+		User checkUser = animalDao.selectById(id);
+		
+		if (checkUser!=null) {
+			if (checkUser.getPassword().equals(user.getPassword())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

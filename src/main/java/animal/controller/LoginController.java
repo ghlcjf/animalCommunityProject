@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import animal.exception.IdPasswordNotMatchingException;
 import animal.service.LoginService;
-import animal.validator.LoginCommandValidator;
+
 import animal.vo.LoginCommand;
 import animal.vo.LoginUserInfo;
 
@@ -40,11 +40,11 @@ public class LoginController {
 	@PostMapping("/login")	
 	public String submit(LoginCommand loginCommand,Errors errors, HttpSession session, HttpServletResponse response) {
 		//1.아이디와 비번이 일치하는지 확인
-		new LoginCommandValidator().validate(loginCommand,errors);
-		
-		if(errors.hasErrors()) {
-			return "login/loginForm";
-		}
+//		new LoginCommandValidator().validate(loginCommand,errors);
+//		
+//		if(errors.hasErrors()) {
+//			return "login/loginForm";
+//		}
 		
 		//2.입력받은 아이디와 비번으로 로그인
 		try {
@@ -65,7 +65,8 @@ public class LoginController {
 			}
 			
 			response.addCookie(rememberIdCookie);
-			return "login/loginSuccess";
+//			return "login/loginSuccess";
+			return "main";
 		
 		}catch(IdPasswordNotMatchingException e) {
 			errors.reject("idPasswordNotMatching");

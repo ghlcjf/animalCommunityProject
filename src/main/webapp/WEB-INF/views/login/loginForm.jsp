@@ -51,63 +51,52 @@
 			</label>
 		</p>
 	
-		<button type="button" onclick="loginCheck()">
+		<button type="submit" onclick="return loginCheck()">
 			<spring:message code="login.btn"/>
 		</button>
 	</form:form>
 
-
+<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
 	function loginCheck() {
+		
 		let id = $('#id').val();
-		let pw = $('#password').val();
+		let password = $('#password').val();
+
+		if($('#id').val()==''){
+			alert('아이디를 입력해주세요');
+			($('#id').focus());
+			return false;
+		}
+		
+		if($('#password').val()==''){
+			alert('비밀번호를 입력해주세요');
+			($('#password').focus());
+			return false;
+		}
+		
 		$.ajax({
 			type: "POST",
-			url: '${context}/loginCheck',
+			url: "${context}/loginCheck",
 			data: {"id":id, "password":password},
-			success: function(data) {
-				if(data == "false")
-					alert('아이디 또는 비밀번호가 틀립니다');
-				else
-					location.href = "/main"
+			dateType: JSON,
+			success: function(data){
+				if (!data) {
+					alert('아이디 또는 비밀번호가 틀렸습니다.')
+				}
+				return data;
 			}
-		})
+		});
+	}
 		
-		/* 아이디 비밀번호를 location.href="";
-		컨트롤러 받아온 아이디랑 비밀번호 서비스객체로 보내줘요
+		/* 컨트롤러 받아온 아이디랑 비밀번호 서비스객체로 보내줘요
 		서비스객체에서 아이디 비밀번호 DAO로 연결
 		아이디를 먼저 찾아요
 		(데이터베이스에서 가져온 아이디)아이디가 있다면
 		(사용자가 입력한 비밀번호와 데이터베이스에서 가져온 비밀번호 맞는지 확인)
-		아이디도 있고 비밀번호도 맞다면 true를 반환하는 메서드
-		아니라면 false
+		아이디도 있고 비밀번호도 맞다면 true를 반환하는 메서드 
+		아니라면 false */
 		
-		let id = document.getElementById('id').value;
-		let idCheck = document.getElementById('idCheck').value; 
-		let password = document.getElementById('password').value;
-		let passwordCheck = document.getElementById('passwordCheck').value;
-		
-		if (id.length==0) {
-			alert('아이디를 입력해주세요');
-			id.focus();
-			return false;
-		} 
-		if (password.length==0) {
-			alert('비밀번호를 입력해주세요');
-			password.focus();
-			return false;
-		}
-		if (id != idCheck || password != passwordCheck) {
-			alert('아이디 또는 비밀번호가 틀립니다');
-			return false;
-		} 
-		 if (id.value != idCheck.value || password.value != passwordCheck.value) {
-			alert('아이디 또는 비밀번호가 틀립니다');
-			return false;
-		}
-		return true;
-		return false; */
-	}
 </script>
 </body>
 </html>

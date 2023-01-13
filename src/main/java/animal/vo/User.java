@@ -7,9 +7,8 @@ public class User {
 	 private String email;
 	 private String phone;
 	 private int admin;
-	 
+
 	public User() {}
-	
 	public User(String id, String password, String name, String email, String phone, int admin) {
 		super();
 		this.id = id;

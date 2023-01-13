@@ -34,6 +34,10 @@
 		<property name="animalDao" ref="animalDao"/>
 	</bean>
 	
+	<bean id="loginCheckService" class="animal.service.LoginCheckService">
+		<property name="animalDao" ref="animalDao"/>
+	</bean>
+	
 	<!--회원가입-->
 	<bean id="memberRegSvc" class="animal.service.MemberRegisterService">
 		<constructor-arg ref="animalDao"/>
