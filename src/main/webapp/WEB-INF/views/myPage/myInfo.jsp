@@ -65,21 +65,11 @@
 		</c:otherwise>
 	</c:choose>
 	<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
-	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	
 	<script type="text/javascript">
 		function boardDelete(){
 			 return confirm('게시글을 삭제 하시겠습니까?');
 		}
-		
-		/* function newWindow(){
-			
-			let url = "${context}/checkPassword";
-			
-			window.open(url,'_blank_1',
-			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
-		} */
-		
 	</script>
 </body>
 </html>

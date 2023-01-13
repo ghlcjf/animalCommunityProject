@@ -59,7 +59,10 @@
 			</table>
 		</c:otherwise>
 	</c:choose>
-	<form action="<c:url value='/member/drop/${member.id}' />">
+	<form action="<c:url value='/authorize/${member.id}' />">
+		<button type="submit" onclick="return authorize('${member.name}')">관리자권한 부여</button>
+	</form>
+	<form action="<c:url value='/${member.id}' />">
 		<button type="submit" onclick="return memberDrop('${member.name}')">회원강제탈퇴</button>
 	</form>
 	<a href='<c:url value="/memberManagement" />'>목록으로 돌아가기</a>
@@ -72,9 +75,21 @@
 		
 		function memberDrop(name){
 			console.log(name);
-			return confirm(name+'님을 탈퇴 시키겠습니까?');
+			if(confirm(name+'님을 탈퇴 시키겠습니까?')){
+				return alert('탈퇴가 정상 처리되었습니다.');
+			}else{
+				return false;
+			}
+		
 		}
 		
+		function authorize(name) {
+			if(confirm(name+'님 관리자권한을 부여하시겠습니까?')){
+				return alert('관리자권한 부여가 정상 처리되었습니다.');
+			}else{
+				return false;
+			}
+		}
 	</script>
 </body>
 </html>

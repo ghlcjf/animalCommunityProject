@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import animal.dao.AnimalDao;
+import animal.service.ChangeInfoService;
 import animal.vo.FreeBoard;
 import animal.vo.LoginUserInfo;
-import animal.vo.RegisterRequest;
 import animal.vo.User;
 
 @Controller
@@ -28,21 +27,27 @@ public class MyPageController {
 		this.animalDao = animalDao;
 	}
 	
+	private ChangeInfoService changeInfoService;
+	
+	public void setChangeInfoService(ChangeInfoService changeInfoService) {
+		this.changeInfoService = changeInfoService;
+	}
+
 	@GetMapping("/myPage")
-	public String myPage(HttpSession session, Model model) {
-			
-		if(session.getAttribute("userInfo")==null){
-			return "myPage/nullSession";
-		}
+	public String myPage(HttpSession session) {
 		
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		
+		if(userInfo==null){
+			return "myPage/nullSession";
+		}
+			
 		User user = animalDao.selectByMemberName(userInfo.getName());
 		session.setAttribute("user",user);
 		
-		List<FreeBoard> boardList = animalDao.getboardList(userInfo.getName());
-		model.addAttribute("board",boardList);
-		
+		List<FreeBoard> boardList = animalDao.getboardList(user.getName());
+		session.setAttribute("board",boardList);
+//		System.out.println(user.getName());
 		return "myPage/myInfo";
 	}
 	
@@ -74,18 +79,36 @@ public class MyPageController {
 		return "myPage/changeInfo";
 	}
 	
-	@GetMapping("/newWindow/{name}")
-	public String newWindow(@PathVariable("name") String name, Model model) {
+	@GetMapping("/newNameWindow/{name}")
+	public String newNameWindow(@PathVariable("name") String name, Model model) {
 
 		model.addAttribute("name",name);
 		
 		return"register/nameCheck";
 	}
 	
+	@GetMapping("/newIdWindow/{id}")
+	public String newIdWindow(@PathVariable("id") String id, Model model) {
+
+		model.addAttribute("id",id);
+		
+		return"register/idCheck";
+	}
+	
 	@PostMapping("/changeInfo")
-	public String changeInfo(@ModelAttribute("user") User user) {
+	public String changeInfo(@ModelAttribute("user") User user,HttpSession session) {
+
+		changeInfoService.changeInfo(user);
+	
+//		session.invalidate();
 		
+		LoginUserInfo userInfo = new LoginUserInfo();
+		userInfo.setName(user.getName());
+		userInfo.setId(user.getId());
+		userInfo.setEmail(user.getEmail());
+		userInfo.setAdmin(user.getAdmin());
 		
+		session.setAttribute("userInfo", userInfo);
 		
 		return "myPage/myInfo";
 	}

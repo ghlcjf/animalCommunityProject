@@ -5,31 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>닉네임 중복 체크 페이지</title>
+<title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-	<h2>닉네임 중복 체크</h2>
-	<form action="/nameCheck" method="GET" id="frm">
-		닉네임 : <input type="text" name="name" id="name" value="${name}">
-		<button type="button" onclick="nameCheck()">중복 체크</button><br>	
+	<h2>아이디 중복 체크</h2>
+	<form action="/idCheck" method="GET" id="frm">
+		아이디 : <input type="text" name="id" id="id" value="${id}">
+		<button type="button" onclick="idCheck()">중복 체크</button><br>	
 	</form>
 	<div id="result">
 	</div>
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript">
-		function nameCheck() {
-			let name = document.getElementById('name').value;
-			let btn = '<button type="button" onclick="newName()">사용</button>'
+		function idCheck() {
+			let id = document.getElementById('id').value;
+			let btn = '<button type="button" onclick="newId()">사용</button>'
 			
 			$.ajax({
 				type:"GET",
-				url:"${context}/nameCheck",
-				data:{"name":name},
+				url:"${context}/idCheck",
+				data:{"id":id},
 				dateType:JSON,
 				success:function(data){
-
-					if(data=="사용가능한 닉네임 입니다."){
+					
+					if(data=="사용가능한 아이디 입니다."){
 						$("#result").html(data+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+btn);
 					}else{
 						$("#result").html(data+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
@@ -41,12 +41,12 @@
 			})	
 		}
 		
-		function newName(){
-			let nameBtnCheck = 'y';
-			let newName = document.getElementById('name').value;
+		function newId(){
+			let idBtnCheck = 'y';
+			let newId = document.getElementById('id').value;
 			
-			opener.frm.name.value = newName;
-			opener.frm.nameBtnCheck.value = nameBtnCheck;
+			opener.frm.id.value = newId;
+			opener.frm.idBtnCheck.value = idBtnCheck;
 			
 			self.close();
 		}

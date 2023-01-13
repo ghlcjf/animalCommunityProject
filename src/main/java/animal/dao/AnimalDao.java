@@ -352,6 +352,26 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.nameCheck",name);
 	}
 
+	public void changeInfo(User user) {
+
+		sqlSession.update("mybatis.mapper.member.changeInfo", user);
+	}
+
+	public void authorize(String id) {
+		System.out.println(id);
+		sqlSession.update("mybatis.mapper.member.authorize", id);
+	}
+
+	public List<FreeBoard> reportFreeBoard() {
+		
+		return sqlSession.selectList("mybatis.mapper.member.reportFreeBoard");
+	}
+
+	public String idCheck(String id) {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.idCheck",id);
+	}
+
 
 
 }

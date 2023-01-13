@@ -80,11 +80,12 @@
 	<!-- 마이 페이지 -->
 	<bean id="myPageController" class="animal.controller.MyPageController" >
 		<property name="animalDao" ref="animalDao"></property>
+		<property name="changeInfoService" ref="changeInfoService"></property>
 	</bean>
 	<bean id="nameCheckController" class="animal.controller.NameCheckController">
 		<property name="nameCheckService" ref="nameCheckService"></property>
 	</bean>
-
+	
 	
 	
 	
@@ -111,7 +112,8 @@
 		<property name="hospitalInfoService" ref="hospitalInfoService"></property>
 		<property name="issueBoardService" ref="issueBoardService"></property>
 		<property name="selectAllNoticeService" ref="selectAllNoticeListService"></property>
-
+		<property name="authorizeService" ref="authorizeService"></property>
+		<property name="reportBoardService" ref="reportBoardService"></property>
 	</bean>
 	
 </beans>

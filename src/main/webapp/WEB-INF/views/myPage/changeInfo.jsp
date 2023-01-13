@@ -18,6 +18,7 @@
 			<label><spring:message code="name"/>
 				<form:input path="name" />
 				<input type="hidden" name="oldName" id="oldName" value="${user.name}">
+				<input type="hidden" name="btnCheck" id="btnCheck">
 				<button type="button" onclick="nameCheck()">중복 체크</button>
 			</label>
 		</p>
@@ -25,6 +26,7 @@
 		<p>
 			<label><spring:message code="id"/>
 				<form:input path="id" disabled="true"/>
+				<input type="hidden" name="id" value="${user.id }">
 			</label>
 		</p>
 	
@@ -41,11 +43,13 @@
 		<p>
 			<label><spring:message code="email"/>
 				<form:input path="email" type="email" disabled="true"/>
+				<input type="hidden" name="email" value="${user.email }">
 			</label>		
 		</p>
 		<p>
 			<label><spring:message code="phone"/>
 				<form:input path="phone" />
+				<input type="hidden" name="admin" value="${user.admin }">
 			</label>
 		</p>
 		
@@ -58,6 +62,13 @@
 
 			let newPassword = document.getElementById('newPassword').value;
 			let oldPassword = document.getElementById('oldPassword').value;
+			let btnCheck = document.getElementById('btnCheck').value;
+			
+			if(btnCheck.length==0){
+				alert('닉네임 중복체크를 해주세요.')
+				
+				return false;
+			}
 			
 			if(newPassword.length==0){
 				alert('새로운 비밀번호를 입력해 주세요.');
