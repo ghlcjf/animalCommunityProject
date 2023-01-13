@@ -58,10 +58,12 @@
 				</c:forEach>
 			</table>
 		</c:otherwise>
+
 	</c:choose>
 	<form action="<c:url value='/authorize/${member.id}' />">
 		<button type="submit" onclick="return authorize('${member.name}')">관리자권한 부여</button>
 	</form>
+			
 	<form action="<c:url value='/${member.id}' />">
 		<button type="submit" onclick="return memberDrop('${member.name}')">회원강제탈퇴</button>
 	</form>

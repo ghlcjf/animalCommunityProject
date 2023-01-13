@@ -42,6 +42,10 @@
 	</update>
 	 -->
 	
+	<!--메인화면에서 자유게시판 조회수 순서대로 인기글 출력-->
+	<select id="selectFreeBoardTop" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl order by viewCount DESC
+	</select>
 	
 	
 	<!-- 자유게시판 -->

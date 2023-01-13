@@ -65,8 +65,9 @@ public class LoginController {
 			}
 			
 			response.addCookie(rememberIdCookie);
-//			return "login/loginSuccess";
-			return "main";
+
+			return "redirect:/main"; //login/loginSuccess -> loginSuccess를 없앴음 
+
 		
 		}catch(IdPasswordNotMatchingException e) {
 			errors.reject("idPasswordNotMatching");

@@ -47,6 +47,7 @@
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 
+
 	<h2 style="text-align: center;">회원가입</h2>
 	<hr>
 	<form:form action="main" modelAttribute="formData">
@@ -99,7 +100,6 @@
 					<td>
 						<button type="submit"  onclick="return registerCheck()"><spring:message code="register.btn"/></button>
 					</td>
-					
 				</tr>
 			</table>
 		</div>

@@ -42,7 +42,7 @@ public class InsertFreeBoardController {
 		
 		return "freeBoard/insertFreeBoardForm";
 	}
-	
+							//insertFreeBoard
 	@PostMapping("/freeBoard/insertFreeBoard")
 	public String insertFreeBoard(@RequestParam(value="boardUrl2") MultipartFile file,
 			FreeBoardCommand freeBoardCommand,
@@ -75,8 +75,8 @@ public class InsertFreeBoardController {
 		freeBoardService.insertFreeBoard(freeBoardCommand);
 		
 		
-		
-		return "freeBoard/freeBoardSuccess";
+		//return "freeBoard/freeBoardSuccess";
+		return "redirect:/freeBoard/freeBoardList/main/1/1";
 	}
 
 }

@@ -106,7 +106,7 @@ public class ManagerController {
 	}
 	
 
-	@GetMapping("/memberManagement")
+	@GetMapping("/memberManagement") //회원조회
 	public String memberManagement(Model model) {
 		
 		List<User> memberList = animalDao.memberList();
@@ -126,7 +126,7 @@ public class ManagerController {
 		return "manager/memberManagement";
 	}
 	
-	@GetMapping("/member/detail/{name}")
+	@GetMapping("/member/detail/{name}") //회원 상세보기
 	public String memberDetail(@PathVariable("name") String name, HttpSession session) {
 		
 		User user = animalDao.selectByMemberName(name);
@@ -140,7 +140,7 @@ public class ManagerController {
 		return "manager/memberDetail";
 	}
 	
-	@GetMapping("/board/delete/{boardNum}")
+	@GetMapping("/board/delete/{boardNum}") //회원게시물 삭제
 	public String delete(@PathVariable("boardNum") long boardNum,Model model) {
 		
 //		System.out.println("삭제?");
@@ -154,12 +154,11 @@ public class ManagerController {
 		
 		return "manager/memberDetail";
 	}
-	
-	@RequestMapping("/{id}")
+			
+	@RequestMapping("/{id}") //회원삭제
 	public String dropMember(@PathVariable("id") String id) {
 		System.out.println(id);
 		animalDao.dropMember(id);
-		
 		return "redirect:/memberManagement";
 	}
 	
@@ -190,10 +189,10 @@ public class ManagerController {
 		return "redirect:/reportBoard";
 	}
 	
-	//////------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	
-	@GetMapping("/boardManagement/animalInfo")
+	@GetMapping("/boardManagement/animalInfo") //동물소개 게시판 
 	public String animalInfoMenu(Model model) {
 		
 		List<AnimalInfo> animalInfoList = animalInfoService.selectAllAnimalInfoList();
@@ -203,7 +202,7 @@ public class ManagerController {
 		return "manager/animalInfoMenu";
 	}
 	
-	@GetMapping("/boardManagement/hospitalInfo")
+	@GetMapping("/boardManagement/hospitalInfo") //동물병원 게시판
 	public String hospitalInfoMenu(Model model) {
 		
 		List<HospitalInfo> hospitalInfoList = hospitalInfoService.selectAllHospitalInfoList();
@@ -213,7 +212,7 @@ public class ManagerController {
 		return "manager/hospitalInfoMenu";
 	}
 	
-	@GetMapping("/boardManagement/issue")
+	@GetMapping("/boardManagement/issue") //이슈게시판
 	public String issueBoardMenu(Model model) {
 		
 		List<Issue> issueBoardList = issueBoardService.selectAllIssueBoardList();
@@ -224,7 +223,7 @@ public class ManagerController {
 	}
 	
 	
-	@GetMapping("/boardManagement/notice")
+	@GetMapping("/boardManagement/notice") //공지게시판
 	public String noticeMenu(Model model) {
 		
 		List<FreeBoard> noticeList = selectAllNoticeService.selectAllNoticeList();
@@ -246,7 +245,7 @@ public class ManagerController {
 	
 	
 	
-	//-----------------------------------글 작성--------------------------------------
+//-----------------------------------글 작성--------------------------------------
 	
 	@GetMapping("/manager/writeForm/{kind}")
 	public String writeBoard(@PathVariable("kind") String kind, Model model) {
@@ -275,8 +274,8 @@ public class ManagerController {
 		return url;
 	}
 	
-	
-	@PostMapping("/manager/writeNotice")
+			
+	@PostMapping("/manager/writeNotice") //공지사항 글쓰기
 	public String insertFreeBoard(@RequestParam(value="boardUrl2") MultipartFile file,
 			FreeBoardCommand freeBoardCommand,
 			Errors errors,HttpSession session
@@ -304,12 +303,12 @@ public class ManagerController {
 		freeBoardService.insertFreeBoard(freeBoardCommand);
 		
 		
-		
-		return "manager/success";
+		return "redirect:/boardManagement/notice";
 	}
 	
-	
-	@PostMapping("/manager/writeIssue")
+
+			
+	@PostMapping("/manager/writeIssue")	//이슈게시판 글쓰기
 	public String insertIssueBoard(@RequestParam(value="issueUrl2") MultipartFile file,
 			IssueBoardCommand issueBoardCommand,
 			Errors errors,HttpSession session) throws Exception, IOException {
@@ -338,10 +337,10 @@ public class ManagerController {
 		issueBoardService.insertIssueBoard(issueBoardCommand);
 		
 		
-		return "manager/success";
+		return "redirect:/boardManagement/issue";
 	}
 	
-	@PostMapping("/manager/writeHospitalInfo")
+	@PostMapping("/manager/writeHospitalInfo") //병원 정보 글쓰기
 	public String insertHospitalInfo(HospitalInfoCommand hospitalInfoCommand,
 			Errors errors,HttpSession session) {
 		
@@ -357,11 +356,11 @@ public class ManagerController {
 		hospitalInfoService.insertHospitalInfo(hospitalInfoCommand);
 		
 		
-		return "manager/success";
+		return "redirect:/boardManagement//hospitalInfo";
 		
 	}
 
-	@PostMapping("/manager/writeAnimalInfo")
+	@PostMapping("/manager/writeAnimalInfo") //동물소개 글쓰기
 	public String insertAnimalInfo(@RequestParam(value="animalUrl2") MultipartFile file,
 			AnimalInfoCommand animalInfoCommand,
 			Errors errors,
@@ -391,8 +390,9 @@ public class ManagerController {
 		
 		
 		
-		return "manager/success";
+		return "redirect:/boardManagement/animalInfo";
 	}
+
 	@PostMapping("/manager/writeImage")
 	public String insertImage(@RequestParam(value="imageUrl2") MultipartFile file,
 			ImageCommand imageCommand,
@@ -421,7 +421,8 @@ public class ManagerController {
 	
 	//----------------------------------------------------------------------------------
 	
-	@GetMapping("/manager/updateForm/{kind}/{boardNum}")
+@GetMapping("/manager/updateForm/{kind}/{boardNum}") 
+
 	public String updateBoardForm(@PathVariable("kind") String kind,
 			@PathVariable("boardNum") long boardNum, Model model) {
 		String url = null;
@@ -448,7 +449,7 @@ public class ManagerController {
 			model.addAttribute("image", image);
 			url = "manager/updateImageForm";
 		}else {
-			return "redirect:/manager/managerMain";
+			return "redirect:/managerMain";
 		}
 		
 		
@@ -456,7 +457,7 @@ public class ManagerController {
 	}
 	
 	
-	@PostMapping("/manager/updateNotice")
+	@PostMapping("/manager/updateNotice") //공지 수정
 	public String updateNotice(@RequestParam(value="boardUrl2") MultipartFile file,
 			FreeBoardCommand freeBoardCommand,
 			Errors errors,HttpSession session,
@@ -487,12 +488,12 @@ public class ManagerController {
 		
 		freeBoardService.updateFreeBoard(freeBoardCommand);
 		
-		return "manager/success";
+		return "redirect:/boardManagement/notice";
 	}
 	
 	
 	
-	@PostMapping("/manager/updateIssueBoard")
+	@PostMapping("/manager/updateIssueBoard")//이슈 수정
 	public String updateIssueBoard(@RequestParam(value="issueUrl2") MultipartFile file,
 			IssueBoardCommand issueBoardCommand,
 			Errors errors,HttpSession session,
@@ -524,11 +525,11 @@ public class ManagerController {
 		
 		issueBoardService.updateIssueBoard(issueBoardCommand);
 		
-		return "manager/success";
+		return "redirect:/boardManagement/issue";
 	}
 	
 	
-	@PostMapping("/manager/updateAnimalInfo")
+	@PostMapping("/manager/updateAnimalInfo") //동물소개 수정
 	public String updateAnimalInfo(@RequestParam(value="animalUrl2") MultipartFile file,
 			AnimalInfoCommand animalInfoCommand,
 			Errors errors,HttpSession session,
@@ -559,9 +560,10 @@ public class ManagerController {
 		
 		animalInfoService.updateAnimalInfo(animalInfoCommand);
 		
-		return "manager/success";
+		return "redirect:/boardManagement/animalInfo";
 	}
 	
+
 	@PostMapping("/manager/updateImage")
 	public String updateImage(@RequestParam(value="imageUrl2") MultipartFile file,
 			ImageCommand imageCommand, HttpServletRequest request) throws Exception, IOException {
@@ -584,15 +586,11 @@ public class ManagerController {
 		
 		return "redirect:/boardManagement/image";
 	}
-	
-	
-	@PostMapping("/manager/updateHospitalInfo")
+
+	@PostMapping("/manager/updateHospitalInfo") //병원 정보 수정
 	public String updateHospitalInfo(HospitalInfoCommand hospitalInfoCommand,
 			Errors errors,HttpSession session,
 			HttpServletRequest request) {
-		
-		
-		
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		if(userInfo!=null) {
 			hospitalInfoCommand.setName(userInfo.getName());
@@ -603,32 +601,35 @@ public class ManagerController {
 		
 		hospitalInfoService.updateHospitalInfo(hospitalInfoCommand);
 		
-		return "manager/success";
+		return "redirect:/boardManagement/hospitalInfo";
 	}
 	
-	
-	@GetMapping("/manager/delete/{kind}/{boardNum}")
+//----삭제-----------------------------------------------------------------------------------------------------	
+	@GetMapping("/manager/delete/{kind}/{boardNum}") 
 	public String deleteBoard(@PathVariable("kind") String kind,
 			@PathVariable("boardNum") long boardNum) {
 		
 		
 		if(kind.equals("notice")) {
 			freeBoardService.deleteFreeBoardByBoardNum(boardNum);
+			return "redirect:/boardManagement/notice";
 		}else if(kind.equals("issue")){
 			issueBoardService.deleteIssueBoardByBoardNum(boardNum);
+			return "redirect:/boardManagement/issue";
 		}else if(kind.equals("animalInfo")) {
 			animalInfoService.deleteAnimalInfoByBoardNum(boardNum);
+			return "redirect:/boardManagement/animalInfo";
 		}else if(kind.equals("hospitalInfo")) {
 			hospitalInfoService.deleteHospitalInfoByBoardNum(boardNum);
+			return "redirect:/boardManagement/hospitalInfo";
+
 		}else if(kind.equals("image")){
 			imageService.deleteImageByBoardNum(boardNum);
+			return "redirect:/boardManagement/image";
 		}else {
-			return "redirect:/manager/managerMain";
+			return "redirect:/managerMain";
 		}
 		
-		
-		return "manager/deleteSuccess";
-
 	}
 	
 	

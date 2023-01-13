@@ -44,10 +44,10 @@
 				</div>
 			</c:if>
 			
-			<!-- 세션이 있으면 -->
+			<!-- 세션이 있으면 , 필요없는 클래스 없애거나 css 수정-->
 			<c:if test="${!empty userInfo}">
 				<ul class="nav justify-content-end">
-					<li class="nav-link active" aria-current="page">${userInfo.name}님</li>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
+					<li>${userInfo.name}님</li>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
 						<c:if test="${userInfo.admin eq 1 }">
 							<li class="nav-link active" aria-current="page"><a href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
 						</c:if>
@@ -55,11 +55,19 @@
 				</ul>
 				<div class="menu_bar">
 					<ul class="nav justify-content-center">
+<<<<<<< HEAD
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>' style="color:white;">자유게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo"/>' style="color:white;">동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main"/>' style="color:white;">동물 병원 정보</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>' style="color:white;">이슈</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/myPage"/>' style="color:white;">마이페이지</a></li>
+=======
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>'>자유게시판</a></li>
+						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo"/>'>동물 소개</a></li>
+						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main"/>'>동물 병원 정보</a></li>
+						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>'>이슈</a></li>
+						<li class="nav-item"><a class="nav-link" href='<c:url value=""/>'>마이페이지</a></li>
+>>>>>>> refs/heads/eunjin6
 					</ul>			
 				</div>
 			</c:if>			
