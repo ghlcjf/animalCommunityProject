@@ -131,7 +131,7 @@ public class FreeBoardController {
 		
 		freeBoardService.deleteFreeBoardByBoardNum(boardNum);
 		
-		return "redirect:/freeBoard/freeBoardList/main";
+		return "redirect:/freeBoard/freeBoardList/main/1/1";
 	}
 	
 	

@@ -72,6 +72,11 @@ public class AnimalDao {
 		sqlSession.insert("mybatis.mapper.member.insertFreeComment", fcc);
 		
 	}
+	public void updateFreeBoardCommentCount(int boardNum) {
+		// 댓글 저장한 게시글의 commentCount 올리는 메서드
+		sqlSession.update("mybatis.mapper.member.updateFreeBoardCommentCount", boardNum);
+	}
+
 	
 	
 
@@ -352,6 +357,7 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.nameCheck",name);
 	}
 
+	
 
 
 }

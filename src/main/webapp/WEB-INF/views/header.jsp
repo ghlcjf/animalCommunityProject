@@ -49,13 +49,13 @@
 				<ul class="nav justify-content-end">
 					<li class="nav-link active" aria-current="page">${userInfo.name}님</li>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
 						<c:if test="${userInfo.admin eq 1 }">
-							<li><a class="nav-link" href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
+							<li class="nav-link active" aria-current="page"><a href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
 						</c:if>
-					<li><a class="nav-link" href='<c:url value="/logout"/>' onclick="test()">로그아웃</a></li>
+					<li class="nav-link active" aria-current="page"><a href='<c:url value="/logout"/>' onclick="test()">로그아웃</a></li>
 				</ul>
 				<div class="menu_bar">
 					<ul class="nav justify-content-center">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main"/>' style="color:white;">자유게시판</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>' style="color:white;">자유게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo"/>' style="color:white;">동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main"/>' style="color:white;">동물 병원 정보</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>' style="color:white;">이슈</a></li>

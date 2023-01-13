@@ -88,10 +88,15 @@
 		INSERT INTO freeCommentTbl
 		Values(FREECOMMENT_SEQ.nextval,#{boardNum},#{commentContent},#{name},sysdate)
 	</insert>
+	<update id="updateFreeBoardCommentCount">
+		UPDATE FreeBoardTbl
+		SET commentCount=commentCount+1
+		WHERE boardNum=#{boardNum}
+	</update>
 	
 	<insert id="insertFreeBoard" parameterType="freeBoardCommand">
 		INSERT INTO freeBoardTbl
-		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},#{boardUrl},0,0,0,0)
+		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},#{boardUrl},0,0,0,0,0)
 	</insert>
 	<update id="updateFreeBoard" parameterType="freeBoardCommand">
 		UPDATE freeBoardTbl 

@@ -20,12 +20,12 @@ public class LoginCheckIntercepter implements HandlerInterceptor{
 		HttpSession session = request.getSession();
 		
 		if(session != null) {
-			Object obj = session.getAttribute("loginInfo");
+			Object obj = session.getAttribute("userInfo");
 			if(obj !=null) {
 				return true; //로그인된 계정이 존재한다면 => 패스
 			}
 		}
-		response.sendRedirect(request.getContextPath()+"login");
+		response.sendRedirect(request.getContextPath()+"/login");
 		return false;
 	}
 

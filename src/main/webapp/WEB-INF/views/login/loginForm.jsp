@@ -45,11 +45,17 @@
 			</label>
 		</p>
 	
-		<button type="submit">
+		<button type="submit" onclick="return loginCheck()">
 			<spring:message code="login.btn"/>
 		</button>
 	</form:form>
 
 </body>
+<script type="text/javascript">
+	function loginCheck(){
+		alert('1234');
+		return false;
+	}
+</script>
 </html>
 

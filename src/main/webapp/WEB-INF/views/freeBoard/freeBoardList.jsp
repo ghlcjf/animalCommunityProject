@@ -42,7 +42,7 @@
 				<tr>
 					<td>${notice.boardNum }</td>
 					<td>
-						<a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle }</a>
+						<a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle } (${notice.commentCount})</a>
 					</td>
 					<td>${notice.viewCount }</td>
 					<td>${notice.name }</td>
@@ -59,7 +59,7 @@
 				<tr>
 					<td>${board.boardNum }</td>
 					<td>
-						<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">${board.boardTitle }</a>
+						<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">${board.boardTitle} (${board.commentCount})</a>
 					</td>
 					<td>${board.viewCount }</td>
 					<td>${board.name }</td>

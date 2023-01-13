@@ -7,10 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-<script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<!-- <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script> -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -23,10 +23,8 @@
 		<tr>
 			<td colspan="4">
 				<form>
-					<c:url value="/freeBoard/updateFreeBoardForm/${freeBoard.boardNum}" var="updateUrl" />
-					<button type="button" onclick="location.href='${updateUrl}'">수정</button>
-					<c:url value="/freeBoard/deleteFreeBoard/${freeBoard.boardNum}" var="deleteUrl" />
-						<button type="button" onclick="location.href='${deleteUrl}'">삭제</button>
+					<button type="button" onclick="return updateConfirm(${freeBoard.boardNum})">수정</button>
+					<button type="button" onclick="return deleteConfirm(${freeBoard.boardNum})">삭제</button>
 				</form>
 			</td>
 		</tr>
@@ -155,15 +153,7 @@
 			alert('댓글을 입력해 주세요');
 			return;
 		}
-		/* let command = {
-				"name":name,
-				"commentContent":comment,
-				"boardNum":boardNum
-		} */
-		// 여기부터 내일하기 더이상 모르겠음 ㅋ 위에 3개 묶어서 한번에 에이젝스로 보낸 뒤 댓글 저장하고 해당 댓글 받아와서 html 끼워넣기
-		console.log(boardNum);
-		console.log(name);
-		console.log(comment);
+		
 		$.ajax({
 			type:"GET",
 			url:"${context}/insertComment",
@@ -190,6 +180,25 @@
 			}
 			
 		});
+	}
+	function deleteConfirm(deleteNum){
+		let boardNum = deleteNum;
+		let cc = confirm('게시물을 삭제하시겠습니까?');
+		if(cc==false){
+			return false;
+		}else{
+			location.href="/animalCommunity/freeBoard/deleteFreeBoard/"+boardNum;
+		} 
+	}
+	
+	function updateConfirm(updateNum){
+		let boardNum = updateNum;
+		let cc = confirm('게시물을 수정하시겠습니까?');
+		if(cc==false){
+			return false;
+		}else{
+			location.href="/animalCommunity/freeBoard/updateFreeBoardForm/"+boardNum;
+		} 
 	}
 
 </script>

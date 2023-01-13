@@ -34,6 +34,28 @@
 	</bean>
 	
 	
+	<!-- 인터셉터 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/freeBoard/**"/>
+			<mvc:mapping path="/animalInfo/**"/>
+			<mvc:mapping path="/animal/**"/>
+			<mvc:mapping path="/hospitalInfo/**"/>
+			<mvc:mapping path="/hospital/**"/>
+			<mvc:mapping path="/issue/**"/>
+			<mvc:mapping path="/myPage/**"/>
+			<bean class="animal.intercepter.LoginCheckIntercepter"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/manager/**"/>
+			<mvc:mapping path="/boardManagement/**"/>
+			<mvc:mapping path="/memberManagement/**"/>
+			<mvc:mapping path="/member/**"/>			
+			<bean class="animal.intercepter.ManagerCheckIntercepter"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 	
 	
