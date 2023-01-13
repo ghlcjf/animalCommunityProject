@@ -21,11 +21,24 @@ public class NameCheckController {
 	public String nameCheck(@RequestParam("name") String name) {
 		
 		String nickName = nameCheckService.nameCheck(name);
-		
+
 		if(nickName==null) {
 			return "사용가능한 닉네임 입니다.";
 		}
 		
 		return "이미 사용중인 닉네임 입니다.";
+	}
+	
+	@RequestMapping(value="/idCheck",produces = "application/text; charset=UTF-8")
+	public String idCheck(@RequestParam("id") String id) {
+		
+		System.out.println(id);
+		String newId = nameCheckService.idCheck(id);
+
+		if(newId==null) {
+			return "사용가능한 아이디 입니다.";
+		}
+		
+		return "이미 사용중인 아이디 입니다.";
 	}
 }

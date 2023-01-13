@@ -7,7 +7,7 @@
 <mapper namespace="mybatis.mapper.member"> <!-- 여러 개의 매퍼 중 특정 한 개를 찾을 때 쓰는 것..?/ MemberDao에서 찾을 때 사용하는 이름 -->
 										   <!-- return sqlSession.selectList("mybatis.mapper.member.selectAll"); namespace="mybatis.mapper.member"-->
 										   
-										   
+									   
 	<!-- <resultMap type="member" id="memVo">
 		<result column="id" property="id"/>
 		<result column="email" property="email"/>
@@ -309,6 +309,14 @@
 	<select id="selectName" parameterType="long" resultType="String">
 		select name FROM freeBoardTbl WHERE boardNum=#{boardNum}
 	</select>
+	
+	<update id="authorize" parameterType="String">
+		UPDATE userTbl SET admin=1 WHERE id = #{id}
+	</update>
+	
+	<select id="reportFreeBoard" resultType="freeBoard">
+		SELECT * FROM freeBoardTbl WHERE report>0 ORDER BY report DESC    
+	</select>
 
 
 
@@ -382,5 +390,15 @@
 		FROM userTbl WHERE name=#{name}
 	</select>
 	
+	<update id="changeInfo" parameterType="user">
+		UPDATE userTbl
+		SET id=#{id}, password=#{password},name=#{name},email=#{email},phone=#{phone},admin=#{admin}
+		WHERE id=#{id}
+	</update>
+	
+	<select id="idCheck" resultType="String" parameterType="String">
+		SELECT id
+		FROM userTbl WHERE id=#{id}
+	</select>
 	
 </mapper>

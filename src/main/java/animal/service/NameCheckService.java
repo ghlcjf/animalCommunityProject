@@ -17,5 +17,12 @@ public class NameCheckService {
 		
 		return nickName;
 	}
+
+	public String idCheck(String id) {
+		
+		String newId = animalDao.idCheck(id);
+		
+		return newId;
+	}
 	
 }

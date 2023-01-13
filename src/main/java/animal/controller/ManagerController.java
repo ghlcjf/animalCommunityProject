@@ -23,10 +23,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import animal.dao.AnimalDao;
 import animal.service.AnimalInfoService;
+import animal.service.AuthorizeService;
 import animal.service.FreeBoardService;
 import animal.service.HospitalInfoService;
 import animal.service.ImageService;
 import animal.service.IssueBoardService;
+import animal.service.ReportBoardService;
 import animal.service.SelectAllNoticeListService;
 import animal.vo.AnimalInfo;
 import animal.vo.AnimalInfoCommand;
@@ -80,9 +82,19 @@ public class ManagerController {
 		this.selectAllNoticeService = selectAllNoticeService;
 	}
 	
+
 	private ImageService imageService;
 	public void setImageService(ImageService imageService) {
 		this.imageService = imageService;
+	}	
+	private AuthorizeService authorizeService;
+	public void setAuthorizeService(AuthorizeService authorizeService) {
+		this.authorizeService = authorizeService;
+	}
+	
+	private ReportBoardService reportBoardService;
+	public void setReportBoardService(ReportBoardService reportBoardService) {
+		this.reportBoardService = reportBoardService;
 	}
 
 
@@ -143,16 +155,40 @@ public class ManagerController {
 		return "manager/memberDetail";
 	}
 	
-	@RequestMapping("/member/drop/{id}")
+	@RequestMapping("/{id}")
 	public String dropMember(@PathVariable("id") String id) {
 		System.out.println(id);
 		animalDao.dropMember(id);
 		
-		return "manager/dropMemberSuccess";
+		return "redirect:/memberManagement";
 	}
-
 	
+	@RequestMapping("/authorize/{id}")
+	public String authorize(@PathVariable("id") String id) {
+		System.out.println(id);
+		
+		authorizeService.authorize(id);
+		
+		return "redirect:/memberManagement";
+	}
 	
+	//---------------------------------------------신고 게시물----------------------------------------------
+	@GetMapping("/reportBoard")
+	public String reportBoard(Model model) {
+		List<FreeBoard> freeBoard = reportBoardService.reportFreeBoard();
+		
+		model.addAttribute("freeBoard",freeBoard);
+		
+		return "/manager/reportBoardList";
+	}
+	
+	@RequestMapping("/reportBoardDelete/{boardNum}")
+	public String reportBoardDelete(@PathVariable("boardNum") long boardNum) {
+		
+		animalDao.boardDelete(boardNum);
+		
+		return "redirect:/reportBoard";
+	}
 	
 	//////------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
