@@ -30,13 +30,13 @@
 				<td>병원 지역</td>
 				<td>
 					<form:select path="hospitalLoc">
-						<form:option value="seoul" >서울</form:option>
-						<form:option value="gyeonggi" >경기도</form:option>
-						<form:option value="gangwon" >강원도</form:option>
-						<form:option value="chungcheong" >충청도</form:option>
-						<form:option value="gyeongsang" >경상도</form:option>
-						<form:option value="jeolla" >전라도</form:option>
-						<form:option value="jeju" >제주도</form:option>
+						<form:option value="서울" >서울</form:option>
+						<form:option value="경기도" >경기도</form:option>
+						<form:option value="강원도" >강원도</form:option>
+						<form:option value="충청도" >충청도</form:option>
+						<form:option value="경상도" >경상도</form:option>
+						<form:option value="전라도" >전라도</form:option>
+						<form:option value="제주도" >제주도</form:option>
 					</form:select>
 					<form:errors path="hospitalLoc" />
 				</td>

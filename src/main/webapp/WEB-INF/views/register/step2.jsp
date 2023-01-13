@@ -41,6 +41,7 @@
 		}
 		
 	</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
@@ -50,59 +51,141 @@
 
 	<h2 style="text-align: center;">회원가입</h2>
 	<hr>
-	<form:form action="main" modelAttribute="formData">
+	<form:form action="main" modelAttribute="formData" id="frm">
 		<div id="register-box">
 			<table class="register-table">
 				<tr>
 					<td><spring:message code="name"/></td>
 					<td>
 						<form:input class="form-control" path="name"/>
-						<form:errors path="name"/>
+						<input type="hidden" name="nameBtnCheck" id="nameBtnCheck">
+						<button type="button" onclick="nameCheck()">중복 체크</button>
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="id"/></td>
 					<td>
 						<form:input class="form-control" path="id"/>
-						<form:errors path="id"/>				
+						<input type="hidden" name="idBtnCheck" id="idBtnCheck">
+						<button type="button" onclick="idCheck()">중복 체크</button>			
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="password"/></td>
 					<td>
 						<form:input class="form-control" path="password" type="password"/>
-						<form:errors path="password"/>
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="password.confirm"/></td>
 					<td>
-						<form:input class="form-control" path="confirmPassword" type="password"/>
-						<form:errors path="confirmPassword"/>
+						<form:input class="form-control" path="confirmPassword" type="password"/>				
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="email"/></td>
 					<td>
 						<form:input class="form-control" path="email" type="email"/>
-						<form:errors path="email"/>
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="phone"/></td>
 					<td>
 						<form:input class="form-control" path="phone" placeholder="-하이폰을 입력해주세요"/>
-						<form:errors path="phone"/>
 					</td>	
 				</tr>
 				<tr>
 					<td></td>
 					<td>
-						<button type="submit"  onclick="return registerCheck()"><spring:message code="register.btn"/></button>
+						<button type="submit" onclick="return signUp()"><spring:message code="register.btn"/></button>
 					</td>
 				</tr>
 			</table>
 		</div>
 	</form:form>
+	
+	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
+	<script type="text/javascript">
+		function nameCheck(){
+			
+			let name = document.getElementById('name').value;
+			
+			if(name.length==0){
+				alert('닉네임을 입력해주세요.');
+				return false;
+			}
+			
+			let url = "${context}/newNameWindow/"+name;
+			
+			window.open(url,'_blank_1',
+			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
+		}
+		
+		function idCheck(){
+			
+			let id = document.getElementById('id').value;
+			
+			if(id.length==0){
+				alert('아이디를 입력해주세요.');
+				return false;
+			}
+			
+			let url = "${context}/newIdWindow/"+id;
+			
+			window.open(url,'_blank_2',
+			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
+		}
+		
+		function signUp(){
+			let name = $('#name').val();
+			let id = $('#id').val();
+			let password = $('#password').val();
+			let confirmPassword = $('#confirmPassword').val();
+			let email = $('#email').val();
+			let phone = $('#phone').val();
+			
+			let nameBtnCheck = document.getElementById('nameBtnCheck').value;
+			let idBtnCheck = document.getElementById('idBtnCheck').value;
+			
+			if(name.length==0){
+				alert('닉네임을 입력해주세요');
+				return false;
+			} 
+			if(id.length==0){
+				alert('아이디를 입력해주세요');
+				return false;
+			}
+			if(password.length==0){
+				alert('비밀번호를 입력해주세요');
+				return false;
+			}
+			if(confirmPassword.length==0){
+				alert('비밀번호확인을 입력해주세요');
+				return false;
+			}
+			if(password!=confirmPassword){
+				alert('비밀번호가 일치하지 않습니다.');
+				return false;
+			}
+			if(email.length==0){
+				alert('이메일을 입력해주세요');
+				return false;
+			}
+			if(phone.length==0){
+				alert('전화번호를 입력해주세요');
+				return false;
+			}
+			if(nameBtnCheck.length==0){
+				alert('닉네임 중복체크를 해주세요.')	
+				return false;
+			}
+			if(idBtnCheck.length==0){
+				alert('아이디 중복체크를 해주세요.')	
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
 </body>
 </html>

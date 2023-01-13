@@ -23,7 +23,7 @@
 			<label><spring:message code="name"/>
 				<form:input path="name" />
 				<input type="hidden" name="oldName" id="oldName" value="${user.name}">
-				<input type="hidden" name="btnCheck" id="btnCheck">
+				<input type="hidden" name="nameBtnCheck" id="nameBtnCheck">
 				<button type="button" onclick="nameCheck()">중복 체크</button>
 			</label>
 		</p>
@@ -67,9 +67,9 @@
 
 			let newPassword = document.getElementById('newPassword').value;
 			let oldPassword = document.getElementById('oldPassword').value;
-			let btnCheck = document.getElementById('btnCheck').value;
+			let nameBtnCheck = document.getElementById('nameBtnCheck').value;
 			
-			if(btnCheck.length==0){
+			if(nameBtnCheck.length==0){
 				alert('닉네임 중복체크를 해주세요.')
 				
 				return false;
@@ -100,7 +100,7 @@
 				return false;
 			}
 			
-			let url = "${context}/newWindow/"+name;
+			let url = "${context}/newNameWindow/"+name;
 			
 			window.open(url,'_blank_1',
 			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');

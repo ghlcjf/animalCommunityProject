@@ -65,21 +65,18 @@
 	<div id="loginformBox">
 	
 		<form:form modelAttribute="loginCommand">
-			<form:errors/><!--path없을시 글로벌 에러-->
 			<h4 style="text-align: center;">로그인</h4>
 			<hr>
 				<table class="col">
 					<tr>
 						<th class="loginId">
 							<form:input class="form-control" path="id" placeholder="id"/>
-							<form:errors path="id"/>
 						</th>
 								
 					</tr>
 					<tr>
 						<th class="loginPwd">
 							<form:input class="form-control" path="password" type="password" placeholder="password"/>
-							<form:errors path="password"/>
 						</th>
 					</tr>
 					<tr>

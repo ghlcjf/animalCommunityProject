@@ -39,7 +39,6 @@ public class MainController {
 		
 		List<FreeBoard> freeBoardList = selectAllFreeBoardListService.selectAllFreeBoardList();
 		List<Image> imageList = imageService.selectAllImageList();
-		System.out.println(imageList.get(0).getImageUrl());
 		
 		List<Issue> issueList = animalDao.selectAllIssueList(); //이슈게시판 정보 
 		//메인-인기글 10개 띄우는거 

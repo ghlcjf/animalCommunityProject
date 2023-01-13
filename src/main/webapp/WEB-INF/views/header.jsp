@@ -39,7 +39,7 @@
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/login"/>' onclick="afterLogin()">동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/login"/>' onclick="afterLogin()">동물 병원 정보</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/login"/>' onclick="afterLogin()">이슈</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value=""/>' onclick="afterLogin()">마이페이지</a></li>
+						<li class="nav-item"><a class="nav-link" href='<c:url value="/login"/>' onclick="afterLogin()">마이페이지</a></li>
 					</ul>		
 				</div>
 			</c:if>
@@ -55,19 +55,12 @@
 				</ul>
 				<div class="menu_bar">
 					<ul class="nav justify-content-center">
-<<<<<<< HEAD
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>' style="color:white;">자유게시판</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo"/>' style="color:white;">동물 소개</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main"/>' style="color:white;">동물 병원 정보</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>' style="color:white;">이슈</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value="/myPage"/>' style="color:white;">마이페이지</a></li>
-=======
+																															
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>'>자유게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo"/>'>동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main"/>'>동물 병원 정보</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>'>이슈</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value=""/>'>마이페이지</a></li>
->>>>>>> refs/heads/eunjin6
+						<li class="nav-item"><a class="nav-link" href='<c:url value="/myPage"/>'>마이페이지</a></li>
 					</ul>			
 				</div>
 			</c:if>			
@@ -83,7 +76,7 @@
 	<script type="text/javascript">
 	//로그아웃시 경고창 띄움
 		function test(){
-			alert("로그아웃하시겠습니까?");
+			confirm("로그아웃하시겠습니까?");
 		}
 	
 		function afterLogin(){

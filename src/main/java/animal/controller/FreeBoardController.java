@@ -130,7 +130,6 @@ public class FreeBoardController {
 	public String deleteFreeBoard(@PathVariable("boardNum") long boardNum) {
 		
 		freeBoardService.deleteFreeBoardByBoardNum(boardNum);
-		
 		return "redirect:/freeBoard/freeBoardList/main/1/1";
 	}
 	

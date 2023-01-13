@@ -128,8 +128,8 @@
 		 FROM  (SELECT * FROM freeBoardTbl 
 				ORDER BY boardNum DESC) 
 		 b) 
-		WHERE nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
-		AND ((#{section}-1)*100)+ (#{pageNum}*10) 
+		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)) AND boardCategory!='공지사항'
 	</select>
 	
 	<select id="selectAnimalTargetFreeBoards" parameterType="sectionPage" resultType="freeBoard">
@@ -139,8 +139,8 @@
 				WHERE boardCategory=#{boardCategory} 
 				ORDER BY boardNum DESC) 
 		 b) 
-		WHERE nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
-		AND ((#{section}-1)*100)+ (#{pageNum}*10) 
+		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)) AND boardCategory!='공지사항'
 	</select>
 	
 	<!-- 이슈 -->
