@@ -46,7 +46,7 @@
 	
 	<!-- 자유게시판 -->
 	<select id="selectAllFreeBoard" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory!='notice' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory!='공지사항' ORDER BY boardNum DESC
 	</select>
 	
 	<select id="selectByFreeBoardNum" resultType="freeBoard" parameterType="long">
@@ -88,10 +88,15 @@
 		INSERT INTO freeCommentTbl
 		Values(FREECOMMENT_SEQ.nextval,#{boardNum},#{commentContent},#{name},sysdate)
 	</insert>
+	<update id="updateFreeBoardCommentCount">
+		UPDATE FreeBoardTbl
+		SET commentCount=commentCount+1
+		WHERE boardNum=#{boardNum}
+	</update>
 	
 	<insert id="insertFreeBoard" parameterType="freeBoardCommand">
 		INSERT INTO freeBoardTbl
-		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},#{boardUrl},0,0,0,0)
+		VALUES(freeBoard_seq.nextval,#{boardTitle},#{boardContent},#{name},sysdate,#{boardCategory},#{boardUrl},0,0,0,0,0)
 	</insert>
 	<update id="updateFreeBoard" parameterType="freeBoardCommand">
 		UPDATE freeBoardTbl 
@@ -101,26 +106,9 @@
 	</update>
 	
 	
-	<select id="selectDogFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='강아지' AND boardCategory!='notice' ORDER BY boardNum DESC
-	</select>
-	<select id="selectCatFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='고양이' AND boardCategory!='notice' ORDER BY boardNum DESC
-	</select>
-	<select id="selectReptileFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='파충류' AND boardCategory!='notice' ORDER BY boardNum DESC
-	</select>
-	<select id="selectBirdsFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='조류' AND boardCategory!='notice' ORDER BY boardNum DESC
-	</select>
-	<select id="selectFishFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='어류' AND boardCategory!='notice' ORDER BY boardNum DESC
-	</select>
-	<select id="selectOtherFreeBoardList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='기타' AND boardCategory!='notice' ORDER BY boardNum DESC
-	</select>
 	<select id="selectAllNoticeList" resultType="freeBoard">
-		SELECT * FROM freeBoardTbl WHERE boardCategory='공지사항' ORDER BY boardNum DESC
+		SELECT * FROM freeBoardTbl WHERE boardCategory='공지사항' 
+		ORDER BY boardNum DESC 
 	</select>
 	
 	<select id="selectAllNumFreeBoard" resultType="int" parameterType="sectionPage">
@@ -322,6 +310,8 @@
 		select name FROM freeBoardTbl WHERE boardNum=#{boardNum}
 	</select>
 
+
+
 	<!-- 매니저페이지 -->
 	<insert id="insertIssueBoard" parameterType="issueBoardCommand">
 		INSERT INTO issueTbl
@@ -356,6 +346,11 @@
 		hospitalTel=#{hospitalTel}
 		WHERE boardNum=#{boardNum}
 	</update>
+	<update id="updateImage" parameterType="imageCommand">
+		UPDATE imageTbl
+		SET imageUrl=#{imageUrl}, imageInfo=#{imageInfo}
+		WHERE imageNum=#{imageNum}
+	</update>
 	<delete id="deleteIssueBoardByBoardNum" parameterType="long" timeout="20">
 		DELETE FROM issueTbl WHERE issueNum=#{issueNum}
 	</delete>
@@ -365,6 +360,19 @@
 	<delete id="deleteHospitalInfoByBoardNum" parameterType="long" timeout="20">
 		DELETE FROM hospitalInfoTbl WHERE boardNum=#{boardNum}
 	</delete>
+	<delete id="deleteImageByBoardNum" parameterType="long" timeout="20">
+		DELETE FROM imageTbl WHERE imageNum=#{imageNum}
+	</delete>
+	<select id="selectAllImageList" resultType="image">
+		SELECT * FROM imageTbl ORDER BY imageNum
+	</select>
+	<insert id="insertImage" parameterType="imageCommand">
+		INSERT INTO imageTbl
+		VALUES(image_seq.nextval,#{imageUrl},#{imageInfo})		
+	</insert>
+	<select id="selectImageByBoardNum" resultType="image">
+		SELECT * FROM imageTbl WHERE imageNum=#{imageNum}
+	</select>
 	
 	
 

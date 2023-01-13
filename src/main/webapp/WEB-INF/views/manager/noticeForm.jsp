@@ -11,7 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-	<jsp:include page="../header.jsp"></jsp:include>	
+<jsp:include page="../header.jsp"></jsp:include>	
 <h2>공지사항 작성하기</h2>
 
 <form:form action="/animalCommunity/manager/writeNotice" modelAttribute="freeBoardCommand" enctype="multipart/form-data">

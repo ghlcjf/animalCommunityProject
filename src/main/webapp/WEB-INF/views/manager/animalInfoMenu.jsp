@@ -13,16 +13,14 @@
 <c:choose>
 	<c:when test="${empty animalInfoList}">
 		<p>게시글이 없습니다.<br>
-		   <c:url value="/manager/writeForm/animalInfo" var="writeUrl" />
-		   <button type="button" onclick="location.href='${writeUrl}'">글 작성하기</button>
+		   <button type="button" onclick="return insertConfirm()">글 작성</button>
 		</p>
 	</c:when>
 	<c:otherwise>
 		<table border="1">
 			<tr>
 				<td colspan="5">
-					<c:url value="/manager/writeForm/animalInfo" var="writeUrl" />
-					<button type="button" onclick="location.href='${writeUrl}'">글 작성하기</button>
+					<button type="button" onclick="return insertConfirm()">글 작성</button>
 				</td>
 			</tr>
 			<tr>
@@ -39,10 +37,8 @@
 					<td>${animalInfo.animalCategory}</td>
 					<td>${animalInfo.name}</td>
 					<td>
-						<c:url value="/manager/updateForm/animalInfo/${animalInfo.animalNum}" var="updateUrl" />
-						<button type="button" onclick="location.href='${updateUrl}'">수정</button>
-						<c:url value="/manager/delete/animalInfo/${animalInfo.animalNum}" var="deleteUrl" />
-						<button type="button" onclick="location.href='${deleteUrl}'">삭제</button>
+						<button type="button" onclick="return updateConfirm(${animalInfo.animalNum})">수정</button>
+						<button type="button" onclick="return deleteConfirm(${animalInfo.animalNum})">삭제</button>
 					</td>
 				</tr>
 			</c:forEach>
@@ -54,4 +50,33 @@
 
 
 </body>
+<script type="text/javascript">
+	function deleteConfirm(deleteNum){
+		let boardNum = deleteNum;
+		let cc = confirm('게시물을 삭제하시겠습니까?');
+		if(cc==false){
+			return false;
+		}else{
+			location.href="/animalCommunity/manager/delete/animalInfo/"+boardNum;
+		} 
+	}
+	
+	function updateConfirm(updateNum){
+		let boardNum = updateNum;
+		let cc = confirm('게시물을 수정하시겠습니까?');
+		if(cc==false){
+			return false;
+		}else{
+			location.href="/animalCommunity/manager/updateForm/animalInfo/"+boardNum;
+		} 
+	}
+	function insertConfirm(){
+		let cc = confirm('게시물을 작성하시겠습니까?');
+		if(cc==false){
+			return false;
+		}else{
+			location.href="/animalCommunity//manager/writeForm/animalInfo";
+		} 
+	}
+</script>
 </html>

@@ -16,6 +16,13 @@ public class FreeBoard {
 	private int bad;
 	private int report;
 	private int viewCount;
+	private int commentCount;
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
 	public int getBoardNum() {
 		return boardNum;
 	}

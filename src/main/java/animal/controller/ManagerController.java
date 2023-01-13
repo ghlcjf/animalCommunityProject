@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,10 +20,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import animal.dao.AnimalDao;
 import animal.service.AnimalInfoService;
 import animal.service.FreeBoardService;
 import animal.service.HospitalInfoService;
+import animal.service.ImageService;
 import animal.service.IssueBoardService;
 import animal.service.SelectAllNoticeListService;
 import animal.vo.AnimalInfo;
@@ -31,6 +34,8 @@ import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.HospitalInfo;
 import animal.vo.HospitalInfoCommand;
+import animal.vo.Image;
+import animal.vo.ImageCommand;
 import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.LoginUserInfo;
@@ -75,7 +80,11 @@ public class ManagerController {
 		this.selectAllNoticeService = selectAllNoticeService;
 	}
 	
-	
+	private ImageService imageService;
+	public void setImageService(ImageService imageService) {
+		this.imageService = imageService;
+	}
+
 
 	@GetMapping("/manager/managerMain")
 	public String manager(HttpSession session) {
@@ -188,6 +197,16 @@ public class ManagerController {
 		return "manager/noticeMenu";
 	}
 	
+	@GetMapping("/boardManagement/image")
+	public String imageMenu(Model model) {
+		
+		List<Image> imageList = imageService.selectAllImageList();
+		
+		
+		model.addAttribute("imageList", imageList);
+		return "manager/imageMenu";
+	}
+	
 	
 	
 	
@@ -209,6 +228,9 @@ public class ManagerController {
 		}else if(kind.equals("animalInfo")) {
 			model.addAttribute("animalInfoCommand", new AnimalInfoCommand());
 			url = "manager/animalInfoForm";
+		}else if(kind.equals("image")) {
+			model.addAttribute("imageCommand", new ImageCommand());
+			url = "manager/imageForm";
 		}else {
 			return "redirect:/manager/managerMain";
 		}
@@ -335,6 +357,33 @@ public class ManagerController {
 		
 		return "manager/success";
 	}
+	@PostMapping("/manager/writeImage")
+	public String insertImage(@RequestParam(value="imageUrl2") MultipartFile file,
+			ImageCommand imageCommand,
+			Errors errors) throws Exception, IOException {
+		
+
+		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\image";
+		if (!file.isEmpty()) {
+            String filename = file.getOriginalFilename();
+
+            imageCommand.setImageUrl(filename);
+            file.transferTo(new File(uploadDir,filename));
+        }else {
+        	imageCommand.setImageUrl("null");
+        }
+		
+		
+		
+		imageService.insertImage(imageCommand);
+		
+		
+		
+		return "redirect:/boardManagement/image";
+	}
+	
+	
+	//----------------------------------------------------------------------------------
 	
 	@GetMapping("/manager/updateForm/{kind}/{boardNum}")
 	public String updateBoardForm(@PathVariable("kind") String kind,
@@ -358,6 +407,10 @@ public class ManagerController {
 			HospitalInfo hospitalInfo = hospitalInfoService.selectHospitalInfoByBoardNum(boardNum);
 			model.addAttribute("hospitalInfo", hospitalInfo);
 			url = "manager/updateHospitalInfoForm";
+		}else if(kind.equals("image")){
+			Image image = imageService.selectImageByBoardNum(boardNum);
+			model.addAttribute("image", image);
+			url = "manager/updateImageForm";
 		}else {
 			return "redirect:/manager/managerMain";
 		}
@@ -473,6 +526,30 @@ public class ManagerController {
 		return "manager/success";
 	}
 	
+	@PostMapping("/manager/updateImage")
+	public String updateImage(@RequestParam(value="imageUrl2") MultipartFile file,
+			ImageCommand imageCommand, HttpServletRequest request) throws Exception, IOException {
+		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\image";
+		
+		
+		
+		if (!file.isEmpty()) {
+            String filename = file.getOriginalFilename();
+
+            imageCommand.setImageUrl(filename);
+            file.transferTo(new File(uploadDir,filename));
+        }else {
+        	String filename = request.getParameter("originPic");
+        	imageCommand.setImageUrl(filename);
+        	
+        }
+		
+		imageService.updateImage(imageCommand);
+		
+		return "redirect:/boardManagement/image";
+	}
+	
+	
 	@PostMapping("/manager/updateHospitalInfo")
 	public String updateHospitalInfo(HospitalInfoCommand hospitalInfoCommand,
 			Errors errors,HttpSession session,
@@ -507,6 +584,8 @@ public class ManagerController {
 			animalInfoService.deleteAnimalInfoByBoardNum(boardNum);
 		}else if(kind.equals("hospitalInfo")) {
 			hospitalInfoService.deleteHospitalInfoByBoardNum(boardNum);
+		}else if(kind.equals("image")){
+			imageService.deleteImageByBoardNum(boardNum);
 		}else {
 			return "redirect:/manager/managerMain";
 		}

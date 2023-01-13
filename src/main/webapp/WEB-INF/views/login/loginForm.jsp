@@ -51,10 +51,13 @@
 			</label>
 		</p>
 	
+
 		<button type="submit" onclick="return loginCheck()">
+
 			<spring:message code="login.btn"/>
 		</button>
 	</form:form>
+
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
@@ -62,6 +65,7 @@
 		
 		let id = $('#id').val();
 		let password = $('#password').val();
+
 
 		if($('#id').val()==''){
 			alert('아이디를 입력해주세요');

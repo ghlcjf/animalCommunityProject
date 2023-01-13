@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import animal.dao.AnimalDao;
 import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
+import oracle.net.aso.f;
 
 @RestController
 public class InsertFreeCommentController {
@@ -40,7 +41,7 @@ public class InsertFreeCommentController {
 		
 		// 데이터 베이스로 보내기
 		animalDao.insertFreeComment(fcc);
-		
+		animalDao.updateFreeBoardCommentCount(fcc.getBoardNum());
 		
 		List<FreeComment> freeComments = animalDao.selectAllFreeComment2(boardNum);
 		
