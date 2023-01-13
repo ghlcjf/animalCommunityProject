@@ -61,6 +61,9 @@
 		<property name="animalDao" ref="animalDao"/>
 	</bean>
 
-
-
+	<!-- 이미지 관리 -->
+	<bean id="imageService" class="animal.service.ImageService">
+		<property name="animalDao" ref="animalDao"/>
+	</bean>
+	
 </beans>

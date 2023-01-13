@@ -88,15 +88,27 @@
 		<div id="main-left">
 			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 		  		<div class="carousel-inner">
-		    		<div class="carousel-item active">
-		      			<img src="./resources/image/사진1.PNG" class="d-block w-100" alt="사진1">
-			    	</div>
-			    	<div class="carousel-item">
-			      		<img src="./resources/image/사진2.PNG" class="d-block w-100" alt="사진2">
-			    	</div>
-			    	<div class="carousel-item">
-			      		<img src="./resources/image/사진3.PNG" class="d-block w-100" alt="사진3">
-			    	</div>
+		  			
+		  			<c:choose>
+		  				<c:when test="${empty imageList}">
+		  					<div class="carousel-item active">
+				      			<img src="./resources/image/사진1.PNG" class="d-block w-100" alt="사진1">
+					    	</div>
+					    	<div class="carousel-item active">
+				      			<img src="./resources/image/사진2.PNG" class="d-block w-100" alt="사진1">
+					    	</div>
+					    	<div class="carousel-item active">
+				      			<img src="./resources/image/사진3.PNG" class="d-block w-100" alt="사진1">
+					    	</div>
+		  				</c:when>
+		  				<c:otherwise>
+		  					<c:forEach items="${imageList}" var="image">
+		  						<div class="carousel-item active">
+					      			<img src="./resources/image/${image.imageUrl }" class="d-block w-100" alt="${image.imageInfo }">
+						    	</div>
+		  					</c:forEach>
+		  				</c:otherwise>
+		  			</c:choose>
 		  		</div>
 		 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 		    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>

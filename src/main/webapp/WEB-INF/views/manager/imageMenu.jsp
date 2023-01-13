@@ -8,36 +8,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<h2>이슈 게시판 관리자 페이지</h2>
-
+<h2>이미지 관리 페이지</h2>
 <c:choose>
-	<c:when test="${empty issueBoardList}">
-		<p>게시글이 없습니다.<br>
-			<button type="button" onclick="return insertConfirm()">글 작성</button>
+	<c:when test="${empty imageList}">
+		<p>
+			등록한 배너 이미지가 없습니다.<br>
+			<button type="button" onclick="return insertConfirm()">이미지 업로드</button>	
 		</p>
 	</c:when>
+	
 	<c:otherwise>
 		<table border="1">
 			<tr>
-				<td colspan="4">
-					<button type="button" onclick="return insertConfirm()">글 작성</button>
+				<td colspan="5">
+					<button type="button" onclick="return insertConfirm()">이미지 업로드</button>
 				</td>
 			</tr>
 			<tr>
-				<td>글 번호</td>
-				<td>글 제목</td>
-				<td>작성자</td>
+				<td>사진 번호</td>
+				<td>사진 이름</td>
+				<td>사진 정보</td>
 				<td>수정/삭제</td>
 			</tr>
-			<c:forEach items="${issueBoardList}" var="issueBoard">
+			<c:forEach items="${imageList}" var="image">
 				<tr>
-					<td>${issueBoard.issueNum}</td>
-					<td>${issueBoard.issueTitle}</td>
-					<td>${issueBoard.name}</td>
+					<td>${image.imageNum}</td>
+					<td>${image.imageUrl}</td>
+					<td>${image.imageInfo}</td>
 					<td>
-						<button type="button" onclick="return updateConfirm(${issueBoard.issueNum})">수정</button>
-						<button type="button" onclick="return deleteConfirm(${issueBoard.issueNum})">삭제</button>
+						<button type="button" onclick="return updateConfirm(${image.imageNum})">수정</button>
+						<button type="button" onclick="return deleteConfirm(${image.imageNum})">삭제</button>
 					</td>
 				</tr>
 			</c:forEach>
@@ -46,8 +46,6 @@
 
 </c:choose>
 <a href='<c:url value="/manager/managerMain" />'>관리자 메인페이지로 돌아가기</a>
-
-
 </body>
 <script type="text/javascript">
 	function deleteConfirm(deleteNum){
@@ -56,7 +54,7 @@
 		if(cc==false){
 			return false;
 		}else{
-			location.href="/animalCommunity/manager/delete/issue/"+boardNum;
+			location.href="/animalCommunity/manager/delete/image/"+boardNum;
 		} 
 	}
 	
@@ -66,7 +64,7 @@
 		if(cc==false){
 			return false;
 		}else{
-			location.href="/animalCommunity/manager/updateForm/issue/"+boardNum;
+			location.href="/animalCommunity/manager/updateForm/image/"+boardNum;
 		} 
 	}
 	function insertConfirm(){
@@ -74,7 +72,7 @@
 		if(cc==false){
 			return false;
 		}else{
-			location.href="/animalCommunity/manager/writeForm/issue";
+			location.href="/animalCommunity//manager/writeForm/image";
 		} 
 	}
 </script>

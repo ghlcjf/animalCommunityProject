@@ -12,6 +12,8 @@ import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
 import animal.vo.HospitalInfo;
 import animal.vo.HospitalInfoCommand;
+import animal.vo.Image;
+import animal.vo.ImageCommand;
 import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.IssueComment;
@@ -98,33 +100,33 @@ public class AnimalDao {
 	
 	
 
-	public List<FreeBoard> selectDogFreeBoardList() {
-		// 강아지 게시글 불러오기
-		return sqlSession.selectList("mybatis.mapper.member.selectDogFreeBoardList");
-	}
-
-	public List<FreeBoard> selectCatFreeBoardList() {
-		// 고양이 게시글 불러오기
-		return sqlSession.selectList("mybatis.mapper.member.selectCatFreeBoardList");
-	}
-
-	public List<FreeBoard> selectReptileFreeBoardList() {
-		// 파충류 게시글 불러오기
-		return sqlSession.selectList("mybatis.mapper.member.selectReptileFreeBoardList");
-	}
-
-	public List<FreeBoard> selectBirdsFreeBoardList() {
-		// 조류 게시글 불러오기
-		return sqlSession.selectList("mybatis.mapper.member.selectBirdsFreeBoardList");
-	}
-	public List<FreeBoard> selectFishFreeBoardList() {
-		// 어류 게시글 불러오기
-		return sqlSession.selectList("mybatis.mapper.member.selectFishFreeBoardList");
-	}
-	public List<FreeBoard> selectOtherFreeBoardList() {
-		// 기타 게시글 불러오기
-		return sqlSession.selectList("mybatis.mapper.member.selectOtherFreeBoardList");
-	}
+//	public List<FreeBoard> selectDogFreeBoardList() {
+//		// 강아지 게시글 불러오기
+//		return sqlSession.selectList("mybatis.mapper.member.selectDogFreeBoardList");
+//	}
+//
+//	public List<FreeBoard> selectCatFreeBoardList() {
+//		// 고양이 게시글 불러오기
+//		return sqlSession.selectList("mybatis.mapper.member.selectCatFreeBoardList");
+//	}
+//
+//	public List<FreeBoard> selectReptileFreeBoardList() {
+//		// 파충류 게시글 불러오기
+//		return sqlSession.selectList("mybatis.mapper.member.selectReptileFreeBoardList");
+//	}
+//
+//	public List<FreeBoard> selectBirdsFreeBoardList() {
+//		// 조류 게시글 불러오기
+//		return sqlSession.selectList("mybatis.mapper.member.selectBirdsFreeBoardList");
+//	}
+//	public List<FreeBoard> selectFishFreeBoardList() {
+//		// 어류 게시글 불러오기
+//		return sqlSession.selectList("mybatis.mapper.member.selectFishFreeBoardList");
+//	}
+//	public List<FreeBoard> selectOtherFreeBoardList() {
+//		// 기타 게시글 불러오기
+//		return sqlSession.selectList("mybatis.mapper.member.selectOtherFreeBoardList");
+//	}
 	public List<FreeBoard> selectAllNoticeList() {
 		// 공지사항 불러오기
 		return sqlSession.selectList("mybatis.mapper.member.selectAllNoticeList");
@@ -310,6 +312,22 @@ public class AnimalDao {
 	public void deleteHospitalInfoByBoardNum(long boardNum) {
 		sqlSession.delete("mybatis.mapper.member.deleteHospitalInfoByBoardNum", boardNum);
 	}
+	public List<Image> selectAllImageList() {
+		return sqlSession.selectList("mybatis.mapper.member.selectAllImageList");
+	}
+	public void insertImage(ImageCommand imageCommand) {
+		sqlSession.insert("mybatis.mapper.member.insertImage", imageCommand);
+	}
+	public Image selectImageByBoardNum(long imageNum) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectImageByBoardNum", imageNum);
+	}
+	public void updateImage(ImageCommand imageCommand) {
+		sqlSession.update("mybatis.mapper.member.updateImage", imageCommand);
+	}
+	public void deleteImageByBoardNum(long imageNum) {
+		sqlSession.delete("mybatis.mapper.member.deleteImageByBoardNum", imageNum);
+	}
+
 
 
 
@@ -356,6 +374,15 @@ public class AnimalDao {
 		
 		return sqlSession.selectOne("mybatis.mapper.member.nameCheck",name);
 	}
+
+	
+
+
+	
+
+	
+
+	
 
 	
 

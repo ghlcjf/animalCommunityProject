@@ -49,8 +49,8 @@
 						<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 						<td>${board.viewCount }</td>
 						<td>
-							<form action="<c:url value='' />">
-								<button type="submit">수정</button>
+							<form action="<c:url value='/myPage/updeteForm/${board.boardNum}' />">
+								<button type="submit" onclick="return boardUpdate()">수정</button>
 							</form>
 						</td>
 						<td>
@@ -70,6 +70,9 @@
 	<script type="text/javascript">
 		function boardDelete(){
 			 return confirm('게시글을 삭제 하시겠습니까?');
+		}
+		function boardUpdate(){
+			 return confirm('게시글을 수정하시겠습니까?');
 		}
 		
 		/* function newWindow(){

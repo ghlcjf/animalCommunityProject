@@ -1,7 +1,10 @@
 package animal.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -12,11 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import animal.dao.AnimalDao;
+import animal.service.FreeBoardService;
 import animal.vo.FreeBoard;
+import animal.vo.FreeBoardCommand;
 import animal.vo.LoginUserInfo;
-import animal.vo.RegisterRequest;
 import animal.vo.User;
 
 @Controller
@@ -28,6 +34,11 @@ public class MyPageController {
 		this.animalDao = animalDao;
 	}
 	
+	private FreeBoardService freeBoardService;
+	public void setFreeBoardService(FreeBoardService freeBoardService) {
+		this.freeBoardService = freeBoardService;
+	}
+
 	@GetMapping("/myPage")
 	public String myPage(HttpSession session, Model model) {
 			
@@ -89,4 +100,46 @@ public class MyPageController {
 		
 		return "myPage/myInfo";
 	}
+	@RequestMapping("/myPage/updeteForm/{boardNum}")
+	public String myPageUpdate(@PathVariable("boardNum") long boardNum, Model model) {
+		
+		FreeBoard freeBoard = freeBoardService.selectFreeBoardByBoardNum(boardNum);
+		
+		model.addAttribute("freeBoard", freeBoard);
+		return "myPage/updateMyBoardForm";
+		
+	}
+	
+	@PostMapping("/myPage/updateMyBoard")
+	public String updateFreeBoard(@RequestParam(value="boardUrl2") MultipartFile file,
+			FreeBoardCommand freeBoardCommand,
+			HttpServletRequest request) throws Exception, IOException {
+		
+		
+		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
+		
+		
+		
+		if (!file.isEmpty()) {
+            String filename = file.getOriginalFilename();
+
+            freeBoardCommand.setBoardUrl(filename);
+            file.transferTo(new File(uploadDir,filename));
+        }else {
+        	String filename = request.getParameter("originPic");
+        	freeBoardCommand.setBoardUrl(filename);
+        	
+        }
+		
+		
+		
+		
+		freeBoardService.updateFreeBoard(freeBoardCommand);
+		
+
+		
+		return "redirect:/myPage";
+		
+	}
+	
 }

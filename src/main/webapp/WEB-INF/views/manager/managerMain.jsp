@@ -17,7 +17,8 @@
 	<a href="<c:url value='/main' />">메인 페이지</a>
 	<ul>
 
-		<li><a href='<c:url value="/memberManagement"/>'>회원관리</a></li>
+		<li><a href='<c:url value="/memberManagement"/>'>회원관리</a></li>		
+		<li><a href='<c:url value="/boardManagement/image"/>'>배너 관리</a></li>
 		<li><a href='<c:url value="/boardManagement/animalInfo"/>'>동물 소개</a></li>
 		<li><a href='<c:url value="/boardManagement/hospitalInfo"/>'>동물 병원 정보</a></li>
 		<li><a href='<c:url value="/boardManagement/issue"/>'>이슈</a></li>
