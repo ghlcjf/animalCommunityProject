@@ -14,7 +14,7 @@
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 <h2>이슈게시판 글 작성하기</h2>
-
+					<!-- /animalCommunity/manager/writeIssue --> 
 <form:form action="/animalCommunity/manager/writeIssue" modelAttribute="issueBoardCommand" enctype="multipart/form-data">
 	<table border="1">
 		<tr>

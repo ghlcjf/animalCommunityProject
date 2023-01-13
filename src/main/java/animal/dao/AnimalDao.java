@@ -30,6 +30,10 @@ public class AnimalDao {
 	}
 	//----------------------------------------------------------------------------
 
+	public List<FreeBoard> selectFreeBoardTop(){
+		return sqlSession.selectList("mybatis.mapper.member.selectFreeBoardTop");
+		
+	}
 	public List<FreeBoard> selectAllFreeBoardList() {
 		
 		return sqlSession.selectList("mybatis.mapper.member.selectAllFreeBoard");

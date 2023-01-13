@@ -34,11 +34,7 @@ public class RegisterController {
 		return "redirect:step1"; // step1 요청으로 리다이렉트
 		// register/step1 매핑 컨트롤러로 연결
 	}	
-	@GetMapping("/step3")
-	public String handlerStep3Get() {
-		return "redirect:register/step1";
-	}
-	
+
 	@PostMapping("/step2")
 	public String handlerStep2(@RequestParam(value="agree", defaultValue="false")boolean agree, Model model) {
 		//전달받은 데이터 읽어오기
@@ -51,7 +47,7 @@ public class RegisterController {
 		return "register/step2";
 	}
 	
-	@PostMapping("/step3")
+	@PostMapping("/main")
 	public String handlerStep3(@ModelAttribute("formData")RegisterRequest regReq, Errors errors) {
 		//전달받은 데이터 읽어오기(객체에 파라미터와 이름이 같은 set메서드가 반드시 존재해야함)
 		
@@ -66,7 +62,7 @@ public class RegisterController {
 		//받아온 데이터 -> DB
 		try {
 			memberRegisterService.regist(regReq);
-			return "register/step3";
+			return "redirect:/main";
 		}catch(AlreadyExistingMemberException e) {//아이디 중복되는 경우 
 			errors.rejectValue("id", "duplicate");
 			return "register/step2";
@@ -75,6 +71,8 @@ public class RegisterController {
 		
 		
 	}
+	
+
 	
 	
 	

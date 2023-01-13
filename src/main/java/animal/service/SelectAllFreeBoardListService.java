@@ -19,11 +19,16 @@ public class SelectAllFreeBoardListService {
 	
 	
 	public List<FreeBoard> selectAllFreeBoardList(){
-		
 		List<FreeBoard> freeBoardList = animalDao.selectAllFreeBoardList();
-		
 		return freeBoardList;
 	}
+
+
+	public List<FreeBoard> selectFreeBoardTop() {
+		List<FreeBoard> freeBoardTopTen = animalDao.selectFreeBoardTop();
+		return freeBoardTopTen;
+	}
+	
 	
 	
 

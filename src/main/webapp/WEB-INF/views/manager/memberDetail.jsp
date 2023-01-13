@@ -58,8 +58,8 @@
 				</c:forEach>
 			</table>
 		</c:otherwise>
-	</c:choose>
-	<form action="<c:url value='/member/drop/${member.id}' />">
+	</c:choose>					
+	<form action="<c:url value='/${member.id}' />">
 		<button type="submit" onclick="return memberDrop('${member.name}')">회원강제탈퇴</button>
 	</form>
 	<a href='<c:url value="/memberManagement" />'>목록으로 돌아가기</a>

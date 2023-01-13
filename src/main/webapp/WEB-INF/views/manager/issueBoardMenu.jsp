@@ -6,50 +6,53 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 </head>
 <body>
+	<jsp:include page="../header.jsp"></jsp:include>
+	<h2>이슈 게시판 관리자 페이지</h2>
 
-<h2>이슈 게시판 관리자 페이지</h2>
-
-<c:choose>
-	<c:when test="${empty issueBoardList}">
-		<p>게시글이 없습니다.<br>
-			<c:url value="/manager/writeForm/issue" var="writeUrl" />
-			<button type="button" onclick="location.href='${writeUrl}'">글 작성하기</button>
-		</p>
-	</c:when>
-	<c:otherwise>
-		<table border="1">
-			<tr>
-				<td colspan="4">
-					<c:url value="/manager/writeForm/issue" var="writeUrl" />
-					<button type="button" onclick="location.href='${writeUrl}'">글 작성하기</button>
-				</td>
-			</tr>
-			<tr>
-				<td>글 번호</td>
-				<td>글 제목</td>
-				<td>작성자</td>
-				<td>수정/삭제</td>
-			</tr>
-			<c:forEach items="${issueBoardList}" var="issueBoard">
+	<c:choose>
+		<c:when test="${empty issueBoardList}">
+			<p>게시글이 없습니다.<br>
+				<c:url value="/manager/writeForm/issue" var="writeUrl" />
+				<button type="button" onclick="location.href='${writeUrl}'">글 작성하기</button>
+			</p>
+		</c:when>
+		<c:otherwise>
+			<table border="1">
 				<tr>
-					<td>${issueBoard.issueNum}</td>
-					<td>${issueBoard.issueTitle}</td>
-					<td>${issueBoard.name}</td>
-					<td>
-						<c:url value="/manager/updateForm/issue/${issueBoard.issueNum}" var="updateUrl" />
-						<button type="button" onclick="location.href='${updateUrl}'">수정</button>
-						<c:url value="/manager/delete/issue/${issueBoard.issueNum}" var="deleteUrl" />
-						<button type="button" onclick="location.href='${deleteUrl}'">삭제</button>
+					<td colspan="4">
+						<c:url value="/manager/writeForm/issue" var="writeUrl" />
+						<button type="button" onclick="location.href='${writeUrl}'">글 작성하기</button>
 					</td>
 				</tr>
-			</c:forEach>
-		</table>
-	</c:otherwise>
-
-</c:choose>
-<a href='<c:url value="/manager/managerMain" />'>관리자 메인페이지로 돌아가기</a>
+				<tr>
+					<td>글 번호</td>
+					<td>글 제목</td>
+					<td>작성자</td>
+					<td>수정/삭제</td>
+				</tr>
+				<c:forEach items="${issueBoardList}" var="issueBoard">
+					<tr>
+						<td>${issueBoard.issueNum}</td>
+						<td>${issueBoard.issueTitle}</td>
+						<td>${issueBoard.name}</td>
+						<td>
+							<c:url value="/manager/updateForm/issue/${issueBoard.issueNum}" var="updateUrl" />
+							<button type="button" onclick="location.href='${updateUrl}'">수정</button>
+							<c:url value="/manager/delete/issue/${issueBoard.issueNum}" var="deleteUrl" />
+							<button type="button" onclick="location.href='${deleteUrl}'">삭제</button>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:otherwise>
+	
+	</c:choose>
+	<a href='<c:url value="/manager/managerMain" />'>관리자 메인페이지로 돌아가기</a>
 
 
 </body>
