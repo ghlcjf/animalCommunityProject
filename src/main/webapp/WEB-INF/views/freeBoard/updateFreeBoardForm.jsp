@@ -85,8 +85,11 @@
 		}
 		
 		let cc = confirm('게시글을 수정하시겠습니까?');
-		
-		return cc;
+		if(cc){
+			alert('수정이 완료되었습니다.');
+			return cc;
+		}
+		return false;
 	}
 
 </script>

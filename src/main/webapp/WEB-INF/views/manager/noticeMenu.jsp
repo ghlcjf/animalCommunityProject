@@ -66,6 +66,7 @@
 		if(cc==false){
 			return false;
 		}else{
+			alert('삭제가 완료되었습니다.');
 			location.href="/animalCommunity/manager/delete/notice/"+boardNum;
 		} 
 	}

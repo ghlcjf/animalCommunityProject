@@ -45,10 +45,12 @@
 			alert('정보를 입력해 주세요');
 			return false;
 		}
-		
 		let cc = confirm('이미지를 업로드하시겠습니까?');
-		
-		return cc;
+		if(cc){
+			alert('작성이 완료되었습니다.');
+			return cc;
+		}
+		return false;
 	}
 
 </script>

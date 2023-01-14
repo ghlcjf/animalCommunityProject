@@ -184,6 +184,7 @@
 				return false;
 			}
 			
+			alert('가입이 완료됐습니다.');
 			return true;
 		}
 	</script>

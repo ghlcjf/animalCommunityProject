@@ -91,7 +91,7 @@ public class UpdateFreeBoardController {
 		
 
 		
-		return "freeBoard/freeBoardSuccess";
+		return "redirect:/freeBoard/freeBoardList/main/1/1";
 		
 	}
 	

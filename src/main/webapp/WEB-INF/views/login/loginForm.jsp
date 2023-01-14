@@ -99,8 +99,6 @@
 		</form:form>
 	</div>
 </body>
-</html>
-
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
 	function loginCheck() {
@@ -144,5 +142,5 @@
 		아니라면 false */
 		
 </script>
-</body>
 </html>
+

@@ -53,6 +53,7 @@
 	function deleteConfirm(deleteNum){
 		let boardNum = deleteNum;
 		let cc = confirm('게시물을 삭제하시겠습니까?');
+		alert('삭제가 완료되었습니다.');
 		if(cc==false){
 			return false;
 		}else{

@@ -17,6 +17,7 @@
 <!--부트스트랩 주소-->
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 	<style>
         *{ margin: 0; padding: 0;}	
@@ -100,8 +101,6 @@
 </head>
 <body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
 	<jsp:include page="header.jsp"></jsp:include>
 	
 	<div id="container">
@@ -115,10 +114,10 @@
 				      			<img src="./resources/image/사진1.PNG" class="d-block w-100" alt="사진1">
 					    	</div>
 					    	<div class="carousel-item active">
-				      			<img src="./resources/image/사진2.PNG" class="d-block w-100" alt="사진1">
+				      			<img src="./resources/image/사진2.PNG" class="d-block w-100" alt="사진2">
 					    	</div>
 					    	<div class="carousel-item active">
-				      			<img src="./resources/image/사진3.PNG" class="d-block w-100" alt="사진1">
+				      			<img src="./resources/image/사진3.PNG" class="d-block w-100" alt="사진3">
 					    	</div>
 		  				</c:when>
 		  				<c:otherwise>
@@ -217,7 +216,7 @@
 									<form:input  class="form-control" path="id" placeholder="id"/>
 									<form:errors path="id"/>
 								</th>
-								<td class="loginBtn" rowspan="2">
+								<td class="loginBtn" rowspan="2" onclick="return loginCheck()">
 									<button  type="submit">
 										<spring:message code="login.btn"/>
 									</button>								
@@ -271,6 +270,50 @@
 
 
 </body>
+
+<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
+<script type="text/javascript">
+	function loginCheck() {
+		
+		let id = $('#id').val();
+		let password = $('#password').val();
+
+
+		if($('#id').val()==''){
+			alert('아이디를 입력해주세요');
+			($('#id').focus());
+			return false;
+		}
+		
+		if($('#password').val()==''){
+			alert('비밀번호를 입력해주세요');
+			($('#password').focus());
+			return false;
+		}
+		
+		$.ajax({
+			type: "POST",
+			url: "${context}/loginCheck",
+			data: {"id":id, "password":password},
+			dateType: JSON,
+			success: function(data){
+				if (!data) {
+					alert('아이디 또는 비밀번호가 틀렸습니다.')
+				}
+				return data;
+			}
+		});
+	}
+		
+		/* 컨트롤러 받아온 아이디랑 비밀번호 서비스객체로 보내줘요
+		서비스객체에서 아이디 비밀번호 DAO로 연결
+		아이디를 먼저 찾아요
+		(데이터베이스에서 가져온 아이디)아이디가 있다면
+		(사용자가 입력한 비밀번호와 데이터베이스에서 가져온 비밀번호 맞는지 확인)
+		아이디도 있고 비밀번호도 맞다면 true를 반환하는 메서드 
+		아니라면 false */
+		
+</script>
 </html>
 
 
