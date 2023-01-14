@@ -48,7 +48,6 @@
 			</c:forEach>
 			
 		</table>
-		<a href="<c:url value='/issueWrite' />">글쓰기</a>
 		<a href="<c:url value='/main' />">[메인화면으로 돌아가기]</a>
 		
 	</c:otherwise>
