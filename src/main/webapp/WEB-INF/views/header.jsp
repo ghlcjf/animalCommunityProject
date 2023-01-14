@@ -18,15 +18,26 @@
 			font-weight:bolder;
 			color: rgb(255, 224, 234);
 		}
+		.logo-box{
+	        display: flex;
+	        justify-content: center;
+	        align-items: center;			
 
+		}
+		.logo{
+			height: 150px;
+			width: auto;
+		}
 	</style>
 </head>
 
 
 <header>
 <!--메인으로 이동하는 로고-->
-	<a href='<c:url value="/main"/>'>메인으로이동(나중에 이미지로 로고 넣어주기)</a>
 	
+	<div class="logo-box">
+		<a href='<c:url value="/main"/>'><img class="logo" src="./resources/image/로고.png" alt="로고"></a>
+	</div>
 			<!-- 세션이 없으면 -->
 			<c:if test="${empty userInfo}">
 				<ul class="nav justify-content-end">
