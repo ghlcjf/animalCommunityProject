@@ -84,8 +84,6 @@
 	}
 	
 </script>
-=======
 
->>>>>>> refs/heads/eunjin6
 </body>
 </html>
