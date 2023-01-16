@@ -24,6 +24,10 @@
 		.form-control{
 			margin: 10px;
 		}
+		
+		button[type="button"]{
+			margin-left:20px;
+		}
 	
 		button[type="submit"]{
 			margin: 20px;
@@ -59,6 +63,8 @@
 					<td>
 						<form:input class="form-control" path="name"/>
 						<input type="hidden" name="nameBtnCheck" id="nameBtnCheck">
+					</td>
+					<td>	
 						<button type="button" onclick="nameCheck()">중복 체크</button>
 					</td>
 				</tr>
@@ -67,6 +73,8 @@
 					<td>
 						<form:input class="form-control" path="id"/>
 						<input type="hidden" name="idBtnCheck" id="idBtnCheck">
+					</td>	
+					<td>	
 						<button type="button" onclick="idCheck()">중복 체크</button>			
 					</td>
 				</tr>
