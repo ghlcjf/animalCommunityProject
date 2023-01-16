@@ -57,7 +57,8 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
-	
+	<mvc:resources location="C:\upload" mapping="/imageFolder/**">
+	</mvc:resources>
 	
 </beans>
 

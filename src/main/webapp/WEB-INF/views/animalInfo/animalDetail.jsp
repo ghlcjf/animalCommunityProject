@@ -30,38 +30,38 @@
 
 	<c:choose>
 		<c:when test="${empty animal.animalUrl }">
-		<div class="card mb-3" style="max-width: 1000px;">
-		<div class="row g-0">
-    	<div class="col-md-4">
-		<img src="<c:url value='/resources/image/noImage.png' />" ${animal.animalUrl }>
-		</div>
-		<div class="col-md-4">
-    	<div class="card-body">
-    	<h5 class="card-title">${animal.animalTitle}</h5>
-        <p class="card-text">${animal.animalContent}</p>
-        </div>
-        </div>
-        </div>
-        </div>
+			<div class="card mb-3" style="max-width: 1000px;">
+				<div class="row g-0">
+			    	<div class="col-md-4">
+						<img src="/imageFolder/noImage.png">
+					</div>
+					<div class="col-md-4">
+				    	<div class="card-body">
+					    	<h5 class="card-title">${animal.animalTitle}</h5>
+					        <p class="card-text">${animal.animalContent}</p>
+				        </div>
+				    </div>
+		        </div>
+		     </div>
 		</c:when>
 		
 		<c:otherwise>
 
-			<img src="<c:url value='/resources/animalInfoImage/${animal.animalUrl }' />" ><br>
+			<%-- <img src="<c:url value='/resources/animalInfoImage/${animal.animalUrl }' />" ><br> --%>
 
-		<div class="card mb-3" style="max-width: 1000px;">
-		<div class="row g-0">
-    	<div class="col-md-4">
-			<img src="<c:url value='/resources/image/${animal.animalUrl }' />">
-			</div>
-			<div class="col-md-4">
-    	<div class="card-body">
-    	<h5 class="card-title">${animal.animalTitle}</h5>
-        <p class="card-text">${animal.animalContent}</p>
-        </div>
-        </div>
-        </div>
-        </div>			
+			<div class="card mb-3" style="max-width: 1000px;">
+				<div class="row g-0">
+			    	<div class="col-md-4">
+						<img src="/imageFolder/animalInfoImage/${animal.animalUrl }">
+					</div>
+					<div class="col-md-4">
+				    	<div class="card-body">
+					    	<h5 class="card-title">${animal.animalTitle}</h5>
+					        <p class="card-text">${animal.animalContent}</p>
+				        </div>
+			        </div>
+		        </div>
+	        </div>			
 
 		</c:otherwise>
 	</c:choose>

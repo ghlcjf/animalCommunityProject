@@ -35,7 +35,7 @@
 						<div class="col">
 						<div class="card" style="width: 18rem;">
 						<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
-						<img src="<c:url value='/resources/image/noImage.png' />" class="card-img-top img-fluid img-thumbnail" ${animal.animalNum }></a>
+						<img src="/imageFolder/noImage.png" class="card-img-top img-fluid img-thumbnail" ${animal.animalNum }></a>
 						<div class="card-body">
    						<p class="card-text">
 						${animal.animalTitle }</p>
@@ -47,7 +47,7 @@
 					<div class="col">
 					<div class="card" style="width: 18rem;">
 						<a href="<c:url value='/animal/detail/${animal.animalNum }' />"> 
-						<img src="<c:url value='/resources/image/${animal.animalUrl }' />" class="card-img-top img-fluid img-thumbnail"></a>
+						<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="card-img-top img-fluid img-thumbnail"></a>
 						<div class="card-body">
    						<p class="card-text">
 						${animal.animalTitle}</p>

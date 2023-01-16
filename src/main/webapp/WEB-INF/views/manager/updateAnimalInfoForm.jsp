@@ -22,11 +22,11 @@
 				<td rowspan="4">
 					<c:choose>
 						<c:when test="${animalInfo.animalUrl=='null' || empty animalInfo.animalUrl}">
-							<img src="<c:url value='/resources/image/noImage.png' />"><br>
+							<img src="/imageFolder/noImage.png">
 						</c:when>
 						
 						<c:otherwise>
-							<img src="<c:url value='/resources/freeBoardImage/${animalInfo.animalUrl }' />" ><br>
+							<img src="/imageFolder/animalInfoImage/${animal.animalUrl }">
 						</c:otherwise>
 					
 					</c:choose>

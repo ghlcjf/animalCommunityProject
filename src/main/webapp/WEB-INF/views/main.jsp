@@ -111,19 +111,19 @@
 		  			<c:choose>
 		  				<c:when test="${empty imageList}">
 		  					<div class="carousel-item active">
-				      			<img src="./resources/image/사진1.PNG" class="d-block w-100" alt="사진1">
+				      			<img src="/imageFolder/image/사진1.PNG" class="d-block w-100" alt="사진1">
 					    	</div>
 					    	<div class="carousel-item active">
-				      			<img src="./resources/image/사진2.PNG" class="d-block w-100" alt="사진2">
+				      			<img src="/imageFolder/image/사진2.PNG" class="d-block w-100" alt="사진2">
 					    	</div>
 					    	<div class="carousel-item active">
-				      			<img src="./resources/image/사진3.PNG" class="d-block w-100" alt="사진3">
+				      			<img src="/imageFolder/image/사진3.PNG" class="d-block w-100" alt="사진3">
 					    	</div>
 		  				</c:when>
 		  				<c:otherwise>
 		  					<c:forEach items="${imageList}" var="image">
 		  						<div class="carousel-item active">
-					      			<img src="./resources/image/${image.imageUrl }" class="d-block w-100" alt="${image.imageInfo }">
+					      			<img src="/imageFolder/image/${image.imageUrl }" class="d-block w-100" alt="${image.imageInfo }">
 						    	</div>
 		  					</c:forEach>
 		  				</c:otherwise>
@@ -150,8 +150,18 @@
 						<table class="main-freeBoardList" border="1">
 							<tr>
 								<td>
-									<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
-									기본이미지나 게시물 이미지</a>
+									<c:choose>
+			
+										<c:when test="${board.boardUrl=='null' || empty board.boardUrl}">
+						<%-- 					<img src="<spring:url value='/imageFolder/noImage.png' />"><br> --%>
+											<img src="/imageFolder/noImage.png"  width="200px" height="200px"><br>
+										</c:when>
+										
+										<c:otherwise>
+											<img src="/imageFolder/freeBoardImage/${board.boardUrl }" width="250px" height="250px"><br>
+										</c:otherwise>
+										
+									</c:choose>
 								</td>
 							</tr>
 							<tr>
@@ -185,8 +195,14 @@
 	
 							<tr>
 								<td>
-									<a href="<c:url value='/issue/detail/${board.issueNum}' />">
-									기본이미지나 게시물 이미지</a>
+									<c:choose>
+										<c:when test="${!empty board.issueUrl }">
+											<img src="/imageFolder/issueBoardImage/${board.issueUrl }" ><br>	
+										</c:when>
+										<c:otherwise>
+											<img src="/imageFolder/noImage.png"><br>
+										</c:otherwise>
+									</c:choose>
 								</td>
 							</tr>
 							<tr>

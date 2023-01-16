@@ -64,7 +64,7 @@ public class UpdateFreeBoardController {
 			HttpServletRequest request) throws Exception, IOException {
 		
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
+		String uploadDir = "C:\\upload\\freeBoardImage";
 		
 		
 		

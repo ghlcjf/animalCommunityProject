@@ -21,11 +21,11 @@
 				<c:choose>
 			
 					<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
-						<img src="<c:url value='/resources/image/noImage.png' />"><br>
+						<img src="/imageFolder/noImage.png"><br>
 					</c:when>
 					
 					<c:otherwise>
-						<img src="<c:url value='/resources/freeBoardImage/${freeBoard.boardUrl }' />" ><br>
+						<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" ><br>
 					</c:otherwise>
 				
 				</c:choose>

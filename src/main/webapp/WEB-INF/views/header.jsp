@@ -36,7 +36,7 @@
 <!--메인으로 이동하는 로고-->
 	
 	<div class="logo-box">
-		<a href='<c:url value="/main"/>'><img class="logo" src="./resources/image/로고.png" alt="로고"></a>
+		<a href='<c:url value="/main"/>'><img class="logo" src="/imageFolder/image/로고.png" alt="로고"></a>
 	</div>
 			<!-- 세션이 없으면 -->
 			<c:if test="${empty userInfo}">

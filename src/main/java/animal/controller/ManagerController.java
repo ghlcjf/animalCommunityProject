@@ -281,7 +281,7 @@ public class ManagerController {
 			Errors errors,HttpSession session
 			) throws Exception, IOException {
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
+		String uploadDir = "C:\\upload\\freeBoardImage";
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 
@@ -314,7 +314,7 @@ public class ManagerController {
 			Errors errors,HttpSession session) throws Exception, IOException {
 		
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\issueBoardImage";
+		String uploadDir = "C:\\upload\\issueBoardImage";
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 
@@ -367,7 +367,7 @@ public class ManagerController {
 			HttpSession session) throws Exception, IOException {
 		
 
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\animalInfoImage";
+		String uploadDir = "C:\\upload\\animalInfoImage";
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 
@@ -399,7 +399,7 @@ public class ManagerController {
 			Errors errors) throws Exception, IOException {
 		
 
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\image";
+		String uploadDir = "C:\\upload\\image";
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 
@@ -463,7 +463,7 @@ public class ManagerController {
 			Errors errors,HttpSession session,
 			HttpServletRequest request) throws Exception, IOException {
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
+		String uploadDir = "C:\\upload\\freeBoardImage";
 		
 		
 		if (!file.isEmpty()) {
@@ -499,7 +499,7 @@ public class ManagerController {
 			Errors errors,HttpSession session,
 			HttpServletRequest request) throws Exception, IOException {
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\issueBoardImage";
+		String uploadDir = "C:\\upload\\issueBoardImage";
 		
 		
 		
@@ -535,7 +535,7 @@ public class ManagerController {
 			Errors errors,HttpSession session,
 			HttpServletRequest request) throws Exception, IOException {
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\animalInfoImage";
+		String uploadDir = "C:\\upload\\animalInfoImage";
 		
 		
 		
@@ -567,7 +567,7 @@ public class ManagerController {
 	@PostMapping("/manager/updateImage")
 	public String updateImage(@RequestParam(value="imageUrl2") MultipartFile file,
 			ImageCommand imageCommand, HttpServletRequest request) throws Exception, IOException {
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\image";
+		String uploadDir = "C:\\upload\\image";
 		
 		
 		

@@ -19,27 +19,40 @@
 
 <h2>자유게시판</h2>
 
-<jsp:include page="./freeBoardMenu.jsp"></jsp:include>
 
-<table border="1">
-	<c:if test="${!empty userInfo}">
-		<tr>
+<div class="list-group" id="left">
+  <a href="<c:url value='/freeBoard/freeBoardList/main/1/1' />" class="list-group-item list-group-item-action">
+    전체 보기
+  </a>
+  <a href="<c:url value='/freeBoard/freeBoardList/dog/1/1' />" class="list-group-item list-group-item-action">강아지</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/cat/1/1' />" class="list-group-item list-group-item-action">고양이</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/reptile/1/1' />" class="list-group-item list-group-item-action">파충류</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/birds/1/1' />" class="list-group-item list-group-item-action">조류</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/fish/1/1' />" class="list-group-item list-group-item-action">어류</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
+</div>
+
+<div>
+	<table class="table" id="right">
+	  <thead>
+	  	<tr>
 			<td colspan="5" align="right">
 				<a href="<%=request.getContextPath() %>/freeBoard/insertFreeBoardForm">[글 작성하기]</a>
 			</td>
 		</tr>
-	</c:if>
-	<tr>
-		<th>글번호</th>
-		<th>글제목</th>
-		<th>조회수</th>
-		<th>작성자</th>
-		<th>작성일자</th>
-	</tr>
-	<c:if test="${!empty noticeList}">
-		<c:forEach items="${noticeList}" var="notice">
+	    <tr>
+	      <th scope="col">글번호</th>
+	      <th scope="col">글제목</th>
+	      <th scope="col">조회수</th>
+	      <th scope="col">작성자</th>
+	      <th scope="col">작성일자</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	<c:if test="${!empty noticeList}">
+			<c:forEach items="${noticeList}" var="notice">
 				<tr>
-					<td>${notice.boardNum }</td>
+					 <th scope="row">${notice.boardNum }</th>
 					<td>
 						<a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle } (${notice.commentCount})</a>
 					</td>
@@ -48,77 +61,109 @@
 					<td><fmt:formatDate value="${notice.writeDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
-	</c:if>
-	<c:choose>
-		<c:when test="${empty freeBoardList}">
-			<p>등록한 게시글이 없습니다.</p>
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${freeBoardList}" var="board">
+		</c:if>
+		<c:choose>
+			<c:when test="${empty freeBoardList}">
 				<tr>
-					<td>${board.boardNum }</td>
-					<td>
-						<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">${board.boardTitle} (${board.commentCount})</a>
-					</td>
-					<td>${board.viewCount }</td>
-					<td>${board.name }</td>
-					<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
+					<th scope="row" colspan="5">등록한 게시글이 없습니다.</th>
 				</tr>
-			</c:forEach>
-		</c:otherwise>
-		
-	</c:choose>
-
-</table>
-
-<c:if test="${totalCnt != null}">
-	<c:choose>
-		<c:when test="${totalCnt>100}"> <!-- 전체 개수가 100개 초과 -->
-			<c:if test="${(sectionPage.section*100)<totalCnt }"> <!-- 다음 섹션이 존재하는가 => '>>' O -->
-				<c:forEach var="page" begin="1" end="10" step="1"> <!-- 번호 매기기 -->
-					<c:if test="${sectionPage.section>1 && page==1}">
-						<a href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}"> << </a>
-					</c:if>
-					<a href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">${(sectionPage.section-1)*10+page}</a>
-					<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
-					<c:if test="${page==10}">
-						<a href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section+1}/${1}"> >> </a>
-					</c:if>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${freeBoardList}" var="board">
+					<tr>
+						<th scope="row">${board.boardNum }</th>
+						<td>
+							<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">${board.boardTitle} (${board.commentCount})</a>
+						</td>
+						<td>${board.viewCount }</td>
+						<td>${board.name }</td>
+						<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
+					</tr>
 				</c:forEach>
-				
-				
-			</c:if>
-			<c:if test="${(sectionPage.section*100)>=totalCnt }"> <!-- 다음 섹션이 존재하지 않는가=> '>>' X  -->
-				<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
-					<c:if test="${sectionPage.section>1 && page==1}">
-						<a href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}"> << </a>
-					</c:if>
+			</c:otherwise>
+			
+		</c:choose>
+	  </tbody>
+	</table>
+</div>
+
+<div>
+	<c:if test="${totalCnt != null}">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+				<c:choose>
+					<c:when test="${totalCnt>100}"> <!-- 전체 개수가 100개 초과 -->
+						<c:if test="${(sectionPage.section*100)<totalCnt }"> <!-- 다음 섹션이 존재하는가 => '>>' O -->
+							<c:forEach var="page" begin="1" end="10" step="1"> <!-- 번호 매기기 -->
+								<c:if test="${sectionPage.section>1 && page==1}">
+									<li class="page-item">
+								      <a class="page-link" aria-label="Previous" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}">
+								        <span aria-hidden="true">&laquo;</span>
+								      </a>
+								    </li>
+								</c:if>
+								<li class="page-item">
+									<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+										${(sectionPage.section-1)*10+page}
+									</a>
+								</li>
+								<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
+								<c:if test="${page==10}">
+									<li class="page-item">
+								      <a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section+1}/${1}" aria-label="Next">
+								        <span aria-hidden="true">&raquo;</span>
+								      </a>
+								    </li>
+								</c:if>
+							</c:forEach>
+							
+							
+						</c:if>
+						<c:if test="${(sectionPage.section*100)>=totalCnt }"> <!-- 다음 섹션이 존재하지 않는가=> '>>' X  -->
+							<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
+								<c:if test="${sectionPage.section>1 && page==1}">
+									<li class="page-item">
+								      <a class="page-link" aria-label="Previous" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}">
+								        <span aria-hidden="true">&laquo;</span>
+								      </a>
+								    </li>
+								</c:if>
+								<li class="page-item">
+									<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+										${(sectionPage.section-1)*10+page}
+									</a>
+								</li>
+							</c:forEach>
+						</c:if>
+						
+					</c:when>
 					
-					<a href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">${(sectionPage.section-1)*10+page}</a>
-						<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
-				</c:forEach>
-			</c:if>
-			
-		</c:when>
-		<c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
-			<c:forEach var="page" begin="1" end="10" step="1">
-				<a href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">${page}</a>
-						<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
-			</c:forEach>
-		</c:when>
-		<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
-			<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
-				<a href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">${page}</a>
-							<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
-			
-			</c:forEach>
-		</c:when>
-	
-	</c:choose>
-	
-	
-</c:if>
-		
+					
+					<c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
+						<c:forEach var="page" begin="1" end="10" step="1">
+							<li class="page-item">
+								<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+									${(sectionPage.section-1)*10+page}
+								</a>
+							</li>
+						</c:forEach>
+					</c:when>
+					
+					
+					<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
+						<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
+							<li class="page-item">
+								<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+									${(sectionPage.section-1)*10+page}
+								</a>
+							</li>
+						</c:forEach>
+					</c:when>
+				
+				</c:choose>
+			</ul>
+		</nav>
+	</c:if>
 
 	
 

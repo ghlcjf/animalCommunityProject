@@ -15,7 +15,7 @@
 	<table border="1">
 		<tr>
 			<td rowspan="3">
-				<img src="<c:url value='/resources/freeBoardImage/${image.imageUrl }' />" >
+				<img src="/imageFolder/image/${image.imageUrl}" >
 			</td>
 		</tr>
 

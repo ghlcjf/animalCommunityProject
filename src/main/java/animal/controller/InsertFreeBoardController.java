@@ -49,7 +49,7 @@ public class InsertFreeBoardController {
 			Errors errors,HttpSession session
 			) throws Exception, IOException {
 		
-		String uploadDir = "C:\\\\Users\\\\GREEN\\\\git\\\\animalCommunityProject\\\\src\\\\main\\\\webapp\\\\resources\\\\freeBoardImage";
+		String uploadDir = "C:\\upload\\freeBoardImage";
 		if (!file.isEmpty()) {
             String filename = file.getOriginalFilename();
 

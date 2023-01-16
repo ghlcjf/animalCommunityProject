@@ -21,15 +21,17 @@
 		<tr>
 			<td rowspan="4">
 				<c:choose>
-					<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
-						<img src="<c:url value='/resources/image/noImage.png' />"><br>
-					</c:when>
-					
-					<c:otherwise>
-						<img src="<c:url value='/resources/freeBoardImage/${freeBoard.boardUrl }' />" ><br>
-					</c:otherwise>
+			
+				<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
+<%-- 					<img src="<spring:url value='/imageFolder/noImage.png' />"><br> --%>
+					<img src="/imageFolder/noImage.png"><br>
+				</c:when>
 				
-				</c:choose>
+				<c:otherwise>
+					<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" ><br>
+				</c:otherwise>
+				
+			</c:choose>
 			</td>
 			<td>카테고리</td>
 			<td>

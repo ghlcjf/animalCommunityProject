@@ -21,14 +21,12 @@
 		<tr>
 			<td rowspan="3">
 				<c:choose>
-					<c:when test="${issueBoard.issueUrl=='null' || empty issueBoard.issueUrl}">
-						<img src="<c:url value='/resources/image/noImage.png' />"><br>
+					<c:when test="${!empty issueBoard.issueUrl }">
+						<img src="/imageFolder/issueBoardImage/${issueBoard.issueUrl }" ><br>	
 					</c:when>
-					
 					<c:otherwise>
-						<img src="<c:url value='/resources/freeBoardImage/${issueBoard.issueUrl }' />" ><br>
+						<img src="/imageFolder/noImage.png"><br>
 					</c:otherwise>
-				
 				</c:choose>
 			</td>
 			<td>제목</td>
