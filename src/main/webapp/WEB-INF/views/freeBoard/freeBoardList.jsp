@@ -12,15 +12,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<style>
+	.wrapper{
+		display:grid;
+		grid-template-columns: repeat(4,1fr);
+      	grid-template-rows: repeat(5,150px);
+      	grid-template-areas: 
+      	". box2 box2 box2"
+      	"box1 box2 box2 box2"
+      	"box1 box2 box2 box2"
+      	"box1 box2 box2 box2"
+      	"box1 . box3 box3";
+      	text-align:center;
+	}
+	.box1 {
+      
+      grid-area: box1;
+    }
+    .box2 {
+     
+      grid-area: box2;
+    }
+    .box3 {
+     
+      grid-area: box3;
+    }
+ 	
+ 
+</style>
 </head>
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<h2>자유게시판</h2>
 
 
-<div class="list-group" id="left">
+<div class="wrapper container">
+<div class="box1 list-group">
   <a href="<c:url value='/freeBoard/freeBoardList/main/1/1' />" class="list-group-item list-group-item-action">
     전체 보기
   </a>
@@ -31,9 +59,9 @@
   <a href="<c:url value='/freeBoard/freeBoardList/fish/1/1' />" class="list-group-item list-group-item-action">어류</a>
   <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
 </div>
-
-<div>
-	<table class="table" id="right">
+<div class="box2">
+<h2>자유게시판</h2>
+	<table class="table" >
 	  <thead>
 	  	<tr>
 			<td colspan="5" align="right">
@@ -87,7 +115,7 @@
 	</table>
 </div>
 
-<div>
+<div class="box3">
 	<c:if test="${totalCnt != null}">
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
@@ -164,8 +192,7 @@
 			</ul>
 		</nav>
 	</c:if>
-
-	
-
+</div>
+</div>
 </body>
 </html>
