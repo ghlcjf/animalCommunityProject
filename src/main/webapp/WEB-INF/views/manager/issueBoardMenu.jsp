@@ -68,6 +68,7 @@
 <a href='<c:url value="/manager/managerMain" />'>관리자 메인페이지로 돌아가기</a>
 </div>
 
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 	function deleteConfirm(deleteNum){

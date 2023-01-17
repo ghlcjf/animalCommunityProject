@@ -27,6 +27,7 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
+
 <div class="d-grid gap-2 col-6 mx-auto">
 <h2>병원 정보 수정 페이지</h2>
 
@@ -77,37 +78,40 @@
 </form:form>
 </div>
 	
-	</body>
-	
-	<script type="text/javascript">
-		function insertHospitalCheck() {
-			
-			if($('#hospitalName').val()==''){
-				alert('이름을 입력해 주세요');
-				return false;
-			}
-			if($('#detailedAddress').val()==0){
-				alert('상세 주소를 입력해 주세요');
-				return false;
-			}
-			if($('#hospitalTel').val()==0){
-				alert('전화번호를 입력해 주세요');
-				return false;
-			}
-			/* modelAttribute와 textarea의 아이디가 같아서 네임값을 이용해 값 가져오기 */
-			let hospitalInfo = document.getElementsByName('hospitalInfo')[0].value;
-			if(hospitalInfo==''){
-				alert('내용을 입력해 주세요');
-				return false;
-			}		
-			let cc = confirm('게시글을 수정하시겠습니까?');
-			if(cc){
-				alert('수정이 완료되었습니다.');
-				return cc;
-			}
+
+<jsp:include page="../footer.jsp"></jsp:include>
+
+</body>
+
+<script type="text/javascript">
+	function insertHospitalCheck() {
+		
+		if($('#hospitalName').val()==''){
+			alert('이름을 입력해 주세요');
 			return false;
 		}
-	
-	</script>
+		if($('#detailedAddress').val()==0){
+			alert('상세 주소를 입력해 주세요');
+			return false;
+		}
+		if($('#hospitalTel').val()==0){
+			alert('전화번호를 입력해 주세요');
+			return false;
+		}
+		/* modelAttribute와 textarea의 아이디가 같아서 네임값을 이용해 값 가져오기 */
+		let hospitalInfo = document.getElementsByName('hospitalInfo')[0].value;
+		if(hospitalInfo==''){
+			alert('내용을 입력해 주세요');
+			return false;
+		}		
+		let cc = confirm('게시글을 수정하시겠습니까?');
+		if(cc){
+			alert('수정이 완료되었습니다.');
+			return cc;
+		}
+		return false;
+	}
+
+</script>
 
 </html>

@@ -87,6 +87,8 @@
 	
 </form:form>
 </div>
+
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 	function insertNoticeCheck() {

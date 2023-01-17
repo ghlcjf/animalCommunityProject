@@ -52,7 +52,10 @@
 	<button type="submit" onclick="return insertImageCheck()">이미지 업로드</button>
 	
 </form:form>
+
 </div>
+
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 <script type="text/javascript">
