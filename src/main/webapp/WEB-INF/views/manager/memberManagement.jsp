@@ -13,9 +13,25 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
  <style>
+ 	h2{
+ 		margin-right:580px;
+ 	}
  	.form-control-sm{
  		width:300px;
  	}
+ 	button[type="submit"]{
+ 		width: 50px; height: 33px; border-radius: 10px;
+		text-align: center; color: white; font-weight:bolder;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		border: none;
+		
+	}
+	
+	button[type="submit"]:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
  	
  </style>
 

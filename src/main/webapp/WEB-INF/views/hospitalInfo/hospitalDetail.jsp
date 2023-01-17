@@ -67,7 +67,7 @@
 	
 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	        var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">병원위치</div>'
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">${hospitals.detailedAddress}</div>'
 	        });
 	        infowindow.open(map, marker);
 	

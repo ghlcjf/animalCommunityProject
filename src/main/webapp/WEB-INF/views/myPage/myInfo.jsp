@@ -22,6 +22,24 @@
 		#section{
 			margin-bottom: 30px;
 		}
+		.smBtn{
+			width: 50px; height: 33px; border-radius: 10px;
+			text-align: center; color: white; font-weight:bolder;
+			background: rgb(136, 154, 233);
+			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+			border: none;
+		}
+		.bigBtn{
+			width: 190px; height: 33px; border-radius: 10px;
+			text-align: center; color: white; font-weight:bolder;
+			background: rgb(136, 154, 233);
+			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+			border: none;
+		}
+		button[type="submit"]:hover{
+   			background: rgb(101, 121, 207);
+			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}
 		
 	</style>
 
@@ -46,7 +64,7 @@
 			</tr>
 		</table>
 		<form id="section" action="<c:url value='/checkPassword' />">
-			<button type="submit" onclick="newWindow()">개인정보 수정하기</button>
+			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
 		</form>
 		<h2>게시글 목록</h2>
 		<c:choose>
@@ -69,12 +87,12 @@
 							<td>${board.viewCount }</td>
 							<td>
 								<form action="<c:url value='/myPage/updeteForm/${board.boardNum}' />">
-									<button type="submit" onclick="return boardUpdate()">수정</button>
+									<button class="smBtn" type="submit" onclick="return boardUpdate()">수정</button>
 								</form>
 							</td>
 							<td>
 								<form action="<c:url value='/myPage/delete/${board.boardNum}' />">
-									<button type="submit" onclick="return boardDelete()">삭제</button>
+									<button class="smBtn" type="submit" onclick="return boardDelete()">삭제</button>
 									<%-- <input type="hidden" name="boardNum" value="${board.boardNum}"> --%>
 								</form>
 							</td>
