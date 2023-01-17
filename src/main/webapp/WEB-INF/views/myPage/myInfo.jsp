@@ -32,7 +32,10 @@
 	margin-left: 10px;
 }
 .table{
-	width: 50%
+	width: 1150px
+}
+.text-end{
+	margin-right: 100px
 }
 		h2{
 			margin-bottom: 30px;
@@ -76,7 +79,8 @@
 	</nav>
 	
 	<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
-		<h2>${user.name}님</h2>
+		<h2></h2>
+		<p class="text-end fs-1">${user.name}님</p>
 		<table class="table mx-auto">
 			<tr>
 				<th>이름</th>
@@ -107,7 +111,7 @@
 				<p>게시글이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<table class="table">
+				<table class="table mx-auto">
 					<tr>
 						<th>글제목</th>
 						<th>작성일</th>
