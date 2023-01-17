@@ -56,11 +56,9 @@
 	<button type="submit" onclick="return insertIssueBoardCheck()">글 등록</button>
 	
 </form:form>
-<<<<<<< HEAD
 </div>
-=======
+
 <jsp:include page="../footer.jsp"></jsp:include>
->>>>>>> refs/heads/eunjin9
 </body>
 <script type="text/javascript">
 	function insertIssueBoardCheck() {
