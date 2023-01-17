@@ -24,7 +24,7 @@
 		<property name="freeBoardService" ref="freeBoardService"></property>
 		<property name="animalDao" ref="animalDao"></property>
 	</bean>
-	<bean class="animal.commons.CommonExceptionHandler"></bean>
+	
 	
 	<bean id="gbrController" class="animal.controller.GBRController">
 		<property name="animalDao" ref="animalDao"></property>
@@ -74,7 +74,7 @@
 	<bean id="registerController" class="animal.controller.RegisterController">
 		<property name="memberRegisterService" ref="memberRegSvc"/>
 	</bean>		
-	<bean class="animal.commons.CommonExceptionHandler"></bean>
+	
 	
 
 	<!-- 병원 정보 -->
@@ -122,4 +122,8 @@
 		<property name="reportBoardService" ref="reportBoardService"></property>
 	</bean>
 	
+	
+	
+	<bean id="messageController" class="animal.controller.MessageController"></bean>
+	<bean id="messengerController" class="animal.controller.MessengerController"></bean>
 </beans>
