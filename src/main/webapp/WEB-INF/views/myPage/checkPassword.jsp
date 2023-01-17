@@ -52,7 +52,7 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
-	
+
 	<div id="loginformBox">
 		<form action="/animalCommunity/checkPassword2/${user.name}" method="post" id="frm">
 			<h2 style="text-align: center;">비밀번호 확인</h2>
@@ -77,6 +77,7 @@
 		</form>
 	</div>
 	
+
  	<script type="text/javascript">
 		function checkPassword() {
 			let f = document.forms.frm;

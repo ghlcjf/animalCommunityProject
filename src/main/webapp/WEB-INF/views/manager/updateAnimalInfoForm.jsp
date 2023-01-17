@@ -40,7 +40,6 @@
 					<c:when test="${animalInfo.animalUrl=='null' || empty animalInfo.animalUrl}">
 						<img src="/imageFolder/noImage.png">
 					</c:when>
-					
 					<c:otherwise>
 						<img src="/imageFolder/animalInfoImage/${animalInfo.animalUrl }">
 					</c:otherwise>
@@ -90,26 +89,29 @@
 	
 </form:form>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
-	<script type="text/javascript">
-		function insertAnimalInfoCheck() {
-			
-			if($('#animalTitle').val()==''){
-				alert('제목을 입력해 주세요');
-				return false;
-			}
-			if($('#animalContent').val()==0){
-				alert('내용을 입력해 주세요');
-				return false;
-			}
-			
-			let cc = confirm('게시글을 수정하시겠습니까?');
-			if(cc){
-				alert('수정이 완료되었습니다.');
-				return cc;
-			}
+
+	
+<script type="text/javascript">
+	function insertAnimalInfoCheck() {
+		
+		if($('#animalTitle').val()==''){
+			alert('제목을 입력해 주세요');
 			return false;
 		}
-	
-	</script>
+		if($('#animalContent').val()==0){
+			alert('내용을 입력해 주세요');
+			return false;
+		}
+		
+		let cc = confirm('게시글을 수정하시겠습니까?');
+		if(cc){
+			alert('수정이 완료되었습니다.');
+			return cc;
+		}
+		return false;
+	}
+
+</script>
 </html>

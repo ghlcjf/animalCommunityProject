@@ -5,29 +5,22 @@
 
 <head>
 	<style>
-
 		.menu_bar{
-			background-color: rgb(136, 154, 233);
-			font-size: 25px;
+			background-color: rgb(136, 154, 233); font-size: 25px;
 		}
 		.nav-link{
 			color: white;
 		}
-		
 		.nav-link:hover{
-			font-weight:bolder;
-			color: rgb(255, 224, 234);
+			font-weight:bolder;color: rgb(255, 224, 234);
 		}
 		.logo-box{
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;			
-
+	        display: flex; justify-content: center; align-items: center;	
 		}
 		.logo{
-			height: 150px;
-			width: auto;
+			height: 150px;width: auto;
 		}
+
 	</style>
 </head>
 
@@ -41,8 +34,8 @@
 			<!-- 세션이 없으면 -->
 			<c:if test="${empty userInfo}">
 				<ul class="nav justify-content-end">
-					<li class="nav-link active" aria-current="page"><a href='<c:url value="/register/step1"/>'>회원가입</a></li>
-					<li class="nav-link active" aria-current="page"><a href='<c:url value="/login"/>'>로그인</a></li>
+						<li class="nav-link active" aria-current="page"><a href='<c:url value="/register/step1"/>'>회원가입</a></li>
+						<li class="nav-link active" aria-current="page"><a href='<c:url value="/login"/>'>로그인</a></li>
 				</ul>
 				<div class="menu_bar">
 					<ul class="nav justify-content-center">
@@ -75,9 +68,9 @@
 					</ul>			
 				</div>
 			</c:if>			
-
-
 </header>
+
+
 	<script
 	    src="https://code.jquery.com/jquery-3.6.1.js"
 	    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="

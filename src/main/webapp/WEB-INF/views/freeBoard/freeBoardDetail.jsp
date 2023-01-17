@@ -115,12 +115,8 @@
 	<a href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'>목록으로 돌아가기</a>
 	
 	</div>
-	
 
-
-
-
-
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 

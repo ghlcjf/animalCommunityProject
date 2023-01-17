@@ -66,7 +66,7 @@
 		</div>
 
 	</form>
-
+	<jsp:include page="../footer.jsp"></jsp:include>
 <script type="text/javascript">
 
 	function agreeCheck(){

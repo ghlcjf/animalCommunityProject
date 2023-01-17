@@ -97,8 +97,10 @@
 				</td>
 			</tr>
 		</table>
-		
 	</div>
+
+	<jsp:include page="../footer.jsp"></jsp:include>
+
 	<script type="text/javascript">
 	
 		function boardDelete(){
