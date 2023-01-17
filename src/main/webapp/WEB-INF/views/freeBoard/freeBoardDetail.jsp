@@ -10,99 +10,114 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<style>
+	button{ 
+	 		border-radius: 10px;
+			text-align: center; color: white; font-weight:bolder;
+			background: rgb(136, 154, 233);
+			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+			border: none;
+			
+		}
+		
+	button:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
+	img{
+		width:500px;
+		height:500px;
+	}
+</style>
 </head>
 <body>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 <jsp:include page="../header.jsp"></jsp:include>
-<h2>자유게시판 상세보기</h2>
 
-<table border="1">
 
-	<c:if test="${freeBoard.name == userInfo.name }">
-		<tr>
-			<td colspan="4">
-				<form>
-					<button type="button" onclick="return updateConfirm(${freeBoard.boardNum})">수정</button>
-					<button type="button" onclick="return deleteConfirm(${freeBoard.boardNum})">삭제</button>
-				</form>
-			</td>
-		</tr>
-		
-	</c:if>
-	<tr>
-		<td rowspan="7">
-			<c:choose>
-			
-				<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
-<%-- 					<img src="<spring:url value='/imageFolder/noImage.png' />"><br> --%>
-					<img src="/imageFolder/noImage.png"><br>
-				</c:when>
-				
-				<c:otherwise>
-					<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" ><br>
-				</c:otherwise>
-				
-			</c:choose>
-		</td>
-		<td>글 번호 : ${freeBoard.boardNum}</td>
-		<th>${freeBoard.boardTitle }</th>
-		<td>조회수 : ${freeBoard.viewCount}</td>
-	</tr>
-	<tr>
-		<td>카테고리 : ${freeBoard.boardCategory }</td>
-		<td colspan="2">작성일자 : <fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
-	</tr>
-	<tr>
-		<td colspan="3">${freeBoard.boardContent}
-		</td>
-	</tr>
-	<tr>
-		<td colspan="3">
-			<form>
-				<input type="button" id="goodBtn" value="추천 ${freeBoard.good}" onclick="addGood(${freeBoard.boardNum})">
-				<input type="button" id="badBtn" value="반대 ${freeBoard.bad}" onclick="addBad(${freeBoard.boardNum})">
-				<input type="button" id="reportBtn" value="신고 ${freeBoard.report}" onclick="addReport(${freeBoard.boardNum})">
-			</form>
-			
-		</td>
-	</tr>
-</table>
 
-<table border="1" id="commentTbl">
-	<c:if test="${!empty userInfo}">
-		<tr>
-			<td colspan="3">
-				<form>
-					<input type="hidden" id="name" value="${userInfo.name}">
-					<textarea rows="4" cols="30" id="comment" placeholder="댓글을 입력해 주세요"></textarea>
-					<button type="button" onclick="insertComment(${freeBoard.boardNum})">댓글 등록</button>
-				</form>
-			</td>
-		</tr>
-	</c:if>
-	
-	<c:choose>
-		<c:when test="${empty freeComments}">
+	<div class="d-grid gap-2 col-6 mx-auto">
+	<h2>자유게시판 상세보기</h2>
+	<table class="table">
+		<c:if test="${freeBoard.name == userInfo.name }">
 			<tr>
-				<td colspan="3">댓글이 없습니다.</td>
+				<td  colspan="8">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+					  <button class="btn btn-primary me-md-2" type="button" onclick="return updateConfirm(${freeBoard.boardNum})">수정</button>
+					  <button class="btn btn-primary" type="button" onclick="return deleteConfirm(${freeBoard.boardNum})">삭제</button>
+					</div>
+				</td>
 			</tr>
-		</c:when>
-		<c:otherwise>
-			<c:forEach items="${freeComments}" var="freeComment">
-				<tr>
-					<td>${freeComment.name }</td>
-					<td>${freeComment.commentContent }</td>
-					<td><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
-				</tr>
-			
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
-	<tr id="addComment"></tr>
-</table>
+		</c:if>
+		<tr>
+			<th>글 번호</th>
+			<td>${freeBoard.boardNum}</td>
+			<th>글 제목</th>
+			<td colspan="5">${freeBoard.boardTitle}</td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td> ${freeBoard.name}</td>
+			<th>작성일</th>
+			<td><fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
+			<th>조회수</th>
+			<td>${freeBoard.viewCount}</td>
+			<th>카테고리</th>
+			<td>${freeBoard.boardCategory } </td>
+		</tr>
+		<tr>
+			<td colspan="8">
+				<c:if test="${!empty freeBoard.boardUrl && freeBoard.boardUrl!='null'}">
+					<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" class="rounded mx-auto d-block" ><br>
+				</c:if>
+				${freeBoard.boardContent}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="8">
+				<form>
+					<input class="btn btn-primary" type="button" id="goodBtn" value="추천 ${freeBoard.good}" onclick="addGood(${freeBoard.boardNum})">
+					<input class="btn btn-primary" type="button" id="badBtn" value="반대 ${freeBoard.bad}" onclick="addBad(${freeBoard.boardNum})">
+					<input class="btn btn-primary" type="button" id="reportBtn" value="신고 ${freeBoard.report}" onclick="addReport(${freeBoard.boardNum})">
+				</form>
+			</td>
+		</tr>
+	</table>
+	<table id="commentTbl" class="table">
+		<c:if test="${!empty userInfo}">
+			<tr>
+				<td colspan="3">
+					<form>
+						<div class="input-group mb-3">
+							<input type="hidden" id="name" value="${userInfo.name}">
+							<input type="text" id="comment" class="form-control" placeholder="댓글을 입력해 주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+							<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="insertComment(${freeBoard.boardNum})">댓글 등록</button>
+						</div>
+					</form>
+				</td>
+			</tr>
+		</c:if>
+		<c:forEach items="${freeComments}" var="freeComment">
+			<tr>
+				<td>${freeComment.name }</td>
+				<td>${freeComment.commentContent }</td>
+				<td><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+			</tr>
+		
+		</c:forEach>
 
+		<tr id="addComment"></tr>
+	</table>
+	
+	
+	
+	<a href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'>목록으로 돌아가기</a>
+	
+	</div>
 
-<a href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'>목록으로 돌아가기</a>
+<jsp:include page="../footer.jsp"></jsp:include>
+
 </body>
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
@@ -176,7 +191,7 @@
 				
 			},
 			complete:function(){
-				$('#comment').val()='';
+				document.getElementById('comment').value='';
 			}
 			
 		});
