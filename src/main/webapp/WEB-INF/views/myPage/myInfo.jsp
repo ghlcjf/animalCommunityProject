@@ -70,7 +70,7 @@
 		</c:otherwise>
 	</c:choose>
 	<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
-	
+	<jsp:include page="../footer.jsp"></jsp:include>
 	<script type="text/javascript">
 		function boardDelete(){
 			 return confirm('게시글을 삭제 하시겠습니까?');

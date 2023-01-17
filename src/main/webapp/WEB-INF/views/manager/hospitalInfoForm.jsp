@@ -67,7 +67,7 @@
 		<button type="submit">글 등록</button>
 	
 	</form:form>
-
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 
 <script type="text/javascript">

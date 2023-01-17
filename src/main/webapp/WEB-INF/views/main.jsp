@@ -21,81 +21,135 @@
 
 	<style>
         *{ margin: 0; padding: 0;}	
- 		img{ height: 600px;/*사진높이 일정하게 맞춘것*/ } 
-		#carouselExampleControls{ width: 1200px; }
-	
-		#container{
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;
+ 		img{ height: 600px;/*이미지 배너부분 사진높이 일정하게 맞춘것*/ } 
+ 		a{text-decoration: none;/*모든 a태그 밑줄 없애기*/}
+		#carouselExampleControls{ width: 1300px; }
+		#container1{display: flex; justify-content: center; align-items: center;}
+		#conrainer2{display: flex; justify-content: center; align-items: center;}
+		#main-top{width: 1650px;}
+		#main-top-left{ display: inline-block;}
+		#main-top-right{ display: inline-block; float: right;}
+
+		#main-bottom-left{
+            display: grid;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
 		}
-		#main-left{
-	        display: inline-block;
+		#main-bottom-right{display: inline-block; 
+			display: grid;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
 		}		
 		
-		#main-right{
-	        display: inline-block;
-			margin-left: 10px; 
-		}			
 		.main-freeBoard{
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;
-	        padding-top: 30px;    
+	        display: flex;  justify-content: center;	       
+	        align-items: center; padding-top: 30px;    	        
 			padding-bottom: 30px;
+			background: rgb(238, 241, 255);
+			border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; 
 		}
 		table.main-freeBoardList{
-			margin-right: 30px;
-		
+			margin-right:10px; margin-left: 10px; width: 260px;
+		}
+		.free-board-more{
+			background: rgb(136, 154, 233); margin-top: 40px; 
+			border-top-left-radius: 20px; border-top-right-radius: 20px; 
+			height: 50px;
+		}
+		.big-font{
+			margin-left: 20px; font-size: 30px; color: white;
+			font-weight: bolder;
+		}
+		.small-font{
+			font-size: 20px; color: rgb(224, 230, 255); font-weight: bolder;
+		}
+		.show-more{
+			margin-left: 650px;
+			text-align: right; color: white; font-weight: bolder;
+		}
+		.show-more-issue{
+			margin-left: 700px;
+			text-align: right; color: white; font-weight: bolder;
+		}
+		.board-name{
+		    font-size:20px; font-weight: bolder; color: rgb(90, 99, 133);
+		}	
+		.board-title{
+			font-size:20px; font-weight: bolder; color: rgb(73, 80, 107);
 		}
 		.main-issue{
-	        display: flex;
-	        justify-content: center;
-	        align-items: center;
-	        padding-top: 30px;    
-			padding-bottom: 30px;		
-		
+	        display: flex;  justify-content: center;	       
+	        align-items: center; padding-top: 30px;    	        
+			padding-bottom: 30px;
+			background: rgb(238, 241, 255);
+			border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; 			
+			margin-bottom: 100px;
+		}			
+		.issue-board-more{
+			background: rgb(136, 154, 233); margin-top: 40px;
+			border-top-left-radius: 20px; border-top-right-radius: 20px; 
+			height: 50px; 		
 		}
 		table.main-issuelist{
-			margin-right: 30px;
-		}
-		table.col{
-			border: 3px solid rgb(136, 154, 233);
+			margin-right: 10px; width: 260px; margin-left: 10px; 
 		}
 		
+		table.col{
+			border: 3px solid rgb(136, 154, 233);
+			margin-top: 20px;
+		}
 		.loginId{
 			padding: 10px;
 		}
-		
 		.loginPwd{
 			padding-top: 0px;    padding-bottom: 10px; 
 			padding-right: 10px; padding-left: 10px;
 		}
-		
 		.loginBtn{
 			padding-top: 0px;    padding-bottom: 0px; 
 			padding-right: 10px; padding-left: 0px;
-			 margin-top: 15px;
-  			margin-bottom: 5px;
+			margin-top: 15px;	 margin-bottom: 5px;
 		}
-		
 		button[type="submit"]{
-			padding: 5px;
+			padding: 5px;   border: none;
 			height: 50px; 	border-radius: 10px;
-			
-			color: white; font-weight:bolder;
-			
+			color: white;   font-weight:bolder;
 			background: rgb(136, 154, 233);
 			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
+			
 		}
-		
 		button[type="submit"]:hover{
    			background: rgb(101, 121, 207);
 			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 		}
-		
-
+		.img-size{
+			height: 250px; width: 250px; margin: 10px;
+			border-radius: 20px;
+		}
+		.top-ten{
+			 border: 1px solid rgb(129, 139, 180);width: 300px;
+		}
+		.top-ten:hover{
+			background: rgb(238, 241, 255); 
+		}
+		.top-ten-box{
+			background: rgb(136, 154, 233); width: 300px; padding-top: 5px; text-align: center;
+			height: 45px; margin-top: 20px; border-top-left-radius: 15px; border-top-right-radius: 15px; 
+		}
+		.top-ten-box-text{
+			color: white; font-size: 25px; padding: 5px;
+		}
+		.top-ten-text{
+			color: rgb(90, 99, 133);
+		}
+		.top-number{
+			background: rgb(129, 139, 180); padding-left: 5px; padding-right: 5px;
+			color: white; font-size: 20px;
+		}
 	</style>
 	
 </head>
@@ -103,187 +157,222 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 	
-	<div id="container">
-		<div id="main-left">
-			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-		  		<div class="carousel-inner">
-		  			
-		  			<c:choose>
-		  				<c:when test="${empty imageList}">
-		  					<div class="carousel-item active">
-				      			<img src="/imageFolder/image/사진1.PNG" class="d-block w-100" alt="사진1">
-					    	</div>
-					    	<div class="carousel-item active">
-				      			<img src="/imageFolder/image/사진2.PNG" class="d-block w-100" alt="사진2">
-					    	</div>
-					    	<div class="carousel-item active">
-				      			<img src="/imageFolder/image/사진3.PNG" class="d-block w-100" alt="사진3">
-					    	</div>
-		  				</c:when>
-		  				<c:otherwise>
-		  					<c:forEach items="${imageList}" var="image">
-		  						<div class="carousel-item active">
-					      			<img src="/imageFolder/image/${image.imageUrl }" class="d-block w-100" alt="${image.imageInfo }">
+	<div id="container1">
+		<div id="main-top">
+			<div id="main-top-left">
+		  		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+			  		<div class="carousel-inner">
+			  			<c:choose>
+			  				<c:when test="${empty imageList}">
+			  					<div class="carousel-item active">
+					      			<img src="/imageFolder/image/사진1.PNG" class="d-block w-100" alt="사진1">
 						    	</div>
-		  					</c:forEach>
-		  				</c:otherwise>
-		  			</c:choose>
-		  		</div>
-		 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-		    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    		<span class="visually-hidden">Previous</span>
-		  		</button>
-		  		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-		    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    		<span class="visually-hidden">Next</span>
-		  		</button>
+						    	<div class="carousel-item active">
+					      			<img src="/imageFolder/image/사진2.PNG" class="d-block w-100" alt="사진2">
+						    	</div>
+						    	<div class="carousel-item active">
+					      			<img src="/imageFolder/image/사진3.PNG" class="d-block w-100" alt="사진3">
+						    	</div>
+			  				</c:when>
+			  				<c:otherwise>
+			  					<c:forEach items="${imageList}" var="image">
+			  						<div class="carousel-item active">
+						      			<img src="/imageFolder/image/${image.imageUrl }" class="d-block w-100" alt="${image.imageInfo }">
+							    	</div>
+			  					</c:forEach>
+			  				</c:otherwise>
+			  			</c:choose>
+			  		</div>
+			 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+			    		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    		<span class="visually-hidden">Previous</span>
+			  		</button>
+			  		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+			    		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    		<span class="visually-hidden">Next</span>
+			  		</button>
+				</div>
 			</div>
-			
-			
-		<!--자유게시판(기본 이미지, 작성자, 제목, 추천수-->
-		<div class="main-freeBoard">
-			<c:if test="${empty freeBoardList}">
-				<p>등록된 게시글이 없습니다.</p>
-			</c:if>
-			<c:if test="${!empty freeBoardList}">			
-				<c:forEach items="${freeBoardList}" var="board" begin="0" end="3">
-						<table class="main-freeBoardList" border="1">
-							<tr>
-								<td>
-									<c:choose>
-			
-										<c:when test="${board.boardUrl=='null' || empty board.boardUrl}">
-						<%-- 					<img src="<spring:url value='/imageFolder/noImage.png' />"><br> --%>
-											<img src="/imageFolder/noImage.png"  width="200px" height="200px"><br>
-										</c:when>
-										
-										<c:otherwise>
-											<img src="/imageFolder/freeBoardImage/${board.boardUrl }" width="250px" height="250px"><br>
-										</c:otherwise>
-										
-									</c:choose>
-								</td>
-							</tr>
-							<tr>
-								<td>${board.name}</td>
-							</tr>
-							<tr>
-								<td>${board.boardTitle}</td>
-							</tr>	
-							<tr>
-								<td> <!--추천수 하트 아이콘-->
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-heart-fill" viewBox="0 0 16 16" color="pink">
-										<path d="M2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm6 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
-									</svg>
-									${board.good}
-								</td>
-							</tr>		
-						</table>
-				</c:forEach>
-			</c:if>			
-		</div>	
-			
-		<!--이슈게시판(기본이미지 또는 제목이 곧 이미지ㅡ 작성자, 제목-->
-		<h3>이슈게시판</h3>
-		<div class="main-issue">
-			<c:if test="${empty issue}">
-				<p>등록된 게시글이 없습니다.</p>
-			</c:if>
-			<c:if test="${!empty issue}">
-				<c:forEach items="${issue}" var="board" begin="0" end="3">
-					<table class="main-issuelist" border="1">
-	
-							<tr>
-								<td>
-									<c:choose>
-										<c:when test="${!empty board.issueUrl }">
-											<img src="/imageFolder/issueBoardImage/${board.issueUrl }" ><br>	
-										</c:when>
-										<c:otherwise>
-											<img src="/imageFolder/noImage.png"><br>
-										</c:otherwise>
-									</c:choose>
-								</td>
-							</tr>
-							<tr>
-								<td>${board.name}</td>
-							</tr>
-							<tr>
-								<td> ${board.issueTitle}</td>
-							</tr>
-					</table>	
-				</c:forEach>
-			</c:if>			
-		</div>
-		
-		</div><!--class: main-left-->
-		
-	
-	
-		<div id="main-right">	
+
 			<!--작은 로그인폼, 세션이 없을때만 나타나게-->
-			<div class="row g-3">
-				<c:if test="${empty userInfo}">
-					<form:form action="/animalCommunity/login" modelAttribute="loginCommand">
-						<form:errors/> <!--path없을시 글로벌 에러-->
-						<table class="col">
-							<tr>
-								<th class="loginId">
-									<form:input  class="form-control" path="id" placeholder="id"/>
-									<form:errors path="id"/>
-								</th>
-								<td class="loginBtn" rowspan="2" onclick="return loginCheck()">
-									<button  type="submit">
-										<spring:message code="login.btn"/>
-									</button>								
-								</td>									
-							</tr>
-							<tr>
-								<th class="loginPwd">
-									<form:input  class="form-control" path="password" type="password" placeholder="password"/>
-									<form:errors path="password"/>
-								</th>
-								<td>
-								</td>							
-							</tr>
-						</table>
-					</form:form>
+			<div id="main-top-right">
+				<div class="row g-3">
+					<c:if test="${empty userInfo}">
+						<form:form action="/animalCommunity/login" modelAttribute="loginCommand">
+							<form:errors/> <!--path없을시 글로벌 에러-->
+							<table class="col">
+								<tr>
+									<th class="loginId">
+										<form:input  class="form-control" path="id" placeholder="id"/>
+										<form:errors path="id"/>
+									</th>
+									<td class="loginBtn" rowspan="2" onclick="return loginCheck()">
+										<button  type="submit">
+											<spring:message code="login.btn"/>
+										</button>								
+									</td>									
+								</tr>
+								<tr>
+									<th class="loginPwd">
+										<form:input  class="form-control" path="password" type="password" placeholder="password"/>
+										<form:errors path="password"/>
+									</th>
+									<td>
+									</td>							
+								</tr>
+							</table>
+						</form:form>
+					</c:if>
+				</div>	
+				<!--인기글 top10개: 조회수로 순위-->
+				<div class="top-ten-box">
+					<span class="top-ten-box-text">커뮤니티 인기글 Top10</span>
+				</div>
+				<c:if test="${empty freeBoardTopTen}">
+					<table class="top-ten" border="1" width="300px">
+						<tr>
+							<td>등록된 게시글이 없습니다</td>
+						</tr>
+					</table>
 				</c:if>
+				<c:if test="${!empty freeBoardTopTen}">
+					<c:forEach items="${freeBoardTopTen}" var="board" begin="0" end="9" varStatus="i">
+							<table class="top-ten" border="1" width="300px">
+								<tr>
+									<th style="padding: 5px; font-size: 15px;">
+										<span class="top-number">${i.count}</span> 
+										<a class="top-ten-text" href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
+											 
+											${board.boardTitle}  (${board.viewCount})
+										</a>
+									</th>
+								</tr>
+							</table>
+					</c:forEach>
+				</c:if>
+						
 			</div>
-				
-			<!--인기글 top10개: 조회수로 순위-->
-			<h4>커뮤니티 인기 Top10</h4>
-			<c:if test="${empty freeBoardTopTen}">
-				<table border="1" width="300px">
-					<tr>
-						<td>등록된 게시글이 없습니다</td>
-					</tr>
-				</table>
-			</c:if>
-			<c:if test="${!empty freeBoardTopTen}">
-				<c:forEach items="${freeBoardTopTen}" var="board" begin="0" end="9">
-						<table border="1" width="300px">
-							<tr>
-								<th style="padding: 5px; font-size: 15px;">
-									<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
-										${board.boardTitle}  ${board.viewCount}
-									</a>
-								</th>
-							</tr>
-						</table>
-				</c:forEach>
-			</c:if>
-			
-			
-		</div> <!--class: main-right-->
+		</div><!--class: main-top-->
 	</div>
 	
-
-	
-
+	<div id="container2">
+		<div id="main-bottom-left">	
+				<!--자유게시판(기본 이미지, 작성자, 제목, 추천수-->
+			<div class="free-board-more">
+				<p><span class="big-font">자유게시판</span>
+				   <span class="small-font">나의 반려동물과의 일상들</span>
+				   <c:if test="${empty userInfo}"><!--세션이 없으면-->
+					   <a href='<c:url value="/login"/>' onclick="afterLogin()">
+					 	  <span class="show-more">더보기></span>
+					 	</a>
+				 	</c:if>
+				 	<c:if test="${!empty userInfo}"><!--세션이 있으면-->
+				 		<a href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>'>
+				 			<span class="show-more">더보기></span>
+				 		</a>
+				 	</c:if>
+				 </p>
+			</div>
+			<div class="main-freeBoard">
+				<c:if test="${empty freeBoardList}">
+					<p>등록된 게시글이 없습니다.</p>
+				</c:if>
+				<c:if test="${!empty freeBoardList}">			
+					<c:forEach items="${freeBoardList}" var="board" begin="0" end="3">
+							<table class="main-freeBoardList">
+								<tr>
+									<td>
+										<c:choose>
+										
+											<c:when test="${board.boardUrl=='null' || empty board.boardUrl}">
+												<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>" >	
+													<img class="img-size" src="/imageFolder/noImage.png"><br>
+												</a>								
+											</c:when>
+											
+											<c:otherwise>
+												<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
+													<img class="img-size" src="/imageFolder/freeBoardImage/${board.boardUrl }"><br>
+												</a>
+											</c:otherwise>
+											
+										</c:choose>
+									</td>
+								</tr>
+								<tr>
+									<td class="board-name">${board.name}</td>
+								</tr>
+								<tr>
+									<td class="board-title">${board.boardTitle}</td>
+								</tr>	
+								<tr>
+									<td> <!--추천수 하트 아이콘-->
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-heart-fill" viewBox="0 0 16 16" style="color: rgb(255, 119, 137);">
+											<path d="M2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm6 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+										</svg>
+										${board.good}
+									</td>
+								</tr>		
+							</table>
+					</c:forEach>
+				</c:if>			
+			</div>	<!--main-freeBoard-->
+			
+			<!--이슈게시판(기본이미지 또는 제목이 곧 이미지ㅡ 작성자, 제목-->
+			<div class="issue-board-more">
+				<p><span class="big-font">이슈게시판</span>
+				   <span class="small-font">동물들의 특별한 이야기</span>
+				   <c:if test="${empty userInfo}"><!--세션이 없으면-->
+					   <a href='<c:url value="/login"/>' onclick="afterLogin()">
+					 	  <span class="show-more-issue">더보기></span>
+					 	</a>
+				 	</c:if>
+				 	<c:if test="${!empty userInfo}"><!--세션이 있으면-->
+				 		<a href='<c:url value="/issue"/>'>
+				 			<span class="show-more">더보기></span>
+				 		</a>
+				 	</c:if>
+				 </p>
+			</div>
+			<div class="main-issue">
+				<c:if test="${empty issue}">
+					<p>등록된 게시글이 없습니다.</p>
+				</c:if>
+				<c:if test="${!empty issue}">
+					<c:forEach items="${issue}" var="board" begin="0" end="3">
+						<table class="main-issuelist">	
+								<tr>
+									<td>
+										<c:choose>
+											<c:when test="${board.issueUrl=='null' || !empty board.issueUrl }">
+												<a href="<c:url value='/issue/detail/${board.issueNum}' />">
+													<img class="img-size" src="/imageFolder/noImage.png"><br>
+												</a>
+											</c:when>
+											<c:otherwise>
+												<a href="<c:url value='/issue/detail/${board.issueNum}' />">
+													<img class="img-size" src="/imageFolder/issueBoardImage/${board.issueUrl }" ><br>	
+												</a>
+											</c:otherwise>
+										</c:choose>
+									</td>
+								</tr>
+								<tr>
+									<td class="board-name">${board.name}</td>
+								</tr>
+								<tr>
+									<td class="board-title"> ${board.issueTitle}</td>
+								</tr>
+						</table>	
+					</c:forEach>
+				</c:if>			
+			</div>	
+		</div> <!--class: main bottom-left-->
 
 		
+	</div>
 
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 

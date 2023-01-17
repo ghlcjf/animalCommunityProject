@@ -60,7 +60,7 @@
 		
 		<button type="submit" onclick="return checkPassword()"><spring:message code="changeInfo.btn"/></button>
 	</form:form> 
-	
+	<jsp:include page="../footer.jsp"></jsp:include>
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript">
 		function checkPassword() {

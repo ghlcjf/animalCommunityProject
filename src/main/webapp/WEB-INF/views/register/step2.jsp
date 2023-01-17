@@ -17,12 +17,15 @@
 	
 		.register-table{
 			display: flex; justify-content: center; align-items: center;
-			width: 800px; 
+			width: 2000px; 
 			
 		}
 
 		.form-control{
 			margin: 10px;
+		}
+		.box-size{
+			width: 300px;
 		}
 	
 		button[type="submit"]{
@@ -39,7 +42,20 @@
    			background: rgb(101, 121, 207);
 			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 		}
+		button[type="button"]{
+			margin: 10px;
+	 		width: 100px; height: 40px; border-radius: 10px;
+			text-align: center; color: white; font-weight:bolder;
+			background: rgb(136, 154, 233);
+			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+			border: none;
+			
+		}
 		
+		button[type="button"]:hover{
+   			background: rgb(101, 121, 207);
+			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}		
 	</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
@@ -56,9 +72,11 @@
 			<table class="register-table">
 				<tr>
 					<td><spring:message code="name"/></td>
-					<td>
+					<td class="box-size">
 						<form:input class="form-control" path="name"/>
-						<input type="hidden" name="nameBtnCheck" id="nameBtnCheck">
+						<input  type="hidden" name="nameBtnCheck" id="nameBtnCheck">
+					</td>
+					<td>
 						<button type="button" onclick="nameCheck()">중복 체크</button>
 					</td>
 				</tr>
@@ -67,6 +85,9 @@
 					<td>
 						<form:input class="form-control" path="id"/>
 						<input type="hidden" name="idBtnCheck" id="idBtnCheck">
+						
+					</td>
+					<td>
 						<button type="button" onclick="idCheck()">중복 체크</button>			
 					</td>
 				</tr>
@@ -103,7 +124,7 @@
 			</table>
 		</div>
 	</form:form>
-	
+	<jsp:include page="../footer.jsp"></jsp:include>
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript">
 		function nameCheck(){

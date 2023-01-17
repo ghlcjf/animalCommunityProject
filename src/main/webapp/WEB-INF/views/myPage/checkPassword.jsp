@@ -19,6 +19,7 @@
 		<input type="password" name="confirmPassword">	
 		<button type="submit" onclick="return checkPassword()">비밀번호 확인</button>
 	</form>
+
  	<script type="text/javascript">
 		function checkPassword() {
 			let f = document.forms.frm;

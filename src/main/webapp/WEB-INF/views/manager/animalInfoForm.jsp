@@ -57,6 +57,7 @@
 	</table>
 	<button type="submit" onclick="return insertAnimalInfoCheck()">글 등록</button>
 </form:form>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript">
 	function insertAnimalInfoCheck() {

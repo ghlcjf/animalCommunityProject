@@ -39,10 +39,12 @@ public class MainController {
 		
 		List<FreeBoard> freeBoardList = selectAllFreeBoardListService.selectAllFreeBoardList();
 		List<Image> imageList = imageService.selectAllImageList();
-		
 		List<Issue> issueList = animalDao.selectAllIssueList(); //이슈게시판 정보 
+
+		
 		//메인-인기글 10개 띄우는거 
 		List<FreeBoard> freeBoardTopTen = selectAllFreeBoardListService.selectFreeBoardTop();
+
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("issue",issueList);
 		model.addAttribute("freeBoardTopTen",freeBoardTopTen);
@@ -57,7 +59,7 @@ public class MainController {
 		List<Issue> issueList = animalDao.selectAllIssueList(); //이슈게시판 정보 
 		List<Image> imageList = imageService.selectAllImageList();
 		List<FreeBoard> freeBoardTopTen = selectAllFreeBoardListService.selectFreeBoardTop();
-		
+
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("issue",issueList); //이슈게시판 정보
 		model.addAttribute("freeBoardTopTen",freeBoardTopTen);

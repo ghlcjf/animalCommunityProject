@@ -190,5 +190,6 @@ function addGood(boardNum){ // XMLHttpRequest 객체
 } --%>
 
 </script>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

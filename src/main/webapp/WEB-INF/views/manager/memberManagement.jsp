@@ -45,6 +45,7 @@
 		</c:forEach>
 	</table>
 	<a href='<c:url value="/manager/managerMain" />'>이전으로 돌아가기</a>
+	<jsp:include page="../footer.jsp"></jsp:include>
 <script type="text/javascript">
 	function searchMember() {
 		let search = $('#search').val();

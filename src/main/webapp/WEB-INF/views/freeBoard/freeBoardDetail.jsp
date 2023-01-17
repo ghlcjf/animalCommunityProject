@@ -103,6 +103,7 @@
 
 
 <a href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'>목록으로 돌아가기</a>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>

@@ -48,5 +48,6 @@
 			 return confirm('게시글을 삭제 하시겠습니까?');
 		}
 	</script>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
