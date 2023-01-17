@@ -14,7 +14,7 @@
 	<style>
 	.navbar {
 	margin-top: 15px;
-	width: 60%;
+	width: 100%;
 	background-color: #dfe6f7;
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
@@ -32,7 +32,8 @@
 	margin-left: 10px;
 }
 .table{
-	width: 1150px
+	/* width: 1150px; */
+	width: 100%;
 }
 .text-end{
 	margin-right: 100px
@@ -72,14 +73,22 @@
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 	
-	<nav class="navbar mx-auto">
+	<div class="container text-center">
+        <div class="row">
+        <div class="col-1">
+            1 of 3
+          </div>
+        <div class="col-10">
+	<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
 		</div>
 	</nav>
 	
 	<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
-		<h2></h2>
+	
+            
+          
 		<p class="text-end fs-1">${user.name}님</p>
 		<table class="table mx-auto">
 			<tr>
@@ -99,6 +108,12 @@
 		<form id="section" action="<c:url value='/checkPassword' />">
 			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
 		</form>
+		</div>
+		<div class="col-1">
+            1 of 3
+          </div>
+		</div>
+		</div>
 		
 		<nav class="navbar mx-auto">
 		<div class="container-fluid">
