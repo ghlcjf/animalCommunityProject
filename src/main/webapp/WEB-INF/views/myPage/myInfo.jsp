@@ -12,6 +12,28 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	
 	<style>
+	.navbar {
+	margin-top: 15px;
+	width: 60%;
+	background-color: #dfe6f7;
+	border-top: 1px solid #96aeea;
+	border-bottom: 1px solid #96aeea;
+}
+
+.navbar-brand-cs {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	margin-right: var(- -bs-navbar-brand-margin-end);
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #808080;
+	text-decoration: none;
+	white-space: nowrap;
+	margin-left: 10px;
+}
+.table{
+	width: 50%
+}
 		h2{
 			margin-bottom: 30px;
 			font-weight:bolder;
@@ -46,9 +68,16 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
-	<div class="d-grid gap-2 col-6 mx-auto">
-		<h2>${user.name}님 마이페이지</h2>
-		<table class="table">
+	
+	<nav class="navbar mx-auto">
+		<div class="container-fluid">
+			<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
+		</div>
+	</nav>
+	
+	<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
+		<h2>${user.name}님</h2>
+		<table class="table mx-auto">
 			<tr>
 				<th>이름</th>
 				<th>아이디</th>
@@ -66,7 +95,13 @@
 		<form id="section" action="<c:url value='/checkPassword' />">
 			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
 		</form>
-		<h2>게시글 목록</h2>
+		
+		<nav class="navbar mx-auto">
+		<div class="container-fluid">
+			<span class="navbar-brand-cs mb-0 h1">게시글 목록</span>
+		</div>
+	</nav>
+	
 		<c:choose>
 			<c:when test="${empty board}">
 				<p>게시글이 없습니다.</p>
@@ -102,7 +137,7 @@
 			</c:otherwise>
 		</c:choose>
 		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
-	</div>
+	<!-- </div> -->
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 

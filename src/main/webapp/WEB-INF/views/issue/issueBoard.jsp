@@ -11,6 +11,25 @@
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <style>
+.navbar {
+	margin-top: 15px;
+	width: 60%;
+	background-color: #dfe6f7;
+	border-top: 1px solid #96aeea;
+	border-bottom: 1px solid #96aeea;
+}
+
+.navbar-brand-cs {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	margin-right: var(- -bs-navbar-brand-margin-end);
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #808080;
+	text-decoration: none;
+	white-space: nowrap;
+	margin-left: 10px;
+}
 	button{ 
 	 		border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
@@ -29,8 +48,14 @@
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
+
+<nav class="navbar mx-auto">
+		<div class="container-fluid">
+			<span class="navbar-brand-cs mb-0 h1">이슈</span>
+		</div>
+	</nav>
+
 <div class="container">
-<h2>이슈 게시판</h2>
 <c:choose>
 	<c:when test="${empty issue}">
 		<p>게시글이 없습니다.</p>
