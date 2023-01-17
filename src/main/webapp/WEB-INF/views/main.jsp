@@ -13,7 +13,8 @@
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous">
 </script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="<c:url value="/resources/js/sockjs.min.js"/>"></script>
 <!--부트스트랩 주소-->
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -156,7 +157,12 @@
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
-	
+	<div>
+		<input type="hidden" value="<c:out value='${userInfo.name }'/>" id="sessionName"/>
+		<span id="recMs" name="recMs" style="float:right;cursor:pointer;margin-right:10px;color:pink;">
+			<img src="/imageFolder/image/msgicon.png" style="width:15px;">
+		</span>
+	</div>
 	<div id="container1">
 		<div id="main-top">
 			<div id="main-top-left">
@@ -417,6 +423,53 @@
 		(사용자가 입력한 비밀번호와 데이터베이스에서 가져온 비밀번호 맞는지 확인)
 		아이디도 있고 비밀번호도 맞다면 true를 반환하는 메서드 
 		아니라면 false */
+		
+		
+
+		let socket = null;
+		let sock = new SockJS("/echo");
+		socket =sock;
+		$(document).ready(function(){
+		    if(!isEmpty($("#sessionName").val()))
+		            connectWS();
+		});
+		    $(".chat_start_main").click(function(){
+		        $(this).css("display","none");
+		        $(".chat_main").css("display","inline");
+		    })
+		    $(".chat_main .modal-header").click(function(){
+		        $(".chat_start_main").css("display","inline");
+		        $(".chat_main").css("display","none");
+		    });
+		 
+		    function connectWS(){
+		        sock.onopen = function() {
+		               console.log('info: connection opened.');
+		        };
+		        sock.onmessage = function(e){
+		            var splitdata =e.data.split(":");
+		            if(splitdata[0].indexOf("recMs") > -1)
+		                $("#recMs").append("["+splitdata[1]+"통의 쪽지가 왔습니다.]");
+		            else
+		                $("#chat").append(e.data + "<br/>");
+		        }
+		        sock.onclose = function(){
+		            $("#chat").append("연결 종료");
+//		              setTimeout(function(){conntectWs();} , 10000); 
+		        }
+		        sock.onerror = function (err) {console.log('Errors : ' , err);};
+		 
+		    }
+		    
+		    $("#board1").click(function(){
+		        location.href="/board/main_board.do";
+		    });
+		 
+		$("#chatForm").submit(function(event){
+		        event.preventDefault();
+		            sock.send($("#message").val());
+		            $("#message").val('').focus();    
+		    });    
 		
 </script>
 </html>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="<c:url value="/resources/js/sockjs.min.js"/>"></script>
 
 
 <head>
@@ -78,7 +80,7 @@
 	</script>
 	
 	<script type="text/javascript">
-	//로그아웃시 경고창 띄움
+	
 		function test(){
 			if(confirm("로그아웃하시겠습니까?")){
 				return true;	
@@ -90,6 +92,54 @@
 		function afterLogin(){
 			alert("로그인 후 이용할수 있습니다");
 		}
+		
+		
+		
+		let socket = null;
+		let sock = new SockJS("/echo");
+		socket =sock;
+		$(document).ready(function(){
+		    if(!isEmpty($("#sessionName").val()))
+		            connectWS();
+		});
+		    $(".chat_start_main").click(function(){
+		        $(this).css("display","none");
+		        $(".chat_main").css("display","inline");
+		    })
+		    $(".chat_main .modal-header").click(function(){
+		        $(".chat_start_main").css("display","inline");
+		        $(".chat_main").css("display","none");
+		    });
+		 
+		    function connectWS(){
+		        sock.onopen = function() {
+		               console.log('info: connection opened.');
+		        };
+		        sock.onmessage = function(e){
+		            var splitdata =e.data.split(":");
+		            if(splitdata[0].indexOf("recMs") > -1)
+		                $("#recMs").append("["+splitdata[1]+"통의 쪽지가 왔습니다.]");
+		            else
+		                $("#chat").append(e.data + "<br/>");
+		        }
+		        sock.onclose = function(){
+		            $("#chat").append("연결 종료");
+//		              setTimeout(function(){conntectWs();} , 10000); 
+		        }
+		        sock.onerror = function (err) {console.log('Errors : ' , err);};
+		 
+		    }
+		    
+		    $("#board1").click(function(){
+		        location.href="/board/main_board.do";
+		    });
+		 
+		$("#chatForm").submit(function(event){
+		        event.preventDefault();
+		            sock.send($("#message").val());
+		            $("#message").val('').focus();    
+		    });    
+		
 	</script>
 	
 
