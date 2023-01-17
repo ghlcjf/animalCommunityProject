@@ -40,12 +40,13 @@
 			<th scope="row">카테고리</th>
 			<td>
 				<form:select path="boardCategory" class="form-select">
-					<form:option value="dog">강아지</form:option>
-					<form:option value="cat">고양이</form:option>
-					<form:option value="reptile">파충류</form:option>
-					<form:option value="birds">조류</form:option>
-					<form:option value="fish">어류</form:option>
-					<form:option value="other">기타</form:option>
+					<form:option value="선택">선택</form:option>
+					<form:option value="강아지">강아지</form:option>
+					<form:option value="고양이">고양이</form:option>
+					<form:option value="파충류">파충류</form:option>
+					<form:option value="조류">조류</form:option>
+					<form:option value="어류">어류</form:option>
+					<form:option value="기타">기타</form:option>
 				</form:select>
 			</td>
 		</tr>
@@ -81,6 +82,10 @@
 </body>
 <script type="text/javascript">
 	function insertFreeBoardCheck() {
+		if($('#boardCategory').val()=='선택'){
+			alert('카테고리를 선택해 주세요');
+			return false;
+		}
 		
 		if($('#boardTitle').val()==''){
 			alert('제목을 입력해 주세요');

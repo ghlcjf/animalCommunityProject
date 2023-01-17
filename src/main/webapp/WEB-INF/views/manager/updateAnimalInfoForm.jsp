@@ -42,7 +42,7 @@
 					</c:when>
 					
 					<c:otherwise>
-						<img src="/imageFolder/animalInfoImage/${animal.animalUrl }">
+						<img src="/imageFolder/animalInfoImage/${animalInfo.animalUrl }">
 					</c:otherwise>
 				
 				</c:choose>
@@ -89,7 +89,7 @@
 	<button type="submit" onclick="return insertAnimalInfoCheck()">글 등록</button>
 	
 </form:form>
-	
+</div>
 </body>
 	<script type="text/javascript">
 		function insertAnimalInfoCheck() {

@@ -26,7 +26,7 @@
       	text-align:center;
 	}
 	.box1 {
-      
+      border:none;
       grid-area: box1;
     }
     .box2 {
@@ -37,7 +37,9 @@
      
       grid-area: box3;
     }
- 	
+ 	.list-group-item {
+ 		border:none;
+ 	}
  
 </style>
 </head>

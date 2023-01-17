@@ -43,6 +43,7 @@
 			<th scope="row">동물 종류</th>
 			<td>
 				<form:select path="animalCategory" class="form-select">
+					<form:option value="선택">선택</form:option>
 					<form:option value="강아지">강아지</form:option>
 					<form:option value="고양이">고양이</form:option>
 					<form:option value="파충류">파충류</form:option>
@@ -75,7 +76,10 @@
 </body>
 <script type="text/javascript">
 	function insertAnimalInfoCheck() {
-		
+		if($('#animalCategory').val()=='선택'){
+			alert('카테고리를 선택해 주세요');
+			return false;
+		}
 		if($('#animalTitle').val()==''){
 			alert('제목을 입력해 주세요');
 			return false;

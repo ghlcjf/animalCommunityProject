@@ -43,6 +43,7 @@
 			<th scope="row">병원 지역</th>
 			<td>
 				<form:select path="hospitalLoc" class="form-select">
+					<form:option value="선택">선택</form:option>
 					<form:option value="서울" >서울</form:option>
 					<form:option value="경기도" >경기도</form:option>
 					<form:option value="강원도" >강원도</form:option>
@@ -84,6 +85,10 @@
 		
 		if($('#hospitalName').val()==''){
 			alert('이름을 입력해 주세요');
+			return false;
+		}
+		if($('#hospitalLoc').val()=='선택'){
+			alert('카테고리를 선택해 주세요');
 			return false;
 		}
 		if($('#detailedAddress').val()==0){
