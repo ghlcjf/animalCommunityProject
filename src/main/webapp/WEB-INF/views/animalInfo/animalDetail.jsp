@@ -12,17 +12,20 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 <style type="text/css">
-.card-img-top {
-	height: 25vw;
-}
-
-.card {
-	margin-top: 2rem;
-}
-
-.d-flex {
-	margin-top: 1rem;
-}
+.card{
+           margin-top: 50px;
+        }
+        .img-fluid{
+            height: 500px;
+        }
+        .list-group-item-custom {
+        position: relative;
+        display: block;
+        padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+        color: var(--bs-list-group-color);
+        text-decoration: none;
+        background-color: var(--bs-list-group-bg);
+        border: none;
 </style>
 </head>
 <body>
