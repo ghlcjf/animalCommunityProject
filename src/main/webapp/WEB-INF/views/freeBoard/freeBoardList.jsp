@@ -44,12 +44,31 @@ button{
   			background: rgb(101, 121, 207);
 		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 	}
-	table{
-	table-layout: fixed;
-	}
-	td{
-	overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
-	}
+table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
 .pagination{
 	justify-content: center;
 }
@@ -91,7 +110,6 @@ button{
 <div class="container text-center">
         <div class="row">
         <div class="col-1">
-            
             <div class="box1 list-group">
   <a href="<c:url value='/freeBoard/freeBoardList/main/1/1' />" class="list-group-item list-group-item-action">
     전체보기
@@ -105,7 +123,6 @@ button{
 </div>
           </div>
            <div class="col-10">
-
 <nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">자유게시판</span>
@@ -128,7 +145,7 @@ button{
   <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
 </div> --%>
 <div class="box2">
-	<table class="table">
+	<table class="table table-hover table-sm">
 	  <thead>
 	  	<%-- <tr>
 			<td colspan="5" align="right">
@@ -137,11 +154,11 @@ button{
 			</td>
 		</tr> --%>
 	    <tr>
-	      <th scope="col">글번호</th>
-	      <th scope="col">글제목</th>
+	      <th scope="col">번호</th>
+	      <th scope="col">제목</th>
 	      <th scope="col">조회수</th>
 	      <th scope="col">작성자</th>
-	      <th scope="col">작성일자</th>
+	      <th scope="col">작성일</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -149,9 +166,7 @@ button{
 			<c:forEach items="${noticeList}" var="notice">
 				<tr>
 					 <th scope="row">${notice.boardNum }</th>
-					<td style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
-						<a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle } (${notice.commentCount})</a>
-					</td>
+					<td><a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle } (${notice.commentCount})</a></td>
 					<td>${notice.viewCount }</td>
 					<td>${notice.name }</td>
 					<td><fmt:formatDate value="${notice.writeDate}" pattern="yyyy-MM-dd"/></td>
@@ -168,9 +183,10 @@ button{
 				<c:forEach items="${freeBoardList}" var="board">
 					<tr>
 						<th scope="row">${board.boardNum }</th>
-						<td>
+						<%-- <td>
 							<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">${board.boardTitle} (${board.commentCount})</a>
-						</td>
+						</td> --%>
+						<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle} (${board.commentCount})</td>
 						<td>${board.viewCount }</td>
 						<td>${board.name }</td>
 						<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
@@ -260,7 +276,6 @@ button{
 			</ul>
 		</nav>
 	</c:if>
-
 </div>
 <!-- </div> -->
 </div>
@@ -269,9 +284,6 @@ button{
           </div>
 </div>
 </div>
-
-
-
 	
 <jsp:include page="../footer.jsp"></jsp:include>
 

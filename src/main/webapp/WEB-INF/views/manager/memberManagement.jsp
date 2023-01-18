@@ -32,6 +32,30 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
+table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
  	h2{
  		margin-right:580px;
  	}
@@ -72,11 +96,8 @@
 	
 	<div class="container text-center">
         <div class="row">
-        <div class="col-1">
-            1 of 3
-          </div>
- <div class="col-10">	
- <nav class="navbar mx-auto">
+ <div class="col-10 mx-auto">	
+ <nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">회원 관리 페이지</span>
 			<form:form action="search" modelAttribute="searchData">
@@ -105,17 +126,21 @@
 			<!-- </table> -->
 		</form:form>
 		
-		<table class="table">
+		<table class="table table-hover table-sm">
+		<thead>
 			<tr>
 				<th>이름</th>
 				<th>아이디</th>
 				<th>이메일</th>
 				<th>전화번호</th>
 			</tr>
+			</thead>
 			<c:forEach items="${member}" var="member">			
 				<tr>		
-					<td><a href="<c:url value='/member/detail/${member.name}' />">${member.name }</a></td>
-					<td>${member.id }</td>
+					<%-- <td><a href="<c:url value='/member/detail/${member.name}' />">${member.name }</a></td> --%>
+					<td style="cursor: pointer;" onclick="location.href='<c:url value='/member/detail/${member.name}' />'"> ${member.name }</td>
+					<%-- <td>${member.id }</td> --%>
+					<td style="cursor: pointer;" onclick="location.href='<c:url value='/member/detail/${member.name}' />'"> ${member.id }</td>
 					<td>${member.email }</td>
 					<td>${member.phone }</td>
 				</tr>
@@ -127,9 +152,6 @@
 		<%-- <a href='<c:url value="/manager/managerMain" />'>이전으로 돌아가기</a> --%>
 	<!-- </div> -->
 	</div>
-	<div class="col-1">
-            1 of 3
-          </div>
           </div>
           </div>
           <jsp:include page="../footer.jsp"></jsp:include>

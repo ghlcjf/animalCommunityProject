@@ -29,6 +29,30 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
+table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
 	/* button{ 
 	 		border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
@@ -50,11 +74,8 @@
 
 <div class="container text-center">
         <div class="row">
-        <div class="col-1">
-            1 of 3
-          </div>
- <div class="col-10">
-<nav class="navbar mx-auto">
+ <div class="col-10 mx-auto">
+<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">이슈</span>
 		</div>
@@ -67,17 +88,20 @@
 		<p>게시글이 없습니다.</p>
 	</c:when>
 	<c:otherwise>
-		<table class="table">
+		<table class="table table-hover table-sm">
+		<thead>
 			<tr>
-				<th scope="col">글 번호</th>
-				<th scope="col">글 제목</th>
+				<th scope="col">번호</th>
+				<th scope="col">제목</th>
 				<th scope="col">작성자</th>
-				<th scope="col">작성일자</th>
+				<th scope="col">작성일</th>
 			</tr>
+			</thead>
 			<c:forEach items="${issue}" var="board" varStatus="b">
 				<tr>
 					<th scope="row">${board.issueNum}</th>
-					<td><a href="<c:url value='/issue/detail/${board.issueNum}' />"> ${board.issueTitle} </a></td>
+					<%-- <td><a href="<c:url value='/issue/detail/${board.issueNum}' />"> ${board.issueTitle} </a></td> --%>
+					<td style="cursor: pointer;" onclick="location.href='<c:url value='/issue/detail/${board.issueNum}' />'"> ${board.issueTitle}</td>
 					<td>${board.name}</td>
 					<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
@@ -88,9 +112,6 @@
 	</c:otherwise>
 </c:choose>
 </div>
-<div class="col-1">
-            1 of 3
-          </div>
 </div>
 </div>
 

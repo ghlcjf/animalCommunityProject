@@ -34,6 +34,34 @@
 /* .table{
 	width: 1150px;
 } */
+ table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+.td-button {
+	line-height: 35px;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
 .text-end{
 	margin-right: 100px
 }
@@ -88,10 +116,7 @@
 	
 	<div class="container text-center">
         <div class="row">
-        <div class="col-1">
-            1 of 3
-          </div>
-        <div class="col-10">
+        <div class="col-10 mx-auto">
 	<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
@@ -108,13 +133,15 @@
             
           
 		<p class="text-end fs-1">${user.name}님</p>
-		<table class="table mx-auto">
+		<table class="table table-sm">
+		<thead>
 			<tr>
 				<th>이름</th>
 				<th>아이디</th>
 				<th>이메일</th>
 				<th>전화번호</th>
 			</tr>
+			</thead>
 			<tr>
 		
 				<td>${user.name }</td>
@@ -129,17 +156,11 @@
 			</div>
 		</form> --%>
 		</div>
-		<div class="col-1">
-            1 of 3
-          </div>
 		</div>
 		</div>
 		
           <div class="container text-center">
         <div class="row">
-        <div class="col-1">
-            1 of 3
-          </div>
 		 <div class="col-10 mx-auto">
 		<nav class="navbar">
 		<div class="container-fluid">
@@ -152,16 +173,19 @@
 				<p>게시글이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<table class="table">
+				<table class="table table-sm">
+				<thead>
 					<tr>
-						<th>글제목</th>
+						<th>제목</th>
 						<th>작성일</th>
 						<th>조회수</th>
-						<th>글수정</th>
-						<th>글삭제</th>
+						<th>글 수정</th>
+						<th>글 삭제</th>
 					</tr>
+					</thead>
 					<c:forEach items="${board}" var="board">
-						<tr>
+					<tbody>
+						<tr class="td-button">
 							<td>${board.boardTitle}</td>
 							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 							<td>${board.viewCount }</td>
@@ -177,6 +201,7 @@
 								</form>
 							</td>
 						</tr>
+						</tbody>
 					</c:forEach>
 				</table>
 			</c:otherwise>
@@ -186,9 +211,6 @@
 		</div> --%>
 		<%-- <a href='<c:url value="/main" />'>메인으로 돌아가기</a> --%>
 		</div>
-		<div class="col-1">
-            1 of 3
-          </div>
 		</div>
 		</div>
 	<!-- </div> -->

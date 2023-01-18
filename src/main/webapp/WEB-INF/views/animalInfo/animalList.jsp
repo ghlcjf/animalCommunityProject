@@ -48,19 +48,13 @@
 
 <div class="container text-center">
         <div class="row">
-        <div class="col-1">
-            1 of 3
-          </div>
-        <div class="col-10">
-	<nav class="navbar mx-auto">
+        <div class="col-10 mx-auto">
+	<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">동물 소개</span>
 		</div>
 	</nav>
 	</div>
-	<div class="col-1">
-            1 of 3
-          </div>
           </div>
 	</div>
 

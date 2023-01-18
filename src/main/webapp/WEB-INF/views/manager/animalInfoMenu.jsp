@@ -28,6 +28,34 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
+table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+.td-button {
+	line-height: 35px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
 	/* button{ 
 	 		border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
@@ -61,11 +89,8 @@
 
 <div class="container text-center">
         <div class="row">
-        <div class="col-1">
-            1 of 3
-          </div>
-          <div class="col-10">
-<nav class="navbar mx-auto">
+          <div class="col-10 mx-auto">
+<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">동물 소개 관리자 페이지</span>
 			<div class="d-flex justify-content-end">
@@ -85,7 +110,7 @@
 	</c:when>
 	
 	<c:otherwise>
-		<table class="table">
+		<table class="table table-sm">
 		  <thead>
 		  	<!-- <tr>
 				<td colspan="5" align="left">
@@ -102,7 +127,7 @@
 		  </thead>
 		  <tbody>
 		  	<c:forEach items="${animalInfoList}" var="animalInfo">
-		    <tr>
+		    <tr class="td-button">
 				<th scope="row">${animalInfo.animalNum}</th>
 				<td>${animalInfo.animalTitle}</td>
 				<td>${animalInfo.animalCategory}</td>
@@ -125,9 +150,6 @@
 		</div>
 
 </div>
-<div class="col-1">
-            1 of 3
-          </div>
 </div>
 </div>
 
