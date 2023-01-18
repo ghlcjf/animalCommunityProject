@@ -18,6 +18,7 @@ import animal.vo.ImageCommand;
 import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.IssueComment;
+import animal.vo.Message;
 import animal.vo.SearchMemberCommand;
 import animal.vo.SectionPage;
 import animal.vo.User;
@@ -398,6 +399,40 @@ public class AnimalDao {
 	public String idCheck(String id) {
 		
 		return sqlSession.selectOne("mybatis.mapper.member.idCheck",id);
+	}
+
+	public int getUnReadCheck(String receiverName) {
+		return sqlSession.selectOne("mybatis.mapper.member.getUnReadCheck", receiverName);
+	}
+
+	public List<Message> selectAllReceiveList(String receiverName) {
+		return sqlSession.selectList("mybatis.mapper.member.selectAllReceiveList", receiverName);
+	}
+
+	public List<Message> selectAllSendList(String senderName) {
+		return sqlSession.selectList("mybatis.mapper.member.selectAllSendList", senderName);
+	}
+
+	public void readCheckByMessageNum(int messageNum) {
+		sqlSession.update("mybatis.mapper.member.readCheckByMessageNum", messageNum);
+	}
+
+	public Message selectMessageByMessageNum(int messageNum) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectMessageByMessageNum", messageNum);
+	}
+
+	public void sendMessage(Message message) {
+		sqlSession.insert("mybatis.mapper.member.sendMessage", message);
+	}
+
+	public void deleteReceiveBoxMessage(int messageNum) {
+		sqlSession.update("mybatis.mapper.member.deleteReceiveBoxMessage", messageNum);
+		sqlSession.delete("mybatis.mapper.member.deleteAllBoxMessage");
+	}
+
+	public void deleteSendBoxMessage(int messageNum) {
+		sqlSession.update("mybatis.mapper.member.deleteSendBoxMessage", messageNum);
+		sqlSession.delete("mybatis.mapper.member.deleteAllBoxMessage");
 	}
 
 

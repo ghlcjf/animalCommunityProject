@@ -84,4 +84,8 @@
 	</bean>
 
 
+	<bean id="messageService" class="animal.service.MessageService"> 
+		<property name="animalDao" ref="animalDao" />
+	</bean>
+
 </beans>

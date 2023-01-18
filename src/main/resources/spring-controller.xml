@@ -106,7 +106,7 @@
 		<property name="selectAllFreeBoardListService" ref="selectAllFreeBoardListService"/>
 		<property name="imageService" ref="imageService"></property>
 		<property name="animalDao" ref="animalDao"/> 
-
+		<property name="messageService" ref="messageService"></property>
 	</bean>
 	
 	
@@ -124,6 +124,10 @@
 	
 	
 	
-	<bean id="messageController" class="animal.controller.MessageController"></bean>
-	<bean id="messengerController" class="animal.controller.MessengerController"></bean>
+	<bean id="messageController" class="animal.controller.MessageController">
+		<property name="messageService" ref="messageService"></property>
+	</bean>
+	<bean id="messengerController" class="animal.controller.MessengerController">
+		<property name="messageService" ref="messageService"></property>
+	</bean>
 </beans>

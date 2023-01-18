@@ -2,32 +2,26 @@ package animal.vo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Message {
 	private int messageNum;
-	private int room;
 	private String senderName;
 	private String receiverName;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
 	private Date sendTime;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
 	private Date readTime;
 	private String messageContent;
 	private int readCheck; 
 	
 	
-	private String otherNick;
-	private String profile;
-	private String nick;
-	private int unRead;
+	
 	public int getMessageNum() {
 		return messageNum;
 	}
 	public void setMessageNum(int messageNum) {
 		this.messageNum = messageNum;
-	}
-	public int getRoom() {
-		return room;
-	}
-	public void setRoom(int room) {
-		this.room = room;
 	}
 	public String getSenderName() {
 		return senderName;
@@ -65,30 +59,7 @@ public class Message {
 	public void setReadCheck(int readCheck) {
 		this.readCheck = readCheck;
 	}
-	public String getOtherNick() {
-		return otherNick;
-	}
-	public void setOtherNick(String otherNick) {
-		this.otherNick = otherNick;
-	}
-	public String getProfile() {
-		return profile;
-	}
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
-	public String getNick() {
-		return nick;
-	}
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
-	public int getUnRead() {
-		return unRead;
-	}
-	public void setUnRead(int unRead) {
-		this.unRead = unRead;
-	}
+
 	
 	
 	

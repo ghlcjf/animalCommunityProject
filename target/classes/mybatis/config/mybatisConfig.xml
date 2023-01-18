@@ -22,6 +22,7 @@
 		<typeAlias type="animal.vo.SectionPage" alias="sectionPage"/>
 		<typeAlias type="animal.vo.Image" alias="image"/>
 		<typeAlias type="animal.vo.ImageCommand" alias="imageCommand"/>
+		<typeAlias type="animal.vo.Message" alias="message"/>
 	</typeAliases>
 
 

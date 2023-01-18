@@ -405,4 +405,57 @@
 		FROM userTbl WHERE id=#{id}
 	</select>
 	
+	
+	
+	<!-- 메세지 -->
+	<select id="getUnReadCheck" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM messageTbl 
+		WHERE receiverName=#{receiverName} AND readCheck=1
+	</select>
+	
+	<select id="selectAllReceiveList" resultType="message" parameterType="String">
+		SELECT * FROM messageTbl 
+		WHERE receiverName=#{receiverName} AND receiveBoxDelete=1
+		ORDER BY sendTime DESC
+	</select>
+	
+	
+	<select id="selectAllSendList" resultType="message" parameterType="String">
+		SELECT * FROM messageTbl
+		WHERE senderName=#{senderName} AND sendBoxDelete=1
+		ORDER BY sendTime DESC
+	</select>
+	
+	<update id="readCheckByMessageNum" parameterType="int">
+		UPDATE messageTbl
+		SET readCheck=0, readTime=sysdate
+		WHERE messageNum=#{messageNum}
+	</update>
+	
+	<select id="selectMessageByMessageNum" resultType="message" parameterType="int">
+		SELECT * FROM messageTbl
+		WHERE messageNum=#{messageNum}
+	</select>
+		
+	<insert id="sendMessage" parameterType="message"> 
+		INSERT INTO messageTbl
+		VALUES(message_seq.nextval, #{senderName},#{receiverName},
+		sysdate,sysdate,#{messageContent},1,1,1)
+	</insert>
+	
+	<update id="deleteReceiveBoxMessage" parameterType="int">
+		UPDATE messageTbl
+		SET receiveBoxDelete=0
+		WHERE messageNum=#{messageNum}
+	</update>
+	<update id="deleteSendBoxMessage" parameterType="int">
+		UPDATE messageTbl
+		SET sendBoxDelete=0
+		WHERE messageNum=#{messageNum}
+	</update>
+	<delete id="deleteAllBoxMessage">
+		DELETE FROM messageTbl
+		WHERE sendBoxDelete=0 AND receiveBoxDelete=0
+	</delete>
+	
 </mapper>

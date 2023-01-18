@@ -57,7 +57,7 @@
 						<c:if test="${userInfo.admin eq 1 }">
 							<li class="nav-link active" aria-current="page"><a href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
 						</c:if>
-					<li class="nav-link active" aria-current="page"><a href='<c:url value="/messageList"/>' >메세지</a></li>
+					<li class="nav-link active" aria-current="page"><a href='<c:url value="/message/list"/>' >메세지(${unReadCheck})</a></li>
 					<li class="nav-link active" aria-current="page"><a href='<c:url value="/logout"/>' onclick="return test()">로그아웃</a></li>
 				</ul>
 				<div class="menu_bar">
