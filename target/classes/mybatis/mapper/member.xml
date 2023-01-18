@@ -318,6 +318,7 @@
 		UPDATE userTbl SET admin=1 WHERE id = #{id}
 	</update>
 	
+
 	<select id="reportFreeBoard" resultType="freeBoard">
 		SELECT * FROM freeBoardTbl WHERE report>0 ORDER BY report DESC    
 	</select>

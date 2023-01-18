@@ -171,6 +171,7 @@ public class ManagerController {
 		return "redirect:/memberManagement";
 	}
 	
+
 	//---------------------------------------------신고 게시물----------------------------------------------
 	@GetMapping("/reportBoard")
 	public String reportBoard(Model model) {
