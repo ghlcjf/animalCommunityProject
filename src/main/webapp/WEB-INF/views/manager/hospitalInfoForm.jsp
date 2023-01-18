@@ -69,7 +69,7 @@
 		<tr>
 			<th scope="row">병원 소개</th>
 			<td>
-				<form:textarea path="hospitalInfo" class="form-control" rows="3"/>
+				<form:textarea path="hospitalInfo" class="form-control" rows="3" placeholder="※1000자 이하로 작성해주세요.※"/>
 			</td>
 		</tr>
 	</table>
@@ -105,6 +105,15 @@
 		console.log($('#hospitalInfo').val());
 		if($('#hospitalInfo').val()==0){
 			alert('내용을 입력해 주세요');
+			return false;
+		}
+		if($('#hospitalName').val().length>40){
+			alert('이름 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+				
+		if($('#hospitalInfo').val().length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}
 		

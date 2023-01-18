@@ -61,7 +61,7 @@
 				<tr>
 					<td><spring:message code="name"/></td>
 					<td>
-						<form:input class="form-control" path="name" />
+						<form:input class="form-control" path="name" readonly="true"/>
 						<input type="hidden" name="oldName" id="oldName" value="${user.name}">
 						<input type="hidden" name="nameBtnCheck" id="nameBtnCheck">
 					</td>
@@ -74,7 +74,7 @@
 				<tr>
 					<td><spring:message code="id"/></td>
 					<td>
-						<form:input class="form-control" path="id" disabled="true"/>
+						<form:input class="form-control" path="id" readonly="true"/>
 						<input type="hidden" name="id" value="${user.id }">
 					</td>
 				</tr>
@@ -82,7 +82,7 @@
 				<tr>
 					<td><spring:message code="password"/></td>
 					<td>
-						<input class="form-control" type="password" name="oldpassword" id="oldPassword" value="${user.password}" disabled>
+						<input class="form-control" type="password" name="oldpassword" id="oldPassword" value="${user.password}" readonly>
 					</td>
 				</tr>
 				<tr>
@@ -94,7 +94,7 @@
 				<tr>
 					<td><spring:message code="email"/></td>
 					<td>
-						<form:input class="form-control" path="email" type="email" disabled="true"/>
+						<form:input class="form-control" path="email" type="email" readonly="true"/>
 						<input type="hidden" name="email" value="${user.email }">
 					</td>		
 				</tr>
@@ -115,45 +115,52 @@
 		</div>	
 	</form:form> 
 	<jsp:include page="../footer.jsp"></jsp:include>
+	
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript">
 		function checkPassword() {
 
+			let nameRegex = /^[가-힣]{1}[a-z0-9가-힣]{1,7}$/g;
+			let pwRegex =  /^.*(?=^.{6,14}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+			let phoneRegex = /^\d{3}-\d{3,4}-\d{4}$/;
+			
+			let name = $('#name').val();
 			let newPassword = document.getElementById('newPassword').value;
 			let oldPassword = document.getElementById('oldPassword').value;
 			let nameBtnCheck = document.getElementById('nameBtnCheck').value;
+			let phone = $('#phone').val();
 			
-			if(nameBtnCheck.length==0){
-				alert('닉네임 중복체크를 해주세요.')
-				
+			
+			if(name.match(nameRegex) == null){
+				alert('닉네임은 한글로 시작하는 2~8자입니다. (영문,숫자 사용가능)');
 				return false;
 			}
-			
 			if(newPassword.length==0){
 				alert('새로운 비밀번호를 입력해 주세요.');
-				
 				return false;
 			}
-			
 			if(newPassword==oldPassword){
 				alert('기존의 비밀번호와 일치합니다. 다른 비밀번호를 입력해주세요.');
 				return false;
-			}else if(newPassword!=oldPassword){
-				alert('수정이 완료되었습니다.')
-				return true;
-			}  
+			}
+			if(newPassword.match(pwRegex) == null){
+				alert('비밀번호는 6~14자 영문자,숫자,특수문자 조합이어야 합니다.');
+				return false;
+			} 
+			if(phone.match(phoneRegex) == null){
+				alert('올바른 전화번호 형식이 아닙니다. 다시 입력해주세요.');
+				return false;
+			}
+			alert('수정이 완료되었습니다.')
+			return true;
+			  
 		}
 		
 		function nameCheck(){
 			
 			let oldName = document.getElementById('oldName').value;
 			let name = document.getElementById('name').value;
-			
-			if(name==oldName){
-				alert('기존 닉네임이랑 일치합니다.');
-				return false;
-			}
-			
+	
 			let url = "${context}/newNameWindow/"+name;
 			
 			window.open(url,'_blank_1',

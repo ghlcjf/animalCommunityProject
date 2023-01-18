@@ -66,7 +66,7 @@
 		<tr>
 			<th scope="row">특징</th>
 			<td>
-				<form:textarea path="animalContent" class="form-control" rows="3"/>
+				<form:textarea path="animalContent" class="form-control" rows="3" placeholder="※1000자 이하로 작성해주세요.※"/>
 			</td>
 		</tr>
 	</table>
@@ -93,6 +93,15 @@
 			return false;
 		}
 		
+		if($('#animalTitle').val().length>40){
+			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+				
+		if($('#animalContent').val().length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
+			return false;
+		}
 		let cc = confirm('게시글을 작성하시겠습니까?');
 		if(cc){
 			alert('작성이 완료되었습니다.');

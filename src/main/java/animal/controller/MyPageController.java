@@ -107,12 +107,11 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/changeInfo")
-	public String changeInfo(@ModelAttribute("user") User user,HttpSession session) {
-
+	public String changeInfo(@ModelAttribute("user") User user,HttpSession session,HttpServletRequest request) {
+		
 		changeInfoService.changeInfo(user);
 	
 //		session.invalidate();
-		
 		LoginUserInfo userInfo = new LoginUserInfo();
 		userInfo.setName(user.getName());
 		userInfo.setId(user.getId());

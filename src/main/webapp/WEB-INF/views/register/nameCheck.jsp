@@ -36,6 +36,14 @@
 		button[type="button"]{
 			margin-left:20px;
 		}
+		::placeholder {
+		  color: black;
+		  font-size: 12px;
+		  font-weight: 400;		  
+		}
+		::readonly {
+		  background-color:gray;		  
+		}
 	</style>
 </head>
 <body>

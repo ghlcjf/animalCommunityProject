@@ -1,5 +1,7 @@
 package animal.controller;
 
+import java.util.regex.Pattern;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,12 @@ public class NameCheckController {
 	@RequestMapping(value="/nameCheck",produces = "application/text; charset=UTF-8")
 	public String nameCheck(@RequestParam("name") String name) {
 		
+		String nameRegex = "^[가-힣]{1}[a-z0-9가-힣]{1,7}$";
+		if(!Pattern.matches(nameRegex, name)) {
+			
+			return "적합하지 않은 닉네임 형식";
+		}
+			
 		String nickName = nameCheckService.nameCheck(name);
 
 		if(nickName==null) {
@@ -27,12 +35,19 @@ public class NameCheckController {
 		}
 		
 		return "이미 사용중인 닉네임 입니다.";
+		
 	}
 	
 	@RequestMapping(value="/idCheck",produces = "application/text; charset=UTF-8")
 	public String idCheck(@RequestParam("id") String id) {
 		
-		System.out.println(id);
+		String idRegex = "^[a-z]{1}[a-z0-9]{5,15}$";
+		System.out.println(Pattern.matches(idRegex, id));
+		if(!Pattern.matches(idRegex, id)) {
+			
+			return "적합하지 않은 아이디 형식";
+		}
+		
 		String newId = nameCheckService.idCheck(id);
 
 		if(newId==null) {

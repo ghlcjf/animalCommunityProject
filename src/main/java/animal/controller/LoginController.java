@@ -34,6 +34,7 @@ public class LoginController {
 			loginCommand.setId(rememberId.getValue());
 			loginCommand.setRememberId(true);
 		}
+		
 		return "login/loginForm";
 	}
 	

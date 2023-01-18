@@ -122,7 +122,6 @@ public class ManagerController {
 		List<User> user = animalDao.searchMember(smc);
 		model.addAttribute("member",user);
 		
-		
 		return "manager/memberManagement";
 	}
 	
@@ -197,6 +196,13 @@ public class ManagerController {
 		
 		List<AnimalInfo> animalInfoList = animalInfoService.selectAllAnimalInfoList();
 		
+		for(int i=0;i<animalInfoList.size();i++) {
+			if(animalInfoList.get(i).getAnimalTitle().length()>=26) {
+				String title = animalInfoList.get(i).getAnimalTitle().substring(0,26)+"...";
+				animalInfoList.get(i).setAnimalTitle(title);
+			}
+		}
+		
 		model.addAttribute("animalInfoList", animalInfoList);
 		
 		return "manager/animalInfoMenu";
@@ -207,6 +213,12 @@ public class ManagerController {
 		
 		List<HospitalInfo> hospitalInfoList = hospitalInfoService.selectAllHospitalInfoList();
 		
+		for(int i=0;i<hospitalInfoList.size();i++) {
+			if(hospitalInfoList.get(i).getHospitalName().length()>=26) {
+				String title = hospitalInfoList.get(i).getHospitalName().substring(0,26)+"...";
+				hospitalInfoList.get(i).setHospitalName(title);
+			}
+		}
 		
 		model.addAttribute("hospitalInfoList", hospitalInfoList);
 		return "manager/hospitalInfoMenu";
@@ -217,6 +229,12 @@ public class ManagerController {
 		
 		List<Issue> issueBoardList = issueBoardService.selectAllIssueBoardList();
 		
+		for(int i=0;i<issueBoardList.size();i++) {
+			if(issueBoardList.get(i).getIssueTitle().length()>=26) {
+				String title = issueBoardList.get(i).getIssueTitle().substring(0,26)+"...";
+				issueBoardList.get(i).setIssueTitle(title);
+			}
+		}
 		
 		model.addAttribute("issueBoardList", issueBoardList);
 		return "manager/issueBoardMenu";
@@ -227,6 +245,13 @@ public class ManagerController {
 	public String noticeMenu(Model model) {
 		
 		List<FreeBoard> noticeList = selectAllNoticeService.selectAllNoticeList();
+		
+		for(int i=0;i<noticeList.size();i++) {
+			if(noticeList.get(i).getBoardTitle().length()>=26) {
+				String title = noticeList.get(i).getBoardTitle().substring(0,26)+"...";
+				noticeList.get(i).setBoardTitle(title);
+			}
+		}
 		
 		model.addAttribute("noticeList", noticeList);
 		return "manager/noticeMenu";

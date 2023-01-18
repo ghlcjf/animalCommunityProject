@@ -110,6 +110,16 @@
 			return false;
 		}
 		
+		if($('#boardTitle').val().length>40){
+			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+				
+		if($('#boardContent').val().length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
+			return false;
+		}
+		
 		let cc = confirm('게시글을 수정하시겠습니까?');
 		if(cc){
 			alert('수정이 완료되었습니다.');

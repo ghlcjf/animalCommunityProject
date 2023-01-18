@@ -240,9 +240,8 @@
 							<table class="top-ten" border="1" width="300px">
 								<tr>
 									<th style="padding: 5px; font-size: 15px;">
-										<span class="top-number">${i.count}</span> 
-										<a class="top-ten-text" href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
-											 
+										<span class="top-number">${i.count}</span>
+										<a class="top-ten-text" href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">	 
 											${board.boardTitle}  (${board.viewCount})
 										</a>
 									</th>

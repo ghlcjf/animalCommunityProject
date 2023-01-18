@@ -53,7 +53,7 @@
 		<tr>
 			<th scope="row">제목</th>
 			<td>
-				<form:input path="boardTitle" class="form-control"/>
+				<form:input path="boardTitle" class="form-control" />
 			</td>
 		</tr>
 		<tr>
@@ -68,7 +68,7 @@
 		<tr>
 			<th scope="row">내용</th>
 			<td>
-				<form:textarea path="boardContent" class="form-control" rows="3"/>
+				<form:textarea path="boardContent" class="form-control" rows="3" placeholder="※1000자 이하로 작성해주세요.※"/>
 			</td>
 		</tr>
 	</table>
@@ -92,8 +92,19 @@
 			alert('제목을 입력해 주세요');
 			return false;
 		}
+		
 		if($('#boardContent').val()==0){
 			alert('내용을 입력해 주세요');
+			return false;
+		}
+		
+		if($('#boardTitle').val().length>40){
+			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+		
+		if($('#boardContent').val().length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}
 		

@@ -34,7 +34,7 @@
 		<tr>
 			<th scope="row">제목</th>
 			<td>
-				<form:input path="issueTitle" class="form-control"/>
+				<form:input path="issueTitle" class="form-control" />
 			</td>
 		</tr>
 		<tr>
@@ -49,18 +49,17 @@
 		<tr>
 			<th scope="row">내용</th>
 			<td>
-				<form:textarea path="issueContent" class="form-control" rows="3"/>
+				<form:textarea path="issueContent" class="form-control" rows="3" placeholder="※1000자 이하로 작성해주세요.※"/>
 			</td>
 		</tr>
 	</table>
 	<button type="submit" onclick="return insertIssueBoardCheck()">글 등록</button>
 	
 </form:form>
-<<<<<<< HEAD
 </div>
-=======
+
 <jsp:include page="../footer.jsp"></jsp:include>
->>>>>>> refs/heads/eunjin9
+
 </body>
 <script type="text/javascript">
 	function insertIssueBoardCheck() {
@@ -73,7 +72,15 @@
 			alert('내용을 입력해 주세요');
 			return false;
 		}
-		
+		if($('#issueTitle').val().length>40){
+			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+				
+		if($('#issueContent').val().length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
+			return false;
+		}
 		let cc = confirm('게시글을 작성하시겠습니까?');
 		if(cc){
 			alert('작성이 완료되었습니다.');
