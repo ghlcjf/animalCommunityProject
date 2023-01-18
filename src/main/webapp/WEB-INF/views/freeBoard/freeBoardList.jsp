@@ -15,15 +15,14 @@
 <style>
 .navbar {
 	margin-top: 15px;
-	width: 60%;
 	background-color: #dfe6f7;
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
 }
 
 .navbar-brand-cs {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
 	margin-right: var(- -bs-navbar-brand-margin-end);
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -31,6 +30,28 @@
 	text-decoration: none;
 	white-space: nowrap;
 	margin-left: 10px;
+}
+button{
+		padding: 5px;   border: none;
+		height: 30px; 	border-radius: 10px;
+		color: white;   font-weight:bolder;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		line-height: 10px;
+		
+	}
+	button:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
+	table{
+	table-layout: fixed;
+	}
+	td{
+	overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+	}
+.pagination{
+	justify-content: center;
 }
 	.wrapper{
 		display:grid;
@@ -58,22 +79,44 @@
     }
  	.list-group-item {
  		border:none;
+ 		font-size: 13px;
+ 		margin-top: 13px;
  	}
- 
 </style>
 </head>
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<nav class="navbar mx-auto">
+<div class="container text-center">
+        <div class="row">
+        <div class="col-1">
+            
+            <div class="box1 list-group">
+  <a href="<c:url value='/freeBoard/freeBoardList/main/1/1' />" class="list-group-item list-group-item-action">
+    전체보기
+  </a>
+  <a href="<c:url value='/freeBoard/freeBoardList/dog/1/1' />" class="list-group-item list-group-item-action">강아지</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/cat/1/1' />" class="list-group-item list-group-item-action">고양이</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/reptile/1/1' />" class="list-group-item list-group-item-action">파충류</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/birds/1/1' />" class="list-group-item list-group-item-action">조류</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/fish/1/1' />" class="list-group-item list-group-item-action">어류</a>
+  <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
+</div>
+          </div>
+           <div class="col-10">
+
+<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">자유게시판</span>
+			<div class="d-flex justify-content-end">
+			<button type="button" onclick="return insertConfirm()">글 작성</button>
+			</div>
 		</div>
 	</nav>
 
-<div class="wrapper container">
-<div class="box1 list-group">
+<!-- <div class="wrapper container"> -->
+<%-- <div class="box1 list-group">
   <a href="<c:url value='/freeBoard/freeBoardList/main/1/1' />" class="list-group-item list-group-item-action">
     전체 보기
   </a>
@@ -83,15 +126,16 @@
   <a href="<c:url value='/freeBoard/freeBoardList/birds/1/1' />" class="list-group-item list-group-item-action">조류</a>
   <a href="<c:url value='/freeBoard/freeBoardList/fish/1/1' />" class="list-group-item list-group-item-action">어류</a>
   <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
-</div>
+</div> --%>
 <div class="box2">
-	<table class="table" >
+	<table class="table">
 	  <thead>
-	  	<tr>
+	  	<%-- <tr>
 			<td colspan="5" align="right">
-				<a href="<%=request.getContextPath() %>/freeBoard/insertFreeBoardForm">[글 작성하기]</a>
+				<a href="<%=request.getContextPath() %>/freeBoard/insertFreeBoardForm">글 작성하기</a>
+				<button type="button" onclick="return insertConfirm()">글 작성</button>
 			</td>
-		</tr>
+		</tr> --%>
 	    <tr>
 	      <th scope="col">글번호</th>
 	      <th scope="col">글제목</th>
@@ -105,7 +149,7 @@
 			<c:forEach items="${noticeList}" var="notice">
 				<tr>
 					 <th scope="row">${notice.boardNum }</th>
-					<td>
+					<td style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
 						<a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle } (${notice.commentCount})</a>
 					</td>
 					<td>${notice.viewCount }</td>
@@ -218,11 +262,28 @@
 	</c:if>
 
 </div>
+<!-- </div> -->
 </div>
+<div class="col-1">
+            1 of 3
+          </div>
+</div>
+</div>
+
 
 
 	
 <jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
+<script type="text/javascript">
+function insertConfirm(){
+	let cc = confirm('게시물을 작성하시겠습니까?');
+	if(cc==false){
+		return false;
+	}else{
+		location.href="/animalCommunity/freeBoard/insertFreeBoardForm";
+	} 
+}
+</script>
 </html>

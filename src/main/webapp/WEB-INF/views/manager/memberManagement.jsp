@@ -13,13 +13,32 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
  <style>
+ .navbar {
+	margin-top: 15px;
+	width: 100%;
+	background-color: #dfe6f7;
+	border-top: 1px solid #96aeea;
+	border-bottom: 1px solid #96aeea;
+}
+
+.navbar-brand-cs {
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+	margin-right: var(- -bs-navbar-brand-margin-end);
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #808080;
+	text-decoration: none;
+	white-space: nowrap;
+	margin-left: 10px;
+}
  	h2{
  		margin-right:580px;
  	}
  	.form-control-sm{
  		width:300px;
  	}
- 	button[type="submit"]{
+ 	/* button[type="submit"]{
  		width: 50px; height: 33px; border-radius: 10px;
 		text-align: center; color: white; font-weight:bolder;
 		background: rgb(136, 154, 233);
@@ -31,29 +50,59 @@
 	button[type="submit"]:hover{
   			background: rgb(101, 121, 207);
 		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	} */
+ 	button{
+		padding: 5px;   border: none;
+		height: 30px; 	border-radius: 10px;
+		color: white;   font-weight:bolder;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		margin-left: 10px;
+		line-height: 10px;
 	}
- 	
+	button:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
  </style>
 
 </head>
 <body>
-	<jsp:include page="../header.jsp"></jsp:include>		
-
-	<div class="d-grid gap-2 col-6 mx-auto">	
-		<form:form action="search" modelAttribute="searchData">
-			<table class="col">
-				<tr>
-					<td>
-						<h2>회원관리</h2>
-					</td>
-					<td>
+	<jsp:include page="../header.jsp"></jsp:include>	
+	
+	<div class="container text-center">
+        <div class="row">
+        <div class="col-1">
+            1 of 3
+          </div>
+ <div class="col-10">	
+ <nav class="navbar mx-auto">
+		<div class="container-fluid">
+			<span class="navbar-brand-cs mb-0 h1">회원 관리 페이지</span>
+			<form:form action="search" modelAttribute="searchData">
+			<div class="d-flex align-items-end justify-content-end">
 						<form:input path="search" placeholder="검색어를 입력해 주세요" class="form-control form-control-sm"/>
-					</td>
-					<td>
 						<button type="submit" onclick="searchMember()">검색</button>
-					</td>
-				</tr>
-			</table>
+						</div>
+						</form:form>
+		</div>
+	</nav>
+
+	<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->	
+		<form:form action="search" modelAttribute="searchData">
+			<!-- <table class="col"> -->
+				<!-- <tr> -->
+					<!-- <td> -->
+					<%-- <div class="d-flex align-items-end justify-content-end">
+						<form:input path="search" placeholder="검색어를 입력해 주세요" class="form-control form-control-sm"/>
+						<button type="submit" onclick="searchMember()">검색</button>
+						</div> --%>
+					<!-- </td> -->
+					<!-- <td> -->
+						
+					<!-- </td> -->
+				<!-- </tr> -->
+			<!-- </table> -->
 		</form:form>
 		
 		<table class="table">
@@ -72,8 +121,18 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href='<c:url value="/manager/managerMain" />'>이전으로 돌아가기</a>
+		<div class="d-flex justify-content-start">
+		<button type="button" onclick="location.href='<c:url value="/manager/managerMain" />'">관리자 메뉴로 돌아가기</button>
+		</div>
+		<%-- <a href='<c:url value="/manager/managerMain" />'>이전으로 돌아가기</a> --%>
+	<!-- </div> -->
 	</div>
+	<div class="col-1">
+            1 of 3
+          </div>
+          </div>
+          </div>
+          <jsp:include page="../footer.jsp"></jsp:include>
 	
 	<script type="text/javascript">
 		function searchMember() {

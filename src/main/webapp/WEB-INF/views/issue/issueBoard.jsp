@@ -13,15 +13,14 @@
 <style>
 .navbar {
 	margin-top: 15px;
-	width: 60%;
 	background-color: #dfe6f7;
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
 }
 
 .navbar-brand-cs {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
 	margin-right: var(- -bs-navbar-brand-margin-end);
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -30,7 +29,7 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
-	button{ 
+	/* button{ 
 	 		border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
 			background: rgb(136, 154, 233);
@@ -42,20 +41,27 @@
 	button:hover{
   			background: rgb(101, 121, 207);
 		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	}
+	} */
 </style>
 </head>
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
 
+<div class="container text-center">
+        <div class="row">
+        <div class="col-1">
+            1 of 3
+          </div>
+ <div class="col-10">
 <nav class="navbar mx-auto">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">이슈</span>
 		</div>
 	</nav>
 
-<div class="container">
+<!-- <div class="container"> -->
+
 <c:choose>
 	<c:when test="${empty issue}">
 		<p>게시글이 없습니다.</p>
@@ -77,12 +83,18 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="<c:url value='/main' />">[메인화면으로 돌아가기]</a>
+		<%-- <a href="<c:url value='/main' />">[메인화면으로 돌아가기]</a> --%>
 		
 	</c:otherwise>
 </c:choose>
-
 </div>
+<div class="col-1">
+            1 of 3
+          </div>
+</div>
+</div>
+
+<!-- </div> -->
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

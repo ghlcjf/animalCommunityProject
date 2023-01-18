@@ -14,15 +14,14 @@
 <style type="text/css">
 .navbar {
 	margin-top: 15px;
-	width: 60%;
 	background-color: #dfe6f7;
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
 }
 
 .navbar-brand-cs {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
 	margin-right: var(- -bs-navbar-brand-margin-end);
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -47,11 +46,23 @@
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 
+<div class="container text-center">
+        <div class="row">
+        <div class="col-1">
+            1 of 3
+          </div>
+        <div class="col-10">
 	<nav class="navbar mx-auto">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">동물 소개</span>
 		</div>
 	</nav>
+	</div>
+	<div class="col-1">
+            1 of 3
+          </div>
+          </div>
+	</div>
 
 	<c:choose>
 		<c:when test="${empty animals}">
