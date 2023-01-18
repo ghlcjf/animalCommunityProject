@@ -44,6 +44,9 @@
 			<mvc:mapping path="/hospital/**"/>
 			<mvc:mapping path="/issue/**"/>
 			<mvc:mapping path="/myPage/**"/>
+			<mvc:mapping path="/message/**"/>
+			<mvc:mapping path="/messenger/**"/>
+			
 			<bean class="animal.intercepter.LoginCheckIntercepter"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

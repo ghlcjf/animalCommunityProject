@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+
+
 <head>
 	<style>
 		.menu_bar{
@@ -55,6 +57,7 @@
 						<c:if test="${userInfo.admin eq 1 }">
 							<li class="nav-link active" aria-current="page"><a href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
 						</c:if>
+					<li class="nav-link active" aria-current="page"><a href='<c:url value="/message/list"/>' >메세지(${unReadCheck})</a></li>
 					<li class="nav-link active" aria-current="page"><a href='<c:url value="/logout"/>' onclick="return test()">로그아웃</a></li>
 				</ul>
 				<div class="menu_bar">
@@ -78,7 +81,7 @@
 	</script>
 	
 	<script type="text/javascript">
-	//로그아웃시 경고창 띄움
+	
 		function test(){
 			if(confirm("로그아웃하시겠습니까?")){
 				return true;	
@@ -90,6 +93,11 @@
 		function afterLogin(){
 			alert("로그인 후 이용할수 있습니다");
 		}
+		
+		
+		
+		
+		
 	</script>
 	
 
