@@ -13,6 +13,7 @@
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <style>
+
 .navbar {
 	margin-top: 15px;
 	width: 60%;
@@ -56,9 +57,9 @@
      
       grid-area: box3;
     }
- 	.list-group-item {
- 		border:none;
- 	}
+    .list-group-item {
+       border:none;
+    }
  
 </style>
 </head>
@@ -137,91 +138,92 @@
 		</c:choose>
 	  </tbody>
 	</table>
+
 </div>
 
 <div class="box3">
-	<c:if test="${totalCnt != null}">
-		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<c:choose>
-					<c:when test="${totalCnt>100}"> <!-- 전체 개수가 100개 초과 -->
-						<c:if test="${(sectionPage.section*100)<totalCnt }"> <!-- 다음 섹션이 존재하는가 => '>>' O -->
-							<c:forEach var="page" begin="1" end="10" step="1"> <!-- 번호 매기기 -->
-								<c:if test="${sectionPage.section>1 && page==1}">
-									<li class="page-item">
-								      <a class="page-link" aria-label="Previous" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}">
-								        <span aria-hidden="true">&laquo;</span>
-								      </a>
-								    </li>
-								</c:if>
-								<li class="page-item">
-									<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
-										${(sectionPage.section-1)*10+page}
-									</a>
-								</li>
-								<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
-								<c:if test="${page==10}">
-									<li class="page-item">
-								      <a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section+1}/${1}" aria-label="Next">
-								        <span aria-hidden="true">&raquo;</span>
-								      </a>
-								    </li>
-								</c:if>
-							</c:forEach>
-							
-							
-						</c:if>
-						<c:if test="${(sectionPage.section*100)>=totalCnt }"> <!-- 다음 섹션이 존재하지 않는가=> '>>' X  -->
-							<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
-								<c:if test="${sectionPage.section>1 && page==1}">
-									<li class="page-item">
-								      <a class="page-link" aria-label="Previous" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}">
-								        <span aria-hidden="true">&laquo;</span>
-								      </a>
-								    </li>
-								</c:if>
-								<li class="page-item">
-									<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
-										${(sectionPage.section-1)*10+page}
-									</a>
-								</li>
-							</c:forEach>
-						</c:if>
-						
-					</c:when>
-					
-					
-					<c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
-						<c:forEach var="page" begin="1" end="10" step="1">
-							<li class="page-item">
-								<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
-									${(sectionPage.section-1)*10+page}
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-					
-					
-					<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
-						<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
-							<li class="page-item">
-								<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
-									${(sectionPage.section-1)*10+page}
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-				
-				</c:choose>
-			</ul>
-		</nav>
-	</c:if>
+   <c:if test="${totalCnt != null}">
+      <nav aria-label="Page navigation example">
+         <ul class="pagination">
+            <c:choose>
+               <c:when test="${totalCnt>100}"> <!-- 전체 개수가 100개 초과 -->
+                  <c:if test="${(sectionPage.section*100)<totalCnt }"> <!-- 다음 섹션이 존재하는가 => '>>' O -->
+                     <c:forEach var="page" begin="1" end="10" step="1"> <!-- 번호 매기기 -->
+                        <c:if test="${sectionPage.section>1 && page==1}">
+                           <li class="page-item">
+                              <a class="page-link" aria-label="Previous" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>
+                        </c:if>
+                        <li class="page-item">
+                           <a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+                              ${(sectionPage.section-1)*10+page}
+                           </a>
+                        </li>
+                        <!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
+                        <c:if test="${page==10}">
+                           <li class="page-item">
+                              <a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section+1}/${1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                        </c:if>
+                     </c:forEach>
+                     
+                     
+                  </c:if>
+                  <c:if test="${(sectionPage.section*100)>=totalCnt }"> <!-- 다음 섹션이 존재하지 않는가=> '>>' X  -->
+                     <c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
+                        <c:if test="${sectionPage.section>1 && page==1}">
+                           <li class="page-item">
+                              <a class="page-link" aria-label="Previous" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section-1}/${10}">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>
+                        </c:if>
+                        <li class="page-item">
+                           <a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+                              ${(sectionPage.section-1)*10+page}
+                           </a>
+                        </li>
+                     </c:forEach>
+                  </c:if>
+                  
+               </c:when>
+               
+               
+               <c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
+                  <c:forEach var="page" begin="1" end="10" step="1">
+                     <li class="page-item">
+                        <a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+                           ${(sectionPage.section-1)*10+page}
+                        </a>
+                     </li>
+                  </c:forEach>
+               </c:when>
+               
+               
+               <c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
+                  <c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
+                     <li class="page-item">
+                        <a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+                           ${(sectionPage.section-1)*10+page}
+                        </a>
+                     </li>
+                  </c:forEach>
+               </c:when>
+            
+            </c:choose>
+         </ul>
+      </nav>
+   </c:if>
 
 </div>
 </div>
 
 
-	
+   
 <jsp:include page="../footer.jsp"></jsp:include>
 
 </body>

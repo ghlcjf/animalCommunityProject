@@ -63,8 +63,9 @@
 				<th>이메일</th>
 				<th>전화번호</th>
 			</tr>
-			<c:forEach items="${member}" var="member">			
-				<tr>		
+			<c:forEach items="${member}" var="member">
+
+				<tr>
 					<td><a href="<c:url value='/member/detail/${member.name}' />">${member.name }</a></td>
 					<td>${member.id }</td>
 					<td>${member.email }</td>
