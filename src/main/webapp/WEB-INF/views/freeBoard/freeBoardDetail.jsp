@@ -35,7 +35,7 @@
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-
+<h2>여기부터 해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h2>
 
 	<div class="d-grid gap-2 col-6 mx-auto">
 	<h2>자유게시판 상세보기</h2>
