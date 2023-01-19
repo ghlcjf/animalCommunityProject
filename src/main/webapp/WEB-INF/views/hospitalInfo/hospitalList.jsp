@@ -115,7 +115,6 @@ a {
 				<tbody>
 					<tr>
 						<th scope="row">${hospital.boardNum }</th>
-							<%-- <td><a href="<c:url value='/hospital/detail/${hospital.boardNum }' />"> ${hospital.hospitalName }</a></td> --%>
 							<td style="cursor: pointer;" onclick="location.href='<c:url value='/hospital/detail/${hospital.boardNum }' />'"> ${hospital.hospitalName }</td>
 							<td>${hospital.hospitalLoc }</td>
 							<td>${hospital.hospitalTel }</td>

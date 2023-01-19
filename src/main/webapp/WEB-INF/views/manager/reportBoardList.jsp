@@ -79,7 +79,7 @@ button:hover{
           <div class="col-10 mx-auto">
 <nav class="navbar">
 		<div class="container-fluid">
-			<span class="navbar-brand-cs mb-0 h1">신고게시물 관리 페이지</span>
+			<span class="navbar-brand-cs mb-0 h1">신고 게시물 관리 페이지</span>
 		</div>
 	</nav>
 	

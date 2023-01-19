@@ -31,9 +31,6 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
-/* .table{
-	width: 1150px;
-} */
  table {
 	table-layout: fixed
 }
@@ -73,27 +70,6 @@ a {
 			margin-top: 70px;
 		}
 		
-		/* .smBtn{
-			width: 50px; height: 33px; border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-		}
-		.bigBtn{
-			width: 190px; height: 33px; border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-		} */
-		/* button[type="submit"]:hover{
-   			background: rgb(101, 121, 207);
-			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-		} */
-		/* #section{
-			margin-bottom: 30px;
-		} */
 		button{
 		padding: 5px;   border: none;
 		height: 30px; 	border-radius: 10px;
@@ -128,11 +104,6 @@ a {
 		</div>
 	</nav>
 	
-	<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
-	
-            
-          
-		
 		<table class="table table-sm">
 		<thead>
 			<tr>

@@ -11,14 +11,23 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <style type="text/css">
 .container{
-    margin-top: 30px;
+    margin-top: 20px;
         }
 .fs-2{
 	color: #889ae9;
+	font-weight: bold;
+}
+.form-label{
+	font-weight: bold;
 }
 #exampleFormControlTextarea1{
     height: 300px;
     resize: none;
+}
+img{
+	width: 100%;
+	height: 500px;
+	border-radius: 10px;
 }
 button{
 	padding: 5px;   border: none;
@@ -33,11 +42,6 @@ button{
 button:hover{
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-}
-img{
-	width: 100%;
-	height: 500px;
-	border-radius: 10px;
 }
 </style>
 </head>
@@ -68,15 +72,13 @@ img{
           </form:select>
         </div>
 			<c:choose>
-			
 					<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
-						<img src="/imageFolder/image/noImage.png"><br><br>
+						<img src="/imageFolder/image/noImage.png" class="rounded mx-auto d-block"><br>
 					</c:when>
 					
 					<c:otherwise>
-						<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }"><br><br>
+						<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" class="rounded mx-auto d-block"><br>
 					</c:otherwise>
-				
 				</c:choose>
 			
 			<div class="mb-3">
@@ -84,9 +86,10 @@ img{
         <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
         <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
       </div>
+      
 			<div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" />
+        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" placeholder="내용을 입력해주세요" rows="3" />
         <form:errors path="boardContent" />
       </div>
 	<form:hidden path="boardNum"/>

@@ -30,7 +30,7 @@
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 <div class="d-grid gap-2 col-6 mx-auto">
-<h2>공지사항 수정 페이지</h2>
+<h2>이슈 수정 페이지</h2>
 
 <form:form action="/animalCommunity/manager/updateIssueBoard" modelAttribute="issueBoard" enctype="multipart/form-data">
 	<table class="table">
