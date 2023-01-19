@@ -71,6 +71,7 @@
 		</tr>
 	</table>
 	<form:hidden path="issueNum"/>
+	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return insertIssueBoardCheck()">글 등록</button>
 	
 </form:form>
@@ -78,7 +79,18 @@
 
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
+<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
+
+	function cancel(){
+		if(confirm('수정을 취소 하시겠습니까?')){
+			let link = '${context}/boardManagement/issue';
+				
+			return location.href=link;
+		}
+		return false;
+	}
+
 	function insertIssueBoardCheck() {
 		
 		if($('#issueTitle').val()==''){

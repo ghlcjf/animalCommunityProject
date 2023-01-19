@@ -24,13 +24,10 @@
 			margin: 10px;
 		}
 		
-		button[type="button"]{
-			margin-left:20px;
-		}
 		
-		button[type="submit"]{
+		.big-btn{
 			margin: 20px;
-	 		width: 200px; height: 50px; border-radius: 10px;
+	 		width: 180px; height: 50px; border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
 			background: rgb(136, 154, 233);
 			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
@@ -38,9 +35,29 @@
 			
 		}
 		
-		button[type="submit"]:hover{
+		.sm-btn{
+			margin: 10px;
+	 		width: 100px; height: 40px; border-radius: 10px;
+			text-align: center; color: white; font-weight:bolder;
+			background: rgb(136, 154, 233);
+			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+			border: none;
+			margin-left:20px;
+		}
+		
+		
+		.sm-btn:hover{
    			background: rgb(101, 121, 207);
 			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}		
+		.big-btn:hover{
+   			background: rgb(101, 121, 207);
+			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}
+		::placeholder {
+		  color: black;
+		  font-size: 12px;
+		  font-weight: 400;		  
 		}
 		
 	</style>
@@ -66,7 +83,7 @@
 						<input type="hidden" name="nameBtnCheck" id="nameBtnCheck">
 					</td>
 					<td>
-						<button type="button" onclick="nameCheck()">중복 체크</button>
+						<button type="button" class="sm-btn" onclick="nameCheck()">닉네임 변경</button>
 					</td>
 					
 				</tr>
@@ -75,8 +92,8 @@
 					<td><spring:message code="id"/></td>
 					<td>
 						<form:input class="form-control" path="id" readonly="true"/>
-						<input type="hidden" name="id" value="${user.id }">
 					</td>
+					
 				</tr>
 			
 				<tr>
@@ -88,14 +105,13 @@
 				<tr>
 					<td><spring:message code="new.password"/></td>
 					<td>
-						<input class="form-control" type="password" name="password" id="newPassword">
+						<input class="form-control" type="password" name="password" id="newPassword" placeholder="※ 6~14자 영문자,숫자,특수문자 조합 ※">
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="email"/></td>
 					<td>
 						<form:input class="form-control" path="email" type="email" readonly="true"/>
-						<input type="hidden" name="email" value="${user.email }">
 					</td>		
 				</tr>
 				<tr>
@@ -105,10 +121,10 @@
 						<input type="hidden" name="admin" value="${user.admin }">
 					</td>
 				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<button type="submit" onclick="return checkPassword()"><spring:message code="changeInfo.btn"/></button>
+				<tr align="center">
+					<td colspan="3">
+						<button type="button" class="big-btn" onclick="return cancel()">취소</button>
+						<button type="submit" class="big-btn" onclick="return checkPassword()"><spring:message code="changeInfo.btn"/></button>
 					</td>
 				</tr>
 			</table>	
@@ -118,6 +134,15 @@
 	
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript">
+		function cancel(){
+			if(confirm('정보수정을 취소 하시겠습니까?')){
+				let link = '${context}/myPage';
+				
+				return location.href=link;
+			}
+			return false;
+		}
+		
 		function checkPassword() {
 
 			let nameRegex = /^[가-힣]{1}[a-z0-9가-힣]{1,7}$/g;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,6 +54,7 @@
 			</td>
 		</tr>
 	</table>
+	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return insertIssueBoardCheck()">글 등록</button>
 	
 </form:form>
@@ -61,7 +63,16 @@
 <jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
+<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
+	function cancel(){
+		if(confirm('글작성을 취소 하시겠습니까?')){
+			let link = '${context}/boardManagement/issue';
+				
+			return location.href=link;
+		}
+		return false;
+	}
 	function insertIssueBoardCheck() {
 		
 		if($('#issueTitle').val()==''){

@@ -28,10 +28,12 @@
 		.box-size{
 			width: 300px;
 		}
-	
-		button[type="submit"]{
+		#btn-center{
+			text-align: center;
+		}
+		.big-btn{
 			margin: 20px;
-	 		width: 200px; height: 50px; border-radius: 10px;
+	 		width: 180px; height: 50px; border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
 			background: rgb(136, 154, 233);
 			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
@@ -39,11 +41,8 @@
 			
 		}
 		
-		button[type="submit"]:hover{
-   			background: rgb(101, 121, 207);
-			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-		}
-		button[type="button"]{
+		
+		.sm-btn{
 			margin: 10px;
 	 		width: 100px; height: 40px; border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
@@ -52,12 +51,16 @@
 			border: none;
 			margin-left:20px;
 		}
-		}
 		
-		button[type="button"]:hover{
+		
+		.sm-btn:hover{
    			background: rgb(101, 121, 207);
 			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 		}		
+		.big-btn:hover{
+   			background: rgb(101, 121, 207);
+			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}
 		
 		::placeholder {
 		  color: black;
@@ -75,6 +78,7 @@
 
 	<h2 style="text-align: center;">회원가입</h2>
 	<hr>
+	
 	<form:form action="main" modelAttribute="formData" id="frm">
 		<div id="register-box">
 			<table class="register-table">
@@ -85,7 +89,7 @@
 						<input  type="hidden" name="nameBtnCheck" id="nameBtnCheck">
 					</td>
 					<td>
-						<button type="button" onclick="nameCheck()">중복 체크</button>
+						<button type="button" class="sm-btn" onclick="nameCheck()">중복 체크</button>
 					</td>
 				</tr>
 				<tr>
@@ -95,7 +99,7 @@
 						<input type="hidden" name="idBtnCheck" id="idBtnCheck">
 					</td>
 					<td>
-						<button type="button" onclick="idCheck()">중복 체크</button>			
+						<button type="button" class="sm-btn" onclick="idCheck()">중복 체크</button>			
 					</td>
 				</tr>
 				<tr>
@@ -103,6 +107,7 @@
 					<td>
 						<form:input class="form-control" path="password" type="password" placeholder="※ 6~14자 영문자,숫자,특수문자 조합 ※"/>
 					</td>
+					<td rowspan="4"></td>
 				</tr>
 				<tr>
 					<td><spring:message code="password.confirm"/></td>
@@ -122,11 +127,12 @@
 						<form:input class="form-control" path="phone" placeholder="※ - 하이폰을 입력해주세요 ※"/>
 					</td>	
 				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<button type="submit" onclick="return signUp()"><spring:message code="register.btn"/></button>
+				<tr align="center">
+					<td colspan="3">
+						<button type="button" class="big-btn" onclick="return cancel()">취소</button>
+						<button type="submit" class="big-btn" onclick="return signUp()"><spring:message code="register.btn"/></button>
 					</td>
+					
 				</tr>
 			</table>
 		</div>
@@ -162,6 +168,15 @@
 			
 			window.open(url,'_blank_2',
 			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
+		}
+		
+		function cancel(){
+			if(confirm('회원가입을 취소 하시겠습니까?')){
+				let link = '${context}/main';
+				
+				return location.href=link;
+			}
+			return false;
 		}
 		
 		function signUp(){

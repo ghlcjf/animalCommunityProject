@@ -110,7 +110,7 @@ public class MyPageController {
 	public String changeInfo(@ModelAttribute("user") User user,HttpSession session,HttpServletRequest request) {
 		
 		changeInfoService.changeInfo(user);
-	
+
 //		session.invalidate();
 		LoginUserInfo userInfo = new LoginUserInfo();
 		userInfo.setName(user.getName());
@@ -120,7 +120,7 @@ public class MyPageController {
 		
 		session.setAttribute("userInfo", userInfo);
 		
-		return "myPage/myInfo";
+		return "redirect:/myPage";
 	}
 	@RequestMapping("/myPage/updeteForm/{boardNum}")
 	public String myPageUpdate(@PathVariable("boardNum") long boardNum, Model model) {

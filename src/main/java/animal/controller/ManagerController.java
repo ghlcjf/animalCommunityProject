@@ -175,6 +175,13 @@ public class ManagerController {
 	public String reportBoard(Model model) {
 		List<FreeBoard> freeBoard = reportBoardService.reportFreeBoard();
 		
+		for(int i=0;i<freeBoard.size();i++) {
+			if(freeBoard.get(i).getBoardTitle().length()>=26) {
+				String title = freeBoard.get(i).getBoardTitle().substring(0,26)+"...";
+				freeBoard.get(i).setBoardTitle(title);
+			}
+		}
+		
 		model.addAttribute("freeBoard",freeBoard);
 		
 		return "/manager/reportBoardList";

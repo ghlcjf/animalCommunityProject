@@ -89,6 +89,7 @@
 		</tr>
 	</table>
 	<form:hidden path="boardNum"/>
+	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return updateFreeBoardcheck()">글 등록</button>
 	
 </form:form>
@@ -98,7 +99,17 @@
 <jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
+<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
+	function cancel(){
+		if(confirm('수정을 취소 하시겠습니까?')){
+			let link = '${context}/freeBoard/freeBoardList/main/1/1';
+			
+			return location.href=link;
+		}
+		return false;
+	}
+	
 	function updateFreeBoardcheck() {
 		
 		if($('#boardTitle').val()==''){
