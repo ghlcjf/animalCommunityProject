@@ -27,6 +27,13 @@ public class AnimalInfoController {
 		
 		List<AnimalInfo> animalList = animalDao.selectAllAniaml();
 		
+		for(int i=0;i<animalList.size();i++) {
+			if(animalList.get(i).getAnimalTitle().length()>=14) {
+				String title = animalList.get(i).getAnimalTitle().substring(0,14)+"...";
+				animalList.get(i).setAnimalTitle(title);
+			}
+		}
+		
 		model.addAttribute("animals", animalList);
 		
 		return "animalInfo/animalList";

@@ -24,13 +24,10 @@
 			margin: 10px;
 		}
 		
-		button[type="button"]{
-			margin-left:20px;
-		}
 		
-		button[type="submit"]{
+		.big-btn{
 			margin: 20px;
-	 		width: 200px; height: 50px; border-radius: 10px;
+	 		width: 180px; height: 50px; border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
 			background: rgb(136, 154, 233);
 			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
@@ -38,9 +35,29 @@
 			
 		}
 		
-		button[type="submit"]:hover{
+		.sm-btn{
+			margin: 10px;
+	 		width: 100px; height: 40px; border-radius: 10px;
+			text-align: center; color: white; font-weight:bolder;
+			background: rgb(136, 154, 233);
+			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+			border: none;
+			margin-left:20px;
+		}
+		
+		
+		.sm-btn:hover{
    			background: rgb(101, 121, 207);
 			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}		
+		.big-btn:hover{
+   			background: rgb(101, 121, 207);
+			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}
+		::placeholder {
+		  color: black;
+		  font-size: 12px;
+		  font-weight: 400;		  
 		}
 		
 	</style>
@@ -61,12 +78,12 @@
 				<tr>
 					<td><spring:message code="name"/></td>
 					<td>
-						<form:input class="form-control" path="name" />
+						<form:input class="form-control" path="name" readonly="true"/>
 						<input type="hidden" name="oldName" id="oldName" value="${user.name}">
 						<input type="hidden" name="nameBtnCheck" id="nameBtnCheck">
 					</td>
 					<td>
-						<button type="button" onclick="nameCheck()">중복 체크</button>
+						<button type="button" class="sm-btn" onclick="nameCheck()">닉네임 변경</button>
 					</td>
 					
 				</tr>
@@ -74,28 +91,27 @@
 				<tr>
 					<td><spring:message code="id"/></td>
 					<td>
-						<form:input class="form-control" path="id" disabled="true"/>
-						<input type="hidden" name="id" value="${user.id }">
+						<form:input class="form-control" path="id" readonly="true"/>
 					</td>
+					
 				</tr>
 			
 				<tr>
 					<td><spring:message code="password"/></td>
 					<td>
-						<input class="form-control" type="password" name="oldpassword" id="oldPassword" value="${user.password}" disabled>
+						<input class="form-control" type="password" name="oldpassword" id="oldPassword" value="${user.password}" readonly>
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="new.password"/></td>
 					<td>
-						<input class="form-control" type="password" name="password" id="newPassword">
+						<input class="form-control" type="password" name="password" id="newPassword" placeholder="※ 6~14자 영문자,숫자,특수문자 조합 ※">
 					</td>
 				</tr>
 				<tr>
 					<td><spring:message code="email"/></td>
 					<td>
-						<form:input class="form-control" path="email" type="email" disabled="true"/>
-						<input type="hidden" name="email" value="${user.email }">
+						<form:input class="form-control" path="email" type="email" readonly="true"/>
 					</td>		
 				</tr>
 				<tr>
@@ -105,55 +121,71 @@
 						<input type="hidden" name="admin" value="${user.admin }">
 					</td>
 				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<button type="submit" onclick="return checkPassword()"><spring:message code="changeInfo.btn"/></button>
+				<tr align="center">
+					<td colspan="3">
+						<button type="button" class="big-btn" onclick="return cancel()">취소</button>
+						<button type="submit" class="big-btn" onclick="return checkPassword()"><spring:message code="changeInfo.btn"/></button>
 					</td>
 				</tr>
 			</table>	
 		</div>	
 	</form:form> 
 	<jsp:include page="../footer.jsp"></jsp:include>
+	
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript">
+		function cancel(){
+			if(confirm('정보수정을 취소 하시겠습니까?')){
+				let link = '${context}/myPage';
+				
+				return location.href=link;
+			}
+			return false;
+		}
+		
 		function checkPassword() {
 
+			let nameRegex = /^[가-힣]{1}[a-z0-9가-힣]{1,7}$/g;
+			let pwRegex =  /^.*(?=^.{6,14}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+			let phoneRegex = /^\d{3}-\d{3,4}-\d{4}$/;
+			
+			let name = $('#name').val();
 			let newPassword = document.getElementById('newPassword').value;
 			let oldPassword = document.getElementById('oldPassword').value;
 			let nameBtnCheck = document.getElementById('nameBtnCheck').value;
+			let phone = $('#phone').val();
 			
-			if(nameBtnCheck.length==0){
-				alert('닉네임 중복체크를 해주세요.')
-				
+			
+			if(name.match(nameRegex) == null){
+				alert('닉네임은 한글로 시작하는 2~8자입니다. (영문,숫자 사용가능)');
 				return false;
 			}
-			
 			if(newPassword.length==0){
 				alert('새로운 비밀번호를 입력해 주세요.');
-				
 				return false;
 			}
-			
 			if(newPassword==oldPassword){
 				alert('기존의 비밀번호와 일치합니다. 다른 비밀번호를 입력해주세요.');
 				return false;
-			}else if(newPassword!=oldPassword){
-				alert('수정이 완료되었습니다.')
-				return true;
-			}  
+			}
+			if(newPassword.match(pwRegex) == null){
+				alert('비밀번호는 6~14자 영문자,숫자,특수문자 조합이어야 합니다.');
+				return false;
+			} 
+			if(phone.match(phoneRegex) == null){
+				alert('올바른 전화번호 형식이 아닙니다. 다시 입력해주세요.');
+				return false;
+			}
+			alert('수정이 완료되었습니다.')
+			return true;
+			  
 		}
 		
 		function nameCheck(){
 			
 			let oldName = document.getElementById('oldName').value;
 			let name = document.getElementById('name').value;
-			
-			if(name==oldName){
-				alert('기존 닉네임이랑 일치합니다.');
-				return false;
-			}
-			
+	
 			let url = "${context}/newNameWindow/"+name;
 			
 			window.open(url,'_blank_1',

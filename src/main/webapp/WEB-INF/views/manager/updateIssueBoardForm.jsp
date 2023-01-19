@@ -71,6 +71,7 @@
 		</tr>
 	</table>
 	<form:hidden path="issueNum"/>
+	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return insertIssueBoardCheck()">글 등록</button>
 	
 </form:form>
@@ -78,7 +79,18 @@
 
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
+<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
+
+	function cancel(){
+		if(confirm('수정을 취소 하시겠습니까?')){
+			let link = '${context}/boardManagement/issue';
+				
+			return location.href=link;
+		}
+		return false;
+	}
+
 	function insertIssueBoardCheck() {
 		
 		if($('#issueTitle').val()==''){
@@ -89,7 +101,15 @@
 			alert('내용을 입력해 주세요');
 			return false;
 		}
-		
+		if($('#issueTitle').val().length>40){
+			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+				
+		if($('#issueContent').val().length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
+			return false;
+		}
 		let cc = confirm('게시글을 수정하시겠습니까?');
 		if(cc){
 			alert('수정이 완료되었습니다.');

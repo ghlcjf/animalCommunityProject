@@ -53,6 +53,7 @@ public class MainController {
 		
 		//메인-인기글 10개 띄우는거 
 		List<FreeBoard> freeBoardTopTen = selectAllFreeBoardListService.selectFreeBoardTop();
+
 		
 		// 안 읽은 메세지 개수 불러오기
 		if(session != null) {
@@ -66,6 +67,28 @@ public class MainController {
 		}
 		
 		
+
+
+		for(int i=0;i<freeBoardTopTen.size();i++) {
+			if(freeBoardTopTen.get(i).getBoardTitle().length()>=10) {
+				String title = freeBoardTopTen.get(i).getBoardTitle().substring(0,10)+"...";
+				freeBoardTopTen.get(i).setBoardTitle(title);
+			}
+		}
+		for(int i=0;i<freeBoardList.size();i++) {
+			if(freeBoardList.get(i).getBoardTitle().length()>=10) {
+				String title = freeBoardList.get(i).getBoardTitle().substring(0,10)+"...";
+				freeBoardList.get(i).setBoardTitle(title);
+			}
+		}
+		for(int i=0;i<issueList.size();i++) {
+			if(issueList.get(i).getIssueTitle().length()>=10) {
+				String title = issueList.get(i).getIssueTitle().substring(0,10)+"...";
+				issueList.get(i).setIssueTitle(title);
+			}
+		}
+
+
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("issue",issueList);
 		model.addAttribute("freeBoardTopTen",freeBoardTopTen);
@@ -80,6 +103,7 @@ public class MainController {
 		List<Issue> issueList = animalDao.selectAllIssueList(); //이슈게시판 정보 
 		List<Image> imageList = imageService.selectAllImageList();
 		List<FreeBoard> freeBoardTopTen = selectAllFreeBoardListService.selectFreeBoardTop();
+
 		
 		// 안 읽은 메세지 개수 불러오기
 		if(session != null) {
@@ -92,6 +116,27 @@ public class MainController {
 			}
 		}
 		
+
+
+		for(int i=0;i<freeBoardTopTen.size();i++) {
+			if(freeBoardTopTen.get(i).getBoardTitle().length()>=10) {
+				String title = freeBoardTopTen.get(i).getBoardTitle().substring(0,10)+"...";
+				freeBoardTopTen.get(i).setBoardTitle(title);
+			}
+		}
+		for(int i=0;i<freeBoardList.size();i++) {
+			if(freeBoardList.get(i).getBoardTitle().length()>=10) {
+				String title = freeBoardList.get(i).getBoardTitle().substring(0,10)+"...";
+				freeBoardList.get(i).setBoardTitle(title);
+			}
+		}
+		for(int i=0;i<issueList.size();i++) {
+			if(issueList.get(i).getIssueTitle().length()>=10) {
+				String title = issueList.get(i).getIssueTitle().substring(0,10)+"...";
+				issueList.get(i).setIssueTitle(title);
+			}
+		}
+
 		
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("issue",issueList); //이슈게시판 정보

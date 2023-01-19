@@ -264,37 +264,7 @@
 						 안읽은 쪽지:${unReadCheck}개</li>
 					</ul>
 				</div>
-			</c:if>				
-			
-				
-				
-				<!--인기글 top10개: 조회수로 순위
-				<div class="top-ten-box">
-					<span class="top-ten-box-text">커뮤니티 인기글 Top10</span>
-				</div>
-				<c:if test="${empty freeBoardTopTen}">
-					<table class="top-ten" border="1" width="300px">
-						<tr>
-							<td>등록된 게시글이 없습니다</td>
-						</tr>
-					</table>
-				</c:if>
-				<c:if test="${!empty freeBoardTopTen}">
-					<c:forEach items="${freeBoardTopTen}" var="board" begin="0" end="9" varStatus="i">
-						<table class="top-ten" border="1" width="300px">
-							<tr>
-								<th style="padding: 5px; font-size: 15px;">
-									<span class="top-number">${i.count}</span> 
-									<a class="top-ten-text" href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
-										 
-										${board.boardTitle}  (${board.viewCount})
-									</a>
-								</th>
-							</tr>
-						</table>
-					</c:forEach>
-				</c:if>	-->	
-				
+			</c:if>								
 			</div>
 		</div>
 

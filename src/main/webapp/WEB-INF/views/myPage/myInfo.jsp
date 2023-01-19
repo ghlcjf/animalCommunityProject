@@ -132,7 +132,7 @@ a {
 	
             
           
-		<p class="text-end fs-1">${user.name}님</p>
+		
 		<table class="table table-sm">
 		<thead>
 			<tr>
@@ -150,11 +150,7 @@ a {
 				<td>${user.phone }</td>
 			</tr>
 		</table>
-		<%-- <form id="section" action="<c:url value='/checkPassword' />">
-			<div class="d-flex justify-content-end">
-			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
-			</div>
-		</form> --%>
+
 		</div>
 		</div>
 		</div>
@@ -184,16 +180,13 @@ a {
 					</tr>
 					</thead>
 					<c:forEach items="${board}" var="board">
-<<<<<<< HEAD
+
 					<tbody>
 						<tr class="td-button">
-							<td>${board.boardTitle}</td>
-=======
-						<tr>
+
 							<td><a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">
-								${board.boardTitle}</a></td>
-							
->>>>>>> branch 'master' of https://github.com/ghlcjf/animalCommunityProject.git
+								${board.boardTitle}</a>
+							</td>
 							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 							<td>${board.viewCount }</td>
 							<td>
@@ -213,15 +206,10 @@ a {
 				</table>
 			</c:otherwise>
 		</c:choose>
-<<<<<<< HEAD
-		<%-- <div class="d-flex justify-content-start">
-		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
-		</div> --%>
-		<%-- <a href='<c:url value="/main" />'>메인으로 돌아가기</a> --%>
+
 		</div>
 		</div>
 		</div>
-=======
 		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
 		
 		<form action='<c:url value="/mypage/${user.id}" />'>
@@ -229,8 +217,7 @@ a {
 		</form>
 
 		
->>>>>>> branch 'master' of https://github.com/ghlcjf/animalCommunityProject.git
-	<!-- </div> -->
+
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 

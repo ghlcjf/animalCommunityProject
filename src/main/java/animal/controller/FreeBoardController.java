@@ -52,6 +52,7 @@ public class FreeBoardController {
 			HttpServletRequest request) {
 		List<FreeBoard> freeBoardList = null;;
 		int totalCnt = 0;
+		
 //		String _section = request.getParameter("section");
 //		String _pageNum = request.getParameter("pageNum");
 //		
@@ -93,6 +94,21 @@ public class FreeBoardController {
 		}
 		
 		List<FreeBoard> noticeList = selectAllNoticeListService.selectAllNoticeList();
+		
+		for(int i=0;i<noticeList.size();i++) {
+			if(noticeList.get(i).getBoardTitle().length()>=26) {
+				String title = noticeList.get(i).getBoardTitle().substring(0,26)+"...";
+				noticeList.get(i).setBoardTitle(title);
+			}
+		}
+		
+		for(int i=0;i<freeBoardList.size();i++) {
+			if(freeBoardList.get(i).getBoardTitle().length()>=26) {
+				String title = freeBoardList.get(i).getBoardTitle().substring(0,26)+"...";
+				freeBoardList.get(i).setBoardTitle(title);
+			}
+		}
+		
 		
 		model.addAttribute("animal", animal);
 		model.addAttribute("totalCnt", totalCnt);

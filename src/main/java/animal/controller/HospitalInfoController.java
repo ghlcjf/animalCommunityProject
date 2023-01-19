@@ -50,6 +50,13 @@ public class HospitalInfoController {
 			hospitalList = animalDao.selectHospitaljeju();
 		}
 		
+		for(int i=0;i<hospitalList.size();i++) {
+			if(hospitalList.get(i).getHospitalName().length()>=26) {
+				String title = hospitalList.get(i).getHospitalName().substring(0,26)+"...";
+				hospitalList.get(i).setHospitalName(title);
+			}
+		}
+		
 		model.addAttribute("hospitals", hospitalList);
 		
 		return "hospitalInfo/hospitalList";

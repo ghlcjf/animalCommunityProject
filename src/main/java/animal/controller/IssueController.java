@@ -31,6 +31,13 @@ public class IssueController {
 		List<Issue> issueList = animalDao.selectAllIssueList();
 		model.addAttribute("issue",issueList);
 		
+		for(int i=0;i<issueList.size();i++) {
+			if(issueList.get(i).getIssueTitle().length()>=26) {
+				String title = issueList.get(i).getIssueTitle().substring(0,26)+"...";
+				issueList.get(i).setIssueTitle(title);
+			}
+		}
+		
 		return "issue/issueBoard";
 	}
 	
