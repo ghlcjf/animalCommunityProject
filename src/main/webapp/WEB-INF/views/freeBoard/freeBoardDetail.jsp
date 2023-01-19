@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -29,13 +30,24 @@
 		width:500px;
 		height:500px;
 	}
+	.messageBtn{
+		color:black;
+		margin:auto;
+		position: relative;
+	}
+	.messageBtn:hover{
+		color:rgb(101, 121, 207);
+	}
+	.bi{
+		position:absolute;
+		left:3px;
+		bottom:-1px;
+	}
 </style>
 </head>
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
-
-<h2>여기부터 해야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h2>
 
 	<div class="d-grid gap-2 col-6 mx-auto">
 	<h2>자유게시판 상세보기</h2>
@@ -58,7 +70,19 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td> ${freeBoard.name}</td>
+			<td> 
+				${freeBoard.name}
+				<c:if test="${freeBoard.name!=userInfo.name}">
+					<input type="hidden" id="receiverName" value="${freeBoard.name}">
+					<a class="messageBtn" href="#" onclick="sendMessage(); return false;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+						  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+						</svg>
+					</a>
+				</c:if>
+									
+				
+			</td>
 			<th>작성일</th>
 			<td><fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
 			<th>조회수</th>
@@ -100,14 +124,25 @@
 		</c:if>
 		<c:forEach items="${freeComments}" var="freeComment">
 			<tr>
-				<td>${freeComment.name }</td>
+				<td>
+					${freeComment.name }
+					<c:if test="${freeComment.name!=userInfo.name}">
+						<input type="hidden" id="receiverNameCmt" value="${freeComment.name}">
+						<a class="messageBtn" href="#" onclick="sendMessageCmt(); return false;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+							  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+							</svg>
+						</a>
+					</c:if>
+					
+				</td>
 				<td>${freeComment.commentContent }</td>
 				<td><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		
 		</c:forEach>
 
-		<tr id="addComment"></tr>
+		
 	</table>
 	
 	
@@ -180,13 +215,12 @@
 			dateType:JSON,
 			success:function(data){
 				
+				let commentTbl = document.getElementById('commentTbl');
+				let tr = $('<tr></tr>').appendTo(commentTbl);
 				
-				let tbl = document.getElementById('commentTbl');
-				let cr = document.createElement('tr');
-				cr.innerHTML = '<td>'+data.name+'</td>';
-				cr.innerHTML += '<td>'+data.commentContent+'</td>';
-				cr.innerHTML += '<td>'+data.writeDate+'</td>';
-				tbl.appendChild(cr);
+				$('<td></td>').html(data.name).appendTo(tr);
+				$('<td></td>').html(data.commentContent).appendTo(tr);
+				$('<td></td>').html(data.writeDate).appendTo(tr);
 				
 				
 			},
@@ -216,6 +250,36 @@
 			location.href="/animalCommunity/freeBoard/updateFreeBoardForm/"+boardNum;
 		} 
 	}
+	
+	function sendMessage(){
+		let receiverName = $('#receiverName').val();
+		let senderName = $('#name').val();
+		
+		let cc = confirm(receiverName+'님에게 메세지를 보내시겠습니까?');
+		if(cc){
+			
+			let url = "${context}/message/sendForm/"+receiverName;
+			window.open(url,'_blank_1','toolbar=no, menubar=no,scrollbars=yes, resizeable=no, width=450, height=200');
+		}
+		return false;
+	}
+	
+	function sendMessageCmt(){
+		let receiverName = $('#receiverNameCmt').val();
+		let senderName = $('#name').val();
+		if(receiverName==senderName){
+			alert('자신에게 메세지를 보낼 수 없습니다.');
+			return false;
+		}
+		let cc = confirm(receiverName+'님에게 메세지를 보내시겠습니까?');
+		if(cc){
+			
+			let url = "${context}/message/sendForm/"+receiverName;
+			window.open(url,'_blank_1','toolbar=no, menubar=no,scrollbars=yes, resizeable=no, width=450, height=200');
+		}
+		return false;
+	}
+	
 
 </script>
 

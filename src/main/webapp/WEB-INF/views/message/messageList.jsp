@@ -86,15 +86,15 @@
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].sendTime).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
-					$('<td></td>').html('<button class="sendMessageBtn" type="button" value="'+data[i].messageNum+'">답장</button>').appendTo(tr);
+					$('<td></td>').html('<button class="replyMessageBtn" type="button" value="'+data[i].messageNum+'">답장</button>').appendTo(tr);
 					$('<td></td>').html('<button class="deleteReceiveMessageBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
 					
 				}
-				$('.sendMessageBtn').on({
+				$('.replyMessageBtn').on({
 			        "click" : function(){
 			        	let num = $(this).val();
 			        	
-			        	let url = "${context}/message/sendForm/"+num;
+			        	let url = "${context}/message/replyForm/"+num;
 			        	window.open(url,'_blank_1','toolbar=no, menubar=no,scrollbars=yes, resizeable=no, width=450, height=200'); 
 			        }
 				});
