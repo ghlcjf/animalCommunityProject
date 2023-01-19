@@ -61,7 +61,12 @@
     .list-group-item {
        border:none;
     }
- 
+ 	.messageBtn{
+ 		color: black;
+ 	}
+ 	.messageBtn:hover{
+ 		color: rgb(136, 154, 233);
+ 	}
 </style>
 </head>
 <body>
@@ -111,7 +116,8 @@
 						<a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle } (${notice.commentCount})</a>
 					</td>
 					<td>${notice.viewCount }</td>
-					<td>${notice.name }</td>
+					<td>${notice.name }
+					</td>
 					<td><fmt:formatDate value="${notice.writeDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
@@ -130,7 +136,21 @@
 							<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">${board.boardTitle} (${board.commentCount})</a>
 						</td>
 						<td>${board.viewCount }</td>
-						<td>${board.name }</td>
+						<td>${board.name }
+						
+							<!--본인외 다른사람의 메시지 이모티콘 클릭하면 메시지 보낼수있는 창으로 이동하게끔-->
+							<c:if test="${board.name != userInfo.name}" >  <!--여기의 주소는 ${board.name}에게 메시지를 보내는 주소여야함-->
+									<a class="messageBtn" href="#" onclick="sendMessage('${board.name}','${userInfo.name}'); return false;">	
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+										  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+										</svg>
+										
+									</a>
+							</c:if>
+						
+						</td>
+					
+	
 						<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
 				</c:forEach>
@@ -226,6 +246,22 @@
 
    
 <jsp:include page="../footer.jsp"></jsp:include>
+<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
+<script type="text/javascript">
+function sendMessage(rName, sName){
+    let receiverName = rName;
+    let senderName = sName;
+    
+    let cc = confirm(receiverName+'님에게 메세지를 보내시겠습니까?');
+    if(cc){
+       
+       let url = "${context}/message/sendForm/"+receiverName;
+       window.open(url,'_blank_1','toolbar=no, menubar=no,scrollbars=yes, resizeable=no, width=450, height=200');
+    }
+    return false;
+ }
+</script>
+
 
 </body>
 </html>

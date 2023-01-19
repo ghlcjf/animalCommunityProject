@@ -117,7 +117,9 @@
 					</tr>
 					<c:forEach items="${board}" var="board">
 						<tr>
-							<td>${board.boardTitle}</td>
+							<td><a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">
+								${board.boardTitle}</a></td>
+							
 							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 							<td>${board.viewCount }</td>
 							<td>
@@ -137,6 +139,12 @@
 			</c:otherwise>
 		</c:choose>
 		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
+		
+		<form action='<c:url value="/mypage/${user.id}" />'>
+			<button class="bigBtn" type="submit" onclick="return out('${user.id}')">탈퇴</button>
+		</form>
+
+		
 	<!-- </div> -->
 
 	<jsp:include page="../footer.jsp"></jsp:include>
@@ -158,6 +166,15 @@
 			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
 		} */
 
+		function out(name){
+			console.log(name);
+			if(confirm('정말 탈퇴하시겠습니까?')){
+				return alert('탈퇴가 정상 처리되었습니다.');
+			}else{
+				return false;
+			}
+		
+		}
 	</script>
 </body>
 </html>
