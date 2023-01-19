@@ -41,7 +41,7 @@
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/memberManagement"/>'>
+			<a href='<c:url value="/memberManagement/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        회원 관리

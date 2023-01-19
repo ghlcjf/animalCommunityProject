@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -42,6 +41,7 @@ import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.LoginUserInfo;
 import animal.vo.SearchMemberCommand;
+import animal.vo.SectionPage;
 import animal.vo.User;
 
 
@@ -106,12 +106,17 @@ public class ManagerController {
 	}
 	
 
-	@GetMapping("/memberManagement") //회원조회
-	public String memberManagement(Model model) {
+	@GetMapping("/memberManagement/{section}/{pageNum}") //회원조회
+	public String memberManagement(@PathVariable("section") int section, @PathVariable("pageNum") int pageNum, Model model) {
+
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		List<User> memberList = animalDao.selectTargetMemberList(sectionPage);
+		int totalCnt = animalDao.selectAllNumMember();
 		
-		List<User> memberList = animalDao.memberList();
 		model.addAttribute("member",memberList);
 		model.addAttribute("searchData", new SearchMemberCommand());
+		model.addAttribute("totalCnt", totalCnt);
+		model.addAttribute("sectionPage", sectionPage);
 		
 		return "manager/memberManagement";
 	}

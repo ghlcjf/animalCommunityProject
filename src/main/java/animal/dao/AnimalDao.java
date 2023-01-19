@@ -339,10 +339,6 @@ public class AnimalDao {
 
 	
 	//----------------------------관리자 회원관리----------------------------------------
-	public List<User> memberList() {
-		
-		return sqlSession.selectList("mybatis.mapper.member.memberList");
-	}
 
 	public List<User> searchMember(SearchMemberCommand search) {
 
@@ -433,6 +429,16 @@ public class AnimalDao {
 	public void deleteSendBoxMessage(int messageNum) {
 		sqlSession.update("mybatis.mapper.member.deleteSendBoxMessage", messageNum);
 		sqlSession.delete("mybatis.mapper.member.deleteAllBoxMessage");
+	}
+
+	public List<User> selectTargetMemberList(SectionPage sectionPage) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.selectTargetMemberList",sectionPage);
+	}
+
+	public int selectAllNumMember() {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumMember");
 	}
 
 

@@ -278,9 +278,19 @@
 	
 
 	<!-- 관리자 회원관리 -->
-	<select id="memberList" resultType="user">
-		<include refid="selectAllMember"/>
-		WHERE admin=0
+	<select id="selectTargetMemberList" parameterType="sectionPage" resultType="user">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM userTbl
+                WHERE admin = 0
+				ORDER BY id DESC) 
+		 b) 
+		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10))
+	</select>
+	
+	<select id="selectAllNumMember" resultType="int">
+		SELECT COUNT(*) FROM userTbl WHERE admin=0
 	</select>
 	
 	<select id="searchMember" resultType="user">
