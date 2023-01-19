@@ -14,15 +14,15 @@
 	<style>
 	.navbar {
 	margin-top: 15px;
-	width: 60%;
+	width: 100%;
 	background-color: #dfe6f7;
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
 }
 
 .navbar-brand-cs {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
 	margin-right: var(- -bs-navbar-brand-margin-end);
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -31,8 +31,39 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
-.table{
-	width: 50%
+/* .table{
+	width: 1150px;
+} */
+ table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+.td-button {
+	line-height: 35px;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+.text-end{
+	margin-right: 100px
 }
 		h2{
 			margin-bottom: 30px;
@@ -41,10 +72,8 @@
 		.d-grid{
 			margin-top: 70px;
 		}
-		#section{
-			margin-bottom: 30px;
-		}
-		.smBtn{
+		
+		/* .smBtn{
 			width: 50px; height: 33px; border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
 			background: rgb(136, 154, 233);
@@ -57,11 +86,27 @@
 			background: rgb(136, 154, 233);
 			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 			border: none;
-		}
-		button[type="submit"]:hover{
+		} */
+		/* button[type="submit"]:hover{
    			background: rgb(101, 121, 207);
 			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-		}
+		} */
+		/* #section{
+			margin-bottom: 30px;
+		} */
+		button{
+		padding: 5px;   border: none;
+		height: 30px; 	border-radius: 10px;
+		color: white;   font-weight:bolder;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		line-height: 10px;
+		
+	}
+	button:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
 		
 	</style>
 
@@ -69,21 +114,34 @@
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 	
-	<nav class="navbar mx-auto">
+	<div class="container text-center">
+        <div class="row">
+        <div class="col-10 mx-auto">
+	<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
+			<form id="section" action="<c:url value='/checkPassword' />">
+			<div class="d-flex justify-content-end">
+			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
+			</div>
+		</form>
 		</div>
 	</nav>
 	
 	<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
-		<h2>${user.name}님</h2>
-		<table class="table mx-auto">
+	
+            
+          
+		<p class="text-end fs-1">${user.name}님</p>
+		<table class="table table-sm">
+		<thead>
 			<tr>
 				<th>이름</th>
 				<th>아이디</th>
 				<th>이메일</th>
 				<th>전화번호</th>
 			</tr>
+			</thead>
 			<tr>
 		
 				<td>${user.name }</td>
@@ -92,11 +150,19 @@
 				<td>${user.phone }</td>
 			</tr>
 		</table>
-		<form id="section" action="<c:url value='/checkPassword' />">
+		<%-- <form id="section" action="<c:url value='/checkPassword' />">
+			<div class="d-flex justify-content-end">
 			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
-		</form>
+			</div>
+		</form> --%>
+		</div>
+		</div>
+		</div>
 		
-		<nav class="navbar mx-auto">
+          <div class="container text-center">
+        <div class="row">
+		 <div class="col-10 mx-auto">
+		<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">게시글 목록</span>
 		</div>
@@ -107,16 +173,19 @@
 				<p>게시글이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<table class="table">
+				<table class="table table-sm">
+				<thead>
 					<tr>
-						<th>글제목</th>
+						<th>제목</th>
 						<th>작성일</th>
 						<th>조회수</th>
-						<th>글수정</th>
-						<th>글삭제</th>
+						<th>글 수정</th>
+						<th>글 삭제</th>
 					</tr>
+					</thead>
 					<c:forEach items="${board}" var="board">
-						<tr>
+					<tbody>
+						<tr class="td-button">
 							<td>${board.boardTitle}</td>
 							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 							<td>${board.viewCount }</td>
@@ -132,11 +201,18 @@
 								</form>
 							</td>
 						</tr>
+						</tbody>
 					</c:forEach>
 				</table>
 			</c:otherwise>
 		</c:choose>
-		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
+		<%-- <div class="d-flex justify-content-start">
+		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
+		</div> --%>
+		<%-- <a href='<c:url value="/main" />'>메인으로 돌아가기</a> --%>
+		</div>
+		</div>
+		</div>
 	<!-- </div> -->
 
 	<jsp:include page="../footer.jsp"></jsp:include>

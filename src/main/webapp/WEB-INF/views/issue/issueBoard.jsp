@@ -13,15 +13,14 @@
 <style>
 .navbar {
 	margin-top: 15px;
-	width: 60%;
 	background-color: #dfe6f7;
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
 }
 
 .navbar-brand-cs {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
 	margin-right: var(- -bs-navbar-brand-margin-end);
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -30,58 +29,73 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
-	button{ 
-	 		border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-			
-		}
-		
-	button:hover{
-  			background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	}
+table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
 </style>
 </head>
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<nav class="navbar mx-auto">
+<div class="container text-center">
+        <div class="row">
+ <div class="col-10 mx-auto">
+<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">이슈</span>
 		</div>
 	</nav>
 
-<div class="container">
 <c:choose>
 	<c:when test="${empty issue}">
 		<p>게시글이 없습니다.</p>
 	</c:when>
 	<c:otherwise>
-		<table class="table">
+		<table class="table table-hover table-sm">
+		<thead>
 			<tr>
 				<th scope="col">글 번호</th>
-				<th scope="col">글 제목</th>
+				<th scope="col">제목</th>
 				<th scope="col">작성자</th>
-				<th scope="col">작성일자</th>
+				<th scope="col">작성일</th>
 			</tr>
+			</thead>
 			<c:forEach items="${issue}" var="board" varStatus="b">
 				<tr>
 					<th scope="row">${board.issueNum}</th>
-					<td><a href="<c:url value='/issue/detail/${board.issueNum}' />"> ${board.issueTitle} </a></td>
+					<td style="cursor: pointer;" onclick="location.href='<c:url value='/issue/detail/${board.issueNum}' />'"> ${board.issueTitle}</td>
 					<td>${board.name}</td>
 					<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="<c:url value='/main' />">[메인화면으로 돌아가기]</a>
 		
 	</c:otherwise>
 </c:choose>
-
+</div>
+</div>
 </div>
 
 <jsp:include page="../footer.jsp"></jsp:include>
