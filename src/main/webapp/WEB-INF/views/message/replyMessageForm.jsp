@@ -10,24 +10,28 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<h2>메세지 보내기</h2>
+<h2>메세지 답장</h2>
 <form:form modelAttribute="message">
 	
 	<table>
 		<tr>
 			<th>to</th>
 			<td>
-				${message.receiverName}
-				<form:hidden path="receiverName"/>
-				<!-- 받을 사람 -->
+				${message.senderName }
+				<form:hidden path="senderName"/>
+				<!-- 보낸 사람 : 받을 사람 -->
 			</td>
+		</tr>
+		<tr>
+			<th>message</th>
+			<td>${message.messageContent}</td>
 		</tr>
 		<tr>
 			<th>from</th>
 			<td>
-				${message.senderName }
-				<form:hidden path="senderName"/>
-				<!-- 보낼 사람  -->
+				${message.receiverName}
+				<form:hidden path="receiverName"/>
+				<!-- 받은 사람 : 보낼 사람  -->
 			</td>
 		</tr>
 		<tr>
@@ -44,13 +48,14 @@
 	</table>
 </form:form>
 
+
 </body>
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
 	function messageSend(){
 		let content = $('#content').val();
-		let senderName = $('#senderName').val();
-		let receiverName = $('#receiverName').val();
+		let senderName = $('#receiverName').val();
+		let receiverName = $('#senderName').val();
 		
 		if(content.length==0){
 			alert('메세지를 입력해 주세요.');

@@ -125,7 +125,7 @@
 		.scroll{
 			bottom: 70px;  right:40px; position: fixed;
 		}
-/* 		.scroll-right{
+/* 		.scroll-right{ 따라다니는 메뉴 
 			position:absolute; width:90px; top:50%; right:270px; background:#fff;
 			bottom: 400px;
 		} */
@@ -261,7 +261,7 @@
 							  	<path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
 							  	<path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
 							</svg>
-						 안읽은 쪽지:</li>
+						 안읽은 쪽지:${unReadCheck}개</li>
 					</ul>
 				</div>
 			</c:if>				
