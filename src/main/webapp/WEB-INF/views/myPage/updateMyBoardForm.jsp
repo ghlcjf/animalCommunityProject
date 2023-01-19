@@ -93,7 +93,7 @@ button:hover{
         <form:errors path="boardContent" />
       </div>
 	<form:hidden path="boardNum"/>
-	<button type="submit" onclick="return updateFreeBoardcheck()">글 등록</button>
+	<button type="submit" onclick="return updateFreeBoardcheck()">글 수정</button>
 	
 </form:form>
 </div>

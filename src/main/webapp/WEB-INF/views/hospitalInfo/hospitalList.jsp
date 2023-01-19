@@ -71,6 +71,19 @@ a {
 	height: 30px;
 	line-height: 15px;
  }
+ button{
+		padding: 5px;   border: none;
+		height: 30px; 	border-radius: 10px;
+		color: white;   font-weight:bolder;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		line-height: 10px;
+		
+	}
+	button:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
 </style>
 </head>
 <body>
@@ -124,6 +137,9 @@ a {
 			</table>
 		</c:otherwise>
 	</c:choose>
+	<div class="d-flex justify-content-start">
+		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
+		</div>
 	</div>
 </div>
 </div>

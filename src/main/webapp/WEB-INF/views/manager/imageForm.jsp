@@ -49,9 +49,6 @@ button:hover{
 <body>
 <jsp:include page="../header.jsp"></jsp:include>	
 
-<!-- <div class="d-grid gap-2 col-6 mx-auto">
-<h2>이미지 업로드</h2> -->
-
 <div class="container">
         <div class="row">
           <div class="col-7 mx-auto">
@@ -60,33 +57,14 @@ button:hover{
 
 <form:form action="/animalCommunity/manager/writeImage" modelAttribute="imageCommand" enctype="multipart/form-data">
 	
-	
-	<!-- <table class="table">
-		<tr>
-			<th scope="row">이미지</th>
-			<td> -->
-				<!-- <div class="input-group">
-				  <input type="file" id="imageUrl2" name="imageUrl2" class="form-control">
-				  <button class="btn btn-outline-secondary" type="button">Button</button> -->
 				  <div class="mb-3">
-        <label for="formFile" class="form-label">이미지 수정하기</label>
+        <label for="formFile" class="form-label">이미지 선택</label>
         <input type="file" id="imageUrl2" name="imageUrl2" class="form-control" type="file" id="formFile">
       </div>
-				<!-- </div>
-				
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">이미지 정보</th>
-			<td> -->
-				<%-- <form:input path="imageInfo" class="form-control"/> --%>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">이미지 정보</label>
 			<form:input path="imageInfo" class="form-control" id="exampleFormControlInput1" placeholder="내용을 입력해주세요"/>
 				</div>
-			<!-- </td>
-		</tr>
-	</table> -->
 	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return insertImageCheck()">사진 등록</button>
 	
@@ -95,7 +73,6 @@ button:hover{
 </div>
 	</div>
 	</div>
-<!-- </div> -->
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

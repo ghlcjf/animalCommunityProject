@@ -11,35 +11,52 @@
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <style>
+.container{
+    margin-top: 20px;
+        }
+.fs-2{
+	color: #889ae9;
+	font-weight: bold;
+}
+.form-label{
+	font-weight: bold;
+}
+#exampleFormControlTextarea1{
+    height: 300px;
+    resize: none;
+}
+img{
+	width: 100%;
+	height: 500px;
+}
 	button{
-	 		width: 200px; height: 50px; border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-			
-		}
-		
-	button:hover{
-  			background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	}
+	padding: 5px;   border: none;
+	height: 40px; 	border-radius: 10px;
+	width: 95px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
 	
+}
+button:hover{
+	background: rgb(101, 121, 207);
+	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
 </style>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
-<div class="d-grid gap-2 col-6 mx-auto">
-<h2>공지사항 수정 페이지</h2>
+<div class="container">
+        <div class="row">
+          <div class="col-7 mx-auto">
+<p class="fs-2">공지사항 수정</p>
+<hr>
 
 <form:form action="/animalCommunity/manager/updateNotice" modelAttribute="freeBoard" enctype="multipart/form-data">
-	<table class="table">
-		<tr>
-			<td colspan="2">
 				<c:choose>
 				
 					<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
-	<%-- 					<img src="<spring:url value='/imageFolder/noImage.png' />"><br> --%>
 						<img src="/imageFolder/noImage.png" class="rounded mx-auto d-block"><br>
 					</c:when>
 					
@@ -48,45 +65,35 @@
 					</c:otherwise>
 					
 				</c:choose>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">카테고리</th>
-			<td>
-				<form:select path="boardCategory" class="form-select">
-					<form:option value="공지사항">공지사항</form:option>
-				</form:select>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">제목</th>
-			<td>
-				<form:input path="boardTitle" class="form-control"/>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">이미지</th>
-			<td>
-				이미지 변경을 원할 때만 수정해 주세요!<br>
-				<div class="input-group">
-				  <input type="file" id="boardUrl2" name="boardUrl2" class="form-control">
-				  <button class="btn btn-outline-secondary" type="button">Button</button>
-				  <input type="hidden" name="originPic" value="${freeBoard.boardUrl}"> 
+				<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">카테고리</label>
+            <form:select path="boardCategory" class="form-select" aria-label="Default select example">
+						<form:option value="공지사항">공지사항</form:option>
+					</form:select>
+					</div>
+				<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">제목</label>
+			<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
 				</div>
-			</td>
+				  <div class="mb-3">
+        <label for="formFile" class="form-label">이미지 수정</label>
+        <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
+        <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
+      </div>
+				<div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
+      </div>
+			<!-- </td>
 		</tr>
-		<tr>
-			<th scope="row">내용</th>
-			<td>
-				<form:textarea path="boardContent" class="form-control" rows="3"/>
-			</td>
-		</tr>
-	</table>
+	</table> -->
 	<form:hidden path="boardNum"/>
 	<button type="button" onclick="return cancel()">취소</button>
-	<button type="submit" onclick="return insertNoticeCheck()">글 등록</button>
+	<button type="submit" onclick="return insertNoticeCheck()">글 수정</button>
 	
 </form:form>
+</div>
+</div>
 </div>
 
 <jsp:include page="../footer.jsp"></jsp:include>

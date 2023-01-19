@@ -49,44 +49,22 @@ button:hover{
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 
-<!-- <div class="d-grid gap-2 col-6 mx-auto">
-<h2>동물 소개 게시글 작성하기</h2> -->
-<form:form action="/animalCommunity/manager/writeAnimalInfo" modelAttribute="animalInfoCommand" enctype="multipart/form-data">
-
 <div class="container">
         <div class="row">
           <div class="col-7 mx-auto">
-<p class="fs-2">자유게시판 글 수정</p>
+<form:form action="/animalCommunity/manager/writeAnimalInfo" modelAttribute="animalInfoCommand" enctype="multipart/form-data">
+
+
+<p class="fs-2">동물소개 글 작성</p>
 <hr>
 
-	<!-- <table class="table">
-		<tr>
-			<th scope="row">동물 이름</th>
-			<td> -->
-				<%-- <form:input path="animalTitle" class="form-control"/> --%>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">제목</label>
 			<form:input path="animalTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
 				</div>
-			<!-- </td>
-		</tr>
-		<tr>
-			<th scope="row">동물 종류</th>
-			<td> -->
-				<%-- <form:select path="animalCategory" class="form-select">
-					<form:option value="선택">선택</form:option>
-					<form:option value="강아지">강아지</form:option>
-					<form:option value="고양이">고양이</form:option>
-					<form:option value="파충류">파충류</form:option>
-					<form:option value="조류">조류</form:option>
-					<form:option value="어류">어류</form:option>
-					<form:option value="기타">기타</form:option>
-				</form:select>
-				<form:errors path="animalCategory" /> --%>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">카테고리</label>
             <form:select path="animalCategory" class="form-select" aria-label="Default select example">
-						<form:option value="선택">선택</form:option>
 					<form:option value="강아지">강아지</form:option>
 					<form:option value="고양이">고양이</form:option>
 					<form:option value="파충류">파충류</form:option>
@@ -96,37 +74,23 @@ button:hover{
 				</form:select>
 				<form:errors path="animalCategory" />
 					</div>
-			<!-- </td>
-		</tr>
-		<tr>
-			<th scope="row">이미지</th>
-			<td> -->
-				<!-- <div class="input-group">
-				  <input type="file" id="animalUrl2" name="animalUrl2" class="form-control">
-				  <button class="btn btn-outline-secondary" type="button">Button</button>
-				</div> -->
 				<div class="mb-3">
-        <label for="formFile" class="form-label">이미지 수정하기</label>
+        <label for="formFile" class="form-label">이미지 선택</label>
         <input type="file" id="animalUrl2" name="animalUrl2" class="form-control" type="file" id="formFile">
       </div>
-			<!-- </td>
-		</tr>
-		<tr>
-			<th scope="row">특징</th>
-			<td> -->
-				<%-- <form:textarea path="animalContent" class="form-control" rows="3" placeholder="※1000자 이하로 작성해주세요.※"/> --%>
+				
 				<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">제목</label>
-			<form:input path="animalContent" class="form-control" id="exampleFormControlInput1" placeholder="내용을 입력해주세요"/>
-				</div>
-			<!-- </td>
-		</tr>
-	</table> -->
+        <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+        <form:textarea path="animalContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
+      </div>
+				
 	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return insertAnimalInfoCheck()">글 등록</button>
 </form:form>
 
-<!-- </div> -->
+</div>
+</div>
+</div>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

@@ -48,47 +48,20 @@ button:hover{
 <body>
 <jsp:include page="../header.jsp"></jsp:include>	
 
-<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
-<!-- <h2>이미지 수정 페이지</h2> -->
 <div class="container">
         <div class="row">
           <div class="col-7 mx-auto">
 <p class="fs-2">배너 수정 페이지</p>
 <hr>
 
-
 <form:form action="/animalCommunity/manager/updateImage" modelAttribute="image" enctype="multipart/form-data">
-	<!-- <table class="table">
-		<tr>
-			<td colspan="2"> -->
 				<img src="/imageFolder/image/${image.imageUrl}" class="rounded mx-auto d-block" ><br>
-			<!-- </td>
-		</tr>
-
-		<tr>
-			<th scope="row">이미지</th>
-			<td>
- -->				<%-- 이미지 변경을 원할 때만 수정해 주세요!<br>
-				<div class="input-group">
-				  <input type="file" id="imageUrl2" name="imageUrl2" class="form-control">
-				  <button class="btn btn-outline-secondary" type="button">Button</button>
-				  <input type="hidden" name="originPic" value="${image.imageUrl}">
-				</div>  --%>
+				
 				<div class="mb-3">
-        <label for="formFile" class="form-label">이미지 수정하기</label>
+        <label for="formFile" class="form-label">이미지 수정</label>
         <input type="file" id="imageUrl2" name="imageUrl2" class="form-control" type="file" id="formFile">
         <input type="hidden" name="originPic" value="${image.imageUrl}">
       </div>
-	<!-- 		</td>
-		</tr>
-		<tr>
-			<th scope="row">이미지 정보</th>
-			<td>
-				<form:input path="imageInfo" class="form-control"/>
-				
-			</td>
-		</tr>
-	</table> -->
 	
 	<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">이미지 정보</label>
@@ -96,8 +69,8 @@ button:hover{
 				</div>
 	
 	<form:hidden path="imageNum"/>
-	<button type="submit" onclick="return updateImageCheck()">글 등록</button>
 	<button type="button" onclick="return cancel()">취소</button>
+	<button type="submit" onclick="return updateImageCheck()">글 수정</button>
 	
 </form:form>
 </div>

@@ -48,42 +48,20 @@ button:hover{
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
-<!-- <div class="d-grid gap-2 col-6 mx-auto">
-<h2>병원 정보 글 작성하기</h2> -->
 
 <div class="container">
         <div class="row">
           <div class="col-7 mx-auto">
-<p class="fs-2">동물병원 글 작성</p>
+<p class="fs-2">동물 병원 정보 글 작성</p>
 <hr>
 
 <form:form action="/animalCommunity/manager/writeHospitalInfo" modelAttribute="hospitalInfoCommand">
-	<!-- <table class="table">
-		<tr>
-			<th scope="row">병원 이름</th>
-			<td> -->
-				<%-- <form:input path="hospitalName" class="form-control"/> --%>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 이름</label>
 			<form:input path="hospitalName" class="form-control" id="exampleFormControlInput1" placeholder="이름을 입력해주세요"/>
 				</div>
-			<!-- </td>
-		</tr>
-		<tr>
-			<th scope="row">병원 지역</th>
-			<td> -->
-				<%-- <form:select path="hospitalLoc" class="form-select">
-					<form:option value="선택">선택</form:option>
-					<form:option value="서울" >서울</form:option>
-					<form:option value="경기도" >경기도</form:option>
-					<form:option value="강원도" >강원도</form:option>
-					<form:option value="충청도" >충청도</form:option>
-					<form:option value="경상도" >경상도</form:option>
-					<form:option value="전라도" >전라도</form:option>
-					<form:option value="제주도" >제주도</form:option>
-				</form:select> --%>
 				<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">병원지역</label>
+            <label for="exampleFormControlInput1" class="form-label">병원 지역</label>
             <form:select path="hospitalLoc" class="form-select" aria-label="Default select example">
 					<form:option value="서울" >서울</form:option>
 					<form:option value="경기도" >경기도</form:option>
@@ -94,39 +72,18 @@ button:hover{
 					<form:option value="제주도" >제주도</form:option>
 					</form:select>
 					</div>
-			<!-- </td>
-		</tr>
-		<tr>
-			<th scope="row">병원 상세 주소</th>
-			<td> -->
-				<%-- <form:input path="detailedAddress" class="form-control"/> --%>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 상세 주소</label>
 			<form:input path="detailedAddress" class="form-control" id="exampleFormControlInput1" placeholder="상세주소를 입력해주세요"/>
 				</div>
-			<!-- </td>
-		</tr>
-		<tr>
-			<th scope="row">병원 전화번호</th>
-			<td> -->
-				<%-- <form:input path="hospitalTel" class="form-control"/> --%>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 전화번호</label>
 			<form:input path="hospitalTel" class="form-control" id="exampleFormControlInput1" placeholder="전화번호를 입력해주세요"/>
 				</div>
-			<!-- </td>
-		</tr>
-		<tr>
-			<th scope="row">병원 소개</th>
-			<td> -->
-				<%-- <form:textarea path="hospitalInfo" class="form-control" rows="3" placeholder="※1000자 이하로 작성해주세요.※"/> --%>
 				<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">병원 소개</label>
-			<form:input path="hospitalInfo" class="form-control" id="exampleFormControlInput1" placeholder="내용을 입력해주세요"/>
-				</div>
-			<!-- </td>
-		</tr>
-	</table> -->
+        <label for="exampleFormControlTextarea1" class="form-label">병원 소개</label>
+        <form:textarea path="hospitalInfo" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
+      </div>
 	<form:hidden path="name"/>
 	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return insertHospitalCheck()">글 등록</button>

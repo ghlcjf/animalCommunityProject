@@ -85,20 +85,20 @@ button:hover{
 				</c:choose>
 			
 			<div class="mb-3">
-        <label for="formFile" class="form-label">이미지 수정하기</label>
+        <label for="formFile" class="form-label">이미지 수정</label>
         <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
         <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
       </div>
 			
 			<div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요"/>
+        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
         <form:errors path="boardContent" />
       </div>
       
 	<form:hidden path="boardNum"/>
 	<button type="button" onclick="return cancel()">취소</button>
-	<button type="submit" onclick="return updateFreeBoardcheck()">글 등록</button>
+	<button type="submit" onclick="return updateFreeBoardcheck()">글 수정</button>
 	
 </form:form>
 </div>

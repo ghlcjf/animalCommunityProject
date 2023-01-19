@@ -55,9 +55,7 @@
 		</div>
 	</nav>
 	</div>
-          </div>
-	</div>
-
+	
 	<c:choose>
 		<c:when test="${empty animals}">
 			<p>등록한 게시글이 없습니다.</p>
@@ -102,6 +100,9 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
+	</div>
+	</div>
+	</div>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
