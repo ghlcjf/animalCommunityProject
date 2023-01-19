@@ -184,9 +184,16 @@ a {
 					</tr>
 					</thead>
 					<c:forEach items="${board}" var="board">
+<<<<<<< HEAD
 					<tbody>
 						<tr class="td-button">
 							<td>${board.boardTitle}</td>
+=======
+						<tr>
+							<td><a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">
+								${board.boardTitle}</a></td>
+							
+>>>>>>> branch 'master' of https://github.com/ghlcjf/animalCommunityProject.git
 							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 							<td>${board.viewCount }</td>
 							<td>
@@ -206,6 +213,7 @@ a {
 				</table>
 			</c:otherwise>
 		</c:choose>
+<<<<<<< HEAD
 		<%-- <div class="d-flex justify-content-start">
 		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
 		</div> --%>
@@ -213,6 +221,15 @@ a {
 		</div>
 		</div>
 		</div>
+=======
+		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
+		
+		<form action='<c:url value="/mypage/${user.id}" />'>
+			<button class="bigBtn" type="submit" onclick="return out('${user.id}')">탈퇴</button>
+		</form>
+
+		
+>>>>>>> branch 'master' of https://github.com/ghlcjf/animalCommunityProject.git
 	<!-- </div> -->
 
 	<jsp:include page="../footer.jsp"></jsp:include>
@@ -234,6 +251,15 @@ a {
 			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
 		} */
 
+		function out(name){
+			console.log(name);
+			if(confirm('정말 탈퇴하시겠습니까?')){
+				return alert('탈퇴가 정상 처리되었습니다.');
+			}else{
+				return false;
+			}
+		
+		}
 	</script>
 </body>
 </html>
