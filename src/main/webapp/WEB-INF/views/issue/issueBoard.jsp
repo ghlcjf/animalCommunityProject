@@ -53,19 +53,6 @@ a {
 	text-decoration: none;
 	color: black;
 }
-	/* button{ 
-	 		border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-			
-		}
-		
-	button:hover{
-  			background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	} */
 </style>
 </head>
 <body>
@@ -81,8 +68,6 @@ a {
 		</div>
 	</nav>
 
-<!-- <div class="container"> -->
-
 <c:choose>
 	<c:when test="${empty issue}">
 		<p>게시글이 없습니다.</p>
@@ -91,7 +76,7 @@ a {
 		<table class="table table-hover table-sm">
 		<thead>
 			<tr>
-				<th scope="col">번호</th>
+				<th scope="col">글 번호</th>
 				<th scope="col">제목</th>
 				<th scope="col">작성자</th>
 				<th scope="col">작성일</th>
@@ -100,22 +85,18 @@ a {
 			<c:forEach items="${issue}" var="board" varStatus="b">
 				<tr>
 					<th scope="row">${board.issueNum}</th>
-					<%-- <td><a href="<c:url value='/issue/detail/${board.issueNum}' />"> ${board.issueTitle} </a></td> --%>
 					<td style="cursor: pointer;" onclick="location.href='<c:url value='/issue/detail/${board.issueNum}' />'"> ${board.issueTitle}</td>
 					<td>${board.name}</td>
 					<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<%-- <a href="<c:url value='/main' />">[메인화면으로 돌아가기]</a> --%>
 		
 	</c:otherwise>
 </c:choose>
 </div>
 </div>
 </div>
-
-<!-- </div> -->
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

@@ -121,8 +121,8 @@ a {
   <a href="<c:url value='/freeBoard/freeBoardList/fish/1/1' />" class="list-group-item list-group-item-action">어류</a>
   <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
 </div>
-          </div>
-           <div class="col-10">
+   </div>
+     <div class="col-10">
 <nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">자유게시판</span>
@@ -132,29 +132,11 @@ a {
 		</div>
 	</nav>
 
-<!-- <div class="wrapper container"> -->
-<%-- <div class="box1 list-group">
-  <a href="<c:url value='/freeBoard/freeBoardList/main/1/1' />" class="list-group-item list-group-item-action">
-    전체 보기
-  </a>
-  <a href="<c:url value='/freeBoard/freeBoardList/dog/1/1' />" class="list-group-item list-group-item-action">강아지</a>
-  <a href="<c:url value='/freeBoard/freeBoardList/cat/1/1' />" class="list-group-item list-group-item-action">고양이</a>
-  <a href="<c:url value='/freeBoard/freeBoardList/reptile/1/1' />" class="list-group-item list-group-item-action">파충류</a>
-  <a href="<c:url value='/freeBoard/freeBoardList/birds/1/1' />" class="list-group-item list-group-item-action">조류</a>
-  <a href="<c:url value='/freeBoard/freeBoardList/fish/1/1' />" class="list-group-item list-group-item-action">어류</a>
-  <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
-</div> --%>
 <div class="box2">
 	<table class="table table-hover table-sm">
 	  <thead>
-	  	<%-- <tr>
-			<td colspan="5" align="right">
-				<a href="<%=request.getContextPath() %>/freeBoard/insertFreeBoardForm">글 작성하기</a>
-				<button type="button" onclick="return insertConfirm()">글 작성</button>
-			</td>
-		</tr> --%>
 	    <tr>
-	      <th scope="col">번호</th>
+	      <th scope="col">글 번호</th>
 	      <th scope="col">제목</th>
 	      <th scope="col">조회수</th>
 	      <th scope="col">작성자</th>
@@ -183,9 +165,6 @@ a {
 				<c:forEach items="${freeBoardList}" var="board">
 					<tr>
 						<th scope="row">${board.boardNum }</th>
-						<%-- <td>
-							<a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">${board.boardTitle} (${board.commentCount})</a>
-						</td> --%>
 						<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle} (${board.commentCount})</td>
 						<td>${board.viewCount }</td>
 						<td>${board.name }</td>
@@ -277,7 +256,6 @@ a {
 		</nav>
 	</c:if>
 </div>
-<!-- </div> -->
 </div>
 <div class="col-1">
             1 of 3

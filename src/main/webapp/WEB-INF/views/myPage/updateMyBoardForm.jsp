@@ -8,67 +8,94 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<style type="text/css">
+.container{
+    margin-top: 30px;
+        }
+.fs-2{
+	color: #889ae9;
+}
+#exampleFormControlTextarea1{
+    height: 300px;
+    resize: none;
+}
+button{
+	padding: 5px;   border: none;
+	height: 40px; 	border-radius: 10px;
+	width: 95px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+	
+}
+button:hover{
+	background: rgb(101, 121, 207);
+	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
+img{
+	width: 100%;
+	height: 500px;
+	border-radius: 10px;
+}
+</style>
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 
-
-<h2>자유게시판 수정 페이지</h2>
-
+<div class="container">
+        <div class="row">
+          <div class="col-7 mx-auto">
+<p class="fs-2">자유게시판 글 수정</p>
+<hr>
 <form:form action="/animalCommunity/myPage/updateMyBoard" modelAttribute="freeBoard" enctype="multipart/form-data">
-	<table border="1">
-		<tr>
-			<td rowspan="4">
-				<c:choose>
+			<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">제목</label>
+			<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
+			<form:errors path="boardTitle" />
+			</div>
+			
+			<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">카테고리</label>
+          <form:select path="boardCategory" class="form-select" aria-label="Default select example">
+            <form:option value="강아지">강아지</form:option>
+			<form:option value="고양이">고양이</form:option>
+			<form:option value="파충류">파충류</form:option>
+			<form:option value="조류">조류</form:option>
+			<form:option value="어류">어류</form:option>
+			<form:option value="기타">기타</form:option>
+          </form:select>
+        </div>
+			<c:choose>
 			
 					<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
-						<img src="<c:url value='/resources/image/noImage.png' />"><br>
+						<img src="/imageFolder/image/noImage.png"><br><br>
 					</c:when>
 					
 					<c:otherwise>
-						<img src="<c:url value='/resources/freeBoardImage/${freeBoard.boardUrl }' />" ><br>
+						<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }"><br><br>
 					</c:otherwise>
 				
 				</c:choose>
-			</td>
-			<td>카테고리</td>
-			<td>
-				<form:select path="boardCategory">
-					<form:option value="강아지">강아지</form:option>
-					<form:option value="고양이">고양이</form:option>
-					<form:option value="파충류">파충류</form:option>
-					<form:option value="조류">조류</form:option>
-					<form:option value="어류">어류</form:option>
-					<form:option value="기타">기타</form:option>
-				</form:select>
-			</td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td>
-				<form:input path="boardTitle"/>
-				<form:errors path="boardTitle" />
-			</td>
-		</tr>
-		<tr>
-			<td>이미지</td>
-			<td>
-				이미지 변경을 원할 때만 수정해 주세요!<br>
-				<input type="file" id="boardUrl2" name="boardUrl2">
-				<input type="hidden" name="originPic" value="${freeBoard.boardUrl}"> 
-			</td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td>
-				<form:textarea path="boardContent"/>
-				<form:errors path="boardContent" />
-			</td>
-		</tr>
-	</table>
+			
+			<div class="mb-3">
+        <label for="formFile" class="form-label">이미지 수정하기</label>
+        <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
+        <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
+      </div>
+			<div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" />
+        <form:errors path="boardContent" />
+      </div>
 	<form:hidden path="boardNum"/>
 	<button type="submit" onclick="return updateFreeBoardcheck()">글 등록</button>
 	
 </form:form>
+</div>
+</div>
+</div>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
