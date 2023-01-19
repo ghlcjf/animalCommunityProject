@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import animal.dao.AnimalDao;
-import animal.service.FreeBoardService;
 import animal.service.ChangeInfoService;
+import animal.service.FreeBoardService;
 import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.LoginUserInfo;
@@ -165,4 +165,11 @@ public class MyPageController {
 		
 	}
 	
+	@RequestMapping("/mypage/{id}") //회원 탈퇴
+	public String dropMember(@PathVariable("id") String id, HttpSession session) {
+		System.out.println(id);
+		animalDao.dropMember(id);
+		session.invalidate();
+		return "redirect:/main";
+	}
 }
