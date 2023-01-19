@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import animal.dao.AnimalDao;
 import animal.exception.MemberNotFoundException;
 import animal.vo.AnimalInfo;
+import animal.vo.SectionPage;
 
 @Controller
 public class AnimalInfoController {
@@ -22,10 +23,17 @@ public class AnimalInfoController {
 		this.animalDao = animalDao;
 	}
 	
-	@RequestMapping("animalInfo")
-	public String animalList(Model model) {
+	@RequestMapping("animalInfo/{section}/{pageNum}")
+	public String animalList(@PathVariable("section") int section,
+			@PathVariable("pageNum") int pageNum, Model model) {
 		
-		List<AnimalInfo> animalList = animalDao.selectAllAniaml();
+		
+		int totalCnt = animalDao.selectAllNumAnimalInfo();
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		List<AnimalInfo> animalList = animalDao.selectTargetAnimalInfoList(sectionPage);
+	
+		
+		
 		
 		for(int i=0;i<animalList.size();i++) {
 			if(animalList.get(i).getAnimalTitle().length()>=14) {
@@ -33,7 +41,8 @@ public class AnimalInfoController {
 				animalList.get(i).setAnimalTitle(title);
 			}
 		}
-		
+		model.addAttribute("sectionPage", sectionPage);
+		model.addAttribute("totalCnt", totalCnt);
 		model.addAttribute("animals", animalList);
 		
 		return "animalInfo/animalList";

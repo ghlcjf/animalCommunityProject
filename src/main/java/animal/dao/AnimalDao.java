@@ -199,6 +199,15 @@ public class AnimalDao {
 		return sqlSession.selectList("mybatis.mapper.member.selectAllAniaml");
 	}
 	
+	public List<AnimalInfo> selectTargetAnimalInfoList(SectionPage sectionPage) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.selectTargetAnimalInfoList", sectionPage);
+	}
+	public int selectAllNumAnimalInfo() {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumAnimalInfo");
+	}
+	
 	public AnimalInfo selectByNum(long animalNum) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectByAnimalNum", animalNum);
 	}
@@ -434,6 +443,10 @@ public class AnimalDao {
 		sqlSession.update("mybatis.mapper.member.deleteSendBoxMessage", messageNum);
 		sqlSession.delete("mybatis.mapper.member.deleteAllBoxMessage");
 	}
+
+	
+
+	
 
 
 }

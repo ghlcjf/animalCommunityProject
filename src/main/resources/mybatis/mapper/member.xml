@@ -190,8 +190,20 @@
 	
 	
 	<!-- 동물 소개 -->
-	<select id="selectAllAniaml" resultType="animalInfo">
-		SELECT * FROM animalInfoTbl ORDER BY animalNum DESC
+	<select id="selectAllNumAnimalInfo" resultType="int">
+		SELECT COUNT(*) FROM animalInfoTbl
+	</select>
+	
+	<select id="selectTargetAnimalInfoList" resultType="animalInfo" parameterType="sectionPage">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM animalInfoTbl
+		 		WHERE  name=#{name}
+				ORDER BY animalNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+((#{pageNum}-1)*10+1)
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)
+		
 	</select>
 	
 	<select id="selectByAnimalNum" resultType="animalInfo" parameterType="long">
@@ -446,7 +458,7 @@
 	
 	<update id="deleteReceiveBoxMessage" parameterType="int">
 		UPDATE messageTbl
-		SET receiveBoxDelete=0
+		SET readCheck=0, receiveBoxDelete=0
 		WHERE messageNum=#{messageNum}
 	</update>
 	<update id="deleteSendBoxMessage" parameterType="int">

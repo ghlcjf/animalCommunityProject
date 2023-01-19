@@ -12,7 +12,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <style>
-	
+.navbar {
+	margin-top: 15px;
+	background-color: #dfe6f7;
+	border-top: 1px solid #96aeea;
+	border-bottom: 1px solid #96aeea;
+}
+
+.navbar-brand-cs {
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+	margin-right: var(- -bs-navbar-brand-margin-end);
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #808080;
+	text-decoration: none;
+	white-space: nowrap;
+	margin-left: 10px;
+}	
+table {
+	table-layout: fixed
+}
+
+.table {
+	margin-top: 30px;
+}
+
+thead {
+	background-color: #dfe6f7;
+}
+
+th {
+     font-weight: normal;
+}
+
+td {
+overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+button{
+		padding: 5px;   border: none;
+		height: 30px; 	border-radius: 10px;
+		color: white;   font-weight:bolder;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		line-height: 10px;
+		
+	}
+	button:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
 </style>
 </head>
 <body>
@@ -20,7 +69,7 @@
 <h2>메세지</h2>
 
 <!-- 전체 메세지 컨테이너 -->
-<div id="massageContainer">
+<div id="massageContainer" class="container text-center">
 <input type="hidden" id="name" value="${userInfo.name}">
 <ul class="nav nav-tabs">
   <li class="nav-item" style="color:black">
@@ -32,32 +81,43 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane fade show active" id="receive">
-  	<p>받은 메세지</p>
   	
-	<table id="receiveList">
-		<tr>
-			<td>from</td>
-			<td>to</td>
-			<td>send time</td>
-			<td>content</td>
-			<td>reply</td>
-			<td>delete</td>			
-		</tr>
-	
+  	<nav class="navbar">
+		<div class="container-fluid">
+			<span class="navbar-brand-cs mb-0 h1">받은 메세지</span>
+		</div>
+	</nav>
+	<table id="receiveList" class="table table-hover table-sm">
+		<thead>
+			<tr>
+				<td>from</td>
+				<td>to</td>
+				<td>send time</td>
+				<td>content</td>
+				<td>reply</td>
+				<td>delete</td>			
+			</tr>
+		</thead>
 	</table>
     
   </div>
   <div class="tab-pane fade" id="send">
-    <p>보낸 메세지</p>
-    <table id="sendList">
-		<tr>
-			<td>from</td>
-			<td>to</td>
-			<td>send time</td>
-			<td>content</td>
-			<td>delete</td>		
-		</tr>
-	
+    
+    <nav class="navbar">
+		<div class="container-fluid">
+			<span class="navbar-brand-cs mb-0 h1">보낸 메세지</span>
+		</div>
+	</nav>
+    <table id="sendList" class="table table-hover table-sm">
+		<thead>
+			<tr>
+				<td>from</td>
+				<td>to</td>
+				<td>send time</td>
+				<td>content</td>
+				<td>delete</td>		
+			</tr>
+		</thead>
 	</table>
   </div>
 </div>
