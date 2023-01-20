@@ -12,6 +12,7 @@ import animal.dao.AnimalDao;
 import animal.exception.MemberNotFoundException;
 import animal.vo.Issue;
 import animal.vo.IssueComment;
+import animal.vo.SectionPage;
 
 @Controller
 public class IssueController {
@@ -25,18 +26,24 @@ public class IssueController {
 
 
 
-	@GetMapping("/issue")
-	public String issueBoard(Model model) {
+	@GetMapping("/issue/{section}/{pageNum}")
+	public String issueBoard(@PathVariable("section") int section,@PathVariable("pageNum") int pageNum,Model model) {
 		
-		List<Issue> issueList = animalDao.selectAllIssueList();
-		model.addAttribute("issue",issueList);
-		
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		List<Issue> issueList = animalDao.selectTargetIssueList(sectionPage);
+
 		for(int i=0;i<issueList.size();i++) {
 			if(issueList.get(i).getIssueTitle().length()>=26) {
 				String title = issueList.get(i).getIssueTitle().substring(0,26)+"...";
 				issueList.get(i).setIssueTitle(title);
 			}
 		}
+		
+		int totalCnt = animalDao.selectAllNumIssue();
+		
+		model.addAttribute("totalCnt", totalCnt);
+		model.addAttribute("sectionPage", sectionPage);
+		model.addAttribute("issue",issueList);
 		
 		return "issue/issueBoard";
 	}

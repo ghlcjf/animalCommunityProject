@@ -441,5 +441,15 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumMember");
 	}
 
+	public List<Issue> selectTargetIssueList(SectionPage sectionPage) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.selectTargetIssueList",sectionPage);
+	}
+
+	public int selectAllNumIssue() {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumIssue");
+	}
+
 
 }

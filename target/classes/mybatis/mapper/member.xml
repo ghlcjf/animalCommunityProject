@@ -148,6 +148,20 @@
 		SELECT * FROM issueTbl
 	</sql>
 	
+	<select id="selectTargetIssueList" parameterType="sectionPage" resultType="Issue">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM issueTbl
+				ORDER BY issueNum DESC) 
+		 b) 
+		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10))
+	</select>
+	
+	<select id="selectAllNumIssue" resultType="int">
+		SELECT COUNT(*) FROM issueTbl
+	</select>
+	
 	<select id="selectAllIssueList" resultType="issue">
 		SELECT * FROM IssueTbl ORDER BY issueNum DESC
 	</select>										   

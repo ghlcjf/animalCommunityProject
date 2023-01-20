@@ -76,7 +76,7 @@
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/boardManagement/issue"/>'>
+			<a href='<c:url value="/boardManagement/issue/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        이슈
