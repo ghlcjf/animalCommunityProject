@@ -6,8 +6,14 @@ public class SectionPage {
 	private int pageNum;
 	private String boardCategory;
 	private String name;
+	private String hospitalLoc;
 	
-	
+	public String getHospitalLoc() {
+		return hospitalLoc;
+	}
+	public void setHospitalLoc(String hospitalLoc) {
+		this.hospitalLoc = hospitalLoc;
+	}
 	public String getName() {
 		return name;
 	}

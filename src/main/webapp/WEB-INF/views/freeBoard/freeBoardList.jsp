@@ -141,10 +141,12 @@ a {
 </div>
    </div>
      <div class="col-10">
-<nav class="navbar">
+	<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">자유게시판</span>
+			
 			<div class="d-flex justify-content-end">
+			<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
 			<button type="button" onclick="return insertConfirm()">글 작성</button>
 			</div>
 		</div>
@@ -177,7 +179,7 @@ a {
 		<c:choose>
 			<c:when test="${empty freeBoardList}">
 				<tr>
-					<th scope="row" colspan="5">등록한 게시글이 없습니다.</th>
+					<th colspan="5">등록한 게시글이 없습니다.</th>
 				</tr>
 			</c:when>
 			<c:otherwise>
@@ -294,7 +296,7 @@ a {
 </div>
 
 <div class="col-1">
-            1 of 3
+        
           </div>
 </div>
 </div>
@@ -312,7 +314,7 @@ function sendMessage(rName, sName){
     if(cc){
        
        let url = "${context}/message/sendForm/"+receiverName;
-       window.open(url,'_blank_1','toolbar=no, menubar=no,scrollbars=yes, resizeable=no, width=450, height=200');
+       window.open(url,'_blank_1','toolbar=no, menubar=no,scrollbars=yes, resizeable=no, width=450, height=400');
     }
     return false;
  }
@@ -329,5 +331,8 @@ function insertConfirm(){
 		location.href="/animalCommunity/freeBoard/insertFreeBoardForm";
 	} 
 }
+
+
+
 </script>
 </html>

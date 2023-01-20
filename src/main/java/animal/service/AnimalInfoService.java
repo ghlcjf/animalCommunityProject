@@ -5,6 +5,7 @@ import java.util.List;
 import animal.dao.AnimalDao;
 import animal.vo.AnimalInfo;
 import animal.vo.AnimalInfoCommand;
+import animal.vo.SectionPage;
 
 public class AnimalInfoService {
 	
@@ -45,6 +46,18 @@ public class AnimalInfoService {
 
 	public void deleteAnimalInfoByBoardNum(long animalNum) {
 		animalDao.deleteAnimalInfoByBoardNum(animalNum);
+	}
+
+
+	public List<AnimalInfo> selectTargetAnimalInfoList(SectionPage sectionPage) {
+		
+		return animalDao.selectTargetAnimalInfoList(sectionPage);
+	}
+
+
+	public int selectAllNumAnimalInfo() {
+		
+		return animalDao.selectAllNumAnimalInfo();
 	}
 
 }

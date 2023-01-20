@@ -106,33 +106,13 @@ public class AnimalDao {
 	
 	
 
-//	public List<FreeBoard> selectDogFreeBoardList() {
-//		// 강아지 게시글 불러오기
-//		return sqlSession.selectList("mybatis.mapper.member.selectDogFreeBoardList");
-//	}
-//
-//	public List<FreeBoard> selectCatFreeBoardList() {
-//		// 고양이 게시글 불러오기
-//		return sqlSession.selectList("mybatis.mapper.member.selectCatFreeBoardList");
-//	}
-//
-//	public List<FreeBoard> selectReptileFreeBoardList() {
-//		// 파충류 게시글 불러오기
-//		return sqlSession.selectList("mybatis.mapper.member.selectReptileFreeBoardList");
-//	}
-//
-//	public List<FreeBoard> selectBirdsFreeBoardList() {
-//		// 조류 게시글 불러오기
-//		return sqlSession.selectList("mybatis.mapper.member.selectBirdsFreeBoardList");
-//	}
-//	public List<FreeBoard> selectFishFreeBoardList() {
-//		// 어류 게시글 불러오기
-//		return sqlSession.selectList("mybatis.mapper.member.selectFishFreeBoardList");
-//	}
-//	public List<FreeBoard> selectOtherFreeBoardList() {
-//		// 기타 게시글 불러오기
-//		return sqlSession.selectList("mybatis.mapper.member.selectOtherFreeBoardList");
-//	}
+	public int selectAllNoticeNum() {
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNoticeNum");
+	}
+	public List<FreeBoard> selectTargetNoticeList(SectionPage sectionPage) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.selectTargetNoticeList", sectionPage);
+	}
 	public List<FreeBoard> selectAllNoticeList() {
 		// 공지사항 불러오기
 		return sqlSession.selectList("mybatis.mapper.member.selectAllNoticeList");
@@ -289,6 +269,21 @@ public class AnimalDao {
 	public List<HospitalInfo> selectHospitaljeju() {
 		return sqlSession.selectList("mybatis.mapper.member.selectHospitaljeju");
 	}
+	
+	public int selectAllNumHospitalInfo() {
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumHospitalInfo");
+	}
+	public int selectLocationNumHospitalInfo(SectionPage sectionPage) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectLocationNumHospitalInfo", sectionPage);
+	}
+	public List<HospitalInfo> selectTargetHospitalInfoList(SectionPage sectionPage) {
+		return sqlSession.selectList("mybatis.mapper.member.selectTargetHospitalInfoList", sectionPage);
+	}
+
+	public List<HospitalInfo> selectLocationTargetHospitalList(SectionPage sectionPage) {
+		return sqlSession.selectList("mybatis.mapper.member.selectLocationTargetHospitalList", sectionPage); 
+	}
+
 
 
 
@@ -443,6 +438,14 @@ public class AnimalDao {
 		sqlSession.update("mybatis.mapper.member.deleteSendBoxMessage", messageNum);
 		sqlSession.delete("mybatis.mapper.member.deleteAllBoxMessage");
 	}
+
+	
+
+	
+
+	
+
+	
 
 	
 

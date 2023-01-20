@@ -42,6 +42,7 @@ import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.LoginUserInfo;
 import animal.vo.SearchMemberCommand;
+import animal.vo.SectionPage;
 import animal.vo.User;
 
 
@@ -199,10 +200,17 @@ public class ManagerController {
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	
-	@GetMapping("/boardManagement/animalInfo") //동물소개 게시판 
-	public String animalInfoMenu(Model model) {
+	@GetMapping("/boardManagement/animalInfo/{section}/{pageNum}") //동물소개 게시판 
+	public String animalInfoMenu(@PathVariable("section") int section,
+			@PathVariable("pageNum") int pageNum, Model model) {
 		
-		List<AnimalInfo> animalInfoList = animalInfoService.selectAllAnimalInfoList();
+	
+		int totalCnt = animalInfoService.selectAllNumAnimalInfo();
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		List<AnimalInfo> animalInfoList = animalInfoService.selectTargetAnimalInfoList(sectionPage);
+		
+		
+		
 		
 		for(int i=0;i<animalInfoList.size();i++) {
 			if(animalInfoList.get(i).getAnimalTitle().length()>=26) {
@@ -211,15 +219,21 @@ public class ManagerController {
 			}
 		}
 		
+		model.addAttribute("totalCnt", totalCnt);
+		model.addAttribute("sectionPage", sectionPage);
 		model.addAttribute("animalInfoList", animalInfoList);
 		
 		return "manager/animalInfoMenu";
 	}
 	
-	@GetMapping("/boardManagement/hospitalInfo") //동물병원 게시판
-	public String hospitalInfoMenu(Model model) {
+	@GetMapping("/boardManagement/hospitalInfo/{section}/{pageNum}") //동물병원 게시판
+	public String hospitalInfoMenu(@PathVariable("section") int section, 
+			@PathVariable("pageNum") int pageNum, Model model) {
 		
-		List<HospitalInfo> hospitalInfoList = hospitalInfoService.selectAllHospitalInfoList();
+		
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		int totalCnt = hospitalInfoService.selectAllNumHospitalInfo();
+		List<HospitalInfo> hospitalInfoList = hospitalInfoService.selectTargetHospitalInfoList(sectionPage);
 		
 		for(int i=0;i<hospitalInfoList.size();i++) {
 			if(hospitalInfoList.get(i).getHospitalName().length()>=26) {
@@ -228,6 +242,9 @@ public class ManagerController {
 			}
 		}
 		
+		
+		model.addAttribute("totalCnt", totalCnt);
+		model.addAttribute("sectionPage", sectionPage);
 		model.addAttribute("hospitalInfoList", hospitalInfoList);
 		return "manager/hospitalInfoMenu";
 	}
@@ -249,10 +266,13 @@ public class ManagerController {
 	}
 	
 	
-	@GetMapping("/boardManagement/notice") //공지게시판
-	public String noticeMenu(Model model) {
+	@GetMapping("/boardManagement/notice/{section}/{pageNum}") //공지게시판
+	public String noticeMenu(@PathVariable("section") int section,
+			@PathVariable("pageNum") int pageNum, Model model) {
 		
-		List<FreeBoard> noticeList = selectAllNoticeService.selectAllNoticeList();
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		int totalCnt = selectAllNoticeService.selectAllNoticeNum();
+		List<FreeBoard> noticeList = selectAllNoticeService.selectTargetNoticeList(sectionPage);
 		
 		for(int i=0;i<noticeList.size();i++) {
 			if(noticeList.get(i).getBoardTitle().length()>=26) {
@@ -261,6 +281,9 @@ public class ManagerController {
 			}
 		}
 		
+		
+		model.addAttribute("totalCnt", totalCnt);
+		model.addAttribute("sectionPage", sectionPage);
 		model.addAttribute("noticeList", noticeList);
 		return "manager/noticeMenu";
 	}
@@ -336,7 +359,7 @@ public class ManagerController {
 		freeBoardService.insertFreeBoard(freeBoardCommand);
 		
 		
-		return "redirect:/boardManagement/notice";
+		return "redirect:/boardManagement/notice/1/1";
 	}
 	
 
@@ -389,7 +412,7 @@ public class ManagerController {
 		hospitalInfoService.insertHospitalInfo(hospitalInfoCommand);
 		
 		
-		return "redirect:/boardManagement//hospitalInfo";
+		return "redirect:/boardManagement//hospitalInfo/1/1";
 		
 	}
 
@@ -423,7 +446,7 @@ public class ManagerController {
 		
 		
 		
-		return "redirect:/boardManagement/animalInfo";
+		return "redirect:/boardManagement/animalInfo/1/1";
 	}
 
 	@PostMapping("/manager/writeImage")
@@ -521,7 +544,7 @@ public class ManagerController {
 		
 		freeBoardService.updateFreeBoard(freeBoardCommand);
 		
-		return "redirect:/boardManagement/notice";
+		return "redirect:/boardManagement/notice/1/1";
 	}
 	
 	
@@ -593,7 +616,7 @@ public class ManagerController {
 		
 		animalInfoService.updateAnimalInfo(animalInfoCommand);
 		
-		return "redirect:/boardManagement/animalInfo";
+		return "redirect:/boardManagement/animalInfo/1/1";
 	}
 	
 
@@ -634,7 +657,7 @@ public class ManagerController {
 		
 		hospitalInfoService.updateHospitalInfo(hospitalInfoCommand);
 		
-		return "redirect:/boardManagement/hospitalInfo";
+		return "redirect:/boardManagement/hospitalInfo/1/1";
 	}
 	
 //----삭제-----------------------------------------------------------------------------------------------------	
@@ -645,16 +668,16 @@ public class ManagerController {
 		
 		if(kind.equals("notice")) {
 			freeBoardService.deleteFreeBoardByBoardNum(boardNum);
-			return "redirect:/boardManagement/notice";
+			return "redirect:/boardManagement/notice/1/1";
 		}else if(kind.equals("issue")){
 			issueBoardService.deleteIssueBoardByBoardNum(boardNum);
-			return "redirect:/boardManagement/issue";
+			return "redirect:/boardManagement/issue/1/1";
 		}else if(kind.equals("animalInfo")) {
 			animalInfoService.deleteAnimalInfoByBoardNum(boardNum);
-			return "redirect:/boardManagement/animalInfo";
+			return "redirect:/boardManagement/animalInfo/1/1";
 		}else if(kind.equals("hospitalInfo")) {
 			hospitalInfoService.deleteHospitalInfoByBoardNum(boardNum);
-			return "redirect:/boardManagement/hospitalInfo";
+			return "redirect:/boardManagement/hospitalInfo/1/1";
 
 		}else if(kind.equals("image")){
 			imageService.deleteImageByBoardNum(boardNum);
