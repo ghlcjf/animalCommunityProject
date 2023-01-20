@@ -51,20 +51,25 @@ table {
 }
 
 .table {
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
-thead {
+/* thead {
 	background-color: #dfe6f7;
+} */
+
+.table-group-divider-cs {
+    /* border-top: 1px solid #96aeea; */
+    border-bottom: 1px solid #96aeea;
 }
 
 th {
      font-weight: normal;
 }
 
-td {
+/* td {
 overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
-}
+} */
 
 a {
 	text-decoration: none;
@@ -122,7 +127,7 @@ a {
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<div class="container text-center">
+<div class="container">
         <div class="row">
         <div class="col-1">
             <div class="box1 list-group">
@@ -140,10 +145,10 @@ a {
      <div class="col-10">
 	<nav class="navbar">
 		<div class="container-fluid">
+			<div class="d-flex justify-content-start">
 			<span class="navbar-brand-cs mb-0 h1">자유게시판</span>
-			
+			</div>
 			<div class="d-flex justify-content-end">
-			<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
 			<button type="button" onclick="return insertConfirm()">글 작성</button>
 			</div>
 		</div>
@@ -151,13 +156,13 @@ a {
 
 <div class="box2">
 	<table class="table table-hover table-sm">
-	  <thead>
+	  <thead class="table-group-divider-cs">
 	    <tr>
-	      <th scope="col">글 번호</th>
-	      <th scope="col">제목</th>
-	      <th scope="col">조회수</th>
-	      <th scope="col">작성자</th>
-	      <th scope="col">작성일</th>
+	      <th scope="col" width="70px;">번호</th>
+	      <th scope="col" width="300px;">제목</th>
+	      <th scope="col" width="70px;">조회수</th>
+	      <th scope="col" width="70px;">작성자</th>
+	      <th scope="col" width="70px;">작성일</th>
 	    </tr>
 	  </thead>
 	  <tbody>

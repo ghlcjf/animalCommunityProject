@@ -89,7 +89,7 @@ a {
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 
-	<div class="container text-center">
+	<div class="container">
 		<div class="row">
 			<div class="col-10 mx-auto">
 				<nav class="navbar">
@@ -138,9 +138,6 @@ a {
 			</table>
 		</c:otherwise>
 	</c:choose>
-	
-	
-	
 	
 	<div class="container text-center">
 					<c:if test="${totalCnt != null}">

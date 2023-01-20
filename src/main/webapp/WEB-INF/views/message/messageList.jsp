@@ -52,6 +52,10 @@ td {
 overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
 }
 
+.td-button {
+	line-height: 35px;
+}
+
 button{
 		padding: 5px;   border: none;
 		height: 30px; 	border-radius: 10px;
@@ -96,14 +100,17 @@ button{
 	<table class="table table-hover table-sm" id="receiveList">
 		<thead>
 			<tr>
-				<td>from</td>
-				<td>to</td>
-				<td>내용</td>
-				<td>보낸 시간</td>
-				<td>reply/delete</td>
-					
+				<th>from</th>
+				<th>to</th>
+				<th>내용</th>
+				<th>보낸 시간</th>
+				<th>delete</th>		
 			</tr>
 		</thead>
+		<tbody>
+			<tr class="td-button">
+			</tr>
+		</tbody>
 	</table>
     
   </div>
@@ -117,13 +124,17 @@ button{
     <table id="sendList" class="table table-hover table-sm">
 		<thead>
 			<tr>
-				<td>from</td>
-				<td>to</td>
-				<td>내용</td>
-				<td>보낸 시간</td>
-				<td>delete</td>		
+				<th>from</th>
+				<th>to</th>
+				<th>내용</th>
+				<th>보낸 시간</th>
+				<th>delete</th>		
 			</tr>
 		</thead>
+		<tbody>
+			<tr class="td-button">
+			</tr>
+		</tbody>
 	</table>
 	
   </div>
@@ -149,7 +160,7 @@ button{
 				console.log('연결 성공');
 				let receiveList = document.getElementById('receiveList');
 				for(let i=0;i<data.length;i++){
-					let tr = $('<tr></tr>').appendTo(receiveList);
+					let tr = $('<tr class="td-button"></tr>').appendTo(receiveList);
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
@@ -216,7 +227,7 @@ button{
 				
 				let sendList = document.getElementById('sendList');
 				for(let i=0;i<data.length;i++){
-					let tr = $('<tr></tr>').appendTo(sendList);
+					let tr = $('<tr class="td-button"></tr>').appendTo(sendList);
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
