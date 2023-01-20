@@ -57,11 +57,12 @@ button:hover{
 <form:form action="/animalCommunity/manager/updateHospitalInfo" modelAttribute="hospitalInfo">
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 이름</label>
-			<form:input path="hospitalName" class="form-control" id="exampleFormControlInput1" placeholder="이름을 입력해주세요"/>
+			<form:input path="hospitalName" class="form-control exampleFormControlInput1" id="hospitalName" placeholder="이름을 입력해주세요"/>
 				</div>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 지역</label>
-            <form:select path="hospitalLoc" class="form-select" aria-label="Default select example">
+            <form:select path="hospitalLoc" class="form-select" aria-label="Default select example" id="category">
+            		<form:option value="선택">선택</form:option>
 					<form:option value="서울" >서울</form:option>
 					<form:option value="경기도" >경기도</form:option>
 					<form:option value="강원도" >강원도</form:option>
@@ -73,11 +74,11 @@ button:hover{
 					</div>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 상세 주소</label>
-			<form:input path="detailedAddress" class="form-control" id="exampleFormControlInput1" placeholder="상세 주소를 입력해주세요"/>
+			<form:input path="detailedAddress" class="form-control exampleFormControlInput1" placeholder="상세 주소를 입력해주세요"/>
 				</div>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 전화번호</label>
-			<form:input path="hospitalTel" class="form-control" id="exampleFormControlInput1" placeholder="전화번호를 입력해주세요"/>
+			<form:input path="hospitalTel" class="form-control exampleFormControlInput1" placeholder="전화번호를 입력해주세요"/>
 				</div>
 				<div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">병원 소개</label>
@@ -108,9 +109,15 @@ button:hover{
 	function insertHospitalCheck() {
 		
 		if($('#hospitalName').val()==''){
-			alert('이름을 입력해 주세요');
+			alert('병원 이름을 입력해 주세요');
 			return false;
 		}
+		
+		if($('#category').val()=='선택'){
+			alert('지역을 선택해 주세요');
+			return false;
+		}
+		
 		if($('#detailedAddress').val()==0){
 			alert('상세 주소를 입력해 주세요');
 			return false;
@@ -120,20 +127,32 @@ button:hover{
 			return false;
 		}
 		/* modelAttribute와 textarea의 아이디가 같아서 네임값을 이용해 값 가져오기 */
-		let hospitalInfo = document.getElementsByName('hospitalInfo')[0].value;
+		/* let hospitalInfo = document.getElementsByName('hospitalInfo')[0].value;
 		if(hospitalInfo==''){
 			alert('내용을 입력해 주세요');
 			return false;
-		}	
+		}	 */
+		
+		if($('#exampleFormControlTextarea1').val()==''){
+			alert('병원 소개 내용을 입력해 주세요');
+			return false;
+		}
+		
 		if($('#hospitalName').val().length>40){
 			alert('이름 글자수가 초과되었습니다. ※40자 이하※');
 			return false;
 		}
 				
-		if(hospitalInfo.length>1000){
+		/* if(hospitalInfo.length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
+			return false;
+		} */
+		
+		if($('#exampleFormControlTextarea1').val().length>1000){
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}
+		
 		let cc = confirm('게시글을 수정하시겠습니까?');
 		if(cc){
 			alert('수정이 완료되었습니다.');

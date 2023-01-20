@@ -54,6 +54,19 @@ button:hover{
 <hr>
 
 <form:form action="/animalCommunity/manager/updateNotice" modelAttribute="freeBoard" enctype="multipart/form-data">
+
+<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">제목</label>
+			<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
+				</div>
+				
+				<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">카테고리</label>
+            <form:select path="boardCategory" class="form-select" aria-label="Default select example">
+						<form:option value="공지사항">공지사항</form:option>
+					</form:select>
+					</div>
+				
 				<c:choose>
 				
 					<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
@@ -65,16 +78,7 @@ button:hover{
 					</c:otherwise>
 					
 				</c:choose>
-				<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">카테고리</label>
-            <form:select path="boardCategory" class="form-select" aria-label="Default select example">
-						<form:option value="공지사항">공지사항</form:option>
-					</form:select>
-					</div>
-				<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">제목</label>
-			<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
-				</div>
+				
 				  <div class="mb-3">
         <label for="formFile" class="form-label">이미지 수정</label>
         <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
@@ -111,20 +115,20 @@ button:hover{
 
 	function insertNoticeCheck() {
 		
-		if($('#boardTitle').val()==''){
+		if($('#exampleFormControlInput1').val()==''){
 			alert('제목을 입력해 주세요');
 			return false;
 		}
-		if($('#boardContent').val()==0){
+		if($('#exampleFormControlTextarea1').val()==0){
 			alert('내용을 입력해 주세요');
 			return false;
 		}
-		if($('#boardTitle').val().length>40){
+		if($('#exampleFormControlInput1').val().length>40){
 			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
 			return false;
 		}
 				
-		if($('#boardContent').val().length>1000){
+		if($('#exampleFormControlTextarea1').val().length>1000){
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}

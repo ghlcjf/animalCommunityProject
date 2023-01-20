@@ -93,8 +93,8 @@ button:hover{
 			alert('사진을 등록해 주세요');
 			return false;
 		}
-		if($('#imageInfo').val()==0){
-			alert('정보를 입력해 주세요');
+		if($('#exampleFormControlInput1').val()==0){
+			alert('이미지 정보를 입력해 주세요');
 			return false;
 		}
 		let cc = confirm('이미지를 업로드하시겠습니까?');

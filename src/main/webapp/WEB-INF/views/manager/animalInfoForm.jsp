@@ -64,7 +64,8 @@ button:hover{
 				</div>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">카테고리</label>
-            <form:select path="animalCategory" class="form-select" aria-label="Default select example">
+            <form:select path="animalCategory" class="form-select" aria-label="Default select example" id="category">
+            		<form:option value="선택">선택</form:option>
 					<form:option value="강아지">강아지</form:option>
 					<form:option value="고양이">고양이</form:option>
 					<form:option value="파충류">파충류</form:option>
@@ -106,25 +107,28 @@ button:hover{
 		return false;
 	}
 	function insertAnimalInfoCheck() {
-		if($('#animalCategory').val()=='선택'){
-			alert('카테고리를 선택해 주세요');
-			return false;
-		}
-		if($('#animalTitle').val()==''){
+		
+		if($('#exampleFormControlInput1').val()==''){
 			alert('제목을 입력해 주세요');
 			return false;
 		}
-		if($('#animalContent').val()==0){
+		
+		if($('#category').val()=='선택'){
+			alert('카테고리를 선택해 주세요');
+			return false;
+		}
+		
+		if($('#exampleFormControlTextarea1').val()==0){
 			alert('내용을 입력해 주세요');
 			return false;
 		}
 		
-		if($('#animalTitle').val().length>40){
+		if($('#exampleFormControlInput1').val().length>40){
 			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
 			return false;
 		}
 				
-		if($('#animalContent').val().length>1000){
+		if($('#exampleFormControlTextarea1').val().length>1000){
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}

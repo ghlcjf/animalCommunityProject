@@ -103,20 +103,20 @@ button:hover{
 
 	function insertIssueBoardCheck() {
 		
-		if($('#issueTitle').val()==''){
+		if($('#exampleFormControlInput1').val()==''){
 			alert('제목을 입력해 주세요');
 			return false;
 		}
-		if($('#issueContent').val()==0){
+		if($('#exampleFormControlTextarea1').val()==0){
 			alert('내용을 입력해 주세요');
 			return false;
 		}
-		if($('#issueTitle').val().length>40){
+		if($('#exampleFormControlInput1').val().length>40){
 			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
 			return false;
 		}
 				
-		if($('#issueContent').val().length>1000){
+		if($('#exampleFormControlTextarea1').val().length>1000){
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}

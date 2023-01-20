@@ -58,11 +58,12 @@ button:hover{
 <form:form action="/animalCommunity/manager/writeHospitalInfo" modelAttribute="hospitalInfoCommand">
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 이름</label>
-			<form:input path="hospitalName" class="form-control" id="exampleFormControlInput1" placeholder="이름을 입력해주세요"/>
+			<form:input path="hospitalName" class="form-control exampleFormControlInput1" placeholder="이름을 입력해주세요"/>
 				</div>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 지역</label>
-            <form:select path="hospitalLoc" class="form-select" aria-label="Default select example">
+            <form:select path="hospitalLoc" class="form-select" aria-label="Default select example" id="category">
+            		<form:option value="선택">선택</form:option>
 					<form:option value="서울" >서울</form:option>
 					<form:option value="경기도" >경기도</form:option>
 					<form:option value="강원도" >강원도</form:option>
@@ -74,11 +75,11 @@ button:hover{
 					</div>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 상세 주소</label>
-			<form:input path="detailedAddress" class="form-control" id="exampleFormControlInput1" placeholder="상세주소를 입력해주세요"/>
+			<form:input path="detailedAddress" class="form-control exampleFormControlInput1" placeholder="상세주소를 입력해주세요"/>
 				</div>
 				<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">병원 전화번호</label>
-			<form:input path="hospitalTel" class="form-control" id="exampleFormControlInput1" placeholder="전화번호를 입력해주세요"/>
+			<form:input path="hospitalTel" class="form-control exampleFormControlInput1" placeholder="전화번호를 입력해주세요"/>
 				</div>
 				<div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">병원 소개</label>
@@ -109,24 +110,24 @@ button:hover{
 	function insertHospitalCheck() {
 		
 		if($('#hospitalName').val()==''){
-			alert('이름을 입력해 주세요');
+			alert('병원 이름을 입력해 주세요');
 			return false;
 		}
-		if($('#hospitalLoc').val()=='선택'){
-			alert('카테고리를 선택해 주세요');
+		if($('#category').val()=='선택'){
+			alert('지역을 선택해 주세요');
 			return false;
 		}
-		if($('#detailedAddress').val()==0){
+		if($('#detailedAddress').val()==''){
 			alert('상세 주소를 입력해 주세요');
 			return false;
 		}
-		if($('#hospitalTel').val()==0){
+		if($('#hospitalTel').val()==''){
 			alert('전화번호를 입력해 주세요');
 			return false;
 		}
-		console.log($('#hospitalInfo').val());
-		if($('#hospitalInfo').val()==0){
-			alert('내용을 입력해 주세요');
+		
+		if($('#exampleFormControlTextarea1').val()==''){
+			alert('병원 소개 내용을 입력해 주세요');
 			return false;
 		}
 		if($('#hospitalName').val().length>40){
@@ -134,15 +135,14 @@ button:hover{
 			return false;
 		}
 				
-		if($('#hospitalInfo').val().length>1000){
+		if($('#exampleFormControlTextarea1').val().length>1000){
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}
 		
-		let cc = confirm('게시글을 작성하시겠습니까?');
-		if(cc){
+		if(confirm('게시글을 작성하시겠습니까?')){
 			alert('작성이 완료되었습니다.');
-			return cc;
+			return true;
 		}
 		return false;
 	}
