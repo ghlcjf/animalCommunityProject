@@ -15,7 +15,6 @@
 <style>
 	.container{
 	margin-top: 20px;
-	width:850px;
 }
 	button{
 	padding: 5px;   border: none;
