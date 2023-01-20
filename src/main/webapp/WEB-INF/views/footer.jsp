@@ -10,7 +10,7 @@
 			display: flex; justify-content: center; align-items: center;	
 			top:2000px; bottom: 0; background: rgb(136, 154, 233);
 			color: white; font-weight: bolder; font-size: 15px;
-			height: 200px;
+			height: 90px;
 		}	
 		.text2{
 			padding-left: 40px; 

@@ -31,6 +31,11 @@
 		.top-menu{
 			
 		}
+		.top{
+			text-decoration: none;
+			color: black;
+			cursor: cursor;
+		}
 	</style>
 </head>
 
@@ -44,8 +49,8 @@
 			<!-- 세션이 없으면 -->
 			<c:if test="${empty userInfo}">
 				<ul class="nav justify-content-end">
-					<li class="nav-link active" aria-current="page"><a href='<c:url value="/register/step1"/>'>회원가입</a></li>
-					<li class="nav-link active" aria-current="page"><a href='<c:url value="/login"/>'>로그인</a></li>
+					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/register/step1"/>'>회원가입</a></li>
+					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/login"/>'>로그인</a></li>
 				</ul>
 				<div class="menu_bar">
 					<ul class="nav justify-content-center">
@@ -63,10 +68,10 @@
 				<ul class="nav justify-content-end">
 					<li>${userInfo.name}님</li>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
 						<c:if test="${userInfo.admin eq 1 }">
-							<li class="nav-link active" aria-current="page"><a href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
+							<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
 						</c:if>
-					<li class="nav-link active" aria-current="page"><a href='<c:url value="/message/list"/>' >메세지(${unReadCheck})</a></li>
-					<li class="nav-link active" aria-current="page"><a href='<c:url value="/logout"/>' onclick="return test()">로그아웃</a></li>
+					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/message/list"/>' >메세지(${unReadCheck})</a></li>
+					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/logout"/>' onclick="return test()">로그아웃</a></li>
 				</ul>
 
 				<div class="menu_bar">
@@ -76,7 +81,7 @@
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo/1/1"/>'>동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main/1/1"/>'>동물 병원 정보</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>'>이슈</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value="/myPage"/>'>마이페이지</a></li>
+						<li class="nav-item"><a class="nav-link" href='<c:url value="/myPage/1/1"/>'>마이페이지</a></li>
 					</ul>			
 				</div>
 			</c:if>		
@@ -111,6 +116,9 @@
 			alert("로그인 후 이용할수 있습니다");
 		}
 		
+		
+		
+
 		
 		
 		
