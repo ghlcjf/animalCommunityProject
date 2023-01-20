@@ -11,14 +11,23 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <style type="text/css">
 .container{
-    margin-top: 30px;
+    margin-top: 20px;
         }
 .fs-2{
 	color: #889ae9;
+	font-weight: bold;
+}
+.form-label{
+	font-weight: bold;
 }
 #exampleFormControlTextarea1{
     height: 300px;
     resize: none;
+}
+img{
+	width: 100%;
+	height: 500px;
+	border-radius: 10px;
 }
 button{
 	padding: 5px;   border: none;
@@ -33,11 +42,6 @@ button{
 button:hover{
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-}
-img{
-	width: 100%;
-	height: 500px;
-	border-radius: 10px;
 }
 </style>
 </head>
@@ -58,7 +62,8 @@ img{
 			
 			<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">카테고리</label>
-          <form:select path="boardCategory" class="form-select" aria-label="Default select example">
+          <form:select path="boardCategory" class="form-select" aria-label="Default select example" id="category">
+          	<form:option value="선택">선택</form:option>
             <form:option value="강아지">강아지</form:option>
 			<form:option value="고양이">고양이</form:option>
 			<form:option value="파충류">파충류</form:option>
@@ -68,15 +73,13 @@ img{
           </form:select>
         </div>
 			<c:choose>
-			
 					<c:when test="${freeBoard.boardUrl=='null' || empty freeBoard.boardUrl}">
-						<img src="/imageFolder/image/noImage.png"><br><br>
+						<img src="/imageFolder/image/noImage.png" class="rounded mx-auto d-block"><br>
 					</c:when>
 					
 					<c:otherwise>
-						<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }"><br><br>
+						<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" class="rounded mx-auto d-block"><br>
 					</c:otherwise>
-				
 				</c:choose>
 			
 			<div class="mb-3">
@@ -84,13 +87,14 @@ img{
         <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
         <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
       </div>
+      
 			<div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" />
+        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" placeholder="내용을 입력해주세요" rows="3" />
         <form:errors path="boardContent" />
       </div>
 	<form:hidden path="boardNum"/>
-	<button type="submit" onclick="return updateFreeBoardcheck()">글 등록</button>
+	<button type="submit" onclick="return updateFreeBoardcheck()">글 수정</button>
 	
 </form:form>
 </div>
@@ -102,12 +106,28 @@ img{
 <script type="text/javascript">
 	function updateFreeBoardcheck() {
 		
-		if($('#boardTitle').val()==''){
+		if($('#exampleFormControlInput1').val()==''){
 			alert('제목을 입력해 주세요');
 			return false;
 		}
-		if($('#boardContent').val()==0){
+		
+		if($('#category').val()=='선택'){
+			alert('카테고리를 선택해 주세요');
+			return false;
+		}
+		
+		if($('#exampleFormControlTextarea1').val()==0){
 			alert('내용을 입력해 주세요');
+			return false;
+		}
+		
+		if($('#exampleFormControlInput1').val().length>40){
+			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+		
+		if($('#exampleFormControlTextarea1').val().length>1000){
+			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}
 		

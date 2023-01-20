@@ -21,73 +21,87 @@
 
 
 <style>
+.container{
+    margin-top: 20px;
+        }
+.fs-2{
+	color: #889ae9;
+	font-weight: bold;
+}
+.form-label{
+	font-weight: bold;
+}
+#exampleFormControlTextarea1{
+    height: 300px;
+    resize: none;
+}
+img{
+	width: 100%;
+	height: 500px;
+}
 	button{
-	 		width: 200px; height: 50px; border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-			
-		}
-		
-	button:hover{
-  			background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	}
+	padding: 5px;   border: none;
+	height: 40px; 	border-radius: 10px;
+	width: 95px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+	
+}
+button:hover{
+	background: rgb(101, 121, 207);
+	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
 </style>
 </head>
 
 <body>
 
 <jsp:include page="../header.jsp"></jsp:include>
-<div class="d-grid gap-2 col-6 mx-auto">
-<h2>[자유게시판] 게시글 작성하기</h2>
+
+<div class="container">
+        <div class="row">
+          <div class="col-7 mx-auto">
+<p class="fs-2">자유게시판 글 작성</p>
+<hr>
 
 <form:form action="insertFreeBoard" modelAttribute="freeBoardCommand" enctype="multipart/form-data">
-	<table class="table">
-		<tr>
-			<th scope="row">카테고리</th>
-			<td>
-				<form:select path="boardCategory" class="form-select">
-					<form:option value="선택">선택</form:option>
-					<form:option value="강아지">강아지</form:option>
-					<form:option value="고양이">고양이</form:option>
-					<form:option value="파충류">파충류</form:option>
-					<form:option value="조류">조류</form:option>
-					<form:option value="어류">어류</form:option>
-					<form:option value="기타">기타</form:option>
-				</form:select>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">제목</th>
-			<td>
-				<form:input path="boardTitle" class="form-control" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">이미지</th>
-			<td>
-				<div class="input-group">
-				  <input type="file" id="boardUrl2" name="boardUrl2" class="form-control">
-				  <button class="btn btn-outline-secondary" type="button">Button</button>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">내용</th>
-			<td>
-				<form:textarea path="boardContent" class="form-control" rows="3" placeholder="※1000자 이하로 작성해주세요.※"/>
-			</td>
-		</tr>
-		
 
-		
-	</table>
+<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">제목</label>
+			<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
+				</div>
+				
+				<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">카테고리</label>
+            <form:select path="boardCategory" class="form-select" aria-label="Default select example" id="category">
+            			<form:option value="선택">선택</form:option>
+						<form:option value="강아지">강아지</form:option>
+						<form:option value="고양이">고양이</form:option>
+						<form:option value="파충류">파충류</form:option>
+						<form:option value="조류">조류</form:option>
+						<form:option value="어류">어류</form:option>
+						<form:option value="기타">기타</form:option>
+					</form:select>
+					</div>
+				
+				<div class="mb-3">
+        <label for="formFile" class="form-label">이미지 선택</label>
+        <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
+        <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
+      </div>
+				<div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
+        <form:errors path="boardContent" />
+      </div>
 	
 	<button type="button" onclick="return cancel()">취소</button>
 	<button type="submit" onclick="return insertFreeBoardCheck()">글 등록</button>
 </form:form>
+</div>
+</div>
 </div>
 
 <jsp:include page="../footer.jsp"></jsp:include>
@@ -103,28 +117,30 @@
 		}
 		return false;
 	}
+	
 	function insertFreeBoardCheck() {
-		if($('#boardCategory').val()=='선택'){
-			alert('카테고리를 선택해 주세요');
-			return false;
-		}
-		
-		if($('#boardTitle').val()==''){
+	
+		if($('#exampleFormControlInput1').val()==''){
 			alert('제목을 입력해 주세요');
 			return false;
 		}
 		
-		if($('#boardContent').val()==0){
+		if($('#category').val()=='선택'){
+			alert('카테고리를 선택해 주세요');
+			return false;
+		}
+		
+		if($('#exampleFormControlTextarea1').val()==0){
 			alert('내용을 입력해 주세요');
 			return false;
 		}
 		
-		if($('#boardTitle').val().length>40){
+		if($('#exampleFormControlInput1').val().length>40){
 			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
 			return false;
 		}
 		
-		if($('#boardContent').val().length>1000){
+		if($('#exampleFormControlTextarea1').val().length>1000){
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		}

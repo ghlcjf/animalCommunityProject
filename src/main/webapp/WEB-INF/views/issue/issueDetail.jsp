@@ -12,35 +12,56 @@
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <style>
-	button{ 
-	 		border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-			
-		}
+		.container{
+	margin-top: 20px;
+}
+	button{
+	padding: 5px;   border: none;
+	height: 40px; 	border-radius: 10px;
+	width: 95px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+	
+}
+button:hover{
+	background: rgb(101, 121, 207);
+	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
+.bigBtn{
+		padding: 5px;   border: none;
+		height: 30px; 	border-radius: 10px;
+		color: white;   font-weight:bolder;
+		width: 145px;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		line-height: 10px;
 		
-	button:hover{
+	}
+.bigBtn:hover{
   			background: rgb(101, 121, 207);
 		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 	}
 	img{
-		width:500px;
+		width:100%;
 		height:500px;
 	}
 </style>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
-<div class="d-grid gap-2 col-6 mx-auto">
+
+<div class="container">
+        <div class="row">
+          <div class="col-8 mx-auto">
 
 	<table class="table">
 		<tr>
 			<th>글 번호</th>
 			<td>${issue.issueNum}</td>
 			<th>글 제목</th>
-			<td colspan="3">${issue.issueTitle}</td>
+			<td colspan="3" width="100px" style = "word-break: break-all">${issue.issueTitle}</td>
 		</tr>
 		<tr>
 			<th>작성자</th>
@@ -52,7 +73,7 @@
 			
 		</tr>
 		<tr>
-			<td colspan="6">
+			<td colspan="8" style = "word-break: break-all">
 				<c:if test="${!empty issue.issueUrl && issue.issueUrl!='null'}">
 					<img src="/imageFolder/issueBoardImage/${issue.issueUrl }"  class="rounded mx-auto d-block"><br>
 				</c:if>
@@ -64,16 +85,11 @@
 		<c:if test="${!empty userInfo}">
 			<tr>
 				<td colspan="3">
-					<%-- <form>
-						<input type="hidden" id="name" value="${userInfo.name}">
-						<textarea rows="4" cols="30" id="commentContent" placeholder="댓글을 입력해 주세요"></textarea>
-						<button type="button" onclick="insertComment(${issue.issueNum})">댓글 등록</button>
-					</form> --%>
 					<form>
 						<div class="input-group mb-3">
 							<input type="hidden" id="name" value="${userInfo.name}">
 							<input type="text" id="commentContent" class="form-control" placeholder="댓글을 입력해 주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-							<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="insertComment(${issue.issueNum})">댓글 등록</button>
+							<button type="button" id="button-addon2" onclick="insertComment(${issue.issueNum})">댓글 등록</button>
 						</div>
 					</form>
 				</td>
@@ -81,15 +97,21 @@
 		</c:if>		
 		<c:forEach items="${issueComment}" var="issueComment">
 			<tr>
-				<th scope="row">${issueComment.name }</th>
-				<td>${issueComment.commentContent }</td>
+				<td>${issueComment.name }</td>
+				<td width="700px;" style = "word-break: break-all">${issueComment.commentContent }</td>
 				<td><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		
 		</c:forEach>
+		
 	</table>
+	
+	<div class="d-flex justify-content-start">
+		<button type="button" class="bigBtn" onclick="location.href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'">목록으로 돌아가기</button>
+	</div>
+	</div>
+	</div>
 </div>
-
 </body>
 
 
@@ -120,14 +142,13 @@
 			dateType:JSON,
 			success:function(data){
 				
-				
 				let tbl = document.getElementById('commentTbl');
-				let cr = document.createElement('tr');
-				cr.innerHTML = '<td>'+data.name+'</td>';
-				cr.innerHTML += '<td>'+data.commentContent+'</td>';
-				cr.innerHTML += '<td>'+data.writeDate+'</td>';
-				tbl.appendChild(cr);
+				let tr = $('<tr></tr>').appendTo(tbl);
 				
+                $('<td></td>').html(data.name).appendTo(tr);
+                /* $('<td></td>').html(data.commentContent).appendTo(tr); */
+				$('<td width="700px;" style = "word-break: break-all"></td>').html(data.commentContent).appendTo(tr);                
+                $('<td></td>').html(data.writeDate).appendTo(tr);
 				
 			},
 			complete:function(){

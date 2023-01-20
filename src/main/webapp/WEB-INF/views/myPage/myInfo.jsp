@@ -31,9 +31,6 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
-/* .table{
-	width: 1150px;
-} */
  table {
 	table-layout: fixed
 }
@@ -74,27 +71,6 @@ a {
 			margin-top: 70px;
 		}
 		
-		/* .smBtn{
-			width: 50px; height: 33px; border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-		}
-		.bigBtn{
-			width: 190px; height: 33px; border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-		} */
-		/* button[type="submit"]:hover{
-   			background: rgb(101, 121, 207);
-			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-		} */
-		/* #section{
-			margin-bottom: 30px;
-		} */
 		button{
 		padding: 5px;   border: none;
 		height: 30px; 	border-radius: 10px;
@@ -108,7 +84,9 @@ a {
   			background: rgb(101, 121, 207);
 		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 	}
-		
+	.bigBtn{
+		margin-left: 10px;
+	}	
 	</style>
 
 </head>
@@ -121,19 +99,18 @@ a {
 	<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
-			<form id="section" action="<c:url value='/checkPassword' />">
 			<div class="d-flex justify-content-end">
+			<form action='<c:url value="/mypage/${user.id}" />'>
+			<button class="bigBtn" type="submit" onclick="return out('${user.id}')">회원 탈퇴</button>
+			</form>
+			<form id="section" action="<c:url value='/checkPassword' />">
 			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
+			</form>
 			</div>
-		</form>
+		
 		</div>
 	</nav>
 	
-	<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
-	
-            
-          
-		
 		<table class="table table-sm">
 		<thead>
 			<tr>
@@ -186,32 +163,32 @@ a {
 					</thead>
 					<c:forEach items="${boardList}" var="board">
 
-						<tbody>
-							<tr class="td-button">
-	
-								<td><a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">
-									${board.boardTitle}</a>
-								</td>
-								<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
-								<td>${board.viewCount }</td>
-								<td>
-									<form action="<c:url value='/myPage/updeteForm/${board.boardNum}' />">
-										<button class="smBtn" type="submit" onclick="return boardUpdate()">수정</button>
-									</form>
-								</td>
-								<td>
-									<form action="<c:url value='/myPage/delete/${board.boardNum}' />">
-										<button class="smBtn" type="submit" onclick="return boardDelete()">삭제</button>
-										<%-- <input type="hidden" name="boardNum" value="${board.boardNum}"> --%>
-									</form>
-								</td>
-							</tr>
+
+					<tbody>
+						<tr class="td-button">
+
+							<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle}</td>
+							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
+							<td>${board.viewCount }</td>
+							<td>
+								<form action="<c:url value='/myPage/updeteForm/${board.boardNum}' />">
+									<button class="smBtn" type="submit" onclick="return boardUpdate()">수정</button>
+								</form>
+							</td>
+							<td>
+								<form action="<c:url value='/myPage/delete/${board.boardNum}' />">
+									<button class="smBtn" type="submit" onclick="return boardDelete()">삭제</button>
+									<%-- <input type="hidden" name="boardNum" value="${board.boardNum}"> --%>
+								</form>
+							</td>
+						</tr>
 						</tbody>
 					</c:forEach>
 				</table>
 			</c:otherwise>
 		</c:choose>
-
+		<div class="d-flex justify-content-start">
+		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
 		</div>
 		</div>
 		</div>
@@ -288,14 +265,8 @@ a {
 	
 		
 		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
+		</div>
 		
-		<form action='<c:url value="/mypage/${user.id}" />'>
-			<button class="bigBtn" type="submit" onclick="return out('${user.id}')">탈퇴</button>
-		</form>
-
-		
-
-
 	<jsp:include page="../footer.jsp"></jsp:include>
 
 	<script type="text/javascript">

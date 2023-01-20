@@ -55,19 +55,6 @@ a {
 	text-decoration: none;
 	color: black;
 }
-	/* button{ 
-	 		border-radius: 10px;
-			text-align: center; color: white; font-weight:bolder;
-			background: rgb(136, 154, 233);
-			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-			border: none;
-			
-		}
-		
-	button:hover{
-  			background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	} */
 	button{
 		padding: 5px;   border: none;
 		height: 30px; 	border-radius: 10px;
@@ -98,24 +85,15 @@ a {
 		</div>
 	</nav>
 
-<!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
 <c:choose>
 	<c:when test="${empty imageList}">
 		<p>게시글이 없습니다.</p>
-		<!-- <div class="d-flex justify-content-start">
-			<button type="button" onclick="return insertConfirm()">글 작성</button>
-			</div> -->
 	</c:when>
 	
 	<c:otherwise>
 	
 		<table class="table table-sm">
 			<thead>
-				<!-- <tr>
-					<td colspan="4" align="left">
-						<button type="button" onclick="return insertConfirm()">이미지 업로드</button>
-					</td>
-				</tr> -->
 			   <tr>
 				    <th scope="col">사진 번호</th>
 				    <th scope="col">사진 이름</th>
@@ -140,7 +118,6 @@ a {
 	 </c:otherwise>
 
 </c:choose>
-<%-- <a href='<c:url value="/manager/managerMain" />'>관리자 메인페이지로 돌아가기</a> --%>
 <div class="d-flex justify-content-start">
 		<button type="button" onclick="location.href='<c:url value="/manager/managerMain" />'">관리자 메뉴로 돌아가기</button>
 		</div>
@@ -149,7 +126,6 @@ a {
 
 </div>
 
-<!-- </div> -->
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script type="text/javascript">

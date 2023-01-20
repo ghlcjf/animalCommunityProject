@@ -99,18 +99,11 @@ a {
       grid-area: box3;
     }
 
-    .list-group-item {
-       border:none;
-    }
-
- 
-
  	.list-group-item {
  		border:none;
  		font-size: 13px;
  		margin-top: 13px;
  	}
-
 
  	.messageBtn{
  		color: black;
@@ -172,7 +165,7 @@ a {
 			<c:forEach items="${noticeList}" var="notice">
 				<tr>
 					 <th scope="row">${notice.boardNum }</th>
-					<td><a href="<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />">${notice.boardTitle } (${notice.commentCount})</a></td>
+					<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />'"> ${notice.boardTitle } (${notice.commentCount})</td>
 					<td>${notice.viewCount }</td>
 					<td>${notice.name }
 					</td>
@@ -297,6 +290,9 @@ a {
 	</c:if>
 
 </div>
+<div class="d-flex justify-content-start">
+		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
+		</div>
 </div>
 
 <div class="col-1">

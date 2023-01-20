@@ -246,7 +246,7 @@
 	
 	<!-- 병원 정보 -->
 	<select id="selectAllHospital" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl ORDER BY boardNum ASC
+		SELECT * FROM hospitalInfoTbl ORDER BY boardNum DESC
 	</select>
 	
 	<select id="selectByHospitalNum" resultType="hospitalInfo" parameterType="long">
