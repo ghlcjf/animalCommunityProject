@@ -118,6 +118,10 @@ a {
  	.messageBtn:hover{
  		color: rgb(136, 154, 233);
  	}
+	
+	a.page-link:{
+
+	}
 
 </style>
 </head>
@@ -228,7 +232,7 @@ a {
 								    </li>
 								</c:if>
 								<li class="page-item">
-									<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+									<a class="page-link"  href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
 										${(sectionPage.section-1)*10+page}
 									</a>
 								</li>
@@ -329,5 +333,9 @@ function insertConfirm(){
 		location.href="/animalCommunity/freeBoard/insertFreeBoardForm";
 	} 
 }
+
+
+
+
 </script>
 </html>

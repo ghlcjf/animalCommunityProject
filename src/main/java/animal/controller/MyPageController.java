@@ -20,9 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 import animal.dao.AnimalDao;
 import animal.service.ChangeInfoService;
 import animal.service.FreeBoardService;
+import animal.service.SelectAllNoticeListService;
 import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.LoginUserInfo;
+import animal.vo.SectionPage;
 import animal.vo.User;
 
 @Controller
@@ -43,21 +45,40 @@ public class MyPageController {
 	public void setChangeInfoService(ChangeInfoService changeInfoService) {
 		this.changeInfoService = changeInfoService;
 	}
-
-	@GetMapping("/myPage")
-	public String myPage(HttpSession session) {
+	private SelectAllNoticeListService selectAllNoticeListService;
+	public void setSelectAllNoticeListService(SelectAllNoticeListService selectAllNoticeListService) {
+		this.selectAllNoticeListService = selectAllNoticeListService;
+	}
+	@GetMapping("/myPage/{section}/{pageNum}")
+	public String myPage(@PathVariable("section") int section,
+			@PathVariable("pageNum") int pageNum,Model model,HttpSession session) {
 		
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 		
 		if(userInfo==null){
 			return "myPage/nullSession";
 		}
+		
+		
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		
 			
 		User user = animalDao.selectByMemberName(userInfo.getName());
 		session.setAttribute("user",user);
 		
-		List<FreeBoard> boardList = animalDao.getboardList(user.getName());
-		session.setAttribute("board",boardList);
+		sectionPage.setName(user.getName());
+		
+		
+		//List<FreeBoard> boardList = animalDao.getboardList(user.getName());
+		List<FreeBoard> boardList = animalDao.selectTargetFreeBoardsByName(sectionPage);
+		int totalCnt = animalDao.selectAllNumFreeBoardByName(sectionPage);
+		
+		
+		
+		model.addAttribute("sectionPage", sectionPage);
+		//model.addAttribute("boardList", boardList);
+		model.addAttribute("totalCnt", totalCnt);
+		session.setAttribute("boardList",boardList);
 //		System.out.println(user.getName());
 		return "myPage/myInfo";
 	}
@@ -171,4 +192,10 @@ public class MyPageController {
 		session.invalidate();
 		return "redirect:/main";
 	}
+	
+	
+
+	
+	
+	
 }

@@ -436,4 +436,14 @@ public class AnimalDao {
 	}
 
 
+//======마이페이지================================================
+
+	public List<FreeBoard> selectTargetFreeBoardsByName(SectionPage sectionPage) {
+		return sqlSession.selectList("mybatis.mapper.member.selectTargetFreeBoardsByName", sectionPage);
+		
+	}
+
+	public int selectAllNumFreeBoardByName(SectionPage sectionPage) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumFreeBoardByName",sectionPage);
+	}
 }

@@ -50,8 +50,10 @@ public class FreeBoardController {
 	public String boardList(@PathVariable("animal") String animal, @PathVariable("section") int section,
 			@PathVariable("pageNum") int pageNum, Model model,
 			HttpServletRequest request) {
-		List<FreeBoard> freeBoardList = null;;
+		List<FreeBoard> freeBoardList = null;
 		int totalCnt = 0;
+		
+		
 		
 //		String _section = request.getParameter("section");
 //		String _pageNum = request.getParameter("pageNum");
@@ -61,7 +63,7 @@ public class FreeBoardController {
 		
 		SectionPage sectionPage = new SectionPage(section,pageNum);
 		
-		
+
 		
 		if(animal.equals("main")) {
 			sectionPage.setBoardCategory(animal);

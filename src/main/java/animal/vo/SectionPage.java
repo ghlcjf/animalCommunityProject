@@ -5,6 +5,14 @@ public class SectionPage {
 	private int section;
 	private int pageNum;
 	private String boardCategory;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getBoardCategory() {
 		return boardCategory;
 	}

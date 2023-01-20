@@ -123,12 +123,12 @@
 			border-radius: 20px;
 		}
 		.scroll{
-			bottom: 70px;  right:40px; position: fixed;
+			
 		}
-/* 		.scroll-right{ 따라다니는 메뉴 
-			position:absolute; width:90px; top:50%; right:270px; background:#fff;
-			bottom: 400px;
-		} */
+ 		.scroll-right{ /* 따라다니는 메뉴  */
+			position:absolute;  top:40%; bottom: 40%; background:#fff; 
+			width:90px; bottom: 700px;
+		} 
 		.top-ten{
 			 border: 1px solid rgb(129, 139, 180);width: 300px;
 		}
@@ -264,9 +264,55 @@
 						 안읽은 쪽지:${unReadCheck}개</li>
 					</ul>
 				</div>
-			</c:if>								
+			</c:if>	
+			
+			
+		
+		<div class="scroll">
+		<div class="scroll-right">
+			<!--인기글 top10개: 조회수로 순위-->
+			<div class="top-ten-box">
+				<span class="top-ten-box-text">커뮤니티 인기글 Top10</span>
 			</div>
+			<c:if test="${empty freeBoardTopTen}">
+				<table class="top-ten" border="1" width="300px">
+					<tr>
+						<td>등록된 게시글이 없습니다</td>
+					</tr>
+				</table>
+			</c:if>
+			<c:if test="${!empty freeBoardTopTen}">
+				<c:forEach items="${freeBoardTopTen}" var="board" begin="0" end="9" varStatus="i">
+					<table class="top-ten" border="1" width="300px">
+						<tr>
+							<th style="padding: 5px; font-size: 15px;">
+								<span class="top-number">${i.count}</span> 
+								<a class="top-ten-text" href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}'/>">
+									 
+									${board.boardTitle}  (${board.viewCount})
+								</a>
+							</th>
+						</tr>
+					</table>
+				</c:forEach>
+			</c:if>		
 		</div>
+	</div>			
+			
+			
+			
+			
+			
+			
+										
+		</div>
+		
+		
+
+		
+		
+		
+	</div><!--container-->
 
 	
 	<div id="container2">
@@ -385,7 +431,7 @@
 	</div>
 	
 	
-	<div class="scroll">
+<%-- 	<div class="scroll">
 		<div class="scroll-right">
 			<!--인기글 top10개: 조회수로 순위-->
 			<div class="top-ten-box">
@@ -414,7 +460,7 @@
 				</c:forEach>
 			</c:if>		
 		</div>
-	</div>
+	</div> --%>
 
 	<jsp:include page="footer.jsp"></jsp:include>
 

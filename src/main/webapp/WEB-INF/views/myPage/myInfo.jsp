@@ -61,6 +61,7 @@ overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
 a {
 	text-decoration: none;
 	color: black;
+	cursor: cursor;
 }
 .text-end{
 	margin-right: 100px
@@ -165,11 +166,11 @@ a {
 	</nav>
 	
 		<c:choose>
-			<c:when test="${empty board}">
+			<c:when test="${empty boardList}">
 				<p>게시글이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<table class="table table-sm">
+				<table class="table table-hover table-sm">
 				<thead>
 					<tr>
 						<th>제목</th>
@@ -179,28 +180,28 @@ a {
 						<th>글 삭제</th>
 					</tr>
 					</thead>
-					<c:forEach items="${board}" var="board">
+					<c:forEach items="${boardList}" var="board">
 
-					<tbody>
-						<tr class="td-button">
-
-							<td><a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">
-								${board.boardTitle}</a>
-							</td>
-							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
-							<td>${board.viewCount }</td>
-							<td>
-								<form action="<c:url value='/myPage/updeteForm/${board.boardNum}' />">
-									<button class="smBtn" type="submit" onclick="return boardUpdate()">수정</button>
-								</form>
-							</td>
-							<td>
-								<form action="<c:url value='/myPage/delete/${board.boardNum}' />">
-									<button class="smBtn" type="submit" onclick="return boardDelete()">삭제</button>
-									<%-- <input type="hidden" name="boardNum" value="${board.boardNum}"> --%>
-								</form>
-							</td>
-						</tr>
+						<tbody>
+							<tr class="td-button">
+	
+								<td><a href="<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />">
+									${board.boardTitle}</a>
+								</td>
+								<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
+								<td>${board.viewCount }</td>
+								<td>
+									<form action="<c:url value='/myPage/updeteForm/${board.boardNum}' />">
+										<button class="smBtn" type="submit" onclick="return boardUpdate()">수정</button>
+									</form>
+								</td>
+								<td>
+									<form action="<c:url value='/myPage/delete/${board.boardNum}' />">
+										<button class="smBtn" type="submit" onclick="return boardDelete()">삭제</button>
+										<%-- <input type="hidden" name="boardNum" value="${board.boardNum}"> --%>
+									</form>
+								</td>
+							</tr>
 						</tbody>
 					</c:forEach>
 				</table>
@@ -210,6 +211,78 @@ a {
 		</div>
 		</div>
 		</div>
+		
+	<!--마이페이지 페이지네이션-->
+	<c:if test="${totalCnt != null}">
+		<nav aria-label="page navihation example">
+			<ul class="pagination">
+				<c:choose>
+					<c:when test="${totalCnt>100}">
+						<c:if test="${(sectionPage.section*100)<totalCnt }">
+							<c:forEach var="page" begin="1" end="10" step="1">
+								<c:if test="${sectionPage.section>1 && page==1}">
+									<li class="page-item">
+								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${animal}/${sectionPage.section-1}/${10}">
+								        <span aria-hidden="true">&laquo;</span>
+								      </a>
+								    </li>
+								</c:if>
+								<li class="page-item">
+									<a class="page-link" href="/animalCommunity/myPage/${sectionPage.section}/${page}">
+										${(sectionPage.section-1)*10+page}
+									</a>
+								</li>
+								<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
+								<c:if test="${page==10}">
+									<li class="page-item">
+								      <a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section+1}/${1}" aria-label="Next">
+								        <span aria-hidden="true">&raquo;</span>
+								      </a>
+								    </li>
+								</c:if>
+							</c:forEach>
+							</c:if>
+						<c:if test="${(sectionPage.section*100)>=totalCnt }"> <!-- 다음 섹션이 존재하지 않는가=> '>>' X  -->
+							<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
+								<c:if test="${sectionPage.section>1 && page==1}">
+									<li class="page-item">
+								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${animal}/${sectionPage.section-1}/${10}">
+								        <span aria-hidden="true">&laquo;</span>
+								      </a>
+								    </li>
+								</c:if>
+								<li class="page-item">
+									<a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section}/${page}">
+										${(sectionPage.section-1)*10+page}
+									</a>
+								</li>
+							</c:forEach>
+						</c:if>
+					</c:when>
+					<c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
+						<c:forEach var="page" begin="1" end="10" step="1">
+							<li class="page-item">
+								<a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section}/${page}">
+									${(sectionPage.section-1)*10+page}
+								</a>
+							</li>
+						</c:forEach>
+					</c:when>
+					<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
+						<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
+							<li class="page-item">
+								<a class="page-link" href="/animalCommunity//myPage${animal}/${sectionPage.section}/${page}">
+									${(sectionPage.section-1)*10+page}
+								</a>
+							</li>
+						</c:forEach>
+					</c:when>
+				</c:choose>
+			</ul>
+		</nav>
+	</c:if>
+	
+		
 		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
 		
 		<form action='<c:url value="/mypage/${user.id}" />'>

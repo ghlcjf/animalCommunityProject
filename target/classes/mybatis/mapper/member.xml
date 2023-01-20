@@ -405,8 +405,20 @@
 		SELECT id
 		FROM userTbl WHERE id=#{id}
 	</select>
-	
-	
+	<select id="selectTargetFreeBoardsByName" parameterType="sectionPage" resultType="freeBoard">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM freeBoardTbl 
+		 		WHERE name=#{name}
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
+		AND ((#{section}-1)*100)+ (#{pageNum}*10))
+	</select>
+	<select id="selectAllNumFreeBoardByName" resultType="int" parameterType="sectionPage">
+		SELECT COUNT(*) FROM freeBoardTbl
+			where name=#{name}
+	</select>
 	
 	<!-- 메세지 -->
 	<select id="getUnReadCheck" resultType="int" parameterType="String">
