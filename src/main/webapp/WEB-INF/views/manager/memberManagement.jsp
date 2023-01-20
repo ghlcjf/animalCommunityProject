@@ -87,25 +87,22 @@ a {
  <nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">회원 관리 페이지</span>
-			<form:form action="search" modelAttribute="searchData">
-			<div class="d-flex align-items-end justify-content-end">
-						<form:input path="search" placeholder="검색어를 입력해 주세요" class="form-control form-control-sm"/>
-						<button type="submit" onclick="searchMember()">검색</button>
-						</div>
-						</form:form>
+			<form:form action="/animalCommunity/search" modelAttribute="searchData">
+				<div class="d-flex align-items-end justify-content-end">
+					<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+					<form:input path="search" placeholder="검색어를 입력해 주세요" class="form-control form-control-sm"/>
+					<button type="submit" onclick="searchMember()">검색</button>
+				</div>
+			</form:form>
 		</div>
 	</nav>
 
-
-		<form:form action="search" modelAttribute="searchData">
-
-		</form:form>
 		
 		<table class="table table-hover table-sm">
 		<thead>
 			<tr>
-				<th>이름</th>
 				<th>아이디</th>
+				<th>닉네임</th>
 				<th>이메일</th>
 				<th>전화번호</th>
 			</tr>
@@ -113,8 +110,8 @@ a {
 			</thead>
 			<c:forEach items="${member}" var="member">			
 				<tr>		
-					<td style="cursor: pointer;" onclick="location.href='<c:url value='/member/detail/${member.name}' />'"> ${member.name }</td>
 					<td style="cursor: pointer;" onclick="location.href='<c:url value='/member/detail/${member.name}' />'"> ${member.id }</td>
+					<td style="cursor: pointer;" onclick="location.href='<c:url value='/member/detail/${member.name}' />'"> ${member.name }</td>
 					<td>${member.email }</td>
 					<td>${member.phone }</td>
 				</tr>

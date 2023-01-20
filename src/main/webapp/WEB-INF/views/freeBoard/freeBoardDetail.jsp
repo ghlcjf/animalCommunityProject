@@ -124,7 +124,7 @@
 		</c:if>
 		<c:forEach items="${freeComments}" var="freeComment">
 			<tr>
-				<td>
+				<td width="140px">
 					${freeComment.name }
 					<c:if test="${freeComment.name!=userInfo.name}">
 						<input type="hidden" id="receiverNameCmt" value="${freeComment.name}">
@@ -137,7 +137,7 @@
 					
 				</td>
 				<td>${freeComment.commentContent }</td>
-				<td><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+				<td width="130px"><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		
 		</c:forEach>

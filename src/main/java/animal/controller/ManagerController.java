@@ -163,7 +163,7 @@ public class ManagerController {
 	public String dropMember(@PathVariable("id") String id) {
 		System.out.println(id);
 		animalDao.dropMember(id);
-		return "redirect:/memberManagement";
+		return "redirect:/memberManagement/1/1";
 	}
 	
 	@RequestMapping("/authorize/{id}")
@@ -172,7 +172,7 @@ public class ManagerController {
 		
 		authorizeService.authorize(id);
 		
-		return "redirect:/memberManagement";
+		return "redirect:/memberManagement/1/1";
 	}
 	
 
@@ -253,10 +253,11 @@ public class ManagerController {
 		return "manager/hospitalInfoMenu";
 	}
 	
-	@GetMapping("/boardManagement/issue") //이슈게시판
-	public String issueBoardMenu(Model model) {
+	@GetMapping("/boardManagement/issue/{section}/{pageNum}") //이슈게시판
+	public String issueBoardMenu(@PathVariable("section") int section,@PathVariable("pageNum") int pageNum,Model model) {
 		
-		List<Issue> issueBoardList = issueBoardService.selectAllIssueBoardList();
+		SectionPage sectionPage = new SectionPage(section,pageNum);
+		List<Issue> issueBoardList = animalDao.selectTargetIssueList(sectionPage);
 		
 		for(int i=0;i<issueBoardList.size();i++) {
 			if(issueBoardList.get(i).getIssueTitle().length()>=26) {
@@ -264,8 +265,13 @@ public class ManagerController {
 				issueBoardList.get(i).setIssueTitle(title);
 			}
 		}
+
+		int totalCnt = animalDao.selectAllNumIssue();
 		
+		model.addAttribute("totalCnt", totalCnt);
+		model.addAttribute("sectionPage", sectionPage);
 		model.addAttribute("issueBoardList", issueBoardList);
+		
 		return "manager/issueBoardMenu";
 	}
 	
@@ -397,7 +403,7 @@ public class ManagerController {
 		issueBoardService.insertIssueBoard(issueBoardCommand);
 		
 		
-		return "redirect:/boardManagement/issue";
+		return "redirect:/boardManagement/issue/1/1";
 	}
 	
 	@PostMapping("/manager/writeHospitalInfo") //병원 정보 글쓰기
@@ -585,7 +591,7 @@ public class ManagerController {
 		
 		issueBoardService.updateIssueBoard(issueBoardCommand);
 		
-		return "redirect:/boardManagement/issue";
+		return "redirect:/boardManagement/issue/1/1";
 	}
 	
 	

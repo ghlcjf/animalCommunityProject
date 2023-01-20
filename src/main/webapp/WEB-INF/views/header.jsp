@@ -80,7 +80,7 @@
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>'>자유게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo/1/1"/>'>동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/hospitalInfo/main/1/1"/>'>동물 병원 정보</a></li>
-						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue"/>'>이슈</a></li>
+						<li class="nav-item"><a class="nav-link" href='<c:url value="/issue/1/1"/>'>이슈</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/myPage/1/1"/>'>마이페이지</a></li>
 					</ul>			
 				</div>

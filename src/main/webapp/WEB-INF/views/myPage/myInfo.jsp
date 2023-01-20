@@ -162,7 +162,11 @@ a {
 		<nav class="navbar">
 		<div class="container-fluid">
 			<span class="navbar-brand-cs mb-0 h1">게시글 목록</span>
+			<div class="d-flex justify-content-end">
+				<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+			</div>
 		</div>
+		
 	</nav>
 	
 		<c:choose>
