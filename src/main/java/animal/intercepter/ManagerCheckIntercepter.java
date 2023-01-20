@@ -24,7 +24,9 @@ public class ManagerCheckIntercepter implements HandlerInterceptor {
 				LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
 				if(userInfo.getAdmin()==1) {
 					return true;
-				} 
+				}else {
+					response.sendRedirect(request.getContextPath()+"/main");
+				}
 			}
 		}
 		response.sendRedirect(request.getContextPath()+"/login");

@@ -130,4 +130,8 @@
 	<bean id="messengerController" class="animal.controller.MessengerController">
 		<property name="messageService" ref="messageService"></property>
 	</bean>
+	
+	
+	
+	<bean class="animal.exception.CommonExceptionHandler" />
 </beans>

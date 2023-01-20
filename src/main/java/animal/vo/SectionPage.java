@@ -5,6 +5,21 @@ public class SectionPage {
 	private int section;
 	private int pageNum;
 	private String boardCategory;
+	private String name;
+	private String hospitalLoc;
+	
+	public String getHospitalLoc() {
+		return hospitalLoc;
+	}
+	public void setHospitalLoc(String hospitalLoc) {
+		this.hospitalLoc = hospitalLoc;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getBoardCategory() {
 		return boardCategory;
 	}

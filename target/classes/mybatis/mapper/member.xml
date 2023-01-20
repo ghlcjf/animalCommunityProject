@@ -110,6 +110,21 @@
 	</update>
 	
 	
+	<select id="selectAllNoticeNum" resultType="int">
+		SELECT COUNT(*) FROM freeBoardTbl
+		WHERE boardCategory='공지사항'
+	</select>
+	<select id="selectTargetNoticeList" parameterType="sectionPage" resultType="freeBoard"> 
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM freeBoardTbl
+		 		WHERE boardCategory='공지사항'
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+((#{pageNum}-1)*10+1)
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)
+	</select>
+	
 	<select id="selectAllNoticeList" resultType="freeBoard">
 		SELECT * FROM freeBoardTbl WHERE boardCategory='공지사항' 
 		ORDER BY boardNum DESC 
@@ -190,8 +205,19 @@
 	
 	
 	<!-- 동물 소개 -->
-	<select id="selectAllAniaml" resultType="animalInfo">
-		SELECT * FROM animalInfoTbl ORDER BY animalNum DESC
+	<select id="selectAllNumAnimalInfo" resultType="int">
+		SELECT COUNT(*) FROM animalInfoTbl
+	</select>
+	
+	<select id="selectTargetAnimalInfoList" resultType="animalInfo" parameterType="sectionPage">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM animalInfoTbl
+				ORDER BY animalNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+((#{pageNum}-1)*10+1)
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)
+		
 	</select>
 	
 	<select id="selectByAnimalNum" resultType="animalInfo" parameterType="long">
@@ -225,7 +251,7 @@
 	<select id="selectHospitalSeoul" resultType="hospitalInfo">
 		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '서울'
 	</select>
-	
+	<!--  -->
 	<select id="selectHospitalGyeonggi" resultType="hospitalInfo">
 		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경기도'
 	</select>
@@ -249,8 +275,40 @@
 	<select id="selectHospitaljeju" resultType="hospitalInfo">
 		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '제주도'
 	</select>
+	<!--  -->
+	
+	<select id="selectAllNumHospitalInfo" resultType="int">
+		SELECT COUNT(*) FROM hospitalInfoTbl
+	</select>
+	<select id="selectLocationNumHospitalInfo" parameterType="sectionPage" resultType="int">
+		SELECT COUNT(*) FROM hospitalInfoTbl
+		WHERE hospitalLoc=#{hospitalLoc}
+	</select>
+	<select id="selectTargetHospitalInfoList" parameterType="sectionPage" resultType="hospitalInfo">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM hospitalInfoTbl
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+((#{pageNum}-1)*10+1)
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)
+	</select>
+	<select id="selectLocationTargetHospitalList" parameterType="sectionPage" resultType="hospitalInfo">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM hospitalInfoTbl
+		 		WHERE hospitalLoc=#{hospitalLoc}
+				ORDER BY boardNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+((#{pageNum}-1)*10+1)
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)
+	</select>
+	
+	
+	
+	
 
-	 
+	<!-- 구분 --> 
 	<sql id="selectAllMember">
 		select * from userTbl	
 	</sql>
@@ -456,7 +514,7 @@
 	
 	<update id="deleteReceiveBoxMessage" parameterType="int">
 		UPDATE messageTbl
-		SET receiveBoxDelete=0
+		SET readCheck=0, receiveBoxDelete=0
 		WHERE messageNum=#{messageNum}
 	</update>
 	<update id="deleteSendBoxMessage" parameterType="int">

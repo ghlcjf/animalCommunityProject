@@ -62,14 +62,14 @@
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/boardManagement/animalInfo"/>'>
+			<a href='<c:url value="/boardManagement/animalInfo/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        동물 소개
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/boardManagement/hospitalInfo"/>'>
+			<a href='<c:url value="/boardManagement/hospitalInfo/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        동물 병원 정보
@@ -83,7 +83,7 @@
 			      </div>
 		      	</button>
 			</a>
-	      	<a href='<c:url value="/boardManagement/notice"/>'>
+	      	<a href='<c:url value="/boardManagement/notice/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        공지사항

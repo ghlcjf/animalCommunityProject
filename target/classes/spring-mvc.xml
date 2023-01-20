@@ -50,6 +50,7 @@
 			<bean class="animal.intercepter.LoginCheckIntercepter"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/manager/**"/>
