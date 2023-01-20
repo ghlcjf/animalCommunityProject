@@ -31,6 +31,8 @@ button:hover{
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
+
+
 .bigBtn{
 		padding: 5px;   border: none;
 		height: 30px; 	border-radius: 10px;
@@ -75,7 +77,7 @@ button:hover{
 	<table class="table">
 		<c:if test="${freeBoard.name == userInfo.name }">
 			<tr>
-				<td  colspan="8">
+				<td colspan="8">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 					  <button type="button" onclick="return updateConfirm(${freeBoard.boardNum})">수정</button>
 					  <button type="button" onclick="return deleteConfirm(${freeBoard.boardNum})">삭제</button>
@@ -87,7 +89,7 @@ button:hover{
 			<th>글 번호</th>
 			<td>${freeBoard.boardNum}</td>
 			<th>글 제목</th>
-			<td colspan="5" width="100px" style = "word-break: break-all">${freeBoard.boardTitle}</td>
+			<td colspan="5" width="100px" style="word-break:break-all">${freeBoard.boardTitle}</td>
 		</tr>
 		<tr>
 			<th>작성자</th>
@@ -111,7 +113,7 @@ button:hover{
 			<td>${freeBoard.boardCategory } </td>
 		</tr>
 		<tr>
-			<td colspan="8">
+			<td colspan="8" style ="word-break: break-all">
 				<c:if test="${!empty freeBoard.boardUrl && freeBoard.boardUrl!='null'}">
 					<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" class="rounded mx-auto d-block" ><br>
 				</c:if>
