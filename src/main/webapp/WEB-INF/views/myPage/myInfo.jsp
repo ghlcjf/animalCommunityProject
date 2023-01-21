@@ -44,10 +44,6 @@
     border-bottom: 1px solid #96aeea;
 }
 
-.td-button {
-	line-height: 35px;
-}
-
 th {
      font-weight: normal;
 }

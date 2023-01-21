@@ -32,42 +32,46 @@ table {
 }
 
 .table {
-	margin-top: 30px;
-}
-
-thead {
-	background-color: #dfe6f7;
+	margin-top: 10px;
 }
 
 th {
-     font-weight: normal;
+    font-weight: normal;
 }
 
 td {
-overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+	overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
 }
 
-.td-button {
-	line-height: 35px;
+.table-group-divider-cs {
+    border-bottom: 1px solid #96aeea;
 }
 
 a {
 	text-decoration: none;
 	color: black;
 }
-	button{
-		padding: 5px;   border: none;
-		height: 30px; 	border-radius: 10px;
-		color: white;   font-weight:bolder;
-		background: rgb(136, 154, 233);
-		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-		line-height: 10px;
-		
-	}
-	button:hover{
-  			background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	}
+button{
+	padding: 5px;   border: none;
+	height: 30px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+	
+}
+button:hover{
+	background: rgb(101, 121, 207);
+	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
+.smBtn {
+	padding: 5px;   border: none;
+	height: 24px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+}
 </style>
 </head>
 <body>
@@ -93,17 +97,17 @@ a {
 	<c:otherwise>
 	
 		<table class="table table-sm">
-			<thead>
+			<thead class="table-group-divider-cs">
 			   <tr>
-				    <th scope="col">사진 번호</th>
-				    <th scope="col">사진 이름</th>
-				    <th scope="col">사진 정보</th>
-				    <th scope="col">수정/삭제</th>
+				    <th scope="col" width="70px;">사진 번호</th>
+				    <th scope="col" width="100px;">사진 이름</th>
+				    <th scope="col" width="300px;">사진 정보</th>
+				    <th scope="col" width="70px;">수정/삭제</th>
 			   </tr>
 			 </thead>
 			 <tbody>
 			 	<c:forEach items="${imageList}" var="image">
-				  <tr class="td-button">
+				  <tr>
 					<th scope="row">${image.imageNum}</th>
 					<td>${image.imageUrl}</td>
 					<td>${image.imageInfo}</td>

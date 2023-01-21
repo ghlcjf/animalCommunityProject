@@ -87,7 +87,7 @@ button:hover{
 				<div class="mb-3">
         <label for="formFile" class="form-label">이미지 수정</label>
         <input type="file" id="animalUrl2" name="animalUrl2" class="form-control" type="file" id="formFile">
-        <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
+        <input type="hidden" name="originPic" value="${animalInfo.animalUrl}">
       </div>
 				<div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">내용</label>
