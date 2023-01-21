@@ -121,7 +121,7 @@ a {
 
 <jsp:include page="../header.jsp"></jsp:include>
 
-<div class="container">
+<div class="container text-center">
         <div class="row">
         <div class="col-1">
             <div class="box1 list-group">
@@ -136,6 +136,7 @@ a {
   <a href="<c:url value='/freeBoard/freeBoardList/other/1/1' />" class="list-group-item list-group-item-action">기타</a>
 </div>
    </div>
+   
      <div class="col-10">
 	<nav class="navbar">
 		<div class="container-fluid">
@@ -148,67 +149,62 @@ a {
 		</div>
 	</nav>
 
-<div class="box2">
+<!-- <div class="box2"> -->
 	<table class="table table-hover table-sm">
 	  <thead class="table-group-divider-cs">
 	    <tr>
 	      <th scope="col" width="70px;">번호</th>
-	      <th scope="col" width="300px;">제목</th>
+	      <th width="300px;">제목</th>
 	      <th scope="col" width="70px;">조회수</th>
 	      <th scope="col" width="70px;">작성자</th>
 	      <th scope="col" width="70px;">작성일</th>
 	    </tr>
 	  </thead>
-	  <tbody>
+	  
 	  	<c:if test="${!empty noticeList}">
 			<c:forEach items="${noticeList}" var="notice">
+			<tbody>
 				<tr>
-					 <th scope="row">${notice.boardNum }</th>
+				 	<th scope="row">${notice.boardNum }</th>
 					<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />'"> ${notice.boardTitle } (${notice.commentCount})</td>
 					<td>${notice.viewCount }</td>
 					<td>${notice.name }
 					</td>
 					<td><fmt:formatDate value="${notice.writeDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
+				</tbody>
 			</c:forEach>
 		</c:if>
+		
 		<c:choose>
 			<c:when test="${empty freeBoardList}">
-				<tr>
-					<th colspan="5">등록한 게시글이 없습니다.</th>
-				</tr>
+				<p>게시글이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${freeBoardList}" var="board">
+				<tbody>
 					<tr>
 						<th scope="row">${board.boardNum }</th>
 						<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle} (${board.commentCount})</td>
 						<td>${board.viewCount }</td>
 						<td>${board.name }
-						
 							<!--본인외 다른사람의 메시지 이모티콘 클릭하면 메시지 보낼수있는 창으로 이동하게끔-->
 							<c:if test="${board.name != userInfo.name}" >  <!--여기의 주소는 ${board.name}에게 메시지를 보내는 주소여야함-->
 									<a class="messageBtn" href="#" onclick="sendMessage('${board.name}','${userInfo.name}'); return false;">	
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
 										  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
 										</svg>
-										
 									</a>
 							</c:if>
-						
 						</td>
-					
-	
 						<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
+					</tbody>
 				</c:forEach>
 			</c:otherwise>
-			
 		</c:choose>
-	  </tbody>
 	</table>
-
-</div>
+<!-- </div> -->
 
 <div class="box3">
 	<c:if test="${totalCnt != null}">

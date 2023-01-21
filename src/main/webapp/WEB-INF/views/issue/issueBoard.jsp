@@ -85,10 +85,10 @@ button{
 		<table class="table table-hover table-sm">
 		<thead>
 			<tr>
-				<th scope="col">글 번호</th>
-				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
-				<th scope="col">작성일</th>
+				<th width="70px;">글 번호</th>
+				<th width="300px;">제목</th>
+				<th width="70px;">작성자</th>
+				<th width="70px;">작성일</th>
 			</tr>
 			</thead>
 			<c:forEach items="${issue}" var="board" varStatus="b">

@@ -91,6 +91,11 @@ button:hover{
 	}
 	function updateImageCheck() {
 		
+		if($('#imageUrl2').val()==''){
+			alert('사진을 등록해 주세요');
+			return false;
+		}
+		
 		if($('#exampleFormControlInput1').val()==0){
 			alert('이미지 정보를 입력해 주세요');
 			return false;

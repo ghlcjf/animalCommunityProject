@@ -118,6 +118,11 @@ button:hover{
 			return false;
 		}
 		
+		if($('#animalUrl2').val()==''){
+			alert('사진을 등록해 주세요');
+			return false;
+		}
+		
 		if($('#exampleFormControlTextarea1').val()==0){
 			alert('내용을 입력해 주세요');
 			return false;
