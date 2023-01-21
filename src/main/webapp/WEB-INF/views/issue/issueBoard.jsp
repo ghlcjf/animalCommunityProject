@@ -29,9 +29,6 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
-table {
-	table-layout: fixed
-}
 
 .table {
 	margin-top: 30px;
@@ -43,10 +40,6 @@ thead {
 
 th {
      font-weight: normal;
-}
-
-td {
-overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
 }
 
 a {
