@@ -31,6 +31,7 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
+
  table {
 	table-layout: fixed
 }
@@ -55,33 +56,38 @@ a {
 	text-decoration: none;
 	color: black;
 }
-.text-end{
+
+.text-end {
 	margin-right: 100px
 }
-h2{
+
+h2 {
 	margin-bottom: 30px;
 	font-weight:bolder;
 }
-.d-grid{
+
+.d-grid {
 	margin-top: 70px;
 }
 
-button{
+button {
 	padding: 5px;   border: none;
 	height: 30px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
 	background: rgb(136, 154, 233);
 	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 	line-height: 10px;
-		
-	}
-button:hover{
+}
+
+button:hover {
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
-.bigBtn{
+
+.bigBtn {
 	margin-left: 10px;
 }	
+
 .smBtn {
 	padding: 5px;   border: none;
 	height: 24px; 	border-radius: 10px;
@@ -90,87 +96,89 @@ button:hover{
 	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 	line-height: 10px;
 }
-	</style>
+</style>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 	
 	<div class="container text-center">
         <div class="row">
-        <div class="col-10 mx-auto">
-	<nav class="navbar">
-		<div class="container-fluid">
-			<span class="navbar-brand-cs mb-0 h1">사용자 정보</span>
-			<div class="d-flex justify-content-end">
-			<form action="<c:url value='/${member.id}' />">
-						<button class="bigBtn" type="submit" onclick="return memberDrop('${member.name}')">회원강제탈퇴</button>			
-					</form>
-					<form action="<c:url value='/authorize/${member.id}' />">
-						<button class="bigBtn" type="submit" onclick="return authorize('${member.name}')">관리자권한 부여</button>
-					</form>
-			</div>
-			</div>
-			</nav>
-			
-		<table class="table">
-		<thead class="table-group-divider-cs">
-			<tr>
-				<th>이름</th>
-				<th>아이디</th>
-				<th>이메일</th>
-				<th>전화번호</th>
-			</tr>
-			</thead>
-			<tr>
-				<td>${member.name }</td>
-				<td>${member.id }</td>
-				<td>${member.email }</td>
-				<td>${member.phone }</td>
-			</tr>
-		</table>
-		
-		<nav class="navbar">
-		<div class="container-fluid">
-			<span class="navbar-brand-cs mb-0 h1">게시글 목록</span>
-			<div class="d-flex justify-content-end">
-			</div>
-			</div>
-			</nav>
-			
-		<c:choose>
-			<c:when test="${empty board}">
-				<p>게시글이 없습니다.</p>
-			</c:when>
-			<c:otherwise>
-				<table class="table">
-				<thead class="table-group-divider-cs">
-					<tr>
-						<th width="300px;">글제목</th>
-						<th width="70px;">작성일</th>
-						<th width="70px;">조회수</th>
-						<th width="70px;">글삭제</th>
-					</tr>
-					</thead>
-					<c:forEach items="${board}" var="board">
-						<tr class="td-button">
-							<td>${board.boardTitle}</td>
-							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
-							<td>${board.viewCount }</td>
-							<td>
-								<form action="<c:url value='/board/delete/${board.boardNum}' />">
-									<button class="smBtn" type="submit" onclick="return boardDelete()">삭제</button>
+        	<div class="col-10 mx-auto">
+				<nav class="navbar">
+					<div class="container-fluid">
+						<span class="navbar-brand-cs mb-0 h1">사용자 정보</span>
+							<div class="d-flex justify-content-end">
+								<form action="<c:url value='/${member.id}' />">
+									<button class="bigBtn" type="submit" onclick="return memberDrop('${member.name}')">회원강제탈퇴</button>			
 								</form>
-							</td>
+								<form action="<c:url value='/authorize/${member.id}' />">
+									<button class="bigBtn" type="submit" onclick="return authorize('${member.name}')">관리자권한 부여</button>
+								</form>
+								</div>
+							</div>
+						</nav>
+			
+				<table class="table">
+					<thead class="table-group-divider-cs">
+						<tr>
+							<th>이름</th>
+							<th>아이디</th>
+							<th>이메일</th>
+							<th>전화번호</th>
 						</tr>
-					</c:forEach>
+					</thead>
+					<tbody>
+						<tr>
+							<td>${member.name }</td>
+							<td>${member.id }</td>
+							<td>${member.email }</td>
+							<td>${member.phone }</td>
+						</tr>
+					</tbody>
 				</table>
-			</c:otherwise>
-		</c:choose>
-		<div class="d-flex justify-content-start">
-		<button type="button" onclick="location.href='<c:url value="/memberManagement" />'">목록으로 돌아가기</button>
+		
+				<nav class="navbar">
+					<div class="container-fluid">
+						<span class="navbar-brand-cs mb-0 h1">게시글 목록</span>
+					</div>
+				</nav>
+			
+				<c:choose>
+					<c:when test="${empty board}">
+						<p>게시글이 없습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<table class="table">
+							<thead class="table-group-divider-cs">
+								<tr>
+									<th width="300px;">글제목</th>
+									<th width="70px;">작성일</th>
+									<th width="70px;">조회수</th>
+									<th width="70px;">글삭제</th>
+								</tr>
+							</thead>
+						
+							<c:forEach items="${board}" var="board">
+								<tr class="td-button">
+									<td>${board.boardTitle}</td>
+									<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
+									<td>${board.viewCount }</td>
+									<td>
+										<form action="<c:url value='/board/delete/${board.boardNum}' />">
+											<button class="smBtn" type="submit" onclick="return boardDelete()">삭제</button>
+										</form>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:otherwise>
+				</c:choose>
+				
+				<div class="d-flex justify-content-start">
+					<button type="button" onclick="location.href='<c:url value="/memberManagement" />'">목록으로 돌아가기</button>
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 
 	<jsp:include page="../footer.jsp"></jsp:include>

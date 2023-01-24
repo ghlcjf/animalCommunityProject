@@ -31,84 +31,87 @@
 }
 
 .table {
-	margin-top: 30px;
+	margin-top: 10px;
 }
-
-thead {
-	background-color: #dfe6f7;
+	
+.table-group-divider-cs {
+    border-bottom: 1px solid #96aeea;
 }
 
 th {
-     font-weight: normal;
+    font-weight: normal;
 }
 
 a {
 	text-decoration: none;
 	color: black;
 }
-button{
-		padding: 5px;   border: none;
-		height: 30px; 	border-radius: 10px;
-		color: white;   font-weight:bolder;
-		background: rgb(136, 154, 233);
-		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-		line-height: 10px;
-		
-	}
-	button:hover{
-  			background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-	}
+
+button {
+	padding: 5px;   border: none;
+	height: 30px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+}
+	
+button:hover{
+	background: rgb(101, 121, 207);
+	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
 </style>
 </head>
 <body>
-
 <jsp:include page="../header.jsp"></jsp:include>
 
-<div class="container text-center">
-        <div class="row">
- <div class="col-10 mx-auto">
-<nav class="navbar">
-		<div class="container-fluid">
-			<span class="navbar-brand-cs mb-0 h1">이슈</span>
-			<div class="d-flex justify-content-end">
-				<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+	<div class="container text-center">
+		<div class="row">
+ 			<div class="col-10 mx-auto">
+				<nav class="navbar">
+					<div class="container-fluid">
+						<span class="navbar-brand-cs mb-0 h1">이슈</span>
+							<div class="d-flex justify-content-end">
+								<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+							</div>
+						</div>
+					</nav>
+
+				<c:choose>
+					<c:when test="${empty issue}">
+						<p>게시글이 없습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<table class="table table-hover table-sm">
+							<thead class="table-group-divider-cs">
+								<tr>
+									<th width="70px;">글 번호</th>
+									<th width="300px;">제목</th>
+									<th width="70px;">작성자</th>
+									<th width="70px;">작성일</th>
+								</tr>
+							</thead>
+						<c:forEach items="${issue}" var="board" varStatus="b">
+							<tbody>
+								<tr>
+									<th scope="row">${board.issueNum}</th>
+									<td style="cursor: pointer;" onclick="location.href='<c:url value='/issue/detail/${board.issueNum}' />'"> ${board.issueTitle}</td>
+									<td>${board.name}</td>
+									<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
+								</tr>
+							</tbody>
+						</c:forEach>
+						</table>
+					</c:otherwise>
+				</c:choose>
+				
+				<div class="d-flex justify-content-start">
+				<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
+				</div>
 			</div>
 		</div>
-	</nav>
-
-<c:choose>
-	<c:when test="${empty issue}">
-		<p>게시글이 없습니다.</p>
-	</c:when>
-	<c:otherwise>
-		<table class="table table-hover table-sm">
-		<thead>
-			<tr>
-				<th width="70px;">글 번호</th>
-				<th width="300px;">제목</th>
-				<th width="70px;">작성자</th>
-				<th width="70px;">작성일</th>
-			</tr>
-			</thead>
-			<c:forEach items="${issue}" var="board" varStatus="b">
-				<tr>
-					<th scope="row">${board.issueNum}</th>
-					<td style="cursor: pointer;" onclick="location.href='<c:url value='/issue/detail/${board.issueNum}' />'"> ${board.issueTitle}</td>
-					<td>${board.name}</td>
-					<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
-				</tr>
-			</c:forEach>
-		</table>
-		
-	</c:otherwise>
-</c:choose>
-<div class="d-flex justify-content-start">
-		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
-		</div>
-</div>
-</div>
-</div>
+	</div>
+	
 <div class="box3">
 	<c:if test="${totalCnt != null}">
 		<nav aria-label="Page navigation example">

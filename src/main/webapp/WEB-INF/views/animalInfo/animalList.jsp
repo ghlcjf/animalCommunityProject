@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<script src="/js/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<script src="../jquery.twbsPagination.js" type="text/javascript"></script>
 <style type="text/css">
 .navbar {
 	margin-top: 15px;
@@ -30,34 +30,37 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
-
 .card {
-	margin-top: 0.8rem;
-	margin-bottom: 2rem;
+	width: 200px;
+	height: 250px;
+	margin-top: 30px;
 }
-
 .card-img-top {
-	width: 100%;
-	height: 15vw;
-	object-fit: cover;
+    width: 100%;
+    height: 205px;
+    object-fit: cover;
+}
+.card-footer-cs {
+padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+color: var(--bs-card-cap-color);
+background-color: var(--bs-card-cap-bg);
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 
-<div class="container text-center">
-        <div class="row">
-        <div class="col-10 mx-auto">
-	<nav class="navbar">
-		<div class="container-fluid">
-			<span class="navbar-brand-cs mb-0 h1">동물 소개</span>
-			<div class="d-flex justify-content-end">
-				<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
-			</div>
-		</div>
-	</nav>
-	</div>
+	<div class="container text-center">
+    	<div class="row">
+			<div class="col-10 mx-auto">
+				<nav class="navbar">
+					<div class="container-fluid">
+						<span class="navbar-brand-cs mb-0 h1">동물 소개</span>
+							<div class="d-flex justify-content-end">
+								<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+							</div>
+						</div>
+					</nav>
 	
 	<c:choose>
 		<c:when test="${empty animals}">
@@ -65,43 +68,38 @@
 		</c:when>
 		<c:otherwise>
 			<div class="container text-center">
-				<div class="row row-cols-4">
+				<div class="row row-cols-5">
 					<c:forEach items="${animals}" var="animal">
 						<c:choose>
 							<c:when test="${empty animal.animalUrl }">
 								<div class="col">
-									<div class="card" style="width: 18rem;">
-										<a
-											href="<c:url value='/animal/detail/${animal.animalNum }' />">
-											<img src="/imageFolder/image/noImage.png"
-											class="card-img-top img-fluid img-thumbnail"
-											${animal.animalNum }>
+									<div class="card">
+										<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
+											<img src="/imageFolder/noImage.png" class="card-img-top" ${animal.animalNum }>
 										</a>
-										<div class="card-body">
-											<p class="card-text">${animal.animalTitle }</p>
+										<div class="card-footer-cs">
+											<small class="text-muted">${animal.animalTitle }</small>
 										</div>
 									</div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="col">
-									<div class="card" style="width: 18rem;">
-										<a
-											href="<c:url value='/animal/detail/${animal.animalNum }' />">
-											<img src="/imageFolder/animalInfoImage/${animal.animalUrl }"
-											class="card-img-top img-fluid img-thumbnail">
+									<div class="card">
+										<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
+											<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="card-img-top">
 										</a>
-										<div class="card-body">
-											<p class="card-text">${animal.animalTitle }</p>
+										<div class="card-footer-cs">
+											<small class="text-muted">${animal.animalTitle }</small>
 										</div>
 									</div>
 								</div>
 							</c:otherwise>
+							
 						</c:choose>
 					</c:forEach>
 				</div>
-				
-				
+				</div>
 				
 				<div class="container text-center">
 					<c:if test="${totalCnt != null}">
@@ -180,22 +178,13 @@
 							</ul>
 						</nav>
 					</c:if>
-				
 				</div>
-				
-				
-				
-			</div>
 		</c:otherwise>
 	</c:choose>
 	</div>
 	</div>
 	</div>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous"></script>
+	
 	<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>

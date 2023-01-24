@@ -37,11 +37,11 @@ table {
 }
 
 .table {
-	margin-top: 30px;
-}
-
-thead {
-	background-color: #dfe6f7;
+		margin-top: 10px;
+	}
+	
+.table-group-divider-cs {
+    border-bottom: 1px solid #96aeea;
 }
 
 th {
@@ -52,10 +52,6 @@ td {
 overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
 }
 
-.td-button {
-	line-height: 35px;
-}
-
 button{
 		padding: 5px;   border: none;
 		height: 30px; 	border-radius: 10px;
@@ -63,12 +59,19 @@ button{
 		background: rgb(136, 154, 233);
 		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 		line-height: 10px;
-		
 	}
 	button:hover{
   			background: rgb(101, 121, 207);
 		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 	}
+	.smBtn {
+	padding: 5px;   border: none;
+	height: 24px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+}
 	#massageContainer{
 	margin-top:20px;
 	}
@@ -98,7 +101,7 @@ button{
 	</nav>
 	
 	<table class="table table-hover table-sm" id="receiveList">
-		<thead>
+		<thead class="table-group-divider-cs">
 			<tr>
 				<th>from</th>
 				<th>to</th>
@@ -108,7 +111,7 @@ button{
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="td-button">
+			<tr>
 			</tr>
 		</tbody>
 	</table>
@@ -122,7 +125,7 @@ button{
 		</div>
 	</nav>
     <table id="sendList" class="table table-hover table-sm">
-		<thead>
+		<thead class="table-group-divider-cs">
 			<tr>
 				<th>from</th>
 				<th>to</th>
@@ -132,7 +135,7 @@ button{
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="td-button">
+			<tr>
 			</tr>
 		</tbody>
 	</table>
@@ -160,12 +163,12 @@ button{
 				console.log('연결 성공');
 				let receiveList = document.getElementById('receiveList');
 				for(let i=0;i<data.length;i++){
-					let tr = $('<tr class="td-button"></tr>').appendTo(receiveList);
+					let tr = $('<tr></tr>').appendTo(receiveList);
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
 					$('<td></td>').html(data[i].sendTime).appendTo(tr);
-					$('<td></td>').html('<button class="replyMessageBtn" type="button" value="'+data[i].messageNum+'">답장</button>&nbsp;&nbsp;<button class="deleteReceiveMessageBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
+					$('<td></td>').html('<button class="replyMessageBtn smBtn" type="button" value="'+data[i].messageNum+'">답장</button>&nbsp;&nbsp;<button class="deleteReceiveMessageBtn smBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
 					
 					
 				}
@@ -227,12 +230,12 @@ button{
 				
 				let sendList = document.getElementById('sendList');
 				for(let i=0;i<data.length;i++){
-					let tr = $('<tr class="td-button"></tr>').appendTo(sendList);
+					let tr = $('<tr></tr>').appendTo(sendList);
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
 					$('<td></td>').html(data[i].sendTime).appendTo(tr);
-					$('<td></td>').html('<button class="deleteSendMessageBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
+					$('<td></td>').html('<button class="deleteSendMessageBtn smBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
 				}
 				
 				$('.deleteSendMessageBtn').on({

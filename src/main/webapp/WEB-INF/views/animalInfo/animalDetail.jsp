@@ -13,19 +13,19 @@
 	crossorigin="anonymous">
 <style type="text/css">
 .card{
-           margin-top: 50px;
-        }
-        .img-fluid{
-            height: 500px;
-        }
-        .list-group-item-custom {
-        position: relative;
-        display: block;
-        padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
-        color: var(--bs-list-group-color);
-        text-decoration: none;
-        background-color: var(--bs-list-group-bg);
-        border: none;
+	margin-top: 50px;
+ }
+ .img-fluid{
+     height: 500px;
+ }
+ .list-group-item-custom {
+	 position: relative;
+	 display: block;
+	 padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+	 color: var(--bs-list-group-color);
+	 text-decoration: none;
+	 background-color: var(--bs-list-group-bg);
+	 border: none;
 </style>
 </head>
 <body>
@@ -48,7 +48,7 @@
 						</div>
 					</li>
 				</ul>
-				<img src="/imageFolder/image/noImage.png">
+				<!-- <img src="/imageFolder/noImage.png"> -->
 				<div class="card-body">
 					<h5 class="card-title">제목</h5>
 					<p class="card-text">${animal.animalContent}</p>

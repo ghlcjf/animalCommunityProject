@@ -21,25 +21,29 @@
 
 
 <style>
-.container{
+.container {
     margin-top: 20px;
-        }
-.fs-2{
+}
+
+.fs-2 {
 	color: #889ae9;
 	font-weight: bold;
 }
-.form-label{
+
+.form-label {
 	font-weight: bold;
 }
-#exampleFormControlTextarea1{
+
+#exampleFormControlTextarea1 {
     height: 300px;
     resize: none;
 }
-img{
+
+img {
 	width: 100%;
 	height: 500px;
 }
-	button{
+button {
 	padding: 5px;   border: none;
 	height: 40px; 	border-radius: 10px;
 	width: 95px;
@@ -47,9 +51,9 @@ img{
 	background: rgb(136, 154, 233);
 	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 	line-height: 10px;
-	
 }
-button:hover{
+
+button:hover {
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
@@ -58,25 +62,25 @@ button:hover{
 
 <body>
 
-<jsp:include page="../header.jsp"></jsp:include>
+	<jsp:include page="../header.jsp"></jsp:include>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-7 mx-auto">
+				<p class="fs-2">자유게시판 글 작성</p>
+				<hr>
 
-<div class="container">
-        <div class="row">
-          <div class="col-7 mx-auto">
-<p class="fs-2">자유게시판 글 작성</p>
-<hr>
+				<form:form action="insertFreeBoard" modelAttribute="freeBoardCommand" enctype="multipart/form-data">
 
-<form:form action="insertFreeBoard" modelAttribute="freeBoardCommand" enctype="multipart/form-data">
-
-<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">제목</label>
-			<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
+				<div class="mb-3">
+		            <label for="exampleFormControlInput1" class="form-label">제목</label>
+					<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
 				</div>
 				
 				<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">카테고리</label>
-            <form:select path="boardCategory" class="form-select" aria-label="Default select example" id="category">
-            			<form:option value="선택">선택</form:option>
+		            <label for="exampleFormControlInput1" class="form-label">카테고리</label>
+		            <form:select path="boardCategory" class="form-select" aria-label="Default select example" id="category">
+	           			<form:option value="선택">선택</form:option>
 						<form:option value="강아지">강아지</form:option>
 						<form:option value="고양이">고양이</form:option>
 						<form:option value="파충류">파충류</form:option>
@@ -87,22 +91,23 @@ button:hover{
 					</div>
 				
 				<div class="mb-3">
-        <label for="formFile" class="form-label">이미지 선택</label>
-        <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
-        <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
-      </div>
+			        <label for="formFile" class="form-label">이미지 선택</label>
+			        <input type="file" id="boardUrl2" name="boardUrl2" class="form-control" type="file" id="formFile">
+			        <input type="hidden" name="originPic" value="${freeBoard.boardUrl}">
+				</div>
+				
 				<div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
-        <form:errors path="boardContent" />
-      </div>
+			        <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+			        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
+			        <form:errors path="boardContent" />
+				</div>
 	
-	<button type="button" onclick="return cancel()">취소</button>
-	<button type="submit" onclick="return insertFreeBoardCheck()">글 등록</button>
-</form:form>
-</div>
-</div>
-</div>
+				<button type="button" onclick="return cancel()">취소</button>
+				<button type="submit" onclick="return insertFreeBoardCheck()">글 등록</button>
+				</form:form>
+			</div>
+		</div>
+	</div>
 
 <jsp:include page="../footer.jsp"></jsp:include>
 

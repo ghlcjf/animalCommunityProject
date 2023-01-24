@@ -45,7 +45,7 @@
 }
 
 th {
-     font-weight: normal;
+    font-weight: normal;
 }
 
 td {
@@ -57,18 +57,12 @@ a {
 	color: black;
 	cursor: cursor;
 }
-.text-end{
+
+.text-end {
 	margin-right: 100px
 }
-h2{
-	margin-bottom: 30px;
-	font-weight:bolder;
-}
-.d-grid{
-	margin-top: 70px;
-}
 
-button{
+button {
 	padding: 5px;   border: none;
 	height: 30px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
@@ -102,54 +96,54 @@ button:hover {
 	
 	<div class="container text-center">
         <div class="row">
-        <div class="col-10 mx-auto">
-	<nav class="navbar">
-		<div class="container-fluid">
-			<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
-			<div class="d-flex justify-content-end">
-			<form action='<c:url value="/mypage/${user.id}" />'>
-			<button class="bigBtn" type="submit" onclick="return out('${user.id}')">회원 탈퇴</button>
-			</form>
-			<form id="section" action="<c:url value='/checkPassword' />">
-			<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
-			</form>
-			</div>
-		</div>
-	</nav>
+	        <div class="col-10 mx-auto">
+				<nav class="navbar">
+					<div class="container-fluid">
+						<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
+							<div class="d-flex justify-content-end">
+								<form action='<c:url value="/mypage/${user.id}" />'>
+									<button class="bigBtn" type="submit" onclick="return out('${user.id}')">회원 탈퇴</button>
+								</form>
+								<form id="section" action="<c:url value='/checkPassword' />">
+									<button class="bigBtn" type="submit" onclick="newWindow()">개인정보 수정하기</button>
+								</form>
+							</div>
+						</div>
+					</nav>
 	
-		<table class="table table-sm">
-		<thead class="table-group-divider-cs">
-			<tr>
-				<th>이름</th>
-				<th>아이디</th>
-				<th>이메일</th>
-				<th>전화번호</th>
-			</tr>
-			</thead>
-			<tr>
-				<td>${user.name }</td>
-				<td>${user.id }</td>
-				<td>${user.email }</td>
-				<td>${user.phone }</td>
-			</tr>
-		</table>
-
-		</div>
-		</div>
-		</div>
-		
-          <div class="container text-center">
-        <div class="row">
-		 <div class="col-10 mx-auto">
-		<nav class="navbar">
-		<div class="container-fluid">
-			<span class="navbar-brand-cs mb-0 h1">게시글 목록</span>
-			<div class="d-flex justify-content-end">
-				<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+				<table class="table table-sm">
+					<thead class="table-group-divider-cs">
+						<tr>
+							<th>이름</th>
+							<th>아이디</th>
+							<th>이메일</th>
+							<th>전화번호</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>${user.name }</td>
+						<td>${user.id }</td>
+						<td>${user.email }</td>
+						<td>${user.phone }</td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
+	</div>
 		
-	</nav>
+	<div class="container text-center">
+		<div class="row">
+	 		<div class="col-10 mx-auto">
+				<nav class="navbar">
+					<div class="container-fluid">
+						<span class="navbar-brand-cs mb-0 h1">게시글 목록</span>
+							<div class="d-flex justify-content-end">
+								<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+							</div>
+						</div>
+					</nav>
 	
 		<c:choose>
 			<c:when test="${empty boardList}">
@@ -165,12 +159,10 @@ button:hover {
 						<th width="70px;">글 수정</th>
 						<th width="70px;">글 삭제</th>
 					</tr>
-					</thead>
-					<c:forEach items="${boardList}" var="board">
-
+				</thead>
+				<c:forEach items="${boardList}" var="board">
 					<tbody>
 						<tr>
-
 							<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle}</td>
 							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 							<td>${board.viewCount }</td>
@@ -186,15 +178,17 @@ button:hover {
 								</form>
 							</td>
 						</tr>
-						</tbody>
-					</c:forEach>
+					</tbody>
+				</c:forEach>
 				</table>
 			</c:otherwise>
 		</c:choose>
-		<div class="d-flex justify-content-start">
-		<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
-		</div>
-		</div>
+		
+			<div class="d-flex justify-content-start">
+				<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
+			</div>
+				
+			</div>
 		</div>
 		
 	<!--마이페이지 페이지네이션-->
@@ -267,9 +261,8 @@ button:hover {
 		</nav>
 	</c:if>
 	
-		
-		<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
-		</div>
+	<a href='<c:url value="/main" />'>메인으로 돌아가기</a>
+	</div>
 		
 	<jsp:include page="../footer.jsp"></jsp:include>
 
