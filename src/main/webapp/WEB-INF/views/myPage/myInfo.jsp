@@ -198,18 +198,12 @@ button:hover {
 								<c:forEach var="page" begin="1" end="10" step="1">
 									<c:if test="${sectionPage.section>1 && page==1}">
 										<li class="page-item">
-									      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${animal}/${sectionPage.section-1}/${10}">
+									      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${sectionPage.section-1}/${10}">
 									        <span aria-hidden="true">&laquo;</span>
 									      </a>
 									    </li>
 									</c:if>
 									<li class="page-item">
-<<<<<<< HEAD
-								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${sectionPage.section-1}/${10}">
-								        <span aria-hidden="true">&laquo;</span>
-								      </a>
-								    </li>
-=======
 										<a class="page-link" href="/animalCommunity/myPage/${sectionPage.section}/${page}">
 											${(sectionPage.section-1)*10+page}
 										</a>
@@ -217,91 +211,43 @@ button:hover {
 									<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
 									<c:if test="${page==10}">
 										<li class="page-item">
-									      <a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section+1}/${1}" aria-label="Next">
+									      <a class="page-link" href="/animalCommunity/myPage/${sectionPage.section+1}/${1}" aria-label="Next">
 									        <span aria-hidden="true">&raquo;</span>
 									      </a>
 									    </li>
 									</c:if>
 								</c:forEach>
->>>>>>> refs/heads/jwg0615-11
-								</c:if>
+							</c:if>
 							<c:if test="${(sectionPage.section*100)>=totalCnt }"> <!-- 다음 섹션이 존재하지 않는가=> '>>' X  -->
 								<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
 									<c:if test="${sectionPage.section>1 && page==1}">
 										<li class="page-item">
-									      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${animal}/${sectionPage.section-1}/${10}">
+									      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${sectionPage.section-1}/${10}">
 									        <span aria-hidden="true">&laquo;</span>
 									      </a>
 									    </li>
 									</c:if>
 									<li class="page-item">
-<<<<<<< HEAD
-								      <a class="page-link" href="/animalCommunity/myPage/${sectionPage.section+1}/${1}" aria-label="Next">
-								        <span aria-hidden="true">&raquo;</span>
-								      </a>
-								    </li>
-								</c:if>
-							</c:forEach>
-=======
-										<a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section}/${page}">
+										<a class="page-link" href="/animalCommunity/myPage/${sectionPage.section}/${page}">
 											${(sectionPage.section-1)*10+page}
 										</a>
 									</li>
 								</c:forEach>
->>>>>>> refs/heads/jwg0615-11
 							</c:if>
-<<<<<<< HEAD
-						<c:if test="${(sectionPage.section*100)>=totalCnt }"> <!-- 다음 섹션이 존재하지 않는가=> '>>' X  -->
-							<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
-								<c:if test="${sectionPage.section>1 && page==1}">
-									<li class="page-item">
-								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${sectionPage.section-1}/${10}">
-								        <span aria-hidden="true">&laquo;</span>
-								      </a>
-								    </li>
-								</c:if>
-=======
 						</c:when>
 						<c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
 							<c:forEach var="page" begin="1" end="10" step="1">
->>>>>>> refs/heads/jwg0615-11
 								<li class="page-item">
 									<a class="page-link" href="/animalCommunity/myPage/${sectionPage.section}/${page}">
 										${(sectionPage.section-1)*10+page}
 									</a>
 								</li>
 							</c:forEach>
-<<<<<<< HEAD
-						</c:if>
-					</c:when>
-					<c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
-						<c:forEach var="page" begin="1" end="10" step="1">
-							<li class="page-item">
-								<a class="page-link" href="/animalCommunity/myPage/${sectionPage.section}/${page}">
-									${(sectionPage.section-1)*10+page}
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-					<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
-						<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
-							<li class="page-item">
-								<a class="page-link" href="/animalCommunity//myPage/${sectionPage.section}/${page}">
-									${(sectionPage.section-1)*10+page}
-								</a>
-							</li>
-						</c:forEach>
-					</c:when>
-				</c:choose>
-			</ul>
-		</nav>
-	</c:if>
-=======
 						</c:when>
 						<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
 							<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
 								<li class="page-item">
-									<a class="page-link" href="/animalCommunity//myPage${animal}/${sectionPage.section}/${page}">
+									<a class="page-link" href="/animalCommunity//myPage/${sectionPage.section}/${page}">
 										${(sectionPage.section-1)*10+page}
 									</a>
 								</li>
@@ -312,7 +258,6 @@ button:hover {
 			</nav>
 		</c:if>
 	</div>
->>>>>>> refs/heads/jwg0615-11
 	
 			<div class="d-flex justify-content-start">
 				<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
@@ -324,34 +269,34 @@ button:hover {
 		</div>
 	</div>
 		
-	<jsp:include page="../footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 
-	<script type="text/javascript">
-		function boardDelete(){
-			 return confirm('게시글을 삭제 하시겠습니까?');
-		}
+<script type="text/javascript">
+	function boardDelete(){
+		 return confirm('게시글을 삭제 하시겠습니까?');
+	}
 
-		function boardUpdate(){
-			 return confirm('게시글을 수정하시겠습니까?');
-		}
+	function boardUpdate(){
+		 return confirm('게시글을 수정하시겠습니까?');
+	}
+	
+	/* function newWindow(){
 		
-		/* function newWindow(){
-			
-			let url = "${context}/checkPassword";
-			
-			window.open(url,'_blank_1',
-			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
-		} */
-
-		function out(name){
-			console.log(name);
-			if(confirm('정말 탈퇴하시겠습니까?')){
-				return alert('탈퇴가 정상 처리되었습니다.');
-			}else{
-				return false;
-			}
+		let url = "${context}/checkPassword";
 		
+		window.open(url,'_blank_1',
+		'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
+	} */
+
+	function out(name){
+		console.log(name);
+		if(confirm('정말 탈퇴하시겠습니까?')){
+			return alert('탈퇴가 정상 처리되었습니다.');
+		}else{
+			return false;
 		}
-	</script>
+	
+	}
+</script>
 </body>
 </html>

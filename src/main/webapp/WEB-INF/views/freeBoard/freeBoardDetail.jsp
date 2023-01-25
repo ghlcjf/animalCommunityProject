@@ -208,38 +208,6 @@ img {
 			<div class="col-8 mx-auto">
 
 				<table class="table table-sm">
-					<c:if test="${freeBoard.name == userInfo.name }">
-						<div class="d-flex justify-content-end">
-				  			<button class="bigBtn" type="button" onclick="return updateConfirm(${freeBoard.boardNum})">수정</button>
-							<button class="bigBtn" type="button" onclick="return deleteConfirm(${freeBoard.boardNum})">삭제</button>
-						</div>
-<<<<<<< HEAD
-					</form>
-				</td>
-			</tr>
-		</c:if>
-		<c:forEach items="${freeComments}" var="freeComment">
-			<tr>
-				<td width="130px;">
-					${freeComment.name }
-					<c:if test="${freeComment.name!=userInfo.name}">
-						<input type="hidden" id="receiverNameCmt" value="${freeComment.name}">
-						<a class="messageBtn" href="#" onclick="sendMessageCmt(); return false;">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-							  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-							</svg>
-						</a>
-=======
->>>>>>> refs/heads/jwg0615-11
-					</c:if>
-<<<<<<< HEAD
-				</td>
-				<td style = "word-break: break-all">${freeComment.commentContent }</td>
-				<td width="130px;" ><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
-			</tr>
-		</c:forEach>
-	</table>
-=======
 					<c:if test="${freeBoard.name!=userInfo.name }">
 						<div class="d-flex justify-content-end">
 				  			<input class="btn-cs-3" type="button" id="reportBtn" value="신고 ${freeBoard.report}" onclick="addReport(${freeBoard.boardNum})">
@@ -326,12 +294,11 @@ img {
 									</a>
 								</c:if>
 							</td>
-							<td width="700px;" style = "word-break: break-all">${freeComment.commentContent }</td>
-							<td><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+							<td>${freeComment.commentContent }</td>
+							<td width="140px" style = "word-break: break-all"><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 						</tr>
 					</c:forEach>
 				</table>
->>>>>>> refs/heads/jwg0615-11
 	
 				<div class="d-flex justify-content-start">
 					<button type="button" class="smallBtn" onclick="location.href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'">목록으로 돌아가기</button>
