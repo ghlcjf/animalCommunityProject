@@ -136,7 +136,7 @@ button:hover {
 							<img src="/imageFolder/issueBoardImage/${issue.issueUrl }">
 						</c:if>
 	  					<div class="card-body">
-							<p class="card-text">${issue.issueContent}</p>
+							<p class="card-text" style="white-space:pre">${issue.issueContent}</p>
 	  					</div>
 					</div>
 				
@@ -158,7 +158,7 @@ button:hover {
 					<c:forEach items="${issueComment}" var="issueComment">
 						<tr>
 							<td width="130px;">${issueComment.name }</td>
-							<td style = "word-break: break-all">${issueComment.commentContent }</td>
+							<td style = "word-break: break-all;">${issueComment.commentContent }</td>
 							<td width="130px;"><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 						</tr>
 					</c:forEach>
