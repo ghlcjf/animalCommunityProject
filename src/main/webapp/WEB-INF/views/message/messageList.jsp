@@ -37,11 +37,11 @@ table {
 }
 
 .table {
-	margin-top: 30px;
-}
-
-thead {
-	background-color: #dfe6f7;
+		margin-top: 10px;
+	}
+	
+.table-group-divider-cs {
+    border-bottom: 1px solid #96aeea;
 }
 
 th {
@@ -59,12 +59,19 @@ button{
 		background: rgb(136, 154, 233);
 		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 		line-height: 10px;
-		
 	}
 	button:hover{
   			background: rgb(101, 121, 207);
 		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 	}
+	.smBtn {
+	padding: 5px;   border: none;
+	height: 24px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+}
 	#massageContainer{
 	margin-top:20px;
 	}
@@ -94,16 +101,19 @@ button{
 	</nav>
 	
 	<table class="table table-hover table-sm" id="receiveList">
-		<thead>
+		<thead class="table-group-divider-cs">
 			<tr>
-				<td>from</td>
-				<td>to</td>
-				<td>내용</td>
-				<td>보낸 시간</td>
-				<td>reply/delete</td>
-					
+				<th>from</th>
+				<th>to</th>
+				<th>내용</th>
+				<th>보낸 시간</th>
+				<th>delete</th>		
 			</tr>
 		</thead>
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
 	</table>
     
   </div>
@@ -115,15 +125,19 @@ button{
 		</div>
 	</nav>
     <table id="sendList" class="table table-hover table-sm">
-		<thead>
+		<thead class="table-group-divider-cs">
 			<tr>
-				<td>from</td>
-				<td>to</td>
-				<td>내용</td>
-				<td>보낸 시간</td>
-				<td>delete</td>		
+				<th>from</th>
+				<th>to</th>
+				<th>내용</th>
+				<th>보낸 시간</th>
+				<th>delete</th>		
 			</tr>
 		</thead>
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
 	</table>
 	
   </div>
@@ -154,7 +168,7 @@ button{
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
 					$('<td></td>').html(data[i].sendTime).appendTo(tr);
-					$('<td></td>').html('<button class="replyMessageBtn" type="button" value="'+data[i].messageNum+'">답장</button>&nbsp;&nbsp;<button class="deleteReceiveMessageBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
+					$('<td></td>').html('<button class="replyMessageBtn smBtn" type="button" value="'+data[i].messageNum+'">답장</button>&nbsp;&nbsp;<button class="deleteReceiveMessageBtn smBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
 					
 					
 				}
@@ -221,7 +235,7 @@ button{
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
 					$('<td></td>').html(data[i].sendTime).appendTo(tr);
-					$('<td></td>').html('<button class="deleteSendMessageBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
+					$('<td></td>').html('<button class="deleteSendMessageBtn smBtn" type="button" value="'+data[i].messageNum+'">삭제</button>').appendTo(tr);
 				}
 				
 				$('.deleteSendMessageBtn').on({
