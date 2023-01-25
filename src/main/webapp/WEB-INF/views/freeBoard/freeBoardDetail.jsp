@@ -283,7 +283,7 @@ img {
 					</c:if>
 					<c:forEach items="${freeComments}" var="freeComment">
 						<tr>
-							<td width="140px">
+							<td width="130px">
 								${freeComment.name }
 								<c:if test="${freeComment.name!=userInfo.name}">
 									<input type="hidden" id="receiverNameCmt" value="${freeComment.name}">
@@ -294,8 +294,8 @@ img {
 									</a>
 								</c:if>
 							</td>
-							<td>${freeComment.commentContent }</td>
-							<td width="140px" style = "word-break: break-all"><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+							<td style = "word-break: break-all">${freeComment.commentContent }</td>
+							<td width="130px" style = "word-break: break-all"><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 						</tr>
 					</c:forEach>
 				</table>

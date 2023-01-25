@@ -174,7 +174,7 @@
 						</c:if>
 		
 				<c:choose>
-					<c:when test="${empty freeBoardList}">
+					<c:when test="${empty freeBoardList and empty noticeList}">
 					<p>게시글이 없습니다.</p>
 					</c:when>
 					<c:otherwise>

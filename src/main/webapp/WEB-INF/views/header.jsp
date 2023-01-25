@@ -36,6 +36,9 @@
 			color: black;
 			cursor: cursor;
 		}
+		.top-name{
+			padding: 8px;
+		}
 	</style>
 </head>
 
@@ -66,7 +69,7 @@
 			<!-- 세션이 있으면 , 필요없는 클래스 없애거나 css 수정-->
 			<c:if test="${!empty userInfo}">
 				<ul class="nav justify-content-end">
-					<li>${userInfo.name}님</li>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
+					<li class="top-name">${userInfo.name}님</li>  <!--페이지 위에 누구로 로그인 하고있는지 보기위해-->
 						<c:if test="${userInfo.admin eq 1 }">
 							<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
 						</c:if>
