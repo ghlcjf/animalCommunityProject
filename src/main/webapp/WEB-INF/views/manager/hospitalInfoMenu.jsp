@@ -103,11 +103,11 @@ button:hover {
 						<table class="table table-sm">
 							<thead class="table-group-divider-cs">
 								<tr>
-							   		<th scope="col">번호</th>
-									<th scope="col">병원</th>
-									<th scope="col">위치</th>
-									<th scope="col">작성자</th>
-									<th scope="col">수정/삭제</th>
+							   		<th scope="col" width="70px;">번호</th>
+									<th scope="col" width="200px;">병원</th>
+									<th scope="col" width="100px;">위치</th>
+									<th scope="col" width="70px;">작성자</th>
+									<th scope="col" width="70px;">수정/삭제</th>
 							 	</tr>
 				  			</thead>
 			  				<tbody>

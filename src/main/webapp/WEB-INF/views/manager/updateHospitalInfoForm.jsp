@@ -66,7 +66,7 @@ button:hover {
 				
 				<div class="mb-3">
 		            <label for="exampleFormControlInput1" class="form-label">병원 이름</label>
-					<form:input path="hospitalName" class="form-control exampleFormControlInput1" id="hospitalName" placeholder="이름을 입력해주세요"/>
+					<form:input path="hospitalName" class="form-control exampleFormControlInput1" id="hospitalName" placeholder="이름을 입력해주세요 (40자 이내)"/>
 				</div>
 				
 				<div class="mb-3">
@@ -85,12 +85,12 @@ button:hover {
 				
 				<div class="mb-3">
 		            <label for="exampleFormControlInput1" class="form-label">병원 상세 주소</label>
-					<form:input path="detailedAddress" class="form-control exampleFormControlInput1" placeholder="상세 주소를 입력해주세요"/>
+					<form:input path="detailedAddress" class="form-control exampleFormControlInput1" placeholder="상세 주소를 입력해주세요 (100자 이내)"/>
 				</div>
 				
 				<div class="mb-3">
 		            <label for="exampleFormControlInput1" class="form-label">병원 전화번호</label>
-					<form:input path="hospitalTel" class="form-control exampleFormControlInput1" placeholder="전화번호를 입력해주세요"/>
+					<form:input path="hospitalTel" class="form-control exampleFormControlInput1" placeholder="전화번호를 입력해주세요 (20자 이내)"/>
 				</div>
 				
 				<div class="mb-3">
@@ -160,6 +160,16 @@ button:hover {
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
 			return false;
 		} */
+		
+		if($('#detailedAddress').val().length>100){
+			alert('상세 주소 글자수가 초과되었습니다. ※100자 이하※');
+			return false;
+		}
+		
+		if($('#hospitalTel').val().length>20){
+			alert('전화번호 글자수가 초과되었습니다. ※20자 이하※');
+			return false;
+		}
 		
 		if($('#exampleFormControlTextarea1').val().length>1000){
 			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');

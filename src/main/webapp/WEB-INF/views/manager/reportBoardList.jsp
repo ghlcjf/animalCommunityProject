@@ -97,12 +97,12 @@ button:hover {
 						<table class="table table-sm">
 							<thead class="table-group-divider-cs">
 								<tr>
-									<th>글 번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<th>신고수</th>
-									<th>글삭제</th>
+									<th width="70px;">글 번호</th>
+									<th width="300px;">제목</th>
+									<th width="70px;">작성자</th>
+									<th width="70px;">작성일</th>
+									<th width="70px;">신고수</th>
+									<th width="70px;">글삭제</th>
 								</tr>
 							</thead>
 							<c:forEach items="${freeBoard }" var="freeBoard">

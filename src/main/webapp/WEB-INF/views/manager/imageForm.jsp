@@ -71,7 +71,7 @@ button:hover {
 			      	
 					<div class="mb-3">
 			            <label for="exampleFormControlInput1" class="form-label">이미지 정보</label>
-						<form:input path="imageInfo" class="form-control" id="exampleFormControlInput1" placeholder="내용을 입력해주세요"/>
+						<form:input path="imageInfo" class="form-control" id="exampleFormControlInput1" placeholder="내용을 입력해주세요 (40자 이내)"/>
 					</div>
 					
 					<button type="button" onclick="return cancel()">취소</button>
@@ -101,6 +101,10 @@ button:hover {
 		}
 		if($('#exampleFormControlInput1').val()==0){
 			alert('이미지 정보를 입력해 주세요');
+			return false;
+		}
+		if($('#exampleFormControlInput1').val().length>40){
+			alert('이미지 정보 글자수가 초과되었습니다. ※40자 이하※');
 			return false;
 		}
 		let cc = confirm('이미지를 업로드하시겠습니까?');

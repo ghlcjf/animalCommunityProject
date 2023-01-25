@@ -63,7 +63,7 @@ button:hover {
 				<form:form action="/animalCommunity/manager/writeHospitalInfo" modelAttribute="hospitalInfoCommand">
 					<div class="mb-3">
 			            <label for="exampleFormControlInput1" class="form-label">병원 이름</label>
-						<form:input path="hospitalName" class="form-control exampleFormControlInput1" placeholder="이름을 입력해주세요"/>
+						<form:input path="hospitalName" class="form-control exampleFormControlInput1" placeholder="이름을 입력해주세요 (40자 이내)"/>
 					</div>
 							
 					<div class="mb-3">
@@ -82,12 +82,12 @@ button:hover {
 					
 					<div class="mb-3">
 			            <label for="exampleFormControlInput1" class="form-label">병원 상세 주소</label>
-						<form:input path="detailedAddress" class="form-control exampleFormControlInput1" placeholder="상세주소를 입력해주세요"/>
+						<form:input path="detailedAddress" class="form-control exampleFormControlInput1" placeholder="상세주소를 입력해주세요 (100자 이내)"/>
 					</div>
 					
 					<div class="mb-3">
 			            <label for="exampleFormControlInput1" class="form-label">병원 전화번호</label>
-						<form:input path="hospitalTel" class="form-control exampleFormControlInput1" placeholder="전화번호를 입력해주세요"/>
+						<form:input path="hospitalTel" class="form-control exampleFormControlInput1" placeholder="전화번호를 입력해주세요 (20자 이내)"/>
 					</div>
 					
 					<div class="mb-3">
@@ -141,6 +141,16 @@ button:hover {
 		}
 		if($('#hospitalName').val().length>40){
 			alert('이름 글자수가 초과되었습니다. ※40자 이하※');
+			return false;
+		}
+		
+		if($('#detailedAddress').val().length>100){
+			alert('상세 주소 글자수가 초과되었습니다. ※100자 이하※');
+			return false;
+		}
+		
+		if($('#hospitalTel').val().length>20){
+			alert('전화번호 글자수가 초과되었습니다. ※20자 이하※');
 			return false;
 		}
 				

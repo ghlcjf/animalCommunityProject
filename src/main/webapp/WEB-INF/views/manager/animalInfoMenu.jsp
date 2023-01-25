@@ -106,11 +106,11 @@ button:hover {
 						<table class="table table-sm">
 							<thead class="table-group-divider-cs">
 						  		<tr>
-								    <th scope="col">글 번호</th>
-								    <th scope="col">글 제목</th>
-								    <th scope="col">카테고리</th>
-								    <th scope="col">작성자</th>
-								    <th scope="col">수정/삭제</th>
+								    <th scope="col" width="70px;">글 번호</th>
+								    <th scope="col" width="300px;">글 제목</th>
+								    <th scope="col" width="70px;">카테고리</th>
+								    <th scope="col" width="70px;">작성자</th>
+								    <th scope="col" width="70px;">수정/삭제</th>
 							  	</tr>
 							</thead>
 							<tbody>

@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,7 +156,7 @@
 						<td colspan="6" style="word-break: break-all">
 							<div id="map" style="width:100%;height:350px;"></div>
 							<br>
-							<p style="padding-left: 20px; padding-right: 20px;">${hospitals.hospitalInfo}</p>
+							<p style="padding-left: 20px; padding-right: 20px;">${fn:replace(hospitals.hospitalInfo, replaceChar, "<br/>")}</p>
 						</td>
 					</tr>
 					</table>

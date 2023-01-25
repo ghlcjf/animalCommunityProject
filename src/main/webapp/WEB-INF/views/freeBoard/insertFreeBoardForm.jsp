@@ -74,7 +74,7 @@ button:hover {
 
 				<div class="mb-3">
 		            <label for="exampleFormControlInput1" class="form-label">제목</label>
-					<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요"/>
+					<form:input path="boardTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요 (40자 이내)"/>
 				</div>
 				
 				<div class="mb-3">
@@ -98,7 +98,7 @@ button:hover {
 				
 				<div class="mb-3">
 			        <label for="exampleFormControlTextarea1" class="form-label">내용</label>
-			        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (1000자 이내)"/>
+			        <form:textarea path="boardContent" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="내용을 입력해주세요 (3000자 이내)"/>
 			        <form:errors path="boardContent" />
 				</div>
 	
@@ -140,13 +140,13 @@ button:hover {
 			return false;
 		}
 		
-		/* if($('#exampleFormControlInput1').val().length>40){
+		if($('#exampleFormControlInput1').val().length>40){
 			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
 			return false;
-		} */
+		}
 		
-		if($('#exampleFormControlTextarea1').val().length>1000){
-			alert('내용 글자수가 초과되었습니다. ※1000자 이하※');
+		if($('#exampleFormControlTextarea1').val().length>3000){
+			alert('내용 글자수가 초과되었습니다. ※3000자 이하※');
 			return false;
 		}
 		

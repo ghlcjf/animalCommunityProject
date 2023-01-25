@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +19,10 @@
 }
 .card-header {
 	background-color: #dfe6f7
+}
+.text-muted-cs {
+    --bs-text-opacity: 1;
+    color: #black!important;
 }
 .img-fluid {
 	width: 100%;
@@ -52,10 +58,10 @@
 		        			<div class="card-header">
 		            			<div class="d-flex">
 		            				<div class="me-auto p-2">${animal.animalTitle}</div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리 ${animal.animalCategory}</small></p></div>
-						                <div class="p-2"><p class="card-text"><small class="text-muted">번호 ${animal.animalNum}</small></p></div>
-						                <div class="p-2"><p class="card-text"><small class="text-muted">작성자 ${animal.name}</small></p></div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수 ${animal.viewCount}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리</small> <small class="text-muted-cs">${animal.animalCategory}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">작성자</small> <small class="text-muted-cs">${animal.name}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수</small> <small class="text-muted-cs">${animal.viewCount}</small></p></div>
 									</div>
 								</div>
 								<div class="row g-0">
@@ -64,7 +70,7 @@
 								</div>
 								<div class="col-md-8">
             						<div class="card-body">
-										<p class="card-text">${animal.animalContent}</p>
+										<p class="card-text">${fn:replace(animal.animalContent, replaceChar, "<br/>")}</p>
 									</div>
 								</div>
 							</div>
@@ -75,10 +81,10 @@
 		        			<div class="card-header">
 		            			<div class="d-flex">
 		            				<div class="me-auto p-2">${animal.animalTitle}</div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리 ${animal.animalCategory}</small></p></div>
-						                <div class="p-2"><p class="card-text"><small class="text-muted">번호 ${animal.animalNum}</small></p></div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">작성자 ${animal.name}</small></p></div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수 ${animal.viewCount}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리</small> <small class="text-muted-cs">${animal.animalCategory}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">작성자</small> <small class="text-muted-cs">${animal.name}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수</small> <small class="text-muted-cs">${animal.viewCount}</small></p></div>
            							</div>
        							</div>
        							<div class="row g-0">
@@ -87,7 +93,7 @@
 								</div>
 								<div class="col-md-8">
             						<div class="card-body">
-										<p class="card-text">${animal.animalContent}</p>
+										<p class="card-text">${fn:replace(animal.animalContent, replaceChar, "<br/>")}</p>
 									</div>
 								</div>
 							</div>

@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,6 +210,12 @@ img {
 			<div class="col-8 mx-auto">
 
 				<table class="table table-sm">
+					<c:if test="${freeBoard.name == userInfo.name }">
+						<div class="d-flex justify-content-end">
+				  			<button class="bigBtn" type="button" onclick="return updateConfirm(${freeBoard.boardNum})">수정</button>
+							<button class="bigBtn" type="button" onclick="return deleteConfirm(${freeBoard.boardNum})">삭제</button>
+						</div>
+					</c:if>
 					<c:if test="${freeBoard.name!=userInfo.name }">
 						<div class="d-flex justify-content-end">
 				  			<input class="btn-cs-3" type="button" id="reportBtn" value="신고 ${freeBoard.report}" onclick="addReport(${freeBoard.boardNum})">
@@ -225,14 +233,6 @@ img {
 						<th scope="row" class="table-primary-cs">작성일</th>
 							<td colspan="4" class="td-text-align"><fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
-					<%-- <tr>
-						<td colspan="10" style ="word-break: break-all">
-							<c:if test="${!empty freeBoard.boardUrl && freeBoard.boardUrl!='null'}">
-								<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }" class="rounded mx-auto d-block" ><br>
-							</c:if>
-							${freeBoard.boardContent}
-						</td>
-					</tr> --%>
 					<tr>
 						<th scope="row" class="table-primary-cs">작성자</th>
 							<td colspan="6" class="td-text-align"> 
@@ -256,7 +256,7 @@ img {
 						<img src="/imageFolder/freeBoardImage/${freeBoard.boardUrl }">
 					</c:if>
    					<div class="card-body">
-					<p class="card-text">${freeBoard.boardContent}</p>
+					${fn:replace(freeBoard.boardContent, replaceChar, "<br/>")}
    					</div>
 				</div>
 				

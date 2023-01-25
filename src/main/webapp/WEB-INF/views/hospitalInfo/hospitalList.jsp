@@ -125,9 +125,9 @@ button:hover {
 							<thead class="table-group-divider-cs">
 								<tr>
 									<th scope="col" width="70px;">번호</th>
-									<th scope="col" width="300px;">병원</th>
-									<th scope="col" width="70px;">위치</th>
-									<th scope="col" width="70px;">전화 번호</th>
+									<th scope="col" width="200px;">병원</th>
+									<th scope="col" width="100px;">위치</th>
+									<th scope="col" width="100px;">전화 번호</th>
 								</tr>
 							</thead>
 						<c:forEach items="${hospitals }" var="hospital">

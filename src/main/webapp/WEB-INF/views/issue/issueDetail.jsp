@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("replaceChar", "\n"); %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,7 +138,7 @@ button:hover {
 							<img src="/imageFolder/issueBoardImage/${issue.issueUrl }">
 						</c:if>
 	  					<div class="card-body">
-							<p class="card-text" style="white-space:pre">${issue.issueContent}</p>
+							${fn:replace(issue.issueContent, replaceChar, "<br/>")}
 	  					</div>
 					</div>
 				
