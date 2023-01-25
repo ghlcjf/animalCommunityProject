@@ -85,6 +85,9 @@ button:hover {
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
+.pagination{
+	margin-top: 15px;
+}
 </style>
 </head>
 <body>
@@ -95,19 +98,20 @@ button:hover {
 			<div class="col-10 mx-auto text-center">
 				<nav class="navbar">
 					<div class="container-fluid">
-						<span class="navbar-brand-cs mb-0 h1">동물 병원 정보</span>
-							<div class="d-flex justify-content-end">
-								<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
-								<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/main/1/1" />" role="button">전체</a>
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/seoul/1/1" />" role="button">서울</a>
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/gyeonggi/1/1" />" role="button">경기도</a>
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/gangwon/1/1" />" role="button">강원도</a>
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/chungcheong/1/1" />" role="button">충청도</a>
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/gyeongsang/1/1" />" role="button">경상도</a>
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/jeolla/1/1" />" role="button">전라도</a>
-									<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/jeju/1/1" />" role="button">제주도</a>
-								</div>
+						<div class="d-flex justify-content-start">
+							<span class="navbar-brand-cs mb-0 h1">동물 병원 정보</span>
+							<span class="navbar-brand-cs mb-0 h1">${((sectionPage.section-1)*10)+sectionPage.pageNum }page</span>
+						</div>
+							
+							<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/main/1/1" />" role="button">전체</a>
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/seoul/1/1" />" role="button">서울</a>
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/gyeonggi/1/1" />" role="button">경기도</a>
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/gangwon/1/1" />" role="button">강원도</a>
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/chungcheong/1/1" />" role="button">충청도</a>
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/gyeongsang/1/1" />" role="button">경상도</a>
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/jeolla/1/1" />" role="button">전라도</a>
+								<a class="btn btn-primary-cs" href="<c:url value="/hospitalInfo/jeju/1/1" />" role="button">제주도</a>
 							</div>
 						</div>
 					</nav>
@@ -140,7 +144,7 @@ button:hover {
 					</c:otherwise>
 				</c:choose>
 	
-			<div class="container text-center">
+			<div class="d-flex justify-content-center">
 					<c:if test="${totalCnt != null}">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">

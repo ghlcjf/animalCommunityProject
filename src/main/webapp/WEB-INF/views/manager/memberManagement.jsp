@@ -79,6 +79,9 @@ button:hover {
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
+.pagination{
+	margin-top: 15px;
+}
 </style>
 </head>
 <body>
@@ -89,16 +92,18 @@ button:hover {
 		 	<div class="col-10 mx-auto">	
 		 		<nav class="navbar">
 					<div class="container-fluid">
-						<span class="navbar-brand-cs mb-0 h1">회원 관리 페이지</span>
-							<form:form action="/animalCommunity/search" modelAttribute="searchData">
-								<div class="d-flex align-items-end justify-content-end">
-									<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
-									<form:input path="search" placeholder="검색어를 입력해 주세요" class="form-control form-control-sm"/>
-									<button type="submit" onclick="searchMember()">검색</button>
-								</div>
-							</form:form>
+						<div class="d-flex justify-content-start">
+							<span class="navbar-brand-cs mb-0 h1">회원 관리 페이지</span>
+							<span class="navbar-brand-cs mb-0 h1">${((sectionPage.section-1)*10)+sectionPage.pageNum }page</span>
 						</div>
-					</nav>
+								<form:form action="/animalCommunity/search" modelAttribute="searchData">
+									<div class="d-flex align-items-end justify-content-end">
+										<form:input path="search" placeholder="검색어를 입력해 주세요" class="form-control form-control-sm"/>
+										<button type="submit" onclick="searchMember()">검색</button>
+									</div>
+								</form:form>
+							</div>
+						</nav>
 
 				<table class="table table-hover table-sm">
 					<thead class="table-group-divider-cs">
@@ -119,14 +124,8 @@ button:hover {
 					</c:forEach>
 				</table>
 			
-				<div class="d-flex justify-content-start">
-					<button type="button" onclick="location.href='<c:url value="/manager/managerMain" />'">관리자 메뉴로 돌아가기</button>
-				</div>
-			</div>
-		</div>
-   	</div>
-   	
 	<div class="box3">
+		<div class="d-flex justify-content-center">
 		<c:if test="${totalCnt != null}">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination">
@@ -203,9 +202,18 @@ button:hover {
 				</ul>
 			</nav>
 		</c:if>
-	
 	</div>
-          <jsp:include page="../footer.jsp"></jsp:include>
+	
+	<div class="d-flex justify-content-start">
+		<button type="button" onclick="location.href='<c:url value="/manager/managerMain" />'">관리자 메뉴로 돌아가기</button>
+	</div>
+	
+			</div>
+		</div>
+	</div>
+		
+	
+    <jsp:include page="../footer.jsp"></jsp:include>
 	
 	<script type="text/javascript">
 		function searchMember() {

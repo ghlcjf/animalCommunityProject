@@ -75,6 +75,9 @@ button:hover {
 	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 	line-height: 10px;
 }
+.pagination{
+	margin-top: 15px;
+}
 </style>
 </head>
 <body>
@@ -85,11 +88,11 @@ button:hover {
         	<div class="col-10 mx-auto">
 				<nav class="navbar">
 					<div class="container-fluid">
-						<span class="navbar-brand-cs mb-0 h1">공지사항 관리자 페이지</span>
-							<div class="d-flex justify-content-end">
-								<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
-								<button type="button" onclick="return insertConfirm()">글 작성</button>
-							</div>
+						<div class="d-flex justify-content-start">
+							<span class="navbar-brand-cs mb-0 h1">공지사항 관리자 페이지</span>
+							<span class="navbar-brand-cs mb-0 h1">${((sectionPage.section-1)*10)+sectionPage.pageNum }page</span>
+						</div>
+							<button type="button" onclick="return insertConfirm()">글 작성</button>
 						</div>
 					</nav>
 	
@@ -124,11 +127,7 @@ button:hover {
 					</c:otherwise>
 				</c:choose>
 				
-					<div class="d-flex justify-content-start">
-						<button type="button" onclick="location.href='<c:url value="/manager/managerMain" />'">관리자 메뉴로 돌아가기</button>
-					</div>
-					
-				<div class="box3">
+				<div class="d-flex justify-content-center">
 					<c:if test="${totalCnt != null}">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">
@@ -205,7 +204,12 @@ button:hover {
 							</ul>
 						</nav>
 					</c:if>
-				</div>	
+				</div>
+					
+				<div class="d-flex justify-content-start">
+					<button type="button" onclick="location.href='<c:url value="/manager/managerMain" />'">관리자 메뉴로 돌아가기</button>
+				</div>
+				
 			</div>
 		</div>
 	</div>

@@ -12,76 +12,78 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 <style type="text/css">
-.card{
-	margin-top: 50px;
+.container {
+	margin-top: 25px;
+}
+.card-header {
+	background-color: #dfe6f7
+}
+.img-fluid {
+	width: 100%;
+    height: 400px;
  }
- .img-fluid{
-     height: 500px;
- }
- .list-group-item-custom {
-	 position: relative;
-	 display: block;
-	 padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
-	 color: var(--bs-list-group-color);
-	 text-decoration: none;
-	 background-color: var(--bs-list-group-bg);
-	 border: none;
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
 
-	<c:choose>
-		<c:when test="${empty animal.animalUrl }">
-			<div class="card mx-auto" style="width: 50rem;">
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item py-0">
-						<div class="d-flex mb-3">
-							<div class="me-auto p-2">${animal.animalNum}</div>
-							<div class="p-2">${animal.name}</div>
-						</div>
-					</li>
-					<li class="list-group-item py-0">
-						<div class="d-flex mb-3">
-							<div class="me-auto p-2">${animal.animalCategory}</div>
-							<div class="p-2">${animal.viewCount}</div>
-						</div>
-					</li>
-				</ul>
-				<!-- <img src="/imageFolder/noImage.png"> -->
-				<div class="card-body">
-					<h5 class="card-title">제목</h5>
-					<p class="card-text">${animal.animalContent}</p>
-				</div>
-			</div>
+	<div class="container">
+        <div class="row">
+			<div class="col-12 mx-auto">
 
-		</c:when>
-		<c:otherwise>
-			<div class="card mx-auto" style="width: 50rem;">
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item py-0">
-						<div class="d-flex mb-3">
-							<div class="me-auto p-2">${animal.animalNum}</div>
-							<div class="p-2">${animal.name}</div>
+				<c:choose>
+					<c:when test="${empty animals.animalUrl }">
+						<div class="card mb-3" style="max-width: 100%;">
+		        			<div class="card-header">
+		            			<div class="d-flex">
+		            				<div class="me-auto p-2">${animal.animalTitle}</div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리 ${animal.animalCategory}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">번호 ${animal.animalNum}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">작성자 ${animal.name}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수 ${animal.viewCount}</small></p></div>
+									</div>
+								</div>
+								<div class="row g-0">
+       							<div class="col-md-4">
+									<img src="/imageFolder/noImage.png" class="img-fluid">
+								</div>
+								<div class="col-md-8">
+            						<div class="card-body">
+										<p class="card-text">${animal.animalContent}</p>
+									</div>
+								</div>
+							</div>
 						</div>
-					</li>
-					<li class="list-group-item py-0">
-						<div class="d-flex mb-3">
-							<div class="me-auto p-2">${animal.animalCategory}</div>
-							<div class="p-2">${animal.viewCount}</div>
+					</c:when>
+					<c:otherwise>
+						<div class="card mb-3" style="max-width: 100%;">
+		        			<div class="card-header">
+		            			<div class="d-flex">
+		            				<div class="me-auto p-2">${animal.animalTitle}</div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리 ${animal.animalCategory}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">번호 ${animal.animalNum}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">작성자 ${animal.name}</small></p></div>
+               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수 ${animal.viewCount}</small></p></div>
+           							</div>
+       							</div>
+       							<div class="row g-0">
+       							<div class="col-md-4">
+									<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="img-fluid">
+								</div>
+								<div class="col-md-8">
+            						<div class="card-body">
+										<p class="card-text">${animal.animalContent}</p>
+									</div>
+								</div>
+							</div>
 						</div>
-					</li>
-				</ul>
-				<img src="/imageFolder/animalInfoImage/${animal.animalUrl }">
-				<div class="card-body">
-					<h5 class="card-title">제목</h5>
-					<p class="card-text">${animal.animalContent}</p>
-				</div>
+									
+					</c:otherwise>
+				</c:choose>
+				
 			</div>
-		</c:otherwise>
-	</c:choose>
-
-	
+		</div>
+	</div>
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <jsp:include page="../footer.jsp"></jsp:include>

@@ -45,6 +45,9 @@ padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
 color: var(--bs-card-cap-color);
 background-color: var(--bs-card-cap-bg);
 }
+.pagination{
+	margin-top: 25px;
+}
 </style>
 </head>
 <body>
@@ -55,53 +58,52 @@ background-color: var(--bs-card-cap-bg);
 			<div class="col-10 mx-auto">
 				<nav class="navbar">
 					<div class="container-fluid">
-						<span class="navbar-brand-cs mb-0 h1">동물 소개</span>
-							<div class="d-flex justify-content-end">
-								<p style="margin-right:20px;">${((sectionPage.section-1)*10)+sectionPage.pageNum }page </p>
+						<div class="d-flex justify-content-start">
+							<span class="navbar-brand-cs mb-0 h1">동물 소개</span>
+							<span class="navbar-brand-cs mb-0 h1">${((sectionPage.section-1)*10)+sectionPage.pageNum }page</span>
+						</div>
+					</div>
+				</nav>
+	
+				<c:choose>
+					<c:when test="${empty animals}">
+						<p>등록한 게시글이 없습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<div class="container text-center">
+							<div class="row row-cols-5">
+								<c:forEach items="${animals}" var="animal">
+									<c:choose>
+										<c:when test="${empty animal.animalUrl || animal.animalUrl=='null' }">
+											<div class="col">
+												<div class="card">
+													<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
+														<img src="/imageFolder/noImage.png" class="card-img-top">
+													</a>
+													<div class="card-footer-cs">
+														<small class="text-muted">${animal.animalTitle }</small>
+													</div>
+												</div>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="col">
+												<div class="card">
+													<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
+														<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="card-img-top">
+													</a>
+													<div class="card-footer-cs">
+														<small class="text-muted">${animal.animalTitle }</small>
+													</div>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</div>
 						</div>
-					</nav>
-	
-	<c:choose>
-		<c:when test="${empty animals}">
-			<p>등록한 게시글이 없습니다.</p>
-		</c:when>
-		<c:otherwise>
-			<div class="container text-center">
-				<div class="row row-cols-5">
-					<c:forEach items="${animals}" var="animal">
-						<c:choose>
-							<c:when test="${empty animal.animalUrl }">
-								<div class="col">
-									<div class="card">
-										<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
-											<img src="/imageFolder/noImage.png" class="card-img-top" ${animal.animalNum }>
-										</a>
-										<div class="card-footer-cs">
-											<small class="text-muted">${animal.animalTitle }</small>
-										</div>
-									</div>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="col">
-									<div class="card">
-										<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
-											<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="card-img-top">
-										</a>
-										<div class="card-footer-cs">
-											<small class="text-muted">${animal.animalTitle }</small>
-										</div>
-									</div>
-								</div>
-							</c:otherwise>
-							
-						</c:choose>
-					</c:forEach>
-				</div>
-				</div>
 				
-				<div class="container text-center">
+				<div class="d-flex justify-content-center">
 					<c:if test="${totalCnt != null}">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">
@@ -181,8 +183,8 @@ background-color: var(--bs-card-cap-bg);
 				</div>
 		</c:otherwise>
 	</c:choose>
-	</div>
-	</div>
+			</div>
+		</div>
 	</div>
 	
 	<jsp:include page="../footer.jsp"></jsp:include>

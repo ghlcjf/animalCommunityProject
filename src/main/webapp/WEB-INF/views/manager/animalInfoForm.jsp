@@ -85,7 +85,8 @@ button:hover{
 				
 				<div class="mb-3">
 			        <label for="formFile" class="form-label">이미지 선택</label>
-			        <input type="file" id="animalUrl2" name="animalUrl2" class="form-control" type="file" id="formFile">
+			        <input type="file" id="animalUrl2" name="animalUrl2" class="form-control" id="formFile">
+			        <input type="hidden" name="originPic" value="${animalInfo.animalUrl}">
 		      	</div>
 				
 				<div class="mb-3">
@@ -135,8 +136,8 @@ button:hover{
 			return false;
 		}
 		
-		if($('#exampleFormControlInput1').val().length>40){
-			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+		if($('#exampleFormControlInput1').val().length>10){
+			alert('제목 글자수가 초과되었습니다. ※10자 이하※');
 			return false;
 		}
 				

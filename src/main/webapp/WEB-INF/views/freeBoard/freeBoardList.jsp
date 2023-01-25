@@ -93,16 +93,6 @@
       grid-area: box1;
     }
     
-    .box2 {
-     
-      grid-area: box2;
-    }
-    
-    .box3 {
-     
-      grid-area: box3;
-    }
-
  	.list-group-item {
  		border:none;
  		font-size: 13px;
@@ -120,6 +110,9 @@
 	a.page-link:{
 
 	}
+	.pagination{
+	margin-top: 15px;
+}
 </style>
 </head>
 <body>
@@ -147,6 +140,7 @@
 					<div class="container-fluid">
 						<div class="d-flex justify-content-start">
 							<span class="navbar-brand-cs mb-0 h1">자유게시판</span>
+							<span class="navbar-brand-cs mb-0 h1">${((sectionPage.section-1)*10)+sectionPage.pageNum }page</span>
 						</div>
 						<div class="d-flex justify-content-end">
 							<button type="button" onclick="return insertConfirm()">글 작성</button>
@@ -154,7 +148,6 @@
 					</div>
 				</nav>
 
-				<!-- <div class="box2"> -->
 					<table class="table table-hover table-sm">
 						<thead class="table-group-divider-cs">
 						   <tr>
@@ -208,9 +201,8 @@
 					</c:otherwise>
 				</c:choose>
 			</table>
-		<!-- </div> -->
 
-				<div class="box3">
+				<div class="d-flex justify-content-center">
 					<c:if test="${totalCnt != null}">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">

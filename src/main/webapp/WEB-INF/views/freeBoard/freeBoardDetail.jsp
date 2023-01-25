@@ -119,7 +119,7 @@ button:hover {
 
 .table-primary-cs {
     --bs-table-color: #000;
-    --bs-table-bg: #f2f2f2;
+    --bs-table-bg: #dfe6f7;
     --bs-table-border-color: #dee2e6;
     --bs-table-striped-bg: #c5d7f2;
     --bs-table-striped-color: #000;

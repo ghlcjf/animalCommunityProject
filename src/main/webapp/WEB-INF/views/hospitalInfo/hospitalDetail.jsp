@@ -19,7 +19,7 @@
 }
 .table-primary-cs {
     --bs-table-color: #000;
-    --bs-table-bg: #f2f2f2;
+    --bs-table-bg: #dfe6f7;
     --bs-table-border-color: #dee2e6;
     --bs-table-striped-bg: #c5d7f2;
     --bs-table-striped-color: #000;
@@ -86,6 +86,20 @@
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
+.smallBtn {
+	padding: 5px;   border: none;
+	height: 30px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	width: 145px;
+	background: rgb(136, 154, 233);
+	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+	line-height: 10px;
+}
+
+.smallBtn:hover {
+	background: rgb(101, 121, 207);
+	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
 </style>
 </head>
 <body>
@@ -126,30 +140,20 @@
 					</tr>
 					</table>
 					
-					
-					<%-- <tr>
-						<td colspan="6">
-							<form>
-								<input type="button" id="goodBtn" value="추천 ${hospitals.good}" onclick="addGood(${hospitals.boardNum})">
-								<input type="button" id="badBtn" value="반대 ${hospitals.bad}" onclick="addBad(${hospitals.boardNum})">
-							</form><br>
-						</td>
-					</tr> --%>
-					
 					<form>
 						<div class="d-flex justify-content-center">
 							<input class="btn-cs-1" type="button" id="goodBtn" value="추천 ${hospitals.good}" onclick="addGood(${hospitals.boardNum})">
 							<input class="btn-cs-2" type="button" id="badBtn" value="반대 ${hospitals.bad}" onclick="addBad(${hospitals.boardNum})">
 						</div>
 					</form>
+					
+					<div class="d-flex justify-content-start">
+						<button type="button" class="smallBtn" onclick="location.href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'">목록으로 돌아가기</button>
+					</div>
 				
 			</div>
 		</div>
 	</div>		
-		
-		
-		
-		
 		
 	<c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3574786400bcb2d7ecd6624766f14c5f&libraries=services"></script>		
