@@ -51,8 +51,7 @@ public class IssueController {
 	@GetMapping("/issue/detail/{issueNum}")
 	public String issueDetail(@PathVariable("issueNum") long issueNum, Model model) {
 				
-//		model.addAttribute("icc",new IssueComment());
-		
+
 		// 조회수 증가
 		Issue updateIssue = animalDao.selectByIssueNum(issueNum);
 		animalDao.updateViewCount(updateIssue);

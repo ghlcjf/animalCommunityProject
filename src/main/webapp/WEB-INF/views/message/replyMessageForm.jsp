@@ -102,6 +102,10 @@ button:hover{
 			alert('메세지를 입력해 주세요.');
 			return false;
 		}
+		if(content.length>500){
+			alert('메세지 글자수가 초과되었습니다. ※500자 이하※');
+			return false;
+		}
 		
 		
 		$.ajax({

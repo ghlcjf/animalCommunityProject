@@ -30,9 +30,9 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
-
+	
 	<c:choose>
-		<c:when test="${empty animal.animalUrl }">
+		<c:when test="${animal.animalUrl=='null'}">
 			<div class="card mx-auto" style="width: 50rem;">
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item py-0">
@@ -48,13 +48,12 @@
 						</div>
 					</li>
 				</ul>
-				<img src="/imageFolder/image/noImage.png">
+				<img src="/imageFolder/noImage.png">
 				<div class="card-body">
 					<h5 class="card-title">제목</h5>
 					<p class="card-text">${animal.animalContent}</p>
 				</div>
 			</div>
-
 		</c:when>
 		<c:otherwise>
 			<div class="card mx-auto" style="width: 50rem;">

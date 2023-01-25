@@ -11,11 +11,26 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-	<style type="text/css">
-		.d-grid{
-			width:850px;
-		}
-	</style>
+<style type="text/css">
+.d-grid{
+	width:850px;
+}
+.bigBtn{
+		padding: 5px;   border: none;
+		height: 30px; 	border-radius: 10px;
+		color: white;   font-weight:bolder;
+		width: 145px;
+		background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		line-height: 10px;
+		
+	}
+.bigBtn:hover{
+  			background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	}
+	
+</style>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
@@ -50,12 +65,15 @@
 			<tr>
 				<td colspan="6">
 					<form>
-						<input type="button" id="goodBtn" value="추천 ${hospitals.good}" onclick="addGood(${hospitals.boardNum})">
-						<input type="button" id="badBtn" value="반대 ${hospitals.bad}" onclick="addBad(${hospitals.boardNum})">
+						<input class="btn btn-success" type="button" id="goodBtn" value="추천 ${hospitals.good}" onclick="addGood(${hospitals.boardNum})">
+						<input class="btn btn-danger" type="button" id="badBtn" value="반대 ${hospitals.bad}" onclick="addBad(${hospitals.boardNum})">
 					</form><br>
 				</td>
 			</tr>
 		</table>
+		<div class="d-flex justify-content-start">
+			<button type="button" class="bigBtn" onclick="location.href='<c:url value="/hospitalInfo/main/1/1" />'">목록으로 돌아가기</button>
+		</div>
 	</div>		
 		
 		

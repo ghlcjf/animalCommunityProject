@@ -69,31 +69,34 @@ public class MyPageController {
 		sectionPage.setName(user.getName());
 		
 		
-		//List<FreeBoard> boardList = animalDao.getboardList(user.getName());
 		List<FreeBoard> boardList = animalDao.selectTargetFreeBoardsByName(sectionPage);
 		int totalCnt = animalDao.selectAllNumFreeBoardByName(sectionPage);
 		
 		
+		for(int i=0;i<boardList.size();i++) {
+			if(boardList.get(i).getBoardTitle().length()>=26) {
+				String title = boardList.get(i).getBoardTitle().substring(0,26)+"...";
+				boardList.get(i).setBoardTitle(title);
+			}
+		}
 		
 		model.addAttribute("sectionPage", sectionPage);
-		//model.addAttribute("boardList", boardList);
 		model.addAttribute("totalCnt", totalCnt);
 		session.setAttribute("boardList",boardList);
-//		System.out.println(user.getName());
+
 		return "myPage/myInfo";
 	}
 	
 	@RequestMapping("/myPage/delete/{boardNum}")
 	public String myPageDelete(@PathVariable("boardNum") long boardNum, Model model) {
 		
-		System.out.println("하이");
 		String name = animalDao.selectName(boardNum);
 		animalDao.boardDelete(boardNum);
 		
 		List<FreeBoard> boardList = animalDao.getboardList(name);
 		model.addAttribute("board",boardList);
 		
-		return "myPage/myInfo";
+		return "redirect:/myPage/1/1";
 	}
 	
 	@RequestMapping("/checkPassword")
@@ -132,7 +135,7 @@ public class MyPageController {
 		
 		changeInfoService.changeInfo(user);
 
-//		session.invalidate();
+		
 		LoginUserInfo userInfo = new LoginUserInfo();
 		userInfo.setName(user.getName());
 		userInfo.setId(user.getId());
@@ -141,7 +144,7 @@ public class MyPageController {
 		
 		session.setAttribute("userInfo", userInfo);
 		
-		return "redirect:/myPage";
+		return "redirect:/myPage/1/1";
 	}
 	@RequestMapping("/myPage/updeteForm/{boardNum}")
 	public String myPageUpdate(@PathVariable("boardNum") long boardNum, Model model) {
@@ -159,7 +162,7 @@ public class MyPageController {
 			HttpServletRequest request) throws Exception, IOException {
 		
 		
-		String uploadDir = "C:\\Users\\GREEN\\git\\animalCommunityProject\\src\\main\\webapp\\resources\\freeBoardImage";
+		String uploadDir = "C:\\upload\\freeBoardImage";
 		
 		
 		
@@ -181,7 +184,7 @@ public class MyPageController {
 		
 
 		
-		return "redirect:/myPage";
+		return "redirect:/myPage/1/1";
 		
 	}
 	

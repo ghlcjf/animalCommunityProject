@@ -2,11 +2,14 @@ package animal.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import animal.service.MessageService;
+import animal.vo.LoginUserInfo;
 import animal.vo.Message;
 
 @RestController
@@ -20,9 +23,8 @@ public class MessengerController {
 
 	@RequestMapping("/messenger/receiveList")
 	public List<Message> receiveMessageList(@RequestParam("name") String name) {
-		
+		// 닉네임을 이용해 받은 메세지 전부 가져오기
 		List<Message> receiveList = messageService.getAllReceiveList(name);
-		
 		
 		return receiveList;
 	}
@@ -30,7 +32,7 @@ public class MessengerController {
 	
 	@RequestMapping("/messenger/sendList")
 	public List<Message> sendMessageList(@RequestParam("name") String name){
-		
+		// 닉네임을 이용해 보낸 메세지 전부 가져오기
 		List<Message> sendList = messageService.getAllSendLsit(name);
 		return sendList;
 		
@@ -52,10 +54,19 @@ public class MessengerController {
 	
 	
 	@RequestMapping("/messenger/deleteReceiveBoxMessage")
-	public void deleteReceiveBoxMessage(@RequestParam("messageNum") String messageNum) {
+	public void deleteReceiveBoxMessage(@RequestParam("messageNum") String messageNum,HttpSession session) {
 		
 		messageService.deleteReceiveBoxMessage(Integer.parseInt(messageNum));
-		
+		// 받은 메세지 삭제 시 읽지 않은 메세지 개수 업데이트
+		if(session != null) {
+			Object obj = session.getAttribute("userInfo");
+			if(obj !=null) {
+				LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
+				int num = messageService.getUnReadCheck(userInfo.getName());
+				session.setAttribute("unReadCheck", num);
+				
+			}
+		}
 		
 	}
 	

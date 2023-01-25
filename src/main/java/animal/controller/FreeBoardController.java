@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import animal.dao.AnimalDao;
+import animal.exception.BoardNotFoundException;
 import animal.service.FreeBoardService;
 import animal.service.SelectAllFreeBoardListService;
 import animal.service.SelectAllNoticeListService;
@@ -52,14 +53,7 @@ public class FreeBoardController {
 			HttpServletRequest request) {
 		List<FreeBoard> freeBoardList = null;
 		int totalCnt = 0;
-		
-		
-		
-//		String _section = request.getParameter("section");
-//		String _pageNum = request.getParameter("pageNum");
-//		
-//		int section = Integer.parseInt(((_section==null)?"1":_section));
-//		int pageNum = Integer.parseInt(((_pageNum==null)?"1":_pageNum));
+
 		
 		SectionPage sectionPage = new SectionPage(section,pageNum);
 		

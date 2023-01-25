@@ -94,7 +94,7 @@ public class MainController {
 		model.addAttribute("freeBoardTopTen",freeBoardTopTen);
 		model.addAttribute("freeBoardList", freeBoardList);
 		model.addAttribute("loginCommand", new LoginCommand());
-		return "main"; //	/WEB-INF/views/   +main  +.jsp 로이동하라 
+		return "main"; 
 	}
 	
 	@RequestMapping("/main")
@@ -143,7 +143,7 @@ public class MainController {
 		model.addAttribute("freeBoardTopTen",freeBoardTopTen);
 		model.addAttribute("freeBoardList", freeBoardList); //자유게시판 정보
 		model.addAttribute("loginCommand", new LoginCommand()); //로그인 정보
-		return "main"; //	/WEB-INF/views/   +main  +.jsp 로이동하라 
+		return "main"; 
 	}
 
 	//자유게시판, 이슈게시판 글 메인에 불러오기 ->spring-controller.xml에 property등록해야함 

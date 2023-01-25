@@ -25,13 +25,10 @@ public class HospitalInfoController {
 	public String HospitalList(@PathVariable("location") String location, 
 			@PathVariable("section") int section, 
 			@PathVariable("pageNum") int pageNum, Model model) {
+		
 		List<HospitalInfo> hospitalList = null;
 		int totalCnt = 0;
 		SectionPage sectionPage = new SectionPage(section,pageNum);
-		
-		
-		
-		
 		
 		
 		if(location.equals("main")) {

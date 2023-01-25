@@ -68,12 +68,12 @@
 				<div class="row row-cols-4">
 					<c:forEach items="${animals}" var="animal">
 						<c:choose>
-							<c:when test="${empty animal.animalUrl }">
+							<c:when test="${animal.animalUrl=='null' }">
 								<div class="col">
 									<div class="card" style="width: 18rem;">
 										<a
 											href="<c:url value='/animal/detail/${animal.animalNum }' />">
-											<img src="/imageFolder/image/noImage.png"
+											<img src="/imageFolder/noImage.png"
 											class="card-img-top img-fluid img-thumbnail"
 											${animal.animalNum }>
 										</a>

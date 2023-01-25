@@ -97,9 +97,9 @@ button:hover{
 		</c:if>		
 		<c:forEach items="${issueComment}" var="issueComment">
 			<tr>
-				<td>${issueComment.name }</td>
-				<td width="700px;" style = "word-break: break-all">${issueComment.commentContent }</td>
-				<td><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+				<td width="130px;">${issueComment.name }</td>
+				<td style = "word-break: break-all;">${issueComment.commentContent }</td>
+				<td width="130px;"><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		
 		</c:forEach>
@@ -107,7 +107,7 @@ button:hover{
 	</table>
 	
 	<div class="d-flex justify-content-start">
-		<button type="button" class="bigBtn" onclick="location.href='<c:url value="/freeBoard/freeBoardList/main/1/1" />'">목록으로 돌아가기</button>
+		<button type="button" class="bigBtn" onclick="location.href='<c:url value="/issue/1/1" />'">목록으로 돌아가기</button>
 	</div>
 	</div>
 	</div>
@@ -145,10 +145,10 @@ button:hover{
 				let tbl = document.getElementById('commentTbl');
 				let tr = $('<tr></tr>').appendTo(tbl);
 				
-                $('<td></td>').html(data.name).appendTo(tr);
+                $('<td width="130px;"></td>').html(data.name).appendTo(tr);
                 /* $('<td></td>').html(data.commentContent).appendTo(tr); */
-				$('<td width="700px;" style = "word-break: break-all"></td>').html(data.commentContent).appendTo(tr);                
-                $('<td></td>').html(data.writeDate).appendTo(tr);
+				$('<td style = "word-break: break-all"></td>').html(data.commentContent).appendTo(tr);                
+                $('<td width="130px;"></td>').html(data.writeDate).appendTo(tr);
 				
 			},
 			complete:function(){

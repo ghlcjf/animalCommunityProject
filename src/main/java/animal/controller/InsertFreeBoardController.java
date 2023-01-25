@@ -42,7 +42,7 @@ public class InsertFreeBoardController {
 		
 		return "freeBoard/insertFreeBoardForm";
 	}
-							//insertFreeBoard
+							
 	@PostMapping("/freeBoard/insertFreeBoard")
 	public String insertFreeBoard(@RequestParam(value="boardUrl2") MultipartFile file,
 			FreeBoardCommand freeBoardCommand,
@@ -50,13 +50,12 @@ public class InsertFreeBoardController {
 			) throws Exception, IOException {
 		
 		String uploadDir = "C:\\upload\\freeBoardImage";
-		if (!file.isEmpty()) {
+		if (!file.isEmpty()) { // 사진을 업로드한다면 사진의 이름을 저장
             String filename = file.getOriginalFilename();
 
-            
             freeBoardCommand.setBoardUrl(filename);
             file.transferTo(new File(uploadDir,filename));
-        }else {
+        }else { // 업로드 하지 않으면 null로 저장
         	freeBoardCommand.setBoardUrl("null");
         }
 
@@ -75,7 +74,7 @@ public class InsertFreeBoardController {
 		freeBoardService.insertFreeBoard(freeBoardCommand);
 		
 		
-		//return "freeBoard/freeBoardSuccess";
+		
 		return "redirect:/freeBoard/freeBoardList/main/1/1";
 	}
 

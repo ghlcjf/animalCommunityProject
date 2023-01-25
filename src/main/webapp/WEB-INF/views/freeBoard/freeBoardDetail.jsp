@@ -145,7 +145,7 @@ button:hover{
 		</c:if>
 		<c:forEach items="${freeComments}" var="freeComment">
 			<tr>
-				<td width="140px">
+				<td width="130px;">
 					${freeComment.name }
 					<c:if test="${freeComment.name!=userInfo.name}">
 						<input type="hidden" id="receiverNameCmt" value="${freeComment.name}">
@@ -156,8 +156,8 @@ button:hover{
 						</a>
 					</c:if>
 				</td>
-				<td width="700px;" style = "word-break: break-all">${freeComment.commentContent }</td>
-				<td><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+				<td style = "word-break: break-all">${freeComment.commentContent }</td>
+				<td width="130px;" ><fmt:formatDate value="${freeComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -237,10 +237,9 @@ button:hover{
 				let commentTbl = document.getElementById('commentTbl');
 				let tr = $('<tr></tr>').appendTo(commentTbl);
 				
-				$('<td></td>').html(data.name).appendTo(tr);
-				/* $('<td></td>').html(data.commentContent).appendTo(tr); */
-				$('<td width="700px;" style = "word-break: break-all"></td>').html(data.commentContent).appendTo(tr);
-				$('<td></td>').html(data.writeDate).appendTo(tr);
+				$('<td width="130px;"></td>').html(data.name).appendTo(tr);
+				$('<td style = "word-break: break-all"></td>').html(data.commentContent).appendTo(tr);
+				$('<td width="130px;"></td>').html(data.writeDate).appendTo(tr);
 				
 				
 			},

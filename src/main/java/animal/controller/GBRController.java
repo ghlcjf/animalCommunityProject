@@ -11,7 +11,7 @@ import animal.vo.FreeBoard;
 
 @RestController
 public class GBRController {
-
+	// 추천, 반대, 신고 수를 올리는 레스트컨트롤러
 	
 	private AnimalDao animalDao;
 
@@ -23,7 +23,7 @@ public class GBRController {
 	
 	
 
-	@RequestMapping("/good/{boardNum}")   //  http://localhost:8085/animalCommunity/good/4
+	@RequestMapping("/good/{boardNum}")   
 	public int good(@PathVariable("boardNum") long boardNum) {
 		
 		FreeBoard updateFreeBoard = animalDao.selectByFreeBoardNum(boardNum);
@@ -33,11 +33,10 @@ public class GBRController {
 		int num = freeBoard.getGood();
 		
 		return num;
-		// request.getRequestDispatcher("/freeBoard/readFreeBoard/"+boardNum).forward(request, response);
 	}
 	
 	
-	@RequestMapping("/bad/{boardNum}")   //  http://localhost:8085/animalCommunity/good/4
+	@RequestMapping("/bad/{boardNum}")   
 	public int bad(@PathVariable("boardNum") long boardNum) {
 		
 		FreeBoard updateFreeBoard = animalDao.selectByFreeBoardNum(boardNum);
@@ -47,10 +46,9 @@ public class GBRController {
 		int num = freeBoard.getBad();
 		
 		return num;
-		// request.getRequestDispatcher("/freeBoard/readFreeBoard/"+boardNum).forward(request, response);
 	}
 	
-	@RequestMapping("/report/{boardNum}")   //  http://localhost:8085/animalCommunity/good/4
+	@RequestMapping("/report/{boardNum}")   
 	public int report(@PathVariable("boardNum") long boardNum) {
 		
 		FreeBoard updateFreeBoard = animalDao.selectByFreeBoardNum(boardNum);
@@ -60,7 +58,6 @@ public class GBRController {
 		int num = freeBoard.getReport();
 		
 		return num;
-		// request.getRequestDispatcher("/freeBoard/readFreeBoard/"+boardNum).forward(request, response);
 	}
 	
 	

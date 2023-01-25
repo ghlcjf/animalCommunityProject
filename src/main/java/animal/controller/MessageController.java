@@ -27,10 +27,21 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/message/replyForm/{num}")
-	public String replyMessageForm(@PathVariable("num") int messageNum,Model model) {
+	public String replyMessageForm(@PathVariable("num") int messageNum,Model model,HttpSession session) {
 		
 		messageService.readCheckByMessageNum(messageNum);
 		Message message = messageService.selectMessageByMessageNum(messageNum);
+		// 메세지 안읽은 개수 저장하는 세션
+		if(session != null) {
+			Object obj = session.getAttribute("userInfo");
+			if(obj !=null) {
+				LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
+				int num = messageService.getUnReadCheck(userInfo.getName());
+				session.setAttribute("unReadCheck", num);
+				
+			}
+		}
+		
 		
 		model.addAttribute("message", message);
 		return "message/replyMessageForm";

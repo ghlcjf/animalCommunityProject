@@ -135,11 +135,9 @@ public class ManagerController {
 		
 		User user = animalDao.selectByMemberName(name);
 		session.setAttribute("member",user);
-//		model.addAttribute("member",user);
 		
 		List<FreeBoard> boardList = animalDao.getboardList(name);
 		session.setAttribute("board",boardList);
-//		model.addAttribute("board",boardList);
 		
 		return "manager/memberDetail";
 	}
@@ -147,8 +145,7 @@ public class ManagerController {
 	@GetMapping("/board/delete/{boardNum}") //회원게시물 삭제
 	public String delete(@PathVariable("boardNum") long boardNum,Model model) {
 		
-//		System.out.println("삭제?");
-//		System.out.println(boardNum);
+
 		String name = animalDao.selectName(boardNum);
 		animalDao.boardDelete(boardNum);
 		
@@ -299,7 +296,7 @@ public class ManagerController {
 	}
 	
 	@GetMapping("/boardManagement/image")
-	public String imageMenu(Model model) {
+	public String imageMenu(Model model) { // 배너 이미지 게시판
 		
 		List<Image> imageList = imageService.selectAllImageList();
 		

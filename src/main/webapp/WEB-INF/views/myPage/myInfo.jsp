@@ -51,9 +51,9 @@ th {
      font-weight: normal;
 }
 
-td {
+/* td {
 overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
-}
+} */
 
 a {
 	text-decoration: none;
@@ -203,7 +203,7 @@ a {
 							<c:forEach var="page" begin="1" end="10" step="1">
 								<c:if test="${sectionPage.section>1 && page==1}">
 									<li class="page-item">
-								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${animal}/${sectionPage.section-1}/${10}">
+								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${sectionPage.section-1}/${10}">
 								        <span aria-hidden="true">&laquo;</span>
 								      </a>
 								    </li>
@@ -216,7 +216,7 @@ a {
 								<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
 								<c:if test="${page==10}">
 									<li class="page-item">
-								      <a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section+1}/${1}" aria-label="Next">
+								      <a class="page-link" href="/animalCommunity/myPage/${sectionPage.section+1}/${1}" aria-label="Next">
 								        <span aria-hidden="true">&raquo;</span>
 								      </a>
 								    </li>
@@ -227,13 +227,13 @@ a {
 							<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
 								<c:if test="${sectionPage.section>1 && page==1}">
 									<li class="page-item">
-								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${animal}/${sectionPage.section-1}/${10}">
+								      <a class="page-link" aria-label="Previous" href="/animalCommunity/myPage/${sectionPage.section-1}/${10}">
 								        <span aria-hidden="true">&laquo;</span>
 								      </a>
 								    </li>
 								</c:if>
 								<li class="page-item">
-									<a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section}/${page}">
+									<a class="page-link" href="/animalCommunity/myPage/${sectionPage.section}/${page}">
 										${(sectionPage.section-1)*10+page}
 									</a>
 								</li>
@@ -243,7 +243,7 @@ a {
 					<c:when test="${totalCnt==100}"> <!-- 전체 개수가 100개 -->
 						<c:forEach var="page" begin="1" end="10" step="1">
 							<li class="page-item">
-								<a class="page-link" href="/animalCommunity/myPage/${animal}/${sectionPage.section}/${page}">
+								<a class="page-link" href="/animalCommunity/myPage/${sectionPage.section}/${page}">
 									${(sectionPage.section-1)*10+page}
 								</a>
 							</li>
@@ -252,7 +252,7 @@ a {
 					<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
 						<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
 							<li class="page-item">
-								<a class="page-link" href="/animalCommunity//myPage${animal}/${sectionPage.section}/${page}">
+								<a class="page-link" href="/animalCommunity//myPage/${sectionPage.section}/${page}">
 									${(sectionPage.section-1)*10+page}
 								</a>
 							</li>

@@ -23,7 +23,7 @@ import animal.vo.SearchMemberCommand;
 import animal.vo.SectionPage;
 import animal.vo.User;
 
-//import spring.vo.Member;
+
 
 public class AnimalDao {
 
@@ -387,7 +387,6 @@ public class AnimalDao {
 	}
 
 	public void authorize(String id) {
-		System.out.println(id);
 		sqlSession.update("mybatis.mapper.member.authorize", id);
 	}
 

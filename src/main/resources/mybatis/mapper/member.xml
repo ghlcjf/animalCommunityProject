@@ -8,39 +8,7 @@
 										   <!-- return sqlSession.selectList("mybatis.mapper.member.selectAll"); namespace="mybatis.mapper.member"-->
 										   
 									   
-	<!-- <resultMap type="member" id="memVo">
-		<result column="id" property="id"/>
-		<result column="email" property="email"/>
-		<result column="password" property="password"/>
-		<result column="name" property="name"/>
-		<result column="regdate" property="registerDate"/>
-	</resultMap>									 
 	
-	<sql id="selectAllMember">
-		SELECT * FROM membersTbl
-	</sql>
-	
-	
-	<select id="selectByEmail" resultMap="memVo" parameterType="String">
-		<include refid="selectAllMember" />
-		WHERE email=#{email}
-	</select>
-	
-	<select id="selectByRegDate" resultMap="memVo" parameterType="spring.vo.ListCommand">
-		<include refid="selectAllMember" />
-		WHERE regdate BETWEEN #{from} AND #{to} 
-		ORDER BY regdate ASC
-	</select>
-	
-	<insert id="insertMember" parameterType="member">
-		INSERT INTO membersTbl 
-		VALUES(membersTbl_seq.nextval,#{email},#{password},#{name},sysdate)
-	</insert>
-	
-	<update id="updateMember" parameterType="member">
-		UPDATE membersTbl SET name=#{name}, password=#{password} WHERE email=#{email}
-	</update>
-	 -->
 	
 	<!--메인화면에서 자유게시판 조회수 순서대로 인기글 출력-->
 	<select id="selectFreeBoardTop" resultType="freeBoard">
@@ -261,35 +229,6 @@
 	<update id="updateBadCountHospitalInfo" parameterType="hospitalInfo">
 		UPDATE hospitalInfoTbl SET bad = #{bad}+1 WHERE boardNum=#{boardNum}
 	</update>
-	
-	<select id="selectHospitalSeoul" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '서울'
-	</select>
-	<!--  -->
-	<select id="selectHospitalGyeonggi" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경기도'
-	</select>
-	
-	<select id="selectHospitalGangwon" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '강원도'
-	</select>
-	
-	<select id="selectHospitalChungcheong" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '충청도'
-	</select>
-	
-	<select id="selectHospitalGyeongsang" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '경상도'
-	</select>
-	
-	<select id="selectHospitalJeolla" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '전라도'
-	</select>
-	
-	<select id="selectHospitaljeju" resultType="hospitalInfo">
-		SELECT * FROM hospitalInfoTbl WHERE hospitalLoc = '제주도'
-	</select>
-	<!--  -->
 	
 	<select id="selectAllNumHospitalInfo" resultType="int">
 		SELECT COUNT(*) FROM hospitalInfoTbl

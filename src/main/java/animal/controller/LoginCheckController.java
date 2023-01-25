@@ -19,18 +19,7 @@ public class LoginCheckController {
 		this.loginCheckService = loginCheckService;
 	}
 
-//	@PostMapping("/loginCheck")
-//	public boolean loginCheck(@RequestParam("id") String id,
-//			@RequestParam("password") String password, Model model) throws IOException {
-//		
-//		User user = new User();
-//		user.setId(id);
-//		user.setPassword(password);
-//		
-//		boolean check = loginCheckService.loginCheck(user);
-//		
-//		return check;
-//	}
+
 	
 	@PostMapping("/loginCheck")
 	public boolean loginCheck(@RequestParam("id") String id,

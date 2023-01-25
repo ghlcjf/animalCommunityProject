@@ -10,19 +10,7 @@ public class LoginCheckService {
 	public void setAnimalDao(AnimalDao animalDao) {
 		this.animalDao = animalDao;
 	}
-//
-//	public boolean logincheck(User user) {
-//		String id = user.getId();
-//				
-//		User checkUser = animalDao.selectById(id);
-//		
-//		if(checkUser!=null) {
-//			if(checkUser.getPassword().equals(user.getPassword())) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
+
 	
 	public boolean loginCheck(User user) {
 		String id = user.getId();

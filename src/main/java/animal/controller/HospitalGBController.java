@@ -9,6 +9,7 @@ import animal.vo.HospitalInfo;
 
 @RestController
 public class HospitalGBController {
+	// 추천, 반대 수를 올리는 레스트 컨트롤러
 
 	private AnimalDao animalDao;
 	

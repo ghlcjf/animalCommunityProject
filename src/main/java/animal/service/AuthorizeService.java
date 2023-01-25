@@ -11,7 +11,6 @@ public class AuthorizeService {
 	}
 
 	public void authorize(String id) {
-		System.out.println(id);
 		animalDao.authorize(id);
 	}
 	

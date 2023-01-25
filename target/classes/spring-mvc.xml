@@ -13,10 +13,7 @@
 		<mvc:jsp prefix="/WEB-INF/views/"/>
 	</mvc:view-resolvers>
 	
-<!-- 	<mvc:view-controller path="/main" view-name="main"/> -->
-	<!--   http://localhost:8085/animalCommunity/main 경로를 찾으면  /WEB-INF/views/main.jsp로 연결-->
-<!-- 	<mvc:view-controller path="/" view-name="main"/> -->
-	<!--   http://localhost:8085/animalCommunity/    ===> /WEB-INF/views/main.jsp로 연결-->
+
 
 	<!-- 메시지 읽어오기 위한 빈 -->
 	<bean id="messageSource"
@@ -42,10 +39,24 @@
 			<mvc:mapping path="/animal/**"/>
 			<mvc:mapping path="/hospitalInfo/**"/>
 			<mvc:mapping path="/hospital/**"/>
+			<mvc:mapping path="/hospitalGodd/**"/>
+			<mvc:mapping path="/hospitalBad/**"/>
 			<mvc:mapping path="/issue/**"/>
+			<mvc:mapping path="/issueWrite/**"/>
 			<mvc:mapping path="/myPage/**"/>
 			<mvc:mapping path="/message/**"/>
 			<mvc:mapping path="/messenger/**"/>
+			<mvc:mapping path="/checkPassword/**"/>
+			<mvc:mapping path="/checkPassword2/**"/>
+			<mvc:mapping path="/changeInfo/**"/>
+			<mvc:mapping path="/newIdWindow/**"/>
+			<mvc:mapping path="/newNameWindow/**"/>
+			<mvc:mapping path="/good/**"/>
+			<mvc:mapping path="/bad/**"/>
+			<mvc:mapping path="/report/**"/>
+			<mvc:mapping path="/insertComment/**"/>
+			<mvc:mapping path="/comment/**"/>
+			<mvc:mapping path="/logout/**"/>
 			
 			<bean class="animal.intercepter.LoginCheckIntercepter"/>
 		</mvc:interceptor>
@@ -57,6 +68,11 @@
 			<mvc:mapping path="/boardManagement/**"/>
 			<mvc:mapping path="/memberManagement/**"/>
 			<mvc:mapping path="/member/**"/>			
+			<mvc:mapping path="/reportBoard/**"/>			
+			<mvc:mapping path="/reportBoardDelete/**"/>			
+			<mvc:mapping path="/authorize/**"/>			
+			<mvc:mapping path="/board/**"/>			
+			<mvc:mapping path="/search/**"/>			
 			<bean class="animal.intercepter.ManagerCheckIntercepter"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

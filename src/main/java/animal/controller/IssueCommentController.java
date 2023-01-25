@@ -22,14 +22,11 @@ public class IssueCommentController {
 	}
 	
 	
-	@RequestMapping("/comment") // http://localhost:8090/animalCommunity/comment
+	@RequestMapping("/comment") 
 	public IssueComment addComment(@RequestParam("name") String name,
 							@RequestParam("commentContent") String commentContent,
 							@RequestParam("boardNum") String boardNum) {
-//		System.out.println("호출 성공");
-//		System.out.println(name);
-//		System.out.println(commentContent);
-//		System.out.println(boardNum);
+
 		
 		IssueComment issueComment = new IssueComment();
 		
@@ -41,28 +38,10 @@ public class IssueCommentController {
 		
 		List<IssueComment> issueComments = animalDao.getIssueComments2(boardNum);
 		
-		return issueComments.get(0);
+		return issueComments.get(0); // 리스트 가장 첫번째 댓글을 리턴 => jsp파일에 새로 등록한 댓글 끼워 넣기 위함
 	}
 	
-//	@PostMapping("/comment/{boardNum}")
-//	public String addComment(@PathVariable("boardNum") long boardNum,Errors errors) {
-//		
-////		AnimalDao.insertComment(icc);
-//		
-//		return "/main";
-//	}
-//	
-//	@RequestMapping("/good/{boardNum}")  
-//	public int good(@PathVariable("boardNum") long boardNum) {
-//		FreeBoard updateFreeBoard = animalDao.selectByFreeBoardNum(boardNum);
-//		animalDao.addGoodCount(updateFreeBoard);
-//		FreeBoard freeBoard = animalDao.selectByFreeBoardNum(boardNum);
-//		
-//		int num = freeBoard.getGood();
-//		
-//		return num;
-//		// request.getRequestDispatcher("/freeBoard/readFreeBoard/"+boardNum).forward(request, response);
-//	}
+
 
 
 }
