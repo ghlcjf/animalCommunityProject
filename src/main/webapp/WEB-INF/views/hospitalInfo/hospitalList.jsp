@@ -124,7 +124,7 @@ button:hover {
 						<table class="table table-hover table-sm">
 							<thead class="table-group-divider-cs">
 								<tr>
-									<th scope="col" width="70px;">번호</th>
+									<th scope="col" width="70px;">글 번호</th>
 									<th scope="col" width="200px;">병원</th>
 									<th scope="col" width="100px;">위치</th>
 									<th scope="col" width="100px;">전화 번호</th>

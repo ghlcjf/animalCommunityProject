@@ -59,7 +59,7 @@
 		            			<div class="d-flex">
 		            				<div class="me-auto p-2">${animal.animalTitle}</div>
                							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리</small> <small class="text-muted-cs">${animal.animalCategory}</small></p></div>
-						                <div class="p-2"><p class="card-text"><small class="text-muted">번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">글 번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
 						                <div class="p-2"><p class="card-text"><small class="text-muted">작성자</small> <small class="text-muted-cs">${animal.name}</small></p></div>
                							<div class="p-2"><p class="card-text"><small class="text-muted">조회수</small> <small class="text-muted-cs">${animal.viewCount}</small></p></div>
 									</div>
@@ -82,7 +82,7 @@
 		            			<div class="d-flex">
 		            				<div class="me-auto p-2">${animal.animalTitle}</div>
                							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리</small> <small class="text-muted-cs">${animal.animalCategory}</small></p></div>
-						                <div class="p-2"><p class="card-text"><small class="text-muted">번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
+						                <div class="p-2"><p class="card-text"><small class="text-muted">글 번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
                							<div class="p-2"><p class="card-text"><small class="text-muted">작성자</small> <small class="text-muted-cs">${animal.name}</small></p></div>
                							<div class="p-2"><p class="card-text"><small class="text-muted">조회수</small> <small class="text-muted-cs">${animal.viewCount}</small></p></div>
            							</div>
