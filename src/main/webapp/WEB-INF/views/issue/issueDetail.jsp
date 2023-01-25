@@ -97,9 +97,9 @@ button:hover{
 		</c:if>		
 		<c:forEach items="${issueComment}" var="issueComment">
 			<tr>
-				<td>${issueComment.name }</td>
-				<td width="700px;" style = "word-break: break-all">${issueComment.commentContent }</td>
-				<td><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
+				<td width="130px">${issueComment.name }</td>
+				<td style = "word-break: break-all">${issueComment.commentContent }</td>
+				<td width="130px"><fmt:formatDate value="${issueComment.writeDate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		
 		</c:forEach>

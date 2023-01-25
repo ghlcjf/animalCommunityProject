@@ -355,7 +355,7 @@
 		(SELECT ROWNUM as nick, b.* 
 		 FROM  (SELECT * FROM userTbl
                 WHERE admin = 0
-				ORDER BY id DESC) 
+				ORDER BY id ASC) 
 		 b) 
 		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
 		AND ((#{section}-1)*100)+ (#{pageNum}*10))
