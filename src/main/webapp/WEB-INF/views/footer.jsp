@@ -4,17 +4,19 @@
 
 <head>
 	<style>
-	
+
 		.bottom-box{
 			margin-top:400px;
 			display: flex; justify-content: center; align-items: center;	
-			top:2000px; bottom: 0; background: rgb(136, 154, 233);
+			bottom: 0px; background: rgb(136, 154, 233);
 			color: white; font-weight: bolder; font-size: 15px;
-			height: 90px;
+			height: 90px; width: 100%;
+			
 		}	
 		.text2{
 			padding-left: 40px; 
 		}
+		
 	</style>
 </head>
 
@@ -33,8 +35,6 @@
 			</svg>
 		: AnimalCommunity@naver.com</p>
 	</div>
-
-
 </footer>
 
 
