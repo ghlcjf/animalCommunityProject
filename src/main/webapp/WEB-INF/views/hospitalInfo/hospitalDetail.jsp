@@ -71,38 +71,31 @@
 
 .btn-cs-1 {
 	padding: 5px;   border: none;
-		height: 35px; 	border-radius: 10px;
-		color: white;   font-weight:bolder;
-		width: 70px;
-		background: rgb(136, 154, 233);
-		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-		line-height: 10px;
-		margin-left: 10px;
-		margin-bottom: 5px;
-		margin-top: 20px;
+	height: 35px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	width: 70px;
+	margin-top: 20px;margin-bottom: 5px;
+	margin-left: 10px;
+	background: green;
 }
 
 .btn-cs-1:hover {
-	background: rgb(101, 121, 207);
-	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	background: rgb(0, 88, 0);
 }
 
 .btn-cs-2 {
 	padding: 5px;   border: none;
-		height: 35px; 	border-radius: 10px;
-		color: white;   font-weight:bolder;
-		width: 70px;
-		background: rgb(136, 154, 233);
-		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-		line-height: 10px;
-		margin-left: 10px;
-		margin-bottom: 5px;
-		margin-top: 20px;
+	height: 35px; 	border-radius: 10px;
+	color: white;   font-weight:bolder;
+	width: 70px;
+	background: red;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	margin-top: 20px;
 }
 
 .btn-cs-2:hover {
-	background: rgb(101, 121, 207);
-	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	background:rgb(189, 0, 0);
 }
 .smallBtn {
 	padding: 5px;   border: none;

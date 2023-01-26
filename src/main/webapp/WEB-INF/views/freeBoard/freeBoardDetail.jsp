@@ -54,52 +54,37 @@ button:hover {
 	height: 35px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
 	width: 70px;
-	background: rgb(136, 154, 233);
-	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-	line-height: 10px;
 	margin-left: 10px;
 	margin-bottom: 15px;
-	margin-top: 20px;
+	margin-top: 20px;	background: green;
 }
 
 .btn-cs-1:hover {
-	background: rgb(101, 121, 207);
-	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	background: rgb(0, 88, 0);
 }
 
 .btn-cs-2 {
 	padding: 5px;   border: none;
 	height: 35px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
-	width: 70px;
-	background: rgb(136, 154, 233);
-	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-	line-height: 10px;
-	margin-left: 10px;
-	margin-bottom: 15px;
-	margin-top: 20px;
+	width: 70px;    margin-top: 20px;
+	line-height: 10px;margin-left: 10px;margin-bottom: 15px;
+	background: red;
 }
 
 .btn-cs-2:hover {
-	background: rgb(101, 121, 207);
-	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+	background:rgb(189, 0, 0);
 }
 
 .btn-cs-3 {
 	padding: 5px;   border: none;
 	height: 35px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
-	width: 70px;
-	background: rgb(136, 154, 233);
-	background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
-	line-height: 10px;
-	margin-left: 10px;
-	margin-bottom: 5px;
+	width: 70px; line-height: 10px;
+	background: yellow; margin-left: 10px; margin-bottom: 5px;
 }
 
 .btn-cs-3:hover {
-	background: rgb(101, 121, 207);
-	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
 
 .smallBtn {
