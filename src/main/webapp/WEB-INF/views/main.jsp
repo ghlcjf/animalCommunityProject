@@ -404,7 +404,7 @@
 								<tr>
 									<td>
 										<c:choose>
-											<c:when test="${board.issueUrl=='null' || !empty board.issueUrl }">
+											<c:when test="${board.issueUrl=='null' || empty board.issueUrl }">
 												<a href="<c:url value='/issue/detail/${board.issueNum}' />">
 													<img class="img-size" src="/imageFolder/noImage.png"><br>
 												</a>
