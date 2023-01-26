@@ -22,6 +22,8 @@
 
 	<style>
         *{ margin: 0; padding: 0;}	
+        #body-all{min-height: 100%; position: relative;}
+        #body-content{padding-bottom: 150px;}
  		img{height:580px; /*이미지 배너부분 사진높이 일정하게 맞춘것, 높이 650에 맞췄었음*/ } 
  		a{text-decoration: none;/*모든 a태그 밑줄 없애기*/}
 		#carouselExampleControls{width: 1150px; margin-left:10px;}
@@ -126,7 +128,7 @@
 			
 		}
  		.scroll-right{ /* 따라다니는 메뉴  */
-			position:absolute;  top:40%; bottom: 40%; background:#fff; 
+			position:absolute;  top:6.5%;background:#fff; 
 			width:90px; bottom: 700px;
 		} 
 		.top-ten{
@@ -169,6 +171,8 @@
 <body>
 
 <jsp:include page="header.jsp"></jsp:include>
+<div id="body-all">
+<div id="body-content">
 	<div id="container1">
 		<div id="main-top">
 	  		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -388,7 +392,7 @@
 					 	</a>
 				 	</c:if>
 				 	<c:if test="${!empty userInfo}"><!--세션이 있으면-->
-				 		<a href='<c:url value="/issue"/>'>
+				 		<a href='<c:url value="/issue/1/1"/>'>
 				 			<span class="show-more-issue">더보기></span>
 				 		</a>
 				 	</c:if>
@@ -404,7 +408,7 @@
 								<tr>
 									<td>
 										<c:choose>
-											<c:when test="${board.issueUrl=='null' || !empty board.issueUrl }">
+											<c:when test="${board.issueUrl=='null' || empty board.issueUrl }">
 												<a href="<c:url value='/issue/detail/${board.issueNum}' />">
 													<img class="img-size" src="/imageFolder/noImage.png"><br>
 												</a>
@@ -461,9 +465,9 @@
 			</c:if>		
 		</div>
 	</div> --%>
-
+</div><!--body-content-->
 	<jsp:include page="footer.jsp"></jsp:include>
-
+</div><!--body-all-->
 </body>
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
