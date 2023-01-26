@@ -55,7 +55,7 @@ button:hover {
 	padding: 5px;   border: none;
 	height: 35px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
-	width: 70px;
+	width: 75px;
 	margin-left: 10px;
 	margin-bottom: 15px;
 	margin-top: 20px;	background: green;
@@ -69,7 +69,7 @@ button:hover {
 	padding: 5px;   border: none;
 	height: 35px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
-	width: 70px;    margin-top: 20px;
+	width: 75px;    margin-top: 20px;
 	line-height: 10px;margin-left: 10px;margin-bottom: 15px;
 	background: red;
 }
@@ -82,11 +82,12 @@ button:hover {
 	padding: 5px;   border: none;
 	height: 35px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
-	width: 70px; line-height: 10px;
-	background: yellow; margin-left: 10px; margin-bottom: 5px;
+	width: 75px; line-height: 10px;
+	background: #ffc107; margin-left: 10px; margin-bottom: 5px;
 }
 
 .btn-cs-3:hover {
+	background: #ffca2c;
 }
 
 .smallBtn {
