@@ -107,7 +107,8 @@ public class ManagerController {
 	
 
 	@GetMapping("/memberManagement/{section}/{pageNum}") //회원조회
-	public String memberManagement(@PathVariable("section") int section, @PathVariable("pageNum") int pageNum, Model model) {
+	public String memberManagement(@PathVariable("section") int section, @PathVariable("pageNum") int pageNum, Model model,
+			HttpSession session) {
 
 		SectionPage sectionPage = new SectionPage(section,pageNum);
 		List<User> memberList = animalDao.selectTargetMemberList(sectionPage);
@@ -116,7 +117,7 @@ public class ManagerController {
 		model.addAttribute("member",memberList);
 		model.addAttribute("searchData", new SearchMemberCommand());
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		
 		return "manager/memberManagement";
 	}
@@ -203,7 +204,7 @@ public class ManagerController {
 	
 	@GetMapping("/boardManagement/animalInfo/{section}/{pageNum}") //동물소개 게시판 
 	public String animalInfoMenu(@PathVariable("section") int section,
-			@PathVariable("pageNum") int pageNum, Model model) {
+			@PathVariable("pageNum") int pageNum, Model model,HttpSession session) {
 		
 	
 		int totalCnt = animalInfoService.selectAllNumAnimalInfo();
@@ -221,7 +222,7 @@ public class ManagerController {
 		}
 		
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("animalInfoList", animalInfoList);
 		
 		return "manager/animalInfoMenu";
@@ -229,7 +230,7 @@ public class ManagerController {
 	
 	@GetMapping("/boardManagement/hospitalInfo/{section}/{pageNum}") //동물병원 게시판
 	public String hospitalInfoMenu(@PathVariable("section") int section, 
-			@PathVariable("pageNum") int pageNum, Model model) {
+			@PathVariable("pageNum") int pageNum, Model model,HttpSession session) {
 		
 		
 		SectionPage sectionPage = new SectionPage(section,pageNum);
@@ -245,13 +246,15 @@ public class ManagerController {
 		
 		
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("hospitalInfoList", hospitalInfoList);
 		return "manager/hospitalInfoMenu";
 	}
 	
 	@GetMapping("/boardManagement/issue/{section}/{pageNum}") //이슈게시판
-	public String issueBoardMenu(@PathVariable("section") int section,@PathVariable("pageNum") int pageNum,Model model) {
+	public String issueBoardMenu(@PathVariable("section") int section,
+			@PathVariable("pageNum") int pageNum,Model model,
+			HttpSession session) {
 		
 		SectionPage sectionPage = new SectionPage(section,pageNum);
 		List<Issue> issueBoardList = animalDao.selectTargetIssueList(sectionPage);
@@ -266,7 +269,7 @@ public class ManagerController {
 		int totalCnt = animalDao.selectAllNumIssue();
 		
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("issueBoardList", issueBoardList);
 		
 		return "manager/issueBoardMenu";
@@ -275,7 +278,8 @@ public class ManagerController {
 	
 	@GetMapping("/boardManagement/notice/{section}/{pageNum}") //공지게시판
 	public String noticeMenu(@PathVariable("section") int section,
-			@PathVariable("pageNum") int pageNum, Model model) {
+			@PathVariable("pageNum") int pageNum, Model model,
+			HttpSession session) {
 		
 		SectionPage sectionPage = new SectionPage(section,pageNum);
 		int totalCnt = selectAllNoticeService.selectAllNoticeNum();
@@ -290,7 +294,7 @@ public class ManagerController {
 		
 		
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("noticeList", noticeList);
 		return "manager/noticeMenu";
 	}
@@ -547,11 +551,11 @@ public class ManagerController {
 			return "redirect:/login";
 		}
 		
-
+		SectionPage sectionPage = (SectionPage) session.getAttribute("sectionPage");
 		
 		freeBoardService.updateFreeBoard(freeBoardCommand);
 		
-		return "redirect:/boardManagement/notice/1/1";
+		return "redirect:/boardManagement/notice/"+sectionPage.getSection()+"/"+sectionPage.getPageNum();
 	}
 	
 	
@@ -584,11 +588,10 @@ public class ManagerController {
 			return "redirect:/login";
 		}
 		
-		
-		
 		issueBoardService.updateIssueBoard(issueBoardCommand);
 		
-		return "redirect:/boardManagement/issue/1/1";
+		SectionPage sectionPage = (SectionPage) session.getAttribute("sectionPage");
+		return "redirect:/boardManagement/issue/"+sectionPage.getSection()+"/"+sectionPage.getPageNum();
 	}
 	
 	
@@ -619,11 +622,11 @@ public class ManagerController {
 		}else {
 			return "redirect:/login";
 		}
-		
+		SectionPage sectionPage = (SectionPage) session.getAttribute("sectionPage");
 		
 		animalInfoService.updateAnimalInfo(animalInfoCommand);
 		
-		return "redirect:/boardManagement/animalInfo/1/1";
+		return "redirect:/boardManagement/animalInfo/"+sectionPage.getSection()+"/"+sectionPage.getPageNum();
 	}
 	
 
@@ -664,7 +667,10 @@ public class ManagerController {
 		
 		hospitalInfoService.updateHospitalInfo(hospitalInfoCommand);
 		
-		return "redirect:/boardManagement/hospitalInfo/1/1";
+		SectionPage sectionPage = (SectionPage) session.getAttribute("sectionPage");
+		
+		
+		return "redirect:/boardManagement/hospitalInfo/"+sectionPage.getSection()+"/"+sectionPage.getPageNum();
 	}
 	
 //----삭제-----------------------------------------------------------------------------------------------------	

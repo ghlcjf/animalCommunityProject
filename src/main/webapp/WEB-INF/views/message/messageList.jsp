@@ -75,6 +75,7 @@ button{
 	#massageContainer{
 	margin-top:20px;
 	}
+	
 </style>
 </head>
 <body>
@@ -107,7 +108,7 @@ button{
 				<th>to</th>
 				<th>내용</th>
 				<th>보낸 시간</th>
-				<th>delete</th>		
+				<th>reply&delete</th>		
 			</tr>
 		</thead>
 		<tbody>
@@ -164,6 +165,11 @@ button{
 				let receiveList = document.getElementById('receiveList');
 				for(let i=0;i<data.length;i++){
 					let tr = $('<tr></tr>').appendTo(receiveList);
+					if(data[i].sendTime==data[i].readTime){
+						tr.css({
+							'backgroundColor':'rgb(235,238,250)'
+						})
+					}
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
@@ -197,6 +203,7 @@ button{
 								dateType:JSON,
 								success:function(data){
 									alert('삭제되었습니다.');
+									window.location.reload();
 								}
 								
 							});
@@ -204,7 +211,7 @@ button{
 							
 							
 						}
-						window.location.reload();
+						
 						
 					}
 				});
@@ -231,6 +238,11 @@ button{
 				let sendList = document.getElementById('sendList');
 				for(let i=0;i<data.length;i++){
 					let tr = $('<tr></tr>').appendTo(sendList);
+					if(data[i].sendTime==data[i].readTime){
+						tr.css({
+							'backgroundColor':'rgb(235,238,250)'
+						})
+					}
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
 					$('<td></td>').html(data[i].receiverName).appendTo(tr);
 					$('<td></td>').html(data[i].messageContent).appendTo(tr);
@@ -253,6 +265,7 @@ button{
 								dateType:JSON,
 								success:function(data){
 									alert('삭제되었습니다.');
+									window.location.reload();
 								}
 								
 							});
@@ -260,7 +273,7 @@ button{
 							
 							
 						}
-						window.location.reload();
+						
 						
 					}
 				});

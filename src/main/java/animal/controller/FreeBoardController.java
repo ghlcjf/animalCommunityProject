@@ -3,6 +3,7 @@ package animal.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import animal.dao.AnimalDao;
-import animal.exception.BoardNotFoundException;
 import animal.service.FreeBoardService;
 import animal.service.SelectAllFreeBoardListService;
 import animal.service.SelectAllNoticeListService;
@@ -50,7 +50,7 @@ public class FreeBoardController {
 	@RequestMapping("/freeBoard/freeBoardList/{animal}/{section}/{pageNum}")
 	public String boardList(@PathVariable("animal") String animal, @PathVariable("section") int section,
 			@PathVariable("pageNum") int pageNum, Model model,
-			HttpServletRequest request) {
+			HttpServletRequest request, HttpSession session) {
 		List<FreeBoard> freeBoardList = null;
 		int totalCnt = 0;
 
@@ -108,7 +108,7 @@ public class FreeBoardController {
 		
 		model.addAttribute("animal", animal);
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("freeBoardList", freeBoardList);
 		return "freeBoard/freeBoardList";
@@ -134,15 +134,32 @@ public class FreeBoardController {
 		
 		return "freeBoard/freeBoardDetail";
 	}
+	@GetMapping("/freeBoard/readMyFreeBoard/{boardNum}")
+	public String readMyFreeBoard(@PathVariable("boardNum") long boardNum,Model model) {
+		
+		
+		FreeBoard freeBoard = freeBoardService.selectFreeBoardByBoardNum(boardNum); 
+	
+		// 댓글 가져오기
+		List<FreeComment> freeComments = animalDao.selectAllFreeComment(boardNum);
+		
+		model.addAttribute("freeCommentCommand", new FreeCommentCommand());
+		model.addAttribute("freeComments", freeComments);
+		model.addAttribute("freeBoard", freeBoard);
+		
+		return "freeBoard/myFreeBoardDetail";
+	}
 	
 	
 	
 	
 	@RequestMapping("/freeBoard/deleteFreeBoard/{boardNum}")
-	public String deleteFreeBoard(@PathVariable("boardNum") long boardNum) {
+	public String deleteFreeBoard(@PathVariable("boardNum") long boardNum,HttpSession session) {
 		
 		freeBoardService.deleteFreeBoardByBoardNum(boardNum);
-		return "redirect:/freeBoard/freeBoardList/main/1/1";
+		
+		SectionPage sectionPage = (SectionPage) session.getAttribute("sectionPage");
+		return "redirect:/freeBoard/freeBoardList/main/"+sectionPage.getSection()+"/"+sectionPage.getPageNum();
 	}
 	
 	

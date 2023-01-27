@@ -218,7 +218,7 @@
 												    </li>
 												</c:if>
 												<li class="page-item">
-													<a class="page-link"  href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
+													<a class="page-link" href="/animalCommunity/freeBoard/freeBoardList/${animal}/${sectionPage.section}/${page}">
 														${(sectionPage.section-1)*10+page}
 													</a>
 												</li>
@@ -291,8 +291,22 @@
 	</div>
 
 <jsp:include page="../footer.jsp"></jsp:include>
+
+
+</body>
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>
 <script type="text/javascript">
+
+
+
+function insertConfirm(){
+	let cc = confirm('게시물을 작성하시겠습니까?');
+	if(cc==false){
+		return false;
+	}else{
+		location.href="/animalCommunity/freeBoard/insertFreeBoardForm";
+	} 
+}
 function sendMessage(rName, sName){
     let receiverName = rName;
     let senderName = sName;
@@ -305,19 +319,6 @@ function sendMessage(rName, sName){
     }
     return false;
  }
-</script>
-
-
-</body>
-<script type="text/javascript">
-function insertConfirm(){
-	let cc = confirm('게시물을 작성하시겠습니까?');
-	if(cc==false){
-		return false;
-	}else{
-		location.href="/animalCommunity/freeBoard/insertFreeBoardForm";
-	} 
-}
 
 
 </script>

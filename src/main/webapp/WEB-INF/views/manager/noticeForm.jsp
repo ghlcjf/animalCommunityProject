@@ -97,7 +97,7 @@ button:hover {
 <script type="text/javascript">
 	function cancel(){
 		if(confirm('글작성을 취소 하시겠습니까?')){
-			let link = '${context}/boardManagement/notice';
+			let link = '${context}/boardManagement/notice/'+${sectionPage.section}+'/'+${sectionPage.pageNum};
 				
 			return location.href=link;
 		}

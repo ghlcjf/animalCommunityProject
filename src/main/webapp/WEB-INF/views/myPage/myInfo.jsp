@@ -166,7 +166,7 @@ button:hover {
 				<c:forEach items="${boardList}" var="board">
 					<tbody>
 						<tr>
-							<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle}</td>
+							<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readMyFreeBoard/${board.boardNum}' />'"> ${board.boardTitle}</td>
 							<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 							<td>${board.viewCount }</td>
 							<td>

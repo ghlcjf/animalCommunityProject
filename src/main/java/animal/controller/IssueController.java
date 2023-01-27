@@ -2,6 +2,8 @@ package animal.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,8 @@ public class IssueController {
 
 
 	@GetMapping("/issue/{section}/{pageNum}")
-	public String issueBoard(@PathVariable("section") int section,@PathVariable("pageNum") int pageNum,Model model) {
+	public String issueBoard(@PathVariable("section") int section,@PathVariable("pageNum") int pageNum,Model model,
+			HttpSession session) {
 		
 		SectionPage sectionPage = new SectionPage(section,pageNum);
 		List<Issue> issueList = animalDao.selectTargetIssueList(sectionPage);
@@ -42,7 +45,7 @@ public class IssueController {
 		int totalCnt = animalDao.selectAllNumIssue();
 		
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("issue",issueList);
 		
 		return "issue/issueBoard";

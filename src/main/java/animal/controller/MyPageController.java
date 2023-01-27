@@ -80,9 +80,10 @@ public class MyPageController {
 			}
 		}
 		
-		model.addAttribute("sectionPage", sectionPage);
+	
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("totalCnt", totalCnt);
-		session.setAttribute("boardList",boardList);
+		model.addAttribute("boardList", boardList);
 
 		return "myPage/myInfo";
 	}

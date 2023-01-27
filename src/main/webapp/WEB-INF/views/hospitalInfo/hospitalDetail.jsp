@@ -170,7 +170,7 @@
 					</form>
 					
 					<div class="d-flex justify-content-start">
-						<button type="button" class="smallBtn" onclick="location.href='<c:url value="/hospitalInfo/main/1/1" />'">목록으로 돌아가기</button>
+						<button type="button" class="smallBtn" onclick="location.href='<c:url value="/hospitalInfo/main/${sectionPage.section }/${sectionPage.pageNum }" />'">목록으로 돌아가기</button>
 					</div>
 				
 			</div>

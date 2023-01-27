@@ -2,7 +2,8 @@ package animal.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class AnimalInfoController {
 	
 	@RequestMapping("animalInfo/{section}/{pageNum}")
 	public String animalList(@PathVariable("section") int section,
-			@PathVariable("pageNum") int pageNum, Model model) {
+			@PathVariable("pageNum") int pageNum, Model model,HttpSession session) {
 		
 		
 		int totalCnt = animalDao.selectAllNumAnimalInfo();
@@ -41,7 +42,8 @@ public class AnimalInfoController {
 			}
 		}
 		
-		model.addAttribute("sectionPage", sectionPage);
+		
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("totalCnt", totalCnt);
 		model.addAttribute("animals", animalList);
 		

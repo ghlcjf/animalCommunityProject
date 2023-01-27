@@ -1,32 +1,27 @@
 package animal.controller;
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import animal.service.SelectFreeBoardByBoardNumService;
-import animal.vo.FreeBoard;
-
-
 import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import animal.service.FreeBoardService;
-
+import animal.service.SelectFreeBoardByBoardNumService;
+import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.LoginUserInfo;
+import animal.vo.SectionPage;
 
 @Controller
 public class UpdateFreeBoardController {
@@ -68,15 +63,17 @@ public class UpdateFreeBoardController {
 		
 		
 		
-		if (!file.isEmpty()) {
+		if (!file.isEmpty()) { // 새로운 사진으로 변경할 때
             String filename = file.getOriginalFilename();
 
             freeBoardCommand.setBoardUrl(filename);
             file.transferTo(new File(uploadDir,filename));
-        }else {
-        	String filename = request.getParameter("originPic");
-        	freeBoardCommand.setBoardUrl(filename);
+        }else { // 새로운 사진을 업로드하지 않았을 때
         	
+        	// 기존 사진의 이름 값을 가져오기
+        	String filename = request.getParameter("originPic"); 
+        	
+        	freeBoardCommand.setBoardUrl(filename);
         }
 		
 		LoginUserInfo userInfo = (LoginUserInfo) session.getAttribute("userInfo");
@@ -86,12 +83,13 @@ public class UpdateFreeBoardController {
 			return "redirect:/login";
 		}
 		
+		SectionPage sectionPage = (SectionPage) session.getAttribute("sectionPage");
 		
 		freeBoardService.updateFreeBoard(freeBoardCommand);
 		
 
 		
-		return "redirect:/freeBoard/freeBoardList/main/1/1";
+		return "redirect:/freeBoard/freeBoardList/main/"+sectionPage.getSection()+"/"+sectionPage.getPageNum();
 		
 	}
 	

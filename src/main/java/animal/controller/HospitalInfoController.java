@@ -2,6 +2,8 @@ package animal.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,7 @@ public class HospitalInfoController {
 	@GetMapping("hospitalInfo/{location}/{section}/{pageNum}")
 	public String HospitalList(@PathVariable("location") String location, 
 			@PathVariable("section") int section, 
-			@PathVariable("pageNum") int pageNum, Model model) {
+			@PathVariable("pageNum") int pageNum, Model model,HttpSession session) {
 		
 		List<HospitalInfo> hospitalList = null;
 		int totalCnt = 0;
@@ -79,7 +81,7 @@ public class HospitalInfoController {
 		}
 		model.addAttribute("location", location);
 		model.addAttribute("totalCnt", totalCnt);
-		model.addAttribute("sectionPage", sectionPage);
+		session.setAttribute("sectionPage", sectionPage);
 		model.addAttribute("hospitals", hospitalList);
 		
 		return "hospitalInfo/hospitalList";

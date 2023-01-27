@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
+
 <script
     src="https://code.jquery.com/jquery-3.6.1.js"
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
@@ -21,6 +22,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 	<style>
+
         *{ margin: 0; padding: 0;}	
  		img{height:580px; /*이미지 배너부분 사진높이 일정하게 맞춘것, 높이 650에 맞췄었음*/ } 
  		a{text-decoration: none;/*모든 a태그 밑줄 없애기*/}
@@ -162,9 +164,8 @@
 		.profile-li{
 			padding-top: 5px;
 		}
-
 	</style>
-	
+
 </head>
 <body>
 
@@ -388,7 +389,7 @@
 					 	</a>
 				 	</c:if>
 				 	<c:if test="${!empty userInfo}"><!--세션이 있으면-->
-				 		<a href='<c:url value="/issue"/>'>
+				 		<a href='<c:url value="/issue/1/1"/>'>
 				 			<span class="show-more-issue">더보기></span>
 				 		</a>
 				 	</c:if>
@@ -404,7 +405,7 @@
 								<tr>
 									<td>
 										<c:choose>
-											<c:when test="${board.issueUrl=='null' || !empty board.issueUrl }">
+											<c:when test="${board.issueUrl=='null' || empty board.issueUrl }">
 												<a href="<c:url value='/issue/detail/${board.issueNum}' />">
 													<img class="img-size" src="/imageFolder/noImage.png"><br>
 												</a>
