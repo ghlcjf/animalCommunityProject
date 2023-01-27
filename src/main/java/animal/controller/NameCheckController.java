@@ -19,6 +19,25 @@ public class NameCheckController {
 	}
 
 
+	@RequestMapping(value="/myPage/nameCheck",produces = "application/text; charset=UTF-8")
+	public String myPageNameCheck(@RequestParam("name") String name) {
+		
+		String nameRegex = "^[가-힣]{1}[a-z0-9가-힣]{1,7}$";
+		if(!Pattern.matches(nameRegex, name)) {
+			
+			return "적합하지 않은 닉네임 형식";
+		}
+			
+		String nickName = nameCheckService.nameCheck(name);
+
+		if(nickName==null) {
+			return "사용가능한 닉네임 입니다.";
+		}
+		
+		return "이미 사용중인 닉네임 입니다.";
+		
+	}
+	
 	@RequestMapping(value="/nameCheck",produces = "application/text; charset=UTF-8")
 	public String nameCheck(@RequestParam("name") String name) {
 		

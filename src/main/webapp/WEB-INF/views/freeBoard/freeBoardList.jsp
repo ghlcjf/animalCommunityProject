@@ -58,6 +58,10 @@
 	    border-bottom: 1px solid #96aeea;
 	}
 	
+	#notice{
+		background-color:rgb(235, 238, 250);
+	}
+	
 	th {
 	     font-weight: normal;
 	}
@@ -161,7 +165,7 @@
 						<c:if test="${!empty noticeList}">
 							<c:forEach items="${noticeList}" var="notice">
 								<tbody>
-									<tr>
+									<tr id="notice">
 									 	<th scope="row">${notice.boardNum }</th>
 										<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />'"> ${notice.boardTitle } (${notice.commentCount})</td>
 										<td>${notice.viewCount }</td>
