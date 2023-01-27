@@ -122,6 +122,13 @@ public class MyPageController {
 		
 		return"register/nameCheck";
 	}
+	@GetMapping("/myNameWindow/{name}")
+	public String myNameWindow(@PathVariable("name") String name, Model model) {
+
+		model.addAttribute("name",name);
+		
+		return"myPage/changeInfoNameCheck";
+	}
 	
 	@GetMapping("/newIdWindow/{id}")
 	public String newIdWindow(@PathVariable("id") String id, Model model) {

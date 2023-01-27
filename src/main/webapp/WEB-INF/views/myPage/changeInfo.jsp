@@ -186,7 +186,7 @@
 			let oldName = document.getElementById('oldName').value;
 			let name = document.getElementById('name').value;
 	
-			let url = "${context}/newNameWindow/"+name;
+			let url = "${context}/myNameWindow/"+name;
 			
 			window.open(url,'_blank_1',
 			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');

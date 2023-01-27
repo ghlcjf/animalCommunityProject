@@ -44,6 +44,7 @@
 			<mvc:mapping path="/issue/**"/>
 			<mvc:mapping path="/issueWrite/**"/>
 			<mvc:mapping path="/myPage/**"/>
+			<mvc:mapping path="/myNameWindow/**"/>
 			<mvc:mapping path="/message/**"/>
 			<mvc:mapping path="/messenger/**"/>
 			<mvc:mapping path="/checkPassword/**"/>
