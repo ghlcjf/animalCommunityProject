@@ -49,8 +49,6 @@
 			<mvc:mapping path="/checkPassword/**"/>
 			<mvc:mapping path="/checkPassword2/**"/>
 			<mvc:mapping path="/changeInfo/**"/>
-			<mvc:mapping path="/newIdWindow/**"/>
-			<mvc:mapping path="/newNameWindow/**"/>
 			<mvc:mapping path="/good/**"/>
 			<mvc:mapping path="/bad/**"/>
 			<mvc:mapping path="/report/**"/>
