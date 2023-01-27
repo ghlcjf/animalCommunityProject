@@ -388,7 +388,7 @@
 					 	</a>
 				 	</c:if>
 				 	<c:if test="${!empty userInfo}"><!--세션이 있으면-->
-				 		<a href='<c:url value="/issue"/>'>
+				 		<a href='<c:url value="/issue/1/1"/>'>
 				 			<span class="show-more-issue">더보기></span>
 				 		</a>
 				 	</c:if>
@@ -404,7 +404,7 @@
 								<tr>
 									<td>
 										<c:choose>
-											<c:when test="${board.issueUrl=='null' || !empty board.issueUrl }">
+											<c:when test="${board.issueUrl=='null' || empty board.issueUrl }">
 												<a href="<c:url value='/issue/detail/${board.issueNum}' />">
 													<img class="img-size" src="/imageFolder/noImage.png"><br>
 												</a>
