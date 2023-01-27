@@ -115,7 +115,7 @@ button:hover {
 <script type="text/javascript">
 	function cancel(){
 		if(confirm('수정을 취소 하시겠습니까?')){
-			let link = '${context}/freeBoard/freeBoardList/main/1/1';
+			let link = '${context}/freeBoard/freeBoardList/main/'+${sectionPage.section}+'/'+${sectionPage.pageNum};
 			
 			return location.href=link;
 		}

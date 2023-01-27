@@ -168,7 +168,7 @@ button:hover {
 	
 
 				<div class="d-flex justify-content-start">
-					<button type="button" class="bigBtn" onclick="location.href='<c:url value="/issue/1/1" />'">목록으로 돌아가기</button>
+					<button type="button" class="bigBtn" onclick="location.href='<c:url value="/issue/${sectionPage.section }/${sectionPage.pageNum }" />'">목록으로 돌아가기</button>
 				</div>
 			</div>
 		</div>

@@ -136,7 +136,7 @@
 	<script type="text/javascript">
 		function cancel(){
 			if(confirm('정보수정을 취소 하시겠습니까?')){
-				let link = '${context}/myPage';
+				let link = '${context}/myPage/1/1';
 				
 				return location.href=link;
 			}

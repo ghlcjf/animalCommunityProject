@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
+
 <script
     src="https://code.jquery.com/jquery-3.6.1.js"
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
@@ -21,6 +22,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 	<style>
+
         *{ margin: 0; padding: 0;}	
         #body-all{min-height: 100%; position: relative;}
         #body-content{padding-bottom: 150px;}
@@ -164,9 +166,8 @@
 		.profile-li{
 			padding-top: 5px;
 		}
-
 	</style>
-	
+
 </head>
 <body>
 

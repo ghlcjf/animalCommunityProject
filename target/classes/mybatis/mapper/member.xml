@@ -294,7 +294,7 @@
 		(SELECT ROWNUM as nick, b.* 
 		 FROM  (SELECT * FROM userTbl
                 WHERE admin = 0
-				ORDER BY id DESC) 
+				ORDER BY id ASC) 
 		 b) 
 		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
 		AND ((#{section}-1)*100)+ (#{pageNum}*10))
@@ -430,7 +430,7 @@
 		SELECT * FROM 
 		(SELECT ROWNUM as nick, b.* 
 		 FROM  (SELECT * FROM freeBoardTbl 
-		 		WHERE name=#{name}
+		 		WHERE name=#{name} AND boardCategory!='공지사항'
 				ORDER BY boardNum DESC) 
 		 b) 
 		WHERE (nick BETWEEN ((#{section}-1)*100)+ ((#{pageNum}-1)*10+1) 
@@ -438,7 +438,7 @@
 	</select>
 	<select id="selectAllNumFreeBoardByName" resultType="int" parameterType="sectionPage">
 		SELECT COUNT(*) FROM freeBoardTbl
-			where name=#{name}
+			where name=#{name} AND boardCategory!='공지사항'
 	</select>
 	
 	<!-- 메세지 -->
