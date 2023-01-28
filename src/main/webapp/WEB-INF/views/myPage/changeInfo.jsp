@@ -191,6 +191,15 @@
 			window.open(url,'_blank_1',
 			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
 		}
+		
+		window.onload = function() {
+			var e = document.forms;
+			for(i=0; i<e.length; i++){
+				for(j=0; j<e[i].elements.length; j++){
+					if(e[i].elements[j].readOnly) e[i].elements[j].style.backgroundColor = "#F0F0F0";
+				}
+			}
+		}
 	</script>
 </body>
 </html>
