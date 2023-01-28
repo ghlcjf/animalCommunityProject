@@ -65,7 +65,7 @@ button:hover {
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
-
+<!-- 동물 소개 게시판 카테고리 기능 추가 -->
 	<div class="container text-center">
     	<div class="row">
 			<div class="col-10 mx-auto">
