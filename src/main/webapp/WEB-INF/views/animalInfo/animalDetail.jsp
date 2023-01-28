@@ -24,12 +24,15 @@
     --bs-text-opacity: 1;
     color: #black!important;
 }
+.me-auto, .p2{
+	font-size: 25px;
+}
 .img-fluid {
-	width: 500px;
-    height: 500px;
-    
-    margin-right:10px;
-    margin-bottom:10px;
+	width: 410px;
+    height: 410px;
+    margin-right:15px;
+    /* margin-bottom:15px; */
+    margin-top: -10px;
     float:left;
  }
  .smallBtn {
@@ -47,9 +50,7 @@
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
 .info{
-	
-	margin:auto;
-	
+	/* margin:auto; */
 }
 .card-text{
 	margin:10px;
@@ -103,8 +104,6 @@
            							</div>
        							</div>
        							<div class="row g-0">
-       							
-								
 								<div class="info">
             						<div class="card-body-cs">
             							<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="img-fluid">

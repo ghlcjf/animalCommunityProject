@@ -62,7 +62,7 @@ button:hover {
 			
 					<div class="mb-3">
 			            <label for="exampleFormControlInput1" class="form-label">제목</label>
-						<form:input path="animalTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요 (40자 이내)"/>
+						<form:input path="animalTitle" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요 (10자 이내)"/>
 					</div>
 				
 					<div class="mb-3">
@@ -135,8 +135,8 @@ button:hover {
 			alert('내용을 입력해 주세요');
 			return false;
 		}
-		if($('#exampleFormControlInput1').val().length>40){
-			alert('제목 글자수가 초과되었습니다. ※40자 이하※');
+		if($('#exampleFormControlInput1').val().length>10){
+			alert('제목 글자수가 초과되었습니다. ※10자 이하※');
 			return false;
 		}
 				
