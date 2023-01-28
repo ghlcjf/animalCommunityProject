@@ -467,8 +467,9 @@
 		</div>
 	</div> --%>
 </div><!--body-content-->
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>	
 </div><!--body-all-->
+
 </body>
 
 <c:set var="context" value="<%=request.getContextPath() %>"></c:set>

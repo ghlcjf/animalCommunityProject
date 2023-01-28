@@ -25,8 +25,12 @@
     color: #black!important;
 }
 .img-fluid {
-	width: 100%;
-    height: 400px;
+	width: 500px;
+    height: 500px;
+    
+    margin-right:10px;
+    margin-bottom:10px;
+    float:left;
  }
  .smallBtn {
 	padding: 5px;   border: none;
@@ -42,6 +46,19 @@
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
+.info{
+	
+	margin:auto;
+	
+}
+.card-text{
+	margin:10px;
+}
+.card-body-cs {
+    flex: 1 1 auto;
+    color: var(--bs-card-color);
+}
+
 </style>
 </head>
 <body>
@@ -65,11 +82,9 @@
 									</div>
 								</div>
 								<div class="row g-0">
-       							<div class="col-md-4">
-									<img src="/imageFolder/noImage.png" class="img-fluid">
-								</div>
-								<div class="col-md-8">
-            						<div class="card-body">
+								<div class="info">
+            						<div class="card-body-cs">
+            							<img src="/imageFolder/noImage.png" class="img-fluid">
 										<p class="card-text">${fn:replace(animal.animalContent, replaceChar, "<br/>")}</p>
 									</div>
 								</div>
@@ -88,11 +103,11 @@
            							</div>
        							</div>
        							<div class="row g-0">
-       							<div class="col-md-4">
-									<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="img-fluid">
-								</div>
-								<div class="col-md-8">
-            						<div class="card-body">
+       							
+								
+								<div class="info">
+            						<div class="card-body-cs">
+            							<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="img-fluid">
 										<p class="card-text">${fn:replace(animal.animalContent, replaceChar, "<br/>")}</p>
 									</div>
 								</div>
