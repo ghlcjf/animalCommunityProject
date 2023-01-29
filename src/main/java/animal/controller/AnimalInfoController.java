@@ -36,8 +36,8 @@ public class AnimalInfoController {
 		List<AnimalInfo> animalList = animalDao.selectTargetAnimalInfoList(sectionPage);
 	
 		for(int i=0;i<animalList.size();i++) {
-			if(animalList.get(i).getAnimalTitle().length()>=14) {
-				String title = animalList.get(i).getAnimalTitle().substring(0,14)+"...";
+			if(animalList.get(i).getAnimalTitle().length()>=10) {
+				String title = animalList.get(i).getAnimalTitle().substring(0,10)+"...";
 				animalList.get(i).setAnimalTitle(title);
 			}
 		}

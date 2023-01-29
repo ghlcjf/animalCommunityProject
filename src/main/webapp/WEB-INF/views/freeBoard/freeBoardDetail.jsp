@@ -83,7 +83,7 @@ button:hover {
 	height: 35px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
 	width: 75px; line-height: 10px;
-	background: #ffc108; margin-left: 10px; margin-bottom: 5px;
+	background: #ffc107; margin-left: 10px; margin-bottom: 5px;
 }
 
 .btn-cs-3:hover {

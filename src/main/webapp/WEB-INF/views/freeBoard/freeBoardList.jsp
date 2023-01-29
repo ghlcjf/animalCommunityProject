@@ -59,7 +59,8 @@
 	}
 	
 	#notice{
-		background-color:rgb(235, 238, 250);
+		/* background-color:rgb(235, 238, 250); */
+		background-color: #f2f2f2;
 	}
 	
 	th {
