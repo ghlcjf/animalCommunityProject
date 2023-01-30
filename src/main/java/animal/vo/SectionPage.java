@@ -5,6 +5,13 @@ public class SectionPage {
 	private int section;
 	private int pageNum;
 	private String boardCategory;
+	private String animalCategory;
+	public String getAnimalCategory() {
+		return animalCategory;
+	}
+	public void setAnimalCategory(String animalCategory) {
+		this.animalCategory = animalCategory;
+	}
 	private String name;
 
 	private String hospitalLoc;

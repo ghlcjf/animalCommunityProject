@@ -202,6 +202,25 @@
 		
 	</select>
 	
+	<select id="selectAnimalNumAnimalInfo" resultType="int" parameterType="sectionPage">
+		SELECT COUNT(*) FROM animalInfoTbl
+		WHERE animalCategory=#{animalCategory}
+	</select>
+	
+	<select id="selectAnimalTargetAnimalInfoList" resultType="animalInfo" parameterType="sectionPage">
+		SELECT * FROM 
+		(SELECT ROWNUM as nick, b.* 
+		 FROM  (SELECT * FROM animalInfoTbl
+		 		WHERE animalCategory=#{animalCategory}
+				ORDER BY animalNum DESC) 
+		 b) 
+		WHERE nick BETWEEN ((#{section}-1)*100)+((#{pageNum}-1)*10+1)
+		AND ((#{section}-1)*100)+ (#{pageNum}*10)
+		
+	</select>
+	
+	
+	
 	<select id="selectByAnimalNum" resultType="animalInfo" parameterType="long">
 		SELECT * FROM animalInfoTbl 
  		WHERE animalNum=#{animalNum}

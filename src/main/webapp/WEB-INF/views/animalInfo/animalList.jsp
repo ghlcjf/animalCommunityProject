@@ -61,14 +61,33 @@ button:hover {
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 	}
+.list-group-item {
+	border:none;
+	font-size: 13px;
+	margin-top: 13px;
+}
+
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
-
+<!-- 동물 소개 게시판 카테고리 기능 추가 -->
 	<div class="container text-center">
     	<div class="row">
-			<div class="col-10 mx-auto">
+    		<div class="col-1">
+            	<div class="box1 list-group">
+					<a href="<c:url value='/animalInfo/1/1?category=main' />" class="list-group-item list-group-item-action">
+					  전체보기
+					</a>
+					<a href="<c:url value='/animalInfo/1/1?category=dog' />" class="list-group-item list-group-item-action">강아지</a>
+					<a href="<c:url value='/animalInfo/1/1?category=cat' />" class="list-group-item list-group-item-action">고양이</a>
+					<a href="<c:url value='/animalInfo/1/1?category=reptile' />" class="list-group-item list-group-item-action">파충류</a>
+					<a href="<c:url value='/animalInfo/1/1?category=birds' />" class="list-group-item list-group-item-action">조류</a>
+					<a href="<c:url value='/animalInfo/1/1?category=fish' />" class="list-group-item list-group-item-action">어류</a>
+					<a href="<c:url value='/animalInfo/1/1?category=other' />" class="list-group-item list-group-item-action">기타</a>
+				</div>
+   			</div>
+			<div class="col-10">
 				<nav class="navbar">
 					<div class="container-fluid">
 						<div class="d-flex justify-content-start">
@@ -87,32 +106,25 @@ button:hover {
 						<div class="container text-center">
 							<div class="row row-cols-5">
 								<c:forEach items="${animals}" var="animal">
-									<c:choose>
-										<c:when test="${empty animal.animalUrl || animal.animalUrl=='null' }">
-											<div class="col">
-												<div class="card">
+									<div class="col">
+										<div class="card">
+											<c:choose>
+												<c:when test="${empty animal.animalUrl || animal.animalUrl=='null' }">
 													<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
 														<img src="/imageFolder/noImage.png" class="card-img-top">
 													</a>
-													<div class="card-footer-cs">
-														<small class="text-muted">${animal.animalTitle }</small>
-													</div>
-												</div>
-											</div>
-										</c:when>
-										<c:otherwise>
-											<div class="col">
-												<div class="card">
+												</c:when>
+												<c:otherwise>
 													<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
 														<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="card-img-top">
 													</a>
-													<div class="card-footer-cs">
-														<small class="text-muted">${animal.animalTitle }</small>
-													</div>
-												</div>
+												</c:otherwise>
+											</c:choose>
+											<div class="card-footer-cs">
+												<small class="text-muted">${animal.animalTitle }</small>
 											</div>
-										</c:otherwise>
-									</c:choose>
+										</div>
+									</div>
 								</c:forEach>
 							</div>
 						</div>
@@ -128,20 +140,20 @@ button:hover {
 											<c:forEach var="page" begin="1" end="10" step="1"> <!-- 번호 매기기 -->
 												<c:if test="${sectionPage.section>1 && page==1}">
 													<li class="page-item">
-												      <a class="page-link" aria-label="Previous" href="/animalCommunity/animalInfo/${sectionPage.section-1}/${10}">
+												      <a class="page-link" aria-label="Previous" href="/animalCommunity/animalInfo/${sectionPage.section-1}/${10}?category=${category}">
 												        <span aria-hidden="true">&laquo;</span>
 												      </a>
 												    </li>
 												</c:if>
 												<li class="page-item">
-													<a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section}/${page}">
+													<a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section}/${page}?category=${category}">
 														${(sectionPage.section-1)*10+page}
 													</a>
 												</li>
 												<!-- 번호를 눌렀을 때 해당 섹션과 해당 페이지 번호를 서버에 전달 -->
 												<c:if test="${page==10}">
 													<li class="page-item">
-												      <a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section+1}/${1}" aria-label="Next">
+												      <a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section+1}/${1}?category=${category}" aria-label="Next">
 												        <span aria-hidden="true">&raquo;</span>
 												      </a>
 												    </li>
@@ -154,13 +166,13 @@ button:hover {
 											<c:forEach var="page" begin="1" end="${((totalCnt+9)-(sectionPage.section-1)*100)/10}" step="1">
 												<c:if test="${sectionPage.section>1 && page==1}">
 													<li class="page-item">
-												      <a class="page-link" aria-label="Previous" href="/animalCommunity/animalInfo/${sectionPage.section-1}/${10}">
+												      <a class="page-link" aria-label="Previous" href="/animalCommunity/animalInfo/${sectionPage.section-1}/${10}?category=${category}">
 												        <span aria-hidden="true">&laquo;</span>
 												      </a>
 												    </li>
 												</c:if>
 												<li class="page-item">
-													<a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section}/${page}">
+													<a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section}/${page}?category=${category}">
 														${(sectionPage.section-1)*10+page}
 													</a>
 												</li>
@@ -184,7 +196,7 @@ button:hover {
 									<c:when test="${totalCnt<100}"> <!-- 전체 개수가 100개 미만 -->
 										<c:forEach var="page" begin="1" end="${(totalCnt+9)/10}" step="1">
 											<li class="page-item">
-												<a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section}/${page}">
+												<a class="page-link" href="/animalCommunity/animalInfo/${sectionPage.section}/${page}?category=${category}">
 													${(sectionPage.section-1)*10+page}
 												</a>
 											</li>
