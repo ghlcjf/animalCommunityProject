@@ -13,6 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <style>
 	.navbar {
 		margin-top: 15px;
@@ -189,14 +190,18 @@
 									<th scope="row">${board.boardNum }</th>
 									<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle} (${board.commentCount})</td>
 									<td>${board.viewCount }</td>
-									<td>${board.name }
+									<td><%-- ${board.name } --%>
 										<!--본인외 다른사람의 메시지 이모티콘 클릭하면 메시지 보낼수있는 창으로 이동하게끔-->
 										<c:if test="${board.name != userInfo.name}" >  <!--여기의 주소는 ${board.name}에게 메시지를 보내는 주소여야함-->
-												<a class="messageBtn" href="#" onclick="sendMessage('${board.name}','${userInfo.name}'); return false;">	
-													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-													  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-													</svg>
-												</a>
+											<a tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-content="<a href='#' onclick='sendMessage(${board.name},${userInfo.name}); return false;'>메시지 보내기</a>">${board.name }</a>
+											<a class="messageBtn" href="#" onclick="sendMessage('${board.name}','${userInfo.name}'); return false;">	
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+												  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+												</svg>
+											</a>
+										</c:if>
+										<c:if test="${board.name == userInfo.name }">
+											${board.name }
 										</c:if>
 									</td>
 									<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
@@ -324,7 +329,13 @@ function sendMessage(rName, sName){
     }
     return false;
  }
-
+ 
+	const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+	const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+	return new bootstrap.Popover(popoverTriggerEl,{html: true})
+	})
+	const popover = new bootstrap.Popover('.popover-dismiss', {trigger: 'focus'
+	});
 
 </script>
 </html>
