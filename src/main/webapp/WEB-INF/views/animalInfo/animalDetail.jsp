@@ -17,19 +17,25 @@
 .container {
 	margin-top: 25px;
 }
-.card-header {
-	background-color: #dfe6f7
+.card-header-cs {
+	background-color: #dfe6f7;
+    margin-bottom: 0;
+    color: var(--bs-card-cap-color);
+    border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
 }
 .text-muted-cs {
     --bs-text-opacity: 1;
     color: #black!important;
 }
+.me-auto, .p2{
+	font-size: 25px;
+	line-height: 42px;
+	margin-left: 10px;
+}
 .img-fluid {
-	width: 500px;
-    height: 500px;
-    
-    margin-right:10px;
-    margin-bottom:10px;
+	width: 410px;
+    height: 410px;
+    margin-right:15px;
     float:left;
  }
  .smallBtn {
@@ -46,24 +52,23 @@
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
 }
-.info{
-	
-	margin:auto;
-	
-}
 .card-text{
-	margin:10px;
+	margin-left: 15px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.card-text:last-child {
+    margin-bottom: 10px;
 }
 .card-body-cs {
     flex: 1 1 auto;
     color: var(--bs-card-color);
 }
-
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
-
 
 	<div class="container">
         <div class="row">
@@ -72,7 +77,7 @@
 				<c:choose>
 					<c:when test="${animal.animalUrl=='null'}">
 						<div class="card mb-3" style="max-width: 100%;">
-		        			<div class="card-header">
+		        			<div class="card-header-cs">
 		            			<div class="d-flex">
 		            				<div class="me-auto p-2">${animal.animalTitle}</div>
                							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리</small> <small class="text-muted-cs">${animal.animalCategory}</small></p></div>
@@ -82,40 +87,34 @@
 									</div>
 								</div>
 								<div class="row g-0">
-								<div class="info">
             						<div class="card-body-cs">
             							<img src="/imageFolder/noImage.png" class="img-fluid">
 										<p class="card-text">${fn:replace(animal.animalContent, replaceChar, "<br/>")}</p>
 									</div>
 								</div>
 							</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="card mb-3" style="max-width: 100%;">
-		        			<div class="card-header">
-		            			<div class="d-flex">
-		            				<div class="me-auto p-2">${animal.animalTitle}</div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리</small> <small class="text-muted-cs">${animal.animalCategory}</small></p></div>
-						                <div class="p-2"><p class="card-text"><small class="text-muted">글 번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">작성자</small> <small class="text-muted-cs">${animal.name}</small></p></div>
-               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수</small> <small class="text-muted-cs">${animal.viewCount}</small></p></div>
-           							</div>
-       							</div>
-       							<div class="row g-0">
-       							
-								
-								<div class="info">
-            						<div class="card-body-cs">
-            							<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="img-fluid">
-										<p class="card-text">${fn:replace(animal.animalContent, replaceChar, "<br/>")}</p>
+						</c:when>
+						<c:otherwise>
+							<div class="card mb-3" style="max-width: 100%;">
+			        			<div class="card-header-cs">
+			            			<div class="d-flex">
+			            				<div class="me-auto p-2">${animal.animalTitle}</div>
+	               							<div class="p-2"><p class="card-text"><small class="text-muted">카테고리</small> <small class="text-muted-cs">${animal.animalCategory}</small></p></div>
+							                <div class="p-2"><p class="card-text"><small class="text-muted">글 번호</small> <small class="text-muted-cs">${animal.animalNum}</small></p></div>
+	               							<div class="p-2"><p class="card-text"><small class="text-muted">작성자</small> <small class="text-muted-cs">${animal.name}</small></p></div>
+	               							<div class="p-2"><p class="card-text"><small class="text-muted">조회수</small> <small class="text-muted-cs">${animal.viewCount}</small></p></div>
+	           							</div>
+	       							</div>
+	       							<div class="row g-0">
+	            						<div class="card-body-cs">
+	            							<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="img-fluid">
+											<p class="card-text">${fn:replace(animal.animalContent, replaceChar, "<br/>")}</p>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-									
-					</c:otherwise>
-				</c:choose>
+						</c:otherwise>
+					</c:choose>
+					
 				<div class="d-flex justify-content-start">
 					<button type="button" class="smallBtn" onclick="location.href='<c:url value="/animalInfo/${sectionPage.section }/${sectionPage.pageNum }?category=${category }" />'">목록으로 돌아가기</button>
 				</div>

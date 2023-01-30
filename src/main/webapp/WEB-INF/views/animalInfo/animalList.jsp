@@ -18,7 +18,6 @@
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
 }
-
 .navbar-brand-cs {
 	padding-top: 0.3rem;
 	padding-bottom: 0.3rem;
