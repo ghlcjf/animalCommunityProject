@@ -318,6 +318,7 @@ function insertConfirm(){
 	} 
 }
 function sendMessage(rName, sName){
+	
     let receiverName = rName;
     let senderName = sName;
     
