@@ -30,6 +30,16 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
+.col{
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.col:hover{
+	-webkit-transform: scale(1.1);
+  	transform: scale(1.1);
+}
 .card {
 	width: 200px;
 	height: 250px;

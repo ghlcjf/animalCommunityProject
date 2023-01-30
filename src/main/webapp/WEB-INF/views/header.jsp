@@ -28,6 +28,11 @@
 		.go-top:hover{
 			color: rgb(187, 212, 240);
 		}
+		.justify-content-end{
+			width: 1900px; height: auto;
+			display: flex; justify-content: center; align-items: center;
+			text-align: right;
+		}
 		.top-menu{
 			
 		}
@@ -39,17 +44,73 @@
 		.top-name{
 			padding: 8px;
 		}
+
+        .center-outer {
+        margin-top: 40px;
+        display: table;
+        width: 100%;
+        height: 100%;
+        }
+
+        .center-inner {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        }
+
+        /* Essential CSS - Makes the effect work */
+
+        .bubbles {
+        display: inline-block;
+        font-family: arial;
+        position: relative;
+        }
+        h5{
+            color: rgb(187, 182, 255);
+        }
+        .bubbles h1{
+        position: relative;
+        margin: 1em 0 0;
+        font-family: 'Luckiest Guy', cursive;
+        color: rgb(187, 182, 255);
+        z-index: 2;
+        }
+
+        .individual-bubble {
+        position: absolute;
+        border-radius: 100%;
+        bottom: 10px;
+        background-color: rgb(225, 198, 255);
+        z-index: 1;
+        }
+		a{
+			text-decoration: none;
+		}
+
+
 	</style>
 
 </head>
 
 
 <header>
-<!--메인으로 이동하는 로고-->
-	
-	<div class="logo-box">
+<!--메인으로 이동하는 로고 이미지인것이랑 자바스크립트 합쳐서 만든 애니메이션 로고-->
+	<!--로고1-->
+<%-- 	<div class="logo-box">
 		<a href='<c:url value="/main"/>'><img class="logo" src="/imageFolder/image/로고.png" alt="로고"></a>
-	</div>
+	</div> --%>
+	<!--로고2-->
+<div class="center-outer">
+    <div class="center-inner">
+        <div class="bubbles">
+	        <a href='<c:url value="/main"/>'>
+	            <h5>반려동물 커뮤니티</h5>
+	            <h1>Animal Community</h1>
+	        </a>
+        </div>
+    </div>
+ </div>	
+	
 			<!-- 세션이 없으면 -->
 			<c:if test="${empty userInfo}">
 				<ul class="nav justify-content-end">
@@ -119,7 +180,28 @@
 			alert("로그인 후 이용할수 있습니다");
 		}
 		
-		
+		jQuery(document).ready(function($){
+			  var bArray = [];
+			 var sArray = [4,6,8,10];
+			 for (var i = 0; i < $('.bubbles').width(); i++) {
+			     bArray.push(i);
+			 }
+			 function randomValue(arr) {
+			     return arr[Math.floor(Math.random() * arr.length)];
+			 }
+			setInterval(function(){
+			var size = randomValue(sArray);
+			$('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+			$('.individual-bubble').animate({
+			            'bottom': '100%',
+			            'opacity' : '-=0.7'
+			        }, 3000, function(){
+			            $(this).remove()
+			        }
+			        );
+			    }, 350);
+			 
+			});		
 		
 
 		

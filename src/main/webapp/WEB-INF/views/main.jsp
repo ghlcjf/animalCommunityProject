@@ -121,7 +121,8 @@
 		button[type="submit"]:hover{
    			background: rgb(101, 121, 207);
 			background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-		}
+		} 
+	
 		.img-size{
 			height: 250px; width: 250px; margin: 10px;
 			border-radius: 20px;
@@ -142,7 +143,7 @@
 			
 		}
  		.scroll-right{ /* 따라다니는 메뉴  */
-			position:absolute;  top:15.5%; bottom:10%; background:#fff; 
+			position:absolute;  top:14%; bottom:10%; background:#fff; 
 			width:90px; bottom: 700px;
 		} 
 		.top-ten{
@@ -236,7 +237,7 @@
 								<td class="loginBtn" rowspan="2" onclick="return loginCheck()">
 									<button  type="submit">
 										<spring:message code="login.btn"/>
-									</button>								
+									</button> 								
 								</td>									
 							</tr>
 							<tr>
