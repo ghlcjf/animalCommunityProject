@@ -20,6 +20,7 @@
 	        justify-content: center;
 	        align-items: center;
 	        margin: 30px;
+	        margin-bottom: 500px;
 		}
 		table.col{
 			width: 500px;
