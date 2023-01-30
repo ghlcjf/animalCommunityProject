@@ -28,7 +28,7 @@
 		.go-top:hover{
 			color: rgb(187, 212, 240);
 		}
-		.justify-content-end{
+		ul .justify-content-end{
 			width: 1900px; height: auto;
 			display: flex; justify-content: center; align-items: center;
 			text-align: right;
@@ -87,7 +87,7 @@
 			text-decoration: none;
 		}
 
-
+ 
 	</style>
 
 </head>
@@ -180,7 +180,7 @@
 			alert("로그인 후 이용할수 있습니다");
 		}
 		
-		jQuery(document).ready(function($){
+	 	jQuery(document).ready(function($){
 			  var bArray = [];
 			 var sArray = [4,6,8,10];
 			 for (var i = 0; i < $('.bubbles').width(); i++) {
@@ -201,7 +201,7 @@
 			        );
 			    }, 350);
 			 
-			});		
+			});
 		
 
 		
