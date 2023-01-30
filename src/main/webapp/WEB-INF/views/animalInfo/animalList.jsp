@@ -29,6 +29,16 @@
 	white-space: nowrap;
 	margin-left: 10px;
 }
+.col{
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.col:hover{
+	-webkit-transform: scale(1.1);
+  	transform: scale(1.1);
+}
 .card {
 	width: 200px;
 	height: 250px;
@@ -47,7 +57,7 @@ background-color: var(--bs-card-cap-bg);
 .pagination{
 	margin-top: 25px;
 }
-button {
+button.go-main{
 	padding: 5px;   border: none;
 	height: 30px; 	border-radius: 10px;
 	color: white;   font-weight:bolder;
@@ -211,7 +221,7 @@ button:hover {
 	</c:choose>
 	
 			<div class="d-flex justify-content-start">
-				<button type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
+				<button class="go-main" type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
 			</div>
 			
 			</div>
