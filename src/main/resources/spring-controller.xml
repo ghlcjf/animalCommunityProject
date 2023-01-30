@@ -65,6 +65,11 @@
 	<bean id="loginCheckController" class="animal.controller.LoginCheckController">
 		<property name="loginCheckService" ref="loginCheckService" />
 	</bean>
+	<bean id="kakaoController" class="animal.controller.KakaoController">
+		<property name="kakaoService" ref="kakaoService"></property>
+	</bean>
+	
+	
 	
 	<!--회원가입 컨트롤러 -->	
 	<bean id="registerController" class="animal.controller.RegisterController">

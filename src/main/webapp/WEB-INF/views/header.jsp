@@ -116,6 +116,7 @@
 				<ul class="nav justify-content-end">
 					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/register/step1"/>'>회원가입</a></li>
 					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/login"/>'>로그인</a></li>
+					<li class="nav-link active" aria-current="page"><a class="top" href="https://kauth.kakao.com/oauth/authorize?client_id=3e99b1f9d093993529dc3f7a28116951&redirect_uri=http://localhost:8090/animalCommunity/kakaoLogin&response_type=code">카카오 로그인</a></li>
 				</ul>
 				<div class="menu_bar">
 					<ul class="nav justify-content-center">

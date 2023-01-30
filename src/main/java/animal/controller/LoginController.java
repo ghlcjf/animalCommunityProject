@@ -5,15 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import animal.exception.IdPasswordNotMatchingException;
 import animal.service.LoginService;
-
 import animal.vo.LoginCommand;
 import animal.vo.LoginUserInfo;
 
@@ -79,8 +79,13 @@ public class LoginController {
 	
 	
 	
-	
-	
+	@RequestMapping("/kakaoLogin")
+	public String kakaoLoginForm(@RequestParam(value="code",required=false) String code)
+		throws Exception{
+		
+		System.out.println("######### : "+code);
+		return "login/kakaoLoginForm";
+	}
 	
 	
 	

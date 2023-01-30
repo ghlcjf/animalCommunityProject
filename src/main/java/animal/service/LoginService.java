@@ -1,7 +1,6 @@
 package animal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 
 import animal.dao.AnimalDao;
 import animal.exception.IdPasswordNotMatchingException;

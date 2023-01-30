@@ -1,7 +1,5 @@
 package animal.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import animal.dao.AnimalDao;
 import animal.vo.User;
 

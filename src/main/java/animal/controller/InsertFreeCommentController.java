@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import animal.dao.AnimalDao;
 import animal.vo.FreeComment;
 import animal.vo.FreeCommentCommand;
-import oracle.net.aso.f;
 
 @RestController
 public class InsertFreeCommentController {
