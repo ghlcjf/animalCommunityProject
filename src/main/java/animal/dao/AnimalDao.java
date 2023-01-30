@@ -175,18 +175,29 @@ public class AnimalDao {
 	
 	//--------------------동물 소개------------------------------------------------------
 	
-	public List<AnimalInfo> selectAllAniaml() {
-		return sqlSession.selectList("mybatis.mapper.member.selectAllAniaml");
-	}
 	
 	public List<AnimalInfo> selectTargetAnimalInfoList(SectionPage sectionPage) {
-		
 		return sqlSession.selectList("mybatis.mapper.member.selectTargetAnimalInfoList", sectionPage);
 	}
+	
 	public int selectAllNumAnimalInfo() {
 		
 		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumAnimalInfo");
 	}
+	
+	public int selectAnimalNumAnimalInfo(SectionPage sectionPage) {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.selectAnimalNumAnimalInfo", sectionPage);
+		
+	}
+
+	public List<AnimalInfo> selectAnimalTargetAnimalInfoList(SectionPage sectionPage) {
+		
+		return sqlSession.selectList("mybatis.mapper.member.selectAnimalTargetAnimalInfoList", sectionPage);
+	}
+
+	
+	
 	
 	public AnimalInfo selectByNum(long animalNum) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectByAnimalNum", animalNum);
@@ -470,4 +481,5 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumFreeBoardByName",sectionPage);
 	}
 
+	
 }

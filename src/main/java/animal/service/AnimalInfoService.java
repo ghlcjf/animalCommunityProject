@@ -16,13 +16,7 @@ public class AnimalInfoService {
 		this.animalDao = animalDao;
 	}
 	
-	
-	public List<AnimalInfo> selectAllAnimalInfoList(){
-		
-		List<AnimalInfo> animalInfoList = animalDao.selectAllAniaml();
-		
-		return animalInfoList;
-	}
+
 	
 	
 	public void insertAnimalInfo(AnimalInfoCommand animalInfoCommand) {

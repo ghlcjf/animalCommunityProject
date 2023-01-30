@@ -117,7 +117,7 @@
 					</c:otherwise>
 				</c:choose>
 				<div class="d-flex justify-content-start">
-					<button type="button" class="smallBtn" onclick="location.href='<c:url value="/animalInfo/${sectionPage.section }/${sectionPage.pageNum }" />'">목록으로 돌아가기</button>
+					<button type="button" class="smallBtn" onclick="location.href='<c:url value="/animalInfo/${sectionPage.section }/${sectionPage.pageNum }?category=${category }" />'">목록으로 돌아가기</button>
 				</div>
 			</div>
 		</div>
