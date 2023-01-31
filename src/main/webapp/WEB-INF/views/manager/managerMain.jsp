@@ -25,6 +25,44 @@
     	width: 100%;
       	height: 150px;
     }
+    .animation-1{
+    	position: relative;
+    	animation: fadeInUp 1s;
+    }
+    .animation-2{
+    	position: relative;
+    	animation: fadeInUp 1.3s;
+    }
+    .animation-3{
+    	position: relative;
+    	animation: fadeInUp 1.6s;
+    }
+    .animation-4{
+    	position: relative;
+    	animation: fadeInUp 1.9s;
+    }
+    .animation-5{
+    	position: relative;
+    	animation: fadeInUp 2.3s;
+    }
+    .animation-6{
+    	position: relative;
+    	animation: fadeInUp 2.6s;
+    }        
+    .animation-7{
+    	position: relative;
+    	animation: fadeInUp 2.9s;
+    }
+    .animation-8{
+    	position: relative;
+    	animation: fadeInUp 3.3s;
+    }        
+@keyframes fadeInUp {
+     0%{ opacity: 0; transform: translate3d(0, 100%, 0);}
+     to{ opacity: 1; transform: translateZ(0);
+     }           
+}    
+    
 </style>
 </head>
 <body>
@@ -34,56 +72,56 @@
 	
 	<div class="container text-center">
 	    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-   			<a href="<c:url value='/main' />">
+   			<a class="animation-1" href="<c:url value='/main' />">
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        메인 페이지
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/memberManagement/1/1"/>'>
+			<a class="animation-2" href='<c:url value="/memberManagement/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        회원 관리
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/boardManagement/image"/>'>
+			<a class="animation-3" href='<c:url value="/boardManagement/image"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        배너 관리
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/reportBoard"/>'>
+			<a class="animation-4" href='<c:url value="/reportBoard"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        신고 게시물 관리
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/boardManagement/animalInfo/1/1"/>'>
+			<a class="animation-5" href='<c:url value="/boardManagement/animalInfo/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        동물 소개
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/boardManagement/hospitalInfo/1/1"/>'>
+			<a class="animation-6" href='<c:url value="/boardManagement/hospitalInfo/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        동물 병원 정보
 			      </div>
 		      	</button>
 			</a>
-			<a href='<c:url value="/boardManagement/issue/1/1"/>'>
+			<a class="animation-7" href='<c:url value="/boardManagement/issue/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        이슈
 			      </div>
 		      	</button>
 			</a>
-	      	<a href='<c:url value="/boardManagement/notice/1/1"/>'>
+	      	<a class="animation-8" href='<c:url value="/boardManagement/notice/1/1"/>'>
 			    <button type="button" class="btn btn-light">
 			      <div class="col">
 			        공지사항
