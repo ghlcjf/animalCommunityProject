@@ -200,7 +200,7 @@ public class MyPageController {
 	@RequestMapping("/mypage/{id}") //회원 탈퇴
 	public String dropMember(@PathVariable("id") String id, HttpSession session, 
 			HttpServletRequest request) {
-		System.out.println(id);
+		
 		String userId = request.getParameter("userId");
 		animalDao.dropMember(userId);
 		session.invalidate();

@@ -31,6 +31,9 @@ public class KakaoController {
 		String access_Token = kakaoService.getAccessToken(code);
 		HashMap<String,Object> userInfo = kakaoService.getUserInfo(access_Token);
 		String email = (String) userInfo.get("email");
+		if(email==null){
+			return "login/kakaoLoginForm";
+		}
 		String nickname = (String) userInfo.get("nickname");
 		User user = null; 
 		user = kakaoService.selectUserInfoByKakaoEmail(email);

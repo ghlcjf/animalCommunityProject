@@ -242,8 +242,8 @@
 									<form:input  class="form-control" path="id" placeholder="id"/>
 									<form:errors path="id"/>
 								</th>
-								<td class="loginBtn" rowspan="2" onclick="return loginCheck()">
-									<button  type="submit">
+								<td class="loginBtn" rowspan="2">
+									<button  type="submit"  onclick="return loginCheck()">
 										<spring:message code="login.btn"/>
 									</button> 
 									<a href="https://kauth.kakao.com/oauth/authorize?client_id=3e99b1f9d093993529dc3f7a28116951&redirect_uri=http://localhost:8090/animalCommunity/kakaoLogin&response_type=code"><img class="kakaoSmalllogo" alt="카카오 로그인" src="/imageFolder/kakaosmalllogo.png"></a>								
