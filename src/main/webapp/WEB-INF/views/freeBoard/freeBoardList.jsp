@@ -196,10 +196,10 @@
 											<%-- <a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content="<a href='#' onclick='sendMessage(${board.name},${userInfo.name}); return false;' id='link'>메시지 보내기</a>">${board.name }</a> --%>
 											<a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content-id="popover-content">${board.name }</a>
 											
-											<div id="popover-content" class="d-none">
+											<%-- <div id="popover-content" class="d-none">
 												<a href="#" onclick="sendMessage(${board.name},${userInfo.name}); return false;">메시지 보내기</a><br>
 												<a href="#">상세보기</a>
-											</div>
+											</div> --%>
 											
 											<a class="messageBtn" href="#" onclick="sendMessage('${board.name}','${userInfo.name}'); return false;">	
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
@@ -338,7 +338,7 @@ function sendMessage(rName, sName){
     return false;
  }
  
-	const list = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+	/* const list = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 	list.map((el) => {
 	  let opts = {
 	    animation: false,
@@ -348,7 +348,7 @@ function sendMessage(rName, sName){
 	    opts.html = true;
 	  }
 	  new bootstrap.Popover(el, opts);
-	})
+	}) */
 	
 	/* const myPopoverTrigger = document.getElementById('myPopover')
 		myPopoverTrigger.addEventListener('hide.bs.popover', () => {
