@@ -1,17 +1,14 @@
 package animal.controller;
 
-import java.io.IOException;
+
 import java.util.Random;
 
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.mchange.net.MailSender;
 
 import animal.dao.AnimalDao;
 import animal.service.MailService;
@@ -26,18 +23,17 @@ public class FindIdController {
 	public void setAnimalDao(AnimalDao animalDao) {
 		this.animalDao = animalDao;
 	}
-	
 	private MailService mailService;
-	@Autowired
+	
 	public void setMailService(MailService mailService) {
 		this.mailService = mailService;
 	}
 
 	@RequestMapping(value="/idFind",produces = "application/text; charset=UTF-8")
 	public String findId(FindCommand fc, Model model) {
-			
-		String id = animalDao.findId(fc);
 		
+		String id = animalDao.findId(fc);
+		System.out.println(id);	
 		if(id==null) {
 			return "이메일 또는 전화번호가 일치하지 않습니다.";
 		}
@@ -49,30 +45,20 @@ public class FindIdController {
 	public String findPw(FindCommand fc, HttpSession session) throws Exception{
 		
 		User user = animalDao.findPw(fc);
-		System.out.println(user.getEmail());
 		
-		
-		if(user.getEmail()!=null) {
-			Random r = new Random();
+		if(user!=null) {
+			Random r = new Random(); 
 			int num = r.nextInt(999999);
-			
 			user.setPassword(Integer.toString(num));
+			mailService.welcomeMailSend(user);
 			
-			MailService mail = new MailService();
-			mail.sendEmail(user);
+			animalDao.findPassword(user);
+		  
+			return "이메일로 임시비밀번호를 보냈습니다.";
+		}else {
 			
-				
-			
+			return "아이디또는 이메일이 일치하지 않습니다.";
 		}
-		
-	
-		
-		 
-		 
-		 
-		
-		
-		return "/main";
 		
 	}
 }

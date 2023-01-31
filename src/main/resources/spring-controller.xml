@@ -131,6 +131,7 @@
 	<bean id="findIdController" class="animal.controller.FindIdController" >
 		<property name="mailService" ref="mailService"></property>
 	</bean>
+	
 	<bean id="findController" class="animal.controller.FindController"/>
 
 	

@@ -482,5 +482,10 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.findPw",fc);
 	}
 
+	public void findPassword(User user) {
+		
+		sqlSession.update("mybatis.mapper.member.findPassword",user);
+	}
+
 
 }

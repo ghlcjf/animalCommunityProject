@@ -506,4 +506,10 @@
 		AND email=#{email}
 	</select>
 	
+	<update id="findPassword" parameterType="user">
+		UPDATE userTbl
+		SET password=#{password}
+		WHERE id=#{id}
+	</update>
+	
 </mapper>

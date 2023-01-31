@@ -130,8 +130,7 @@
 					  "email":email},
 				dateType:JSON,
 				success:function(data){
-					
-					
+					alert(data);
 				}
 				
 			})
