@@ -10,6 +10,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.annotation.RequestScope;
 
 import animal.exception.IdPasswordNotMatchingException;
 import animal.service.LoginService;
@@ -28,20 +30,26 @@ public class LoginController {
 	
 	@GetMapping("/login")
 	public String form(LoginCommand loginCommand,
-		@CookieValue(value="rememberId", required=false)Cookie rememberId){
+		@CookieValue(value="rememberId", required=false)Cookie rememberId,
+		@RequestParam(value="id",required=false) String id,Model model){
 			
 		if(rememberId !=null) {
 			loginCommand.setId(rememberId.getValue());
 			loginCommand.setRememberId(true);
 		}
+		if(id!=null) {
+			loginCommand.setId(id);
+		}
+	
 		
 		return "login/loginForm";
 	}
 	
 	@PostMapping("/login")	
-	public String submit(LoginCommand loginCommand,Errors errors, HttpSession session, HttpServletResponse response) {
+	public String submit(LoginCommand loginCommand,Errors errors,
+			HttpSession session, HttpServletResponse response) {
 		
-
+		
 		
 		
 		try {

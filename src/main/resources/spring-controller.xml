@@ -128,6 +128,10 @@
 		<property name="messageService" ref="messageService"></property>
 	</bean>
 	
+	<bean id="findIdController" class="animal.controller.FindIdController" />
+	<bean id="findController" class="animal.controller.FindController"/>
+
+	
 	
 	
 	<bean class="animal.exception.CommonExceptionHandler" />

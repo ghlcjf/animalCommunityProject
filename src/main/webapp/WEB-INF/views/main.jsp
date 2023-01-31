@@ -130,7 +130,7 @@
 			
 		}
  		.scroll-right{ /* 따라다니는 메뉴  */
-			position:absolute;  top:6.5%;background:#fff; 
+			position:absolute;  top:8%;background:#fff; 
 			width:90px; bottom: 700px;
 		} 
 		.top-ten{
@@ -234,8 +234,15 @@
 									<form:errors path="password"/>
 								</th>						
 							</tr>
+							<tr>
+								<td>
+									<p><a href="<c:url value='findIdForm'/>">아이디 찾기</a></p>
+									<p><a href="<c:url value='findIdForm'/>">비밀번호 찾기</a></p>
+								</td>
+							</tr>
 						</table>
 					</form:form>
+					
 				</c:if>
 			</div>
 			
