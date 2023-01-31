@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -197,9 +198,11 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("/mypage/{id}") //회원 탈퇴
-	public String dropMember(@PathVariable("id") String id, HttpSession session) {
+	public String dropMember(@PathVariable("id") String id, HttpSession session, 
+			HttpServletRequest request) {
 		System.out.println(id);
-		animalDao.dropMember(id);
+		String userId = request.getParameter("userId");
+		animalDao.dropMember(userId);
 		session.invalidate();
 		return "redirect:/main";
 	}

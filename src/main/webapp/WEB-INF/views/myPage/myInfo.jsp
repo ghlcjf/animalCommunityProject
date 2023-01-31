@@ -129,6 +129,7 @@ button:hover {
 						<span class="navbar-brand-cs mb-0 h1">마이페이지</span>
 							<div class="d-flex justify-content-end">
 								<form action='<c:url value="/mypage/${user.id}" />'>
+									<input type="hidden" name="userId" value="${user.id }">
 									<button class="bigBtn" type="submit" onclick="return out('${user.id}')">회원 탈퇴</button>
 								</form>
 								<form id="section" action="<c:url value='/checkPassword' />">

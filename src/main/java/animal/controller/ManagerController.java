@@ -158,17 +158,19 @@ public class ManagerController {
 	}
 			
 	@RequestMapping("/{id}") //회원삭제
-	public String dropMember(@PathVariable("id") String id) {
+	public String dropMember(@PathVariable("id") String id,HttpServletRequest request) {
 		System.out.println(id);
-		animalDao.dropMember(id);
+		String userId = request.getParameter("userId");
+		animalDao.dropMember(userId);
 		return "redirect:/memberManagement/1/1";
 	}
 	
-	@RequestMapping("/authorize/{id}")
-	public String authorize(@PathVariable("id") String id) {
-		System.out.println(id);
+	@RequestMapping("/authorize")
+	public String authorize(HttpServletRequest request) {
 		
-		authorizeService.authorize(id);
+		String userId = request.getParameter("userId");
+		
+		authorizeService.authorize(userId);
 		
 		return "redirect:/memberManagement/1/1";
 	}

@@ -109,9 +109,11 @@ button:hover {
 						<span class="navbar-brand-cs mb-0 h1">사용자 정보</span>
 							<div class="d-flex justify-content-end">
 								<form action="<c:url value='/${member.id}' />">
+									<input type="hidden" name="userId" value="${member.id}">
 									<button class="bigBtn" type="submit" onclick="return memberDrop('${member.name}')">회원강제탈퇴</button>			
 								</form>
-								<form action="<c:url value='/authorize/${member.id}' />">
+								<form action="<c:url value='/authorize' />" type="get">
+									<input type="hidden" name="userId" value="${member.id}">
 									<button class="bigBtn" type="submit" onclick="return authorize('${member.name}')">관리자권한 부여</button>
 								</form>
 								</div>

@@ -79,13 +79,6 @@ public class LoginController {
 	
 	
 	
-	@RequestMapping("/kakaoLogin")
-	public String kakaoLoginForm(@RequestParam(value="code",required=false) String code)
-		throws Exception{
-		
-		System.out.println("######### : "+code);
-		return "login/kakaoLoginForm";
-	}
 	
 	
 	

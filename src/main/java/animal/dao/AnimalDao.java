@@ -17,7 +17,9 @@ import animal.vo.ImageCommand;
 import animal.vo.Issue;
 import animal.vo.IssueBoardCommand;
 import animal.vo.IssueComment;
+import animal.vo.LoginUserInfo;
 import animal.vo.Message;
+import animal.vo.RegisterRequest;
 import animal.vo.SearchMemberCommand;
 import animal.vo.SectionPage;
 import animal.vo.User;
@@ -231,6 +233,24 @@ public class AnimalDao {
 	public User selectById(String id) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectById", id);
 	}
+	
+	
+	public User selectUserInfoByKakaoEmail(String email) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectUserInfoByKakaoEmail", email);
+	}
+
+	public void insertKakaoUser(RegisterRequest regreq) {
+		sqlSession.insert("mybatis.mapper.member.insertKakaoUser", regreq);
+	}
+	public User selectUserInfoByKakaonickname(String nickname) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectUserInfoByKakaonickname", nickname);
+	}
+	public int getUserNum() {
+		sqlSession.insert("mybatis.mapper.member.insertKakaoNum");
+		int userNum = sqlSession.selectOne("mybatis.mapper.member.getUserNum"); 
+		return userNum;
+	}
+
 	
 	
 
@@ -480,5 +500,11 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumFreeBoardByName",sectionPage);
 	}
 
+	
+
+	
+
+
+	
 	
 }

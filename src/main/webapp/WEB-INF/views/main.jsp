@@ -116,7 +116,15 @@
 			color: white;   font-weight:bolder;
 			background: rgb(136, 154, 233);
 			background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+			display: block;
 			
+		}
+		.kakaoSmalllogo{
+			width:57px;
+			height:30px;
+			border-radius: 10px;
+			margin-top:2px;
+			display: block;
 		}
 		button[type="submit"]:hover{
    			background: rgb(101, 121, 207);
@@ -237,7 +245,8 @@
 								<td class="loginBtn" rowspan="2" onclick="return loginCheck()">
 									<button  type="submit">
 										<spring:message code="login.btn"/>
-									</button> 								
+									</button> 
+									<a href="https://kauth.kakao.com/oauth/authorize?client_id=3e99b1f9d093993529dc3f7a28116951&redirect_uri=http://localhost:8090/animalCommunity/kakaoLogin&response_type=code"><img class="kakaoSmalllogo" alt="카카오 로그인" src="/imageFolder/kakaosmalllogo.png"></a>								
 								</td>									
 							</tr>
 							<tr>

@@ -306,6 +306,31 @@
 	</insert>
 	
 	
+	<select id="selectUserInfoByKakaoEmail" parameterType="String" resultType="user">
+		select * FROM userTbl
+		WHERE email=#{email}
+	</select>
+	
+	<insert id="insertKakaoUser" parameterType="animal.vo.RegisterRequest">
+		insert into userTbl
+		values(#{email},'kakao',#{name},#{email},010-1234-5678,0)
+	</insert>
+	
+	<select id="selectUserInfoByKakaonickname" parameterType="String" resultType="user">
+		select * FROM userTbl
+		WHERE name=#{nickname}
+	</select>
+	
+	<insert id="insertKakaoNum">
+		INSERT INTO kakaoTbl
+		VALUES(kakao_seq.nextval)
+	</insert>
+	
+	<select id="getUserNum" resultType="int">
+		SELECT MAX(kNum) FROM kakaoTbl
+	</select>
+	
+	
 
 	<!-- 관리자 회원관리 -->
 	<select id="selectTargetMemberList" parameterType="sectionPage" resultType="user">
