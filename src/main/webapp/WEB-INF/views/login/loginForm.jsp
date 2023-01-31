@@ -26,7 +26,6 @@
 			width: 500px;
 			
 		}
-		
 		.loginId{
 			padding: 10px;
 		}
@@ -36,8 +35,12 @@
 			padding-right: 10px; padding-left: 10px;
 		}
 		
-
+		p{
+			padding-top:12px;
+			float:right;
+		}
 		button[type="submit"]{
+			margin-top:10px;
 	 		width: 200px; height: 50px; border-radius: 10px;
 			text-align: center; color: white; font-weight:bolder;
 			background: rgb(136, 154, 233);
@@ -76,13 +79,13 @@
 			<hr>
 				<table class="col">
 					<tr>
-						<th class="loginId">
+						<th class="loginId" colspan="3">
 							<form:input class="form-control" path="id" placeholder="id"/>
 						</th>
 								
 					</tr>
 					<tr>
-						<th class="loginPwd">
+						<th class="loginPwd" colspan="3">
 							<form:input class="form-control" path="password" type="password" placeholder="password"/>
 						</th>
 					</tr>
@@ -91,9 +94,15 @@
 							<form:checkbox path="rememberId"/>
 							<spring:message code="rememberId"/>
 						</td>
+						<td>
+							<p><a href="<c:url value='findIdForm'/>">아이디 찾기</a></p>
+						</td>
+						<td style="width:120px;">
+							<p><a href="<c:url value='findIdForm'/>">비밀번호 찾기</a></p>
+						</td>
 					</tr>					
 					<tr>
-						<th style="text-align: center;">
+						<th colspan="3" style="text-align: center;">
 							<button  type="submit" onclick="return loginCheck()">
 								<spring:message code="login.btn"/>
 							</button>

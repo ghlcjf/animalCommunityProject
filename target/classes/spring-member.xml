@@ -88,8 +88,15 @@
 		<property name="animalDao" ref="animalDao" />
 	</bean>
 	
+
 	<bean id="kakaoService" class="animal.service.KakaoService">
 		<property name="animalDao" ref="animalDao" />	
 	</bean>
+
+	<bean id="mailService" class="animal.service.MailService">
+		<property name="animalDao" ref="animalDao" />
+	</bean>
+
+
 
 </beans>

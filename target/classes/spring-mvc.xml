@@ -12,8 +12,6 @@
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/views/"/>
 	</mvc:view-resolvers>
-	
-
 
 	<!-- 메시지 읽어오기 위한 빈 -->
 	<bean id="messageSource"

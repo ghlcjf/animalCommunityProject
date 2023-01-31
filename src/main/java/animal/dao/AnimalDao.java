@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import animal.vo.AnimalInfo;
 import animal.vo.AnimalInfoCommand;
+import animal.vo.FindCommand;
 import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.FreeComment;
@@ -499,6 +500,23 @@ public class AnimalDao {
 	public int selectAllNumFreeBoardByName(SectionPage sectionPage) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumFreeBoardByName",sectionPage);
 	}
+//-------------------------------------------------------------------
+	
+	public String findId(FindCommand fc) {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.findId",fc);
+	}
+
+	public User findPw(FindCommand fc) {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.findPw",fc);
+	}
+
+	public void findPassword(User user) {
+		
+		sqlSession.update("mybatis.mapper.member.findPassword",user);
+	}
+
 
 	
 

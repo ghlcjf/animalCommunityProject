@@ -21,6 +21,8 @@ public class NameCheckController {
 	@RequestMapping(value="/myPage/nameCheck",produces = "application/text; charset=UTF-8")
 	public String myPageNameCheck(@RequestParam("name") String name) {
 		
+		System.out.println(name);
+		
 		String nameRegex = "^[가-힣]{1}[a-z0-9가-힣]{1,7}$";
 		if(!Pattern.matches(nameRegex, name)) {
 			
