@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import animal.dao.AnimalDao;
 import animal.service.ChangeInfoService;
 import animal.service.FreeBoardService;
+import animal.service.KakaoService;
 import animal.service.SelectAllNoticeListService;
 import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
@@ -30,6 +30,12 @@ import animal.vo.User;
 
 @Controller
 public class MyPageController {
+	
+	private KakaoService kakaoService;
+	
+	public void setKakaoService(KakaoService kakaoService) {
+		this.kakaoService = kakaoService;
+	}
 
 	private AnimalDao animalDao;
 	
@@ -200,6 +206,13 @@ public class MyPageController {
 	@RequestMapping("/mypage/{id}") //회원 탈퇴
 	public String dropMember(@PathVariable("id") String id, HttpSession session, 
 			HttpServletRequest request) {
+		
+		String access_Token = (String)session.getAttribute("access_Token");
+		System.out.println(access_Token);
+		if(access_Token!=null) {
+			kakaoService.unlink(access_Token);
+		}
+		
 		
 		String userId = request.getParameter("userId");
 		animalDao.dropMember(userId);

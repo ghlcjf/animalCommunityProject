@@ -28,10 +28,18 @@ public class KakaoController {
 	public String kakaoLoginForm(@RequestParam(value="code", required=false) String code,
 			HttpSession session)
 		throws Exception {
+		System.out.println("#########" + code);
 		String access_Token = kakaoService.getAccessToken(code);
 		HashMap<String,Object> userInfo = kakaoService.getUserInfo(access_Token);
+		
+		System.out.println("###access_Token#### : " + access_Token);
+        System.out.println("###userInfo#### : " + userInfo.get("email"));
+        System.out.println("###nickname#### : " + userInfo.get("nickname"));
+        
+		
 		String email = (String) userInfo.get("email");
 		if(email==null){
+			kakaoService.unlink(access_Token);
 			return "login/kakaoLoginForm";
 		}
 		String nickname = (String) userInfo.get("nickname");
@@ -60,7 +68,7 @@ public class KakaoController {
 										.setAdmin(user.getAdmin())
 										.setEmail(user.getEmail())
 										.setName(user.getName());
-		
+		session.setAttribute("access_Token", access_Token);
 		session.setAttribute("userInfo", loginUserinfo);
 		
 		return "redirect:/main";
