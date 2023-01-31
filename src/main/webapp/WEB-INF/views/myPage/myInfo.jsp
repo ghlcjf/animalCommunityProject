@@ -138,25 +138,6 @@ button:hover {
 						</div>
 					</nav>
 	
-				<%-- <table class="table table-sm">
-					<thead class="table-group-divider-cs">
-						<tr>
-							<th>이름</th>
-							<th>아이디</th>
-							<th>이메일</th>
-							<th>전화번호</th>
-						</tr>
-					</thead>
-					<tbody>
-					<tr>
-						<td>${user.name }</td>
-						<td>${user.id }</td>
-						<td>${user.email }</td>
-						<td>${user.phone }</td>
-					</tr>
-					</tbody>
-				</table> --%>
-				
 				<div class="card" style="width: 100%;">
         			<div class="card-body">
           				<h2 class="card-title">${user.name }님

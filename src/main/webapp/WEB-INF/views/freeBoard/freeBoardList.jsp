@@ -338,11 +338,6 @@ function sendMessage(rName, sName){
     return false;
  }
  
-	/* const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-	const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-	return new bootstrap.Popover(popoverTriggerEl,{html: true})
-	}) */
-	
 	const list = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 	list.map((el) => {
 	  let opts = {
@@ -350,15 +345,15 @@ function sendMessage(rName, sName){
 	  }
 	  if (el.hasAttribute('data-bs-content-id')) {
 	    opts.content = document.getElementById(el.getAttribute('data-bs-content-id')).innerHTML;
-	    opts.content
 	    opts.html = true;
 	  }
 	  new bootstrap.Popover(el, opts);
 	})
 	
-	function myFunction() {
-		alert("Alert box");
-	}
+	/* const myPopoverTrigger = document.getElementById('myPopover')
+		myPopoverTrigger.addEventListener('hide.bs.popover', () => {
+		alert('trigger');  	
+	}) */
 	
 	/* const popover = new bootstrap.Popover('.popover-dismiss', {trigger: 'focus'
 	}); */
