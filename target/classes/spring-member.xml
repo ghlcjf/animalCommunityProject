@@ -87,5 +87,10 @@
 	<bean id="messageService" class="animal.service.MessageService"> 
 		<property name="animalDao" ref="animalDao" />
 	</bean>
+	
+	<bean id="mailService" class="animal.service.MailService">
+		<property name="animalDao" ref="animalDao" />
+	</bean>
+
 
 </beans>

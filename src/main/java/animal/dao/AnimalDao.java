@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import animal.vo.AnimalInfo;
 import animal.vo.AnimalInfoCommand;
-import animal.vo.FindIdCommand;
+import animal.vo.FindCommand;
 import animal.vo.FreeBoard;
 import animal.vo.FreeBoardCommand;
 import animal.vo.FreeComment;
@@ -472,9 +472,14 @@ public class AnimalDao {
 	}
 //-------------------------------------------------------------------
 	
-	public String findId(FindIdCommand fic) {
+	public String findId(FindCommand fc) {
 		
-		return sqlSession.selectOne("mybatis.mapper.member.findId",fic);
+		return sqlSession.selectOne("mybatis.mapper.member.findId",fc);
+	}
+
+	public User findPw(FindCommand fc) {
+		
+		return sqlSession.selectOne("mybatis.mapper.member.findPw",fc);
 	}
 
 

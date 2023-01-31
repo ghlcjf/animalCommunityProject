@@ -1,37 +1,78 @@
 package animal.controller;
 
+import java.io.IOException;
+import java.util.Random;
+
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mchange.net.MailSender;
+
 import animal.dao.AnimalDao;
-import animal.vo.FindIdCommand;
+import animal.service.MailService;
+import animal.vo.FindCommand;
+import animal.vo.User;
 
 @RestController
 public class FindIdController {
 
-	AnimalDao animalDao = new AnimalDao();
-
+	private AnimalDao animalDao;
 	@Autowired
 	public void setAnimalDao(AnimalDao animalDao) {
 		this.animalDao = animalDao;
 	}
 	
+	private MailService mailService;
+	@Autowired
+	public void setMailService(MailService mailService) {
+		this.mailService = mailService;
+	}
+
 	@RequestMapping(value="/idFind",produces = "application/text; charset=UTF-8")
-	public String findId(FindIdCommand fic, Model model) {
-		
-		String id = animalDao.findId(fic);
+	public String findId(FindCommand fc, Model model) {
+			
+		String id = animalDao.findId(fc);
 		
 		if(id==null) {
 			return "이메일 또는 전화번호가 일치하지 않습니다.";
 		}
 		
-		
 		return id;
+	}
+	
+	@RequestMapping(value="/pwFind",produces = "application/text; charset=UTF-8")
+	public String findPw(FindCommand fc, HttpSession session) throws Exception{
+		
+		User user = animalDao.findPw(fc);
+		System.out.println(user.getEmail());
+		
+		
+		if(user.getEmail()!=null) {
+			Random r = new Random();
+			int num = r.nextInt(999999);
+			
+			user.setPassword(Integer.toString(num));
+			
+			MailService mail = new MailService();
+			mail.sendEmail(user);
+			
+				
+			
+		}
+		
+	
+		
+		 
+		 
+		 
+		
+		
+		return "/main";
+		
 	}
 }

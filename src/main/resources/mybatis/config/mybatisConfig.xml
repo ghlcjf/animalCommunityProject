@@ -23,7 +23,7 @@
 		<typeAlias type="animal.vo.Image" alias="image"/>
 		<typeAlias type="animal.vo.ImageCommand" alias="imageCommand"/>
 		<typeAlias type="animal.vo.Message" alias="message"/>
-		<typeAlias type="animal.vo.FindIdCommand" alias="findIdCommand"/>
+		<typeAlias type="animal.vo.FindCommand" alias="findCommand"/>
 	</typeAliases>
 
 

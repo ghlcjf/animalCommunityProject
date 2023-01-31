@@ -492,11 +492,18 @@
 		WHERE sendBoxDelete=0 AND receiveBoxDelete=0
 	</delete>
 	
-	<select id="findId" resultType="String" parameterType="findIdCommand">
+	<select id="findId" resultType="String" parameterType="findCommand">
 		SELECT id
 		FROM userTbl
 		WHERE email=#{email}
 		AND phone=#{phone}
+	</select>
+	
+	<select id="findPw" resultType="user" parameterType="findCommand">
+		SELECT *
+		FROM userTbl
+		WHERE id=#{id}
+		AND email=#{email}
 	</select>
 	
 </mapper>
