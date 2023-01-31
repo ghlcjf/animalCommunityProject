@@ -18,6 +18,13 @@
 	background-color: #dfe6f7;
 	border-top: 1px solid #96aeea;
 	border-bottom: 1px solid #96aeea;
+	
+	position: relative;
+    animation: fadeInUp 1s;
+}
+.card{
+    	position: relative;
+    	animation: fadeInUp 1.3s;	
 }
 .navbar-cs {
 	margin-top: 15px;
@@ -115,6 +122,15 @@ button:hover {
 .pagination{
 	margin-top: 15px;
 }
+.animation-box{
+    	position: relative;
+    	animation: fadeInUp 1.6s;	
+}
+@keyframes fadeInUp {
+     0%{ opacity: 0; transform: translate3d(0, 100%, 0);}
+     to{ opacity: 1; transform: translateZ(0);
+     }           
+}  
 </style>
 
 </head>
@@ -179,7 +195,7 @@ button:hover {
 					</div>
 				</div>
 			</div>
-		
+	<div class="animation-box">
 	<div class="container text-center">
 		<div class="row">
 	 		<div class="col-10 mx-auto">
@@ -310,6 +326,7 @@ button:hover {
 					</div>
 				</div>
 			</div>
+			</div><!-- animation -->
 		</div>
 	</div>
 		

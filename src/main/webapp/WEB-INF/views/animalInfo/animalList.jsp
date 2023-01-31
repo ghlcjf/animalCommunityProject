@@ -43,6 +43,13 @@
 	width: 200px;
 	height: 250px;
 	margin-top: 30px;
+	
+
+}
+.fade-animation{
+	/*동물소개 올라오는 애니메이션 효과*/
+   	position: relative;
+    animation: fadeInUp 1s;
 }
 .card-img-top {
     width: 100%;
@@ -76,6 +83,12 @@ button:hover {
 	margin-top: 13px;
 }
 
+@keyframes fadeInUp {
+     0%{ opacity: 0; transform: translate3d(0, 100%, 0);}
+     to{ opacity: 1; transform: translateZ(0);
+     }           
+}
+ 
 </style>
 </head>
 <body>
@@ -116,21 +129,23 @@ button:hover {
 							<div class="row row-cols-5">
 								<c:forEach items="${animals}" var="animal">
 									<div class="col">
-										<div class="card">
-											<c:choose>
-												<c:when test="${empty animal.animalUrl || animal.animalUrl=='null' }">
-													<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
-														<img src="/imageFolder/noImage.png" class="card-img-top">
-													</a>
-												</c:when>
-												<c:otherwise>
-													<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
-														<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="card-img-top">
-													</a>
-												</c:otherwise>
-											</c:choose>
-											<div class="card-footer-cs">
-												<small class="text-muted">${animal.animalTitle }</small>
+										<div class="fade-animation">	
+											<div class="card">
+												<c:choose>
+													<c:when test="${empty animal.animalUrl || animal.animalUrl=='null' }">
+														<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
+															<img src="/imageFolder/noImage.png" class="card-img-top">
+														</a>
+													</c:when>
+													<c:otherwise>
+														<a href="<c:url value='/animal/detail/${animal.animalNum }' />">
+															<img src="/imageFolder/animalInfoImage/${animal.animalUrl }" class="card-img-top">
+														</a>
+													</c:otherwise>
+												</c:choose>
+												<div class="card-footer-cs">
+													<small class="text-muted">${animal.animalTitle }</small>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -138,7 +153,7 @@ button:hover {
 							</div>
 						</div>
 
-				
+			<div class="fade-animation">
 				<div class="d-flex justify-content-center">
 					<c:if test="${totalCnt != null}">
 						<nav aria-label="Page navigation example">
@@ -217,13 +232,14 @@ button:hover {
 						</nav>
 					</c:if>
 				</div>
+			</div>
 		</c:otherwise>
 	</c:choose>
-	
+		<div class="fade-animation">
 			<div class="d-flex justify-content-start">
 				<button class="go-main" type="button" onclick="location.href='<c:url value="/main" />'">메인으로 돌아가기</button>
 			</div>
-			
+		</div>	
 			</div>
 		</div>
 	</div>
