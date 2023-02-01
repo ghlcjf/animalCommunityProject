@@ -145,18 +145,15 @@
 		 	-webkit-transform: scale(1.1);
   		    transform: scale(1.1);
 		}
-		
-		
+
 		.scroll{
-			
 		}
  		.scroll-right{ /* 따라다니는 메뉴  */
-
-			position:absolute;  top:14%; bottom:10%; background:#fff;
+			position:absolute;  top:14.7%; background:#fff;
 			width:90px; bottom: 700px;
 		} 
 		.top-ten{
-			 border: 1px solid rgb(129, 139, 180);width: 300px;
+			 border: 1px solid rgb(129, 139, 180);width: 300px; background: white;
 		}
 		.top-ten:hover{
 			background: rgb(238, 241, 255); 
@@ -187,6 +184,12 @@
 		}
 		.profile-li{
 			padding-top: 5px;
+		}
+		.find{
+			font-size: 14px; margin-left: 20px; 
+		}
+		.find-p{
+			height: 18px;
 		}
 	</style>
 
@@ -258,8 +261,8 @@
 							</tr>
 							<tr>
 								<td>
-									<p><a href="<c:url value='findIdForm'/>">아이디 찾기</a></p>
-									<p><a href="<c:url value='findPwForm'/>">비밀번호 찾기</a></p>
+									<p class="find-p"><a class="find" href="<c:url value='findIdForm'/>">아이디 찾기</a>
+									   <a class="find" href="<c:url value='findPwForm'/>">비밀번호 찾기</a></p>
 								</td>
 							</tr>
 						</table>
@@ -547,13 +550,12 @@
 		  $(window).scroll(function() {
 		    var position = $(window).scrollTop(); 
 		    $(".scroll-right").stop().animate({"top":position+currentPosition+"px"},1000);
+
 		  });
+		  
 	});
 	
-		
-		
 
-		
 		
 </script>
 </html>
