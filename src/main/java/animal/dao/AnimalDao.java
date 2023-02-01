@@ -138,6 +138,21 @@ public class AnimalDao {
 		return sqlSession.selectList("mybatis.mapper.member.selectAnimalTargetFreeBoards", sectionPage);
 	}
 	
+	// 다른 사람 정보
+	public User selectbyBoardName(String name) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectbyBoardName", name);
+	}
+	
+	public List<FreeBoard> selectAllOtherFreeBoard(String name, SectionPage sectionPage) {
+		return sqlSession.selectList("mybatis.mapper.member.selectAllOtherFreeBoard", name);
+	}
+	
+	public int selectAllNumOtherFreeboard() {
+		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumOtherFreeboard");
+	}
+	
+	
+	
 //-------------------이슈-------------------------------------------------------------------------
 	public List<Issue> selectAllIssueList() {
 		
@@ -499,6 +514,9 @@ public class AnimalDao {
 	public int selectAllNumFreeBoardByName(SectionPage sectionPage) {
 		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumFreeBoardByName",sectionPage);
 	}
+
+	
+	
 
 	
 

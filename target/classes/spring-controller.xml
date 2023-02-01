@@ -39,6 +39,10 @@
 		<property name="freeBoardService" ref="freeBoardService"></property>
 	</bean>
 	
+	<bean id="otherInfoController" class="animal.controller.OtherInfoController">
+		<property name="animalDao" ref="animalDao"></property>
+	</bean>
+	
 	
 	<!-- 이슈 -->
 	<bean id="issueController" class="animal.controller.IssueController" />
