@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import animal.dao.AnimalDao;
 import animal.service.MailService;
 import animal.vo.FindCommand;
+import animal.vo.RegisterRequest;
 import animal.vo.User;
 
 @RestController
@@ -59,6 +60,18 @@ public class FindIdController {
 			
 			return "아이디또는 이메일이 일치하지 않습니다.";
 		}
+	}
+	
+	@RequestMapping(value="/certificateNum")
+	public int emailCheck(RegisterRequest regReq){
 		
+		Random r = new Random(); 
+		
+		int num = r.nextInt(999999);
+		String email = regReq.getEmail();
+		
+		mailService.emailCertificateNum(email, num);
+		
+		return num;
 	}
 }

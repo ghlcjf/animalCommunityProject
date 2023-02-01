@@ -86,13 +86,9 @@
 					</th>
 				</tr>
 			</table>
-			<!-- <div>
-				<p id="result"></p>
+			<div id="goLogin">
 				
-			</div> -->
-			<!-- <div>
-				<button type="button" class="smallBtn" onclick="findIdLogin()">로그인창 돌아가기</button>
-			</div> -->
+			</div>
 		</form:form>
 			
 
@@ -109,6 +105,7 @@
 			
 			let id = document.getElementById('id').value;
 			let email = document.getElementById('email').value;
+			let goLogin = '<button type="button" class="smallBtn" onclick="findIdLogin()">로그인창 돌아가기</button>';
 			
 			if(id.length==0){
 				alert('아이디를 입력해주세요');
@@ -131,10 +128,17 @@
 				dateType:JSON,
 				success:function(data){
 					alert(data);
+					$('#goLogin').html(goLogin);
 				}
-				
+
 			})
 		}	
+		
+		function findIdLogin(){
+			let id = document.getElementById('id').value;
+			
+			location.href="${context}/login?id="+id;
+		}
 	
 	
 		

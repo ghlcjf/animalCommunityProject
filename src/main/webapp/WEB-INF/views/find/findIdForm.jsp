@@ -90,10 +90,8 @@
 				<p id="result"></p>
 				
 			</div>
-			<div>
+			<div id="goLogin")>
 				<input type="hidden" id="userId">
-				<%-- <button type="button" class="smallBtn" onclick="location.href='<c:url value="/login" />'">로그인창 돌아가기</button> --%>
-				<button type="button" class="smallBtn" onclick="findIdLogin()">로그인창 돌아가기</button>
 			</div>
 		</form:form>
 			
@@ -111,6 +109,7 @@
 			
 			let email = document.getElementById('email').value;
 			let phone = document.getElementById('phone').value;
+			let goLogin = '<button type="button" class="smallBtn" onclick="findIdLogin()">로그인창 돌아가기</button>';
 			
 			if(email.length==0){
 				alert('이메일을 입력해주세요');
@@ -142,7 +141,8 @@
 					if(data=="이메일 또는 전화번호가 일치하지 않습니다."){
 						alert(data);
 					}else{
-						$("#result").html("아이디는 "+data+"입니다.");	
+						$("#result").html("아이디는 "+data+"입니다.");
+						$('#goLogin').html(goLogin);
 						/* $('#userId').val()=data; */
 						id = data;
 					}
