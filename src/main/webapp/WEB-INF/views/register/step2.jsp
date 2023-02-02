@@ -89,7 +89,7 @@
 						<input  type="hidden" name="nameBtnCheck" id="nameBtnCheck">
 					</td>
 					<td>
-						<button type="button" class="sm-btn" onclick="nameCheck()">중복 체크</button>
+						<button type="button" class="sm-btn" onclick="nameCheck()">중복체크</button>
 					</td>
 				</tr>
 				<tr>
@@ -99,7 +99,7 @@
 						<input type="hidden" name="idBtnCheck" id="idBtnCheck">
 					</td>
 					<td>
-						<button type="button" class="sm-btn" onclick="idCheck()">중복 체크</button>			
+						<button type="button" class="sm-btn" onclick="idCheck()">중복체크</button>			
 					</td>
 				</tr>
 				<tr>
@@ -107,7 +107,7 @@
 					<td>
 						<form:input class="form-control" path="password" type="password" placeholder="※ 6~14자 영문자,숫자,특수문자 조합 ※"/>
 					</td>
-					<td rowspan="4"></td>
+					<td rowspan="2"></td>
 				</tr>
 				<tr>
 					<td><spring:message code="password.confirm"/></td>
@@ -119,6 +119,16 @@
 					<td><spring:message code="email"/></td>
 					<td>
 						<form:input class="form-control" path="email" type="email" placeholder="※ 예) user@email.com ※"/>
+					</td>
+					<td>
+						<button type="button" class="sm-btn" onclick="emailCheck()">인증하기</button>
+					</td>
+				</tr>
+				<tr>
+					<td><spring:message code="certificateNum"/></td>
+					<td>
+						<form:input class="form-control" path="certificateNum" type=" text" placeholder="인증번호를 입력해주세요."/>
+						<input type="hidden" id="emailNum" value="0">
 					</td>
 				</tr>
 				<tr>
@@ -170,6 +180,24 @@
 			'toolbar=no, menubar=no, scrollbars=yes, resizeable=no, width=450, height=200');
 		}
 		
+		
+		function emailCheck(){
+			let email = $('#email').val();
+			
+			$.ajax({
+				type:"GET",
+				url:"${context}/certificateNum",
+				async:false,
+				data:{"email":email},
+				dateType:JSON,
+				success:function(data){
+					$('#emailNum').val(data);
+					alert("이메일로 인증번호를 보냈습니다.");
+				}
+				
+			})
+		}
+		
 		function cancel(){
 			if(confirm('회원가입을 취소 하시겠습니까?')){
 				let link = '${context}/main';
@@ -192,6 +220,8 @@
 			let password = $('#password').val();
 			let confirmPassword = $('#confirmPassword').val();
 			let email = $('#email').val();
+			let certificateNum = $('#certificateNum').val();
+			let emailNum = $('#emailNum').val();
 			let phone = $('#phone').val();
 			
 			let nameBtnCheck = document.getElementById('nameBtnCheck').value;
@@ -235,6 +265,10 @@
 			}
 			if(email.match(emailRegex) == null){
 				alert('올바른 이메일 형식이 아닙니다. 다시 입력해주세요.');
+				return false;
+			}
+			if(certificateNum!=emailNum){
+				alert('이메일 인증번호가 일치하지 않습니다.')
 				return false;
 			}
 			if(phone.length==0){

@@ -9,6 +9,7 @@ public class RegisterRequest {
 	private String email;
 	private String phone;
 	private int admin;
+	private String certificateNum;
 	
 	public boolean isPasswordEqualToConfirmPassword() {
 		return password.equals(confirmPassword);
@@ -54,6 +55,12 @@ public class RegisterRequest {
 	}
 	public void setAdmin(int admin) {
 		this.admin = admin;
+	}
+	public String getCertificateNum() {
+		return certificateNum;
+	}
+	public void setCertificateNum(String certificateNum) {
+		this.certificateNum = certificateNum;
 	}
 	
 	

@@ -98,7 +98,7 @@
 							<p><a href="<c:url value='findIdForm'/>">아이디 찾기</a></p>
 						</td>
 						<td style="width:120px;">
-							<p><a href="<c:url value='findIdForm'/>">비밀번호 찾기</a></p>
+							<p><a href="<c:url value='findPwForm'/>">비밀번호 찾기</a></p>
 						</td>
 					</tr>					
 					<tr>
