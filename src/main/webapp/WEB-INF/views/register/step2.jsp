@@ -183,19 +183,30 @@
 		
 		function emailCheck(){
 			let email = $('#email').val();
-			
-			$.ajax({
-				type:"GET",
-				url:"${context}/certificateNum",
-				async:false,
-				data:{"email":email},
-				dateType:JSON,
-				success:function(data){
-					$('#emailNum').val(data);
-					alert("이메일로 인증번호를 보냈습니다.");
+			if(email.length==0){
+				alert('이메일을 입력해 주세요');
+			}else{
+				let emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+				if(email.match(emailRegex) == null){
+					alert('올바른 이메일 형식이 아닙니다. 다시 입력해주세요.');
+					return false;
+				}else{
+					$.ajax({
+						type:"GET",
+						url:"${context}/certificateNum",
+						async:false,
+						data:{"email":email},
+						dateType:JSON,
+						success:function(data){
+							$('#emailNum').val(data);
+							alert("이메일로 인증번호를 보냈습니다.");
+						}
+						
+					})
 				}
 				
-			})
+			}
+			
 		}
 		
 		function cancel(){
