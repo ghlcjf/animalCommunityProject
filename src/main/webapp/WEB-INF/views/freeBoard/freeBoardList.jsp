@@ -210,15 +210,7 @@
 									<td><%-- ${board.name } --%>
 										<!--본인외 다른사람의 메시지 이모티콘 클릭하면 메시지 보낼수있는 창으로 이동하게끔-->
 										<c:if test="${board.name != userInfo.name}" >  <!--여기의 주소는 ${board.name}에게 메시지를 보내는 주소여야함-->
-											<%-- <a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content="<a href='#' onclick='sendMessage(${board.name},${userInfo.name}); return false;' id='link'>메시지 보내기</a>">${board.name }</a> --%>
-											<%-- <a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content="popover-content">${board.name }</a> --%>
 											<a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content="<a href='<c:url value='/other/detail/${board.name }' />'>상세보기</a>">${board.name }</a>
-											
-											<%-- <div id="popover-content" class="d-none">
-												<a onclick="sendMessage(${board.name},${userInfo.name})">메시지 보내기</a><br>
-												<a href='<c:url value='/other/detail/${board.name }' />'>상세보기</a>
-											</div> --%>
-											
 											<a class="messageBtn" href="#" onclick="sendMessage('${board.name}','${userInfo.name}'); return false;">	
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
 												  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
