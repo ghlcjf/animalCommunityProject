@@ -350,10 +350,10 @@
 	
 	<select id="searchMember" resultType="user">
 		<include refid="selectAllMember"/>
-		WHERE name=#{search} OR
+		WHERE (name=#{search} OR
 		id=#{search} OR
 		email=#{search} OR
-		phone=#{search}
+		phone=#{search}) AND admin=0
 	</select>
 	
 	<select id="selectByMemberName" resultType="user">

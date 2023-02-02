@@ -149,7 +149,8 @@
 		.scroll{
 		}
  		.scroll-right{ /* 따라다니는 메뉴  */
-			position:absolute;  top:14.7%; background:#fff;
+
+			position:absolute;  top:14.7%; 
 			width:90px; bottom: 700px;
 		} 
 		.top-ten{
@@ -185,11 +186,16 @@
 		.profile-li{
 			padding-top: 5px;
 		}
+
 		.find{
 			font-size: 14px; margin-left: 20px; 
 		}
 		.find-p{
 			height: 18px;
+		a{
+			color:black;
+			text-decoration: none;
+			
 		}
 	</style>
 
@@ -263,6 +269,7 @@
 								<td>
 									<p class="find-p"><a class="find" href="<c:url value='findIdForm'/>">아이디 찾기</a>
 									   <a class="find" href="<c:url value='findPwForm'/>">비밀번호 찾기</a></p>
+
 								</td>
 							</tr>
 						</table>
