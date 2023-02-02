@@ -87,7 +87,6 @@
 			text-decoration: none;
 		}
 
- 
 	</style>
 
 </head>
@@ -100,6 +99,8 @@
 		<a href='<c:url value="/main"/>'><img class="logo" src="/imageFolder/image/로고.png" alt="로고"></a>
 	</div> --%>
 	<!--로고2-->
+	
+
 <div class="center-outer">
     <div class="center-inner">
         <div class="bubbles">
@@ -110,6 +111,8 @@
         </div>
     </div>
  </div>	
+	
+
 	
 			<!-- 세션이 없으면 -->
 			<c:if test="${empty userInfo}">

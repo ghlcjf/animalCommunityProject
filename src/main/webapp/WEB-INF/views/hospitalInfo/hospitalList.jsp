@@ -88,14 +88,43 @@ button:hover {
 .pagination{
 	margin-top: 15px;
 }
+.dog{
+	margin-top: 10px;
+	width: 1075px; 
+	background:rgb(200, 225, 234);
+	border-top-left-radius: 15px; border-top-right-radius: 15px;
+}
+.moving-dog{
+	animation: move 30s infinite; animation-direction: alternate; position: relative;
+}
+@keyframes move{
+	  0%   { left: 0px; }
+      25%  { left: 400px; }
+      50%  { left: -400px;}
+      75%  { left: 400px;}
+      100% { left: -50px; }
+    
+}
+.dog-animation{
+	width: 200px; 
+}
 </style>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 
+
+		
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col-10 mx-auto text-center">
+				<div class="dog">
+					<div class="moving-dog">
+						<img class="dog-animation" src="/imageFolder/킁킁.gif" alt="냄새맡는강아지">
+					</div>
+				</div>	
 				<nav class="navbar">
 					<div class="container-fluid">
 						<div class="d-flex justify-content-start">

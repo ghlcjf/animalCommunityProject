@@ -118,8 +118,19 @@
 	.pagination{
 		margin-top: 15px;
 	}
-	
-	
+	.moving-cat{
+		margin-top: 10px;
+		width: 1075px; 
+		/* background:rgb(229, 255, 112); 형광노랑*/ 
+		/* background:rgb(234, 255, 112); 형광노랑*/ 
+		/* background:rgb(150, 108, 160); 보라색*/
+		/*  민트색*/
+		background:rgb(171, 231, 219);
+		border-top-left-radius: 15px; border-top-right-radius: 15px; 		
+	}
+	.cat-animation{
+		width: 200px; 
+	}
 </style>
 </head>
 <body>
@@ -143,6 +154,11 @@
    			</div>
    
 		     <div class="col-10">
+		     <!--자유게시판 위에 움짤이미지-->
+		     <div class="moving-cat">
+				<img class="cat-animation" src="/imageFolder/잠자는고양이.gif" alt="고양이">
+			</div>
+		     
 				<nav class="navbar">
 					<div class="container-fluid">
 						<div class="d-flex justify-content-start">

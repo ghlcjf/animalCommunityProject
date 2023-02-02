@@ -63,6 +63,18 @@ button:hover{
 .pagination{
 	margin-top: 15px;
 }
+
+.moving-cat{
+	margin-top: 10px;
+	width: 1075px; 
+	 background:rgb(235, 253, 113);
+
+	border-top-right-radius: 15px; 	
+	border-top-left-radius: 15px; 	
+}
+.cat-animation{
+	width: 200px; 
+}
 </style>
 </head>
 <body>
@@ -71,6 +83,10 @@ button:hover{
 	<div class="container text-center">
 		<div class="row">
  			<div class="col-10 mx-auto">
+ 			<div class="moving-cat">
+				<img class="cat-animation" src="/imageFolder/고앵.gif" alt="고양이">
+			</div>
+ 			
 				<nav class="navbar">
 					<div class="container-fluid">
 						<div class="d-flex justify-content-start">
