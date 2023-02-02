@@ -33,7 +33,7 @@
 		#conrainer2{display: flex; justify-content: center; align-items: center;}
 		#main-top{display: inline-block;}
 		#right-wing{
-			margin-left: 20px; margin-bottom: 470px;
+			margin-left: 20px; margin-bottom: 410px;
 			display: inline-block;
 		}
 		#main-bottom{
@@ -96,7 +96,7 @@
 		}
 		table.col{
 			border: 3px solid rgb(136, 154, 233);
-			margin-top: 20px;
+			margin-top: 0px;
 		}
 		.loginId{
 			padding: 10px;
@@ -149,8 +149,8 @@
 		.scroll{
 		}
  		.scroll-right{ /* 따라다니는 메뉴  */
-
-			position:absolute;  top:14.7%; 
+			background: none;
+			position:absolute;  top:14.1%; 
 			width:90px; bottom: 700px;
 		} 
 		.top-ten{
@@ -174,7 +174,7 @@
 			color: white; font-size: 20px;
 		}
 		.profile{
-			height: 130px; width: 300px; margin-top: 30px; border-radius: 15px;
+			height: 130px; width: 300px; margin-top: 10px; border-radius: 15px;
 			background: linear-gradient(0deg, rgb(213, 207, 241) 0%, rgb(223, 178, 236) 100%);
 			border: 3px solid rgb(223, 178, 236);
 		}
