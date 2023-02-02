@@ -126,6 +126,18 @@
 		AND ((#{section}-1)*100)+ (#{pageNum}*10)) AND boardCategory!='공지사항'
 	</select>
 	
+	<select id="selectbyBoardName" resultType="user">
+		<include refid="selectAllMember"/>
+		WHERE name=#{name}
+	</select>
+	
+	<select id="selectAllOtherFreeBoard" resultType="freeBoard">
+		SELECT f.boardNum, f.boardTitle, f.writeDate, f.viewCount
+		FROM userTbl u, freeboardTbl f
+		WHERE u.name=#{name} AND u.name=f.name
+		ORDER BY f.boardNum DESC
+	</select>
+	
 	<!-- 이슈 -->
 	<sql id="selectAllIssue">
 		SELECT * FROM issueTbl

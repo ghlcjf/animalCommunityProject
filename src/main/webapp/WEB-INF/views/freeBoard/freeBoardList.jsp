@@ -211,11 +211,12 @@
 										<!--본인외 다른사람의 메시지 이모티콘 클릭하면 메시지 보낼수있는 창으로 이동하게끔-->
 										<c:if test="${board.name != userInfo.name}" >  <!--여기의 주소는 ${board.name}에게 메시지를 보내는 주소여야함-->
 											<%-- <a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content="<a href='#' onclick='sendMessage(${board.name},${userInfo.name}); return false;' id='link'>메시지 보내기</a>">${board.name }</a> --%>
-											<a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content-id="popover-content">${board.name }</a>
+											<%-- <a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content="popover-content">${board.name }</a> --%>
+											<a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="right" data-bs-title="${board.name }님" data-bs-content="<a href='<c:url value='/other/detail/${board.name }' />'>상세보기</a>">${board.name }</a>
 											
 											<%-- <div id="popover-content" class="d-none">
-												<a href="#" onclick="sendMessage(${board.name},${userInfo.name}); return false;">메시지 보내기</a><br>
-												<a href="#">상세보기</a>
+												<a onclick="sendMessage(${board.name},${userInfo.name})">메시지 보내기</a><br>
+												<a href='<c:url value='/other/detail/${board.name }' />'>상세보기</a>
 											</div> --%>
 											
 											<a class="messageBtn" href="#" onclick="sendMessage('${board.name}','${userInfo.name}'); return false;">	
@@ -342,7 +343,7 @@ function insertConfirm(){
 	} 
 }
 function sendMessage(rName, sName){
-	
+
     let receiverName = rName;
     let senderName = sName;
     
@@ -355,25 +356,10 @@ function sendMessage(rName, sName){
     return false;
  }
  
-	/* const list = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-	list.map((el) => {
-	  let opts = {
-	    animation: false,
-	  }
-	  if (el.hasAttribute('data-bs-content-id')) {
-	    opts.content = document.getElementById(el.getAttribute('data-bs-content-id')).innerHTML;
-	    opts.html = true;
-	  }
-	  new bootstrap.Popover(el, opts);
-	}) */
-	
-	/* const myPopoverTrigger = document.getElementById('myPopover')
-		myPopoverTrigger.addEventListener('hide.bs.popover', () => {
-		alert('trigger');  	
-	}) */
-	
-	/* const popover = new bootstrap.Popover('.popover-dismiss', {trigger: 'focus'
-	}); */
-
+ 	var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+	var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl,{html: true})
+});
+ 
 </script>
 </html>

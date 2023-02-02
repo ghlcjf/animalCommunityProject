@@ -139,6 +139,16 @@ public class AnimalDao {
 		return sqlSession.selectList("mybatis.mapper.member.selectAnimalTargetFreeBoards", sectionPage);
 	}
 	
+	// 다른 사람 정보
+	public User selectbyBoardName(String name) {
+		return sqlSession.selectOne("mybatis.mapper.member.selectbyBoardName", name);
+	}
+	
+	public List<FreeBoard> selectAllOtherFreeBoard(String name) {
+		return sqlSession.selectList("mybatis.mapper.member.selectAllOtherFreeBoard", name);
+	}
+	
+	
 //-------------------이슈-------------------------------------------------------------------------
 	public List<Issue> selectAllIssueList() {
 		
@@ -517,6 +527,9 @@ public class AnimalDao {
 		sqlSession.update("mybatis.mapper.member.findPassword",user);
 	}
 
+
+	
+	
 
 	
 
