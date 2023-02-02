@@ -152,7 +152,7 @@
 		}
  		.scroll-right{ /* 따라다니는 메뉴  */
 
-			position:absolute;  top:14%; bottom:10%; background:#fff;
+			position:absolute;  top:14%; bottom:10%; /* background:#fff; */
 			width:90px; bottom: 700px;
 		} 
 		.top-ten{
@@ -187,6 +187,11 @@
 		}
 		.profile-li{
 			padding-top: 5px;
+		}
+		a{
+			color:black;
+			text-decoration: none;
+			
 		}
 	</style>
 
@@ -257,9 +262,9 @@
 								</th>						
 							</tr>
 							<tr>
-								<td>
-									<p><a href="<c:url value='findIdForm'/>">아이디 찾기</a></p>
-									<p><a href="<c:url value='findPwForm'/>">비밀번호 찾기</a></p>
+								<td colspan="2" align="center">
+									<a href="<c:url value='findIdForm'/>">아이디 찾기</a>
+									<a href="<c:url value='findPwForm'/>">비밀번호 찾기</a>
 								</td>
 							</tr>
 						</table>

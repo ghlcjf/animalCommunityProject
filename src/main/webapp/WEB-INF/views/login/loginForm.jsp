@@ -74,7 +74,7 @@
 	
 	<div id="loginformBox">
 	
-		<form:form modelAttribute="loginCommand">
+		<form:form action="/animalCommunity/login" modelAttribute="loginCommand" method="post">
 			<h4 style="text-align: center;">로그인</h4>
 			<hr>
 				<table class="col">
