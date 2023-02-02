@@ -178,7 +178,7 @@ button:hover {
 				<nav class="navbar-cs">
 					<div class="container-fluid">
 						<div style="margin-bottom: 30px; margin-top: 40px; margin-left: 20px" class="d-flex justify-content-start">
-							<span class="navbar-brand-cs-1 mb-0 h1">최근 게시글 목록&nbsp;</span>
+							<span class="navbar-brand-cs-1 mb-0 h1">게시글 목록&nbsp;</span>
 						</div>
 					</div>
 				</nav>
@@ -208,6 +208,10 @@ button:hover {
 						</table>
 					</c:otherwise>
 				</c:choose>
+				
+				<div class="d-flex justify-content-start">
+					<button type="button" class="smallBtn" onclick="location.href='<c:url value="/freeBoard/freeBoardList/main/${sectionPage.section}/${sectionPage.pageNum }" />'">자유게시판으로 돌아가기</button>
+				</div>
 				
 			</div>
 		</div>

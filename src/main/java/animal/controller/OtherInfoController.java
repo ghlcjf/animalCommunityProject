@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import animal.dao.AnimalDao;
 import animal.vo.FreeBoard;
-import animal.vo.SectionPage;
 import animal.vo.User;
 
 @Controller
@@ -23,24 +22,14 @@ public class OtherInfoController {
 		this.animalDao = animalDao;
 	}
 	
-	@GetMapping("/other/detail/{name}/{section}/{pageNum}")
-	public String otherDetail(@PathVariable("name") String name,
-			@PathVariable("section") int section,
-			@PathVariable("pageNum") int pageNum, Model model, HttpSession session) {
-		
+	@GetMapping("/other/detail/{name}")
+	public String otherDetail(@PathVariable("name") String name, HttpSession session, Model model) {
 		
 		User user = animalDao.selectbyBoardName(name);
 		session.setAttribute("other", user);
 		
-		SectionPage sectionPage = new SectionPage(section, pageNum);
-		
-		List<FreeBoard> otherFreeboard = animalDao.selectAllOtherFreeBoard(name, sectionPage);
+		List<FreeBoard> otherFreeboard = animalDao.selectAllOtherFreeBoard(name);
 		session.setAttribute("board", otherFreeboard);
-		
-		int totalCnt = animalDao.selectAllNumOtherFreeboard();
-		
-		model.addAttribute("totalCnt", totalCnt);
-		session.setAttribute("sectionPage", sectionPage);
 		
 		return "freeBoard/otherInfo";
 	}

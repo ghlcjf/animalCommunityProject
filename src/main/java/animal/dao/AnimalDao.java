@@ -143,14 +143,9 @@ public class AnimalDao {
 		return sqlSession.selectOne("mybatis.mapper.member.selectbyBoardName", name);
 	}
 	
-	public List<FreeBoard> selectAllOtherFreeBoard(String name, SectionPage sectionPage) {
+	public List<FreeBoard> selectAllOtherFreeBoard(String name) {
 		return sqlSession.selectList("mybatis.mapper.member.selectAllOtherFreeBoard", name);
 	}
-	
-	public int selectAllNumOtherFreeboard() {
-		return sqlSession.selectOne("mybatis.mapper.member.selectAllNumOtherFreeboard");
-	}
-	
 	
 	
 //-------------------이슈-------------------------------------------------------------------------
