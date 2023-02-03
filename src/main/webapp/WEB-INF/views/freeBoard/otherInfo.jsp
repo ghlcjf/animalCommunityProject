@@ -191,7 +191,7 @@ button:hover {
 						<table class="table table-sm table-hover">
 							<thead class="table-group-divider-cs">
 								<tr>
-									<th width="300px;">글제목</th>
+									<th width="300px;">제목</th>
 									<th width="70px;">작성일</th>
 									<th width="70px;">조회수</th>
 								</tr>
@@ -200,7 +200,7 @@ button:hover {
 							<c:forEach items="${board}" var="board">
 								<tr>
 									<%-- <td>${board.boardTitle}</td> --%>
-									<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle} (${board.commentCount})</td>
+									<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle}</td>
 									<td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd"/></td>
 									<td>${board.viewCount }</td>
 								</tr>

@@ -60,7 +60,8 @@
 	}
 	
 	#notice{
-		background-color:rgb(235, 238, 250);
+		/* background-color:rgb(235, 238, 250); */
+		background-color: #f9f9f8;
 	}
 	
 	th {
@@ -126,11 +127,19 @@
 		/* background:rgb(150, 108, 160); 보라색*/
 		/*  민트색*/
 		background:rgb(171, 231, 219);
-		border-top-left-radius: 15px; border-top-right-radius: 15px; 		
+		border-top-left-radius: 15px; border-top-right-radius: 15px; 
+		height: 150px;		
 	}
 	.cat-animation{
 		width: 200px; 
 	}
+.text-bg-primary-cs {
+    color: #ff4e59!important;
+    background-color: #ffe3e4!important;
+}
+.popover-header {
+    background-color: #dfe6f7;
+}
 </style>
 </head>
 <body>
@@ -185,8 +194,8 @@
 							<c:forEach items="${noticeList}" var="notice">
 								<tbody>
 									<tr id="notice">
-									 	<th scope="row">${notice.boardNum }</th>
-										<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />'"> ${notice.boardTitle } (${notice.commentCount})</td>
+									 	<th scope="row"><span class="badge text-bg-primary-cs">공지</span></th>
+										<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />'"> ${notice.boardTitle }&nbsp;&nbsp;<span class="badge text-bg-light">${notice.commentCount}</span></td>
 										<td>${notice.viewCount }</td>
 										<td>${notice.name }
 										</td>
@@ -205,7 +214,7 @@
 							<tbody>
 								<tr>
 									<th scope="row">${board.boardNum }</th>
-									<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle} (${board.commentCount})</td>
+									<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${board.boardNum}' />'"> ${board.boardTitle}&nbsp;&nbsp;<span class="badge text-bg-light">${board.commentCount}</span></td>
 									<td>${board.viewCount }</td>
 									<td><%-- ${board.name } --%>
 										<!--본인외 다른사람의 메시지 이모티콘 클릭하면 메시지 보낼수있는 창으로 이동하게끔-->

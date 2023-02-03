@@ -191,6 +191,9 @@ img {
 	left:3px;
 	bottom:-1px;
 }
+.popover-header {
+    background-color: #dfe6f7;
+}
 </style>
 </head>
 <body>
@@ -219,11 +222,15 @@ img {
 					</tr>
 					<tr>
 						<th scope="row" class="table-primary-cs">글 번호</th>
-							<td colspan="3" class="td-text-align">${freeBoard.boardNum}</td>
+						<td class="td-text-align">${freeBoard.boardNum}</td>
 						<th scope="row" class="table-primary-cs">카테고리</th>
-							<td colspan="4" class="td-text-align">${freeBoard.boardCategory }</td>
+						<td class="td-text-align">${freeBoard.boardCategory }</td>
+					</tr>
+					<tr>
 						<th scope="row" class="table-primary-cs">작성일</th>
-							<td colspan="4" class="td-text-align"><fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
+						<td class="td-text-align"><fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
+						<th scope="row" class="table-primary-cs">조회수</th>
+						<td class="td-text-align">${freeBoard.viewCount}</td>
 					</tr>
 					<tr>
 						<th scope="row" class="table-primary-cs">작성자</th>
@@ -242,8 +249,6 @@ img {
 									${freeBoard.name }
 								</c:if>
 							</td>
-						<th colspan="4" scope="row" class="table-primary-cs">조회수</th>
-							<td class="td-text-align">${freeBoard.viewCount}</td>					
 					</tr>
 				</table>
 					

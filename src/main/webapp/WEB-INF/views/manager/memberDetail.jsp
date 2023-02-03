@@ -188,7 +188,7 @@ button:hover {
 						<table class="table table-sm">
 							<thead class="table-group-divider-cs">
 								<tr>
-									<th width="300px;">글제목</th>
+									<th width="300px;">제목</th>
 									<th width="70px;">작성일</th>
 									<th width="70px;">조회수</th>
 									<th width="70px;">글삭제</th>

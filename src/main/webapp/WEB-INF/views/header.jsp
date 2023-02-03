@@ -86,7 +86,15 @@
 		a{
 			text-decoration: none;
 		}
-
+		.text-bg-primary-header-cs {
+	    background: rgb(136, 154, 233);
+		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
+		color: white;
+		}
+		.text-bg-primary-header-cs:hover {
+		background: rgb(101, 121, 207);
+		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+		}
 	</style>
 
 </head>
@@ -139,7 +147,7 @@
 						<c:if test="${userInfo.admin eq 1 }">
 							<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/manager/managerMain"/>'>관리자 페이지</a></li>
 						</c:if>
-					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/message/list"/>' >메세지(${unReadCheck})</a></li>
+					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/message/list"/>' >메세지&nbsp;<span class="badge text-bg-primary-header-cs">${unReadCheck}</span></a></li>
 					<li class="nav-link active" aria-current="page"><a class="top" href='<c:url value="/logout"/>' onclick="return test()">로그아웃</a></li>
 				</ul>
 

@@ -149,7 +149,7 @@
 						<td colspan="6" style="word-break: break-all">
 							<div id="map" style="width:100%;height:350px;"></div>
 							<br>
-							<p style="padding-left: 20px; padding-right: 20px;">${fn:replace(hospitals.hospitalInfo, replaceChar, "<br/>")}</p>
+							<p style="padding-left: 15px; padding-right: 15px;">${fn:replace(hospitals.hospitalInfo, replaceChar, "<br/>")}</p>
 						</td>
 					</tr>
 					</table>
