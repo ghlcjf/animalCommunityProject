@@ -65,11 +65,11 @@
 			font-size: 20px; color: rgb(224, 230, 255); font-weight: bolder;
 		}
 		.show-more{
-			margin-left: 650px;
+			margin-left: 730px;
 			text-align: right; color: white; font-weight: bolder;
 		}
 		.show-more-issue{
-			margin-left: 670px;
+			margin-left: 760px;
 			text-align: right; color: white; font-weight: bolder;
 		}
 		.board-name{
