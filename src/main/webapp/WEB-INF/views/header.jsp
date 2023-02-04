@@ -24,7 +24,7 @@
 	    flex-wrap: wrap;
 	    padding-left: 0;
 	    margin-bottom: 0;
-	    list-style: none1;
+	    list-style: none;
 		}
 		.menu_bar{
 			background-color: rgb(136, 154, 233); font-size: 25px;
