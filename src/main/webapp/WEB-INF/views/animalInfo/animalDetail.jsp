@@ -13,6 +13,9 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
 <style type="text/css">
 .container {
 	margin-top: 25px;
@@ -31,6 +34,7 @@
 	font-size: 25px;
 	line-height: 42px;
 	margin-left: 10px;
+	color: #808080;
 }
 .img-fluid {
 	width: 410px;
@@ -51,6 +55,9 @@
 .smallBtn:hover {
 	background: rgb(101, 121, 207);
 	background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
+}
+.card {
+	font-family: 'Nanum Gothic Coding', monospace;
 }
 .card-text{
 	margin-left: 15px;

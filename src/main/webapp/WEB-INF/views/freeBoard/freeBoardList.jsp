@@ -14,7 +14,16 @@
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <style>
+	*{
+	font-family: 'Poor Story', cursive;
+	}
 	.navbar {
 		margin-top: 15px;
 		background-color: #dfe6f7;
@@ -53,6 +62,7 @@
 	
 	.table {
 		margin-top: 10px;
+		font-family: 'Poor Story', cursive;
 	}
 	
 	.table-group-divider-cs {
@@ -103,6 +113,7 @@
  		border:none;
  		font-size: 13px;
  		margin-top: 13px;
+ 		
  	}
 
  	.messageBtn{
@@ -138,7 +149,7 @@
     background-color: #ffe3e4!important;
 }
 .popover-header {
-    background-color: #dfe6f7;
+    background-color: #f2f2f2;
 }
 </style>
 </head>
@@ -197,7 +208,19 @@
 									 	<th scope="row"><span class="badge text-bg-primary-cs">공지</span></th>
 										<td style="cursor: pointer;" onclick="location.href='<c:url value='/freeBoard/readFreeBoard/${notice.boardNum}' />'"> ${notice.boardTitle }&nbsp;&nbsp;<span class="badge text-bg-light">${notice.commentCount}</span></td>
 										<td>${notice.viewCount }</td>
-										<td>${notice.name }
+										<td><%-- ${notice.name } --%>
+										<c:if test="${notice.name!=userInfo.name}">
+											<input type="hidden" id="receiverName" value="${notice.name}">
+											<a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-title="${notice.name }님" data-bs-content="<a href='<c:url value='/other/detail/${notice.name }' />'>상세보기</a>">${notice.name }</a>
+											<a class="messageBtn" href="#" onclick="sendMessage('${notice.name}','${userInfo.name}'); return false;">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+												  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+												</svg>
+											</a>
+										</c:if>
+										<c:if test="${notice.name == userInfo.name }">
+											${notice.name }
+										</c:if>
 										</td>
 										<td><fmt:formatDate value="${notice.writeDate}" pattern="yyyy-MM-dd"/></td>
 									</tr>

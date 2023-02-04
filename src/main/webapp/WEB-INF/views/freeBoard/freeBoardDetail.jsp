@@ -15,6 +15,9 @@
 <script src="https://getbootstrap.kr/docs/5.2/getting-started/introduction/" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
 <style>
 .container {
 	margin-top: 10px;
@@ -116,7 +119,7 @@ button:hover {
     --bs-table-active-color: #000;
     --bs-table-hover-bg: #bfd1ec;
     --bs-table-hover-color: #000;
-    color: var(--bs-table-color);
+    color: #808080;
     border-color: var(--bs-table-border-color);
     text-align: center;
 }
@@ -192,7 +195,7 @@ img {
 	bottom:-1px;
 }
 .popover-header {
-    background-color: #dfe6f7;
+    background-color: #f2f2f2;
 }
 </style>
 </head>
@@ -218,7 +221,7 @@ img {
 					</c:if>
 					<tr>
 						<th scope="row" class="table-primary-cs">글 제목</th>
-						<td colspan="12" width="100px" style="word-break:break-all; padding-left: 20px; padding-right: 20px;">${freeBoard.boardTitle}</td>
+						<td colspan="12" width="100px" style="word-break:break-all; padding-left: 20px; padding-right: 20px">${freeBoard.boardTitle}</td>
 					</tr>
 					<tr>
 						<th scope="row" class="table-primary-cs">글 번호</th>
@@ -234,13 +237,13 @@ img {
 					</tr>
 					<tr>
 						<th scope="row" class="table-primary-cs">작성자</th>
-							<td colspan="6" class="td-text-align"> 
+							<td colspan="6" style="padding-left: 110px; padding-right: 20px"> 
 							<%-- ${freeBoard.name} --%>
 							<c:if test="${freeBoard.name!=userInfo.name}">
 								<input type="hidden" id="receiverName" value="${freeBoard.name}">
 									<a style="cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-title="${freeBoard.name }님" data-bs-content="<a href='<c:url value='/other/detail/${freeBoard.name }' />'>상세보기</a>">${freeBoard.name }</a>
 									<a class="messageBtn" href="#" onclick="sendMessage(); return false;">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+										<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
 										  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
 										</svg>
 									</a>

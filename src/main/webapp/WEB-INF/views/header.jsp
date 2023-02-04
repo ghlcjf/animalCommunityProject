@@ -6,7 +6,13 @@
 
 
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 	<style>
+		*{
+			font-family: 'Poor Story', cursive;
+		}
 		.menu_bar{
 			background-color: rgb(136, 154, 233); font-size: 25px;
 		}

@@ -11,6 +11,9 @@
 	<script src="/js/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	<script src="../jquery.twbsPagination.js" type="text/javascript"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
 <style type="text/css">
 .navbar {
 	margin-top: 15px;
@@ -43,8 +46,7 @@
 	width: 200px;
 	height: 250px;
 	margin-top: 30px;
-	
-
+	font-family: 'Nanum Gothic Coding', monospace;
 }
 .fade-animation{
 	/*동물소개 올라오는 애니메이션 효과*/
@@ -81,6 +83,7 @@ button:hover {
 	border:none;
 	font-size: 13px;
 	margin-top: 13px;
+	
 }
 
 @keyframes fadeInUp {

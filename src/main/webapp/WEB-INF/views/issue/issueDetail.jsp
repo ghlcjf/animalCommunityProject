@@ -27,7 +27,7 @@
     --bs-table-active-color: #000;
     --bs-table-hover-bg: #bfd1ec;
     --bs-table-hover-color: #000;
-    color: var(--bs-table-color);
+    color: #808080;
     border-color: var(--bs-table-border-color);
     text-align: center;
 }
