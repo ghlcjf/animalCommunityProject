@@ -13,6 +13,19 @@
 		*{
 			font-family: 'Poor Story', cursive;
 		}
+		.nav-cs {
+	    --bs-nav-link-padding-x: 1rem;
+	    --bs-nav-link-padding-y: 0.5rem;
+	    --bs-nav-link-font-weight: ;
+	    --bs-nav-link-color: var(--bs-link-color);
+	    --bs-nav-link-hover-color: #fff;
+	    --bs-nav-link-disabled-color: #6c757d;
+	    display: flex;
+	    flex-wrap: wrap;
+	    padding-left: 0;
+	    margin-bottom: 0;
+	    list-style: none;
+		}
 		.menu_bar{
 			background-color: rgb(136, 154, 233); font-size: 25px;
 		}
@@ -132,7 +145,7 @@
 					
 				</ul>
 				<div class="menu_bar">
-					<ul class="nav justify-content-center">
+					<ul class="nav-cs justify-content-center">
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/login"/>' onclick="afterLogin()">자유게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/login"/>' onclick="afterLogin()">동물 소개</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/login"/>' onclick="afterLogin()">동물 병원 정보</a></li>
@@ -154,7 +167,7 @@
 				</ul>
 
 				<div class="menu_bar">
-					<ul class="nav justify-content-center">
+					<ul class="nav-cs justify-content-center">
 																															
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href='<c:url value="/freeBoard/freeBoardList/main/1/1"/>'>자유게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href='<c:url value="/animalInfo/1/1?category=main"/>'>동물 소개</a></li>
