@@ -101,7 +101,7 @@ button{
 		</div>
 	</nav>
 	
-	<table class="table table-hover table-sm" id="receiveList">
+	<table class="table table-sm" id="receiveList">
 		<thead class="table-group-divider-cs">
 			<tr>
 				<th>from</th>
@@ -125,7 +125,7 @@ button{
 			<span class="navbar-brand-cs mb-0 h1">보낸 메세지</span>
 		</div>
 	</nav>
-    <table id="sendList" class="table table-hover table-sm">
+    <table id="sendList" class="table table-sm">
 		<thead class="table-group-divider-cs">
 			<tr>
 				<th>from</th>
@@ -167,7 +167,7 @@ button{
 					let tr = $('<tr></tr>').appendTo(receiveList);
 					if(data[i].sendTime==data[i].readTime){
 						tr.css({
-							'backgroundColor':'rgb(235,238,250)'
+							'backgroundColor':'#f9f9f8'
 						})
 					}
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
@@ -240,7 +240,7 @@ button{
 					let tr = $('<tr></tr>').appendTo(sendList);
 					if(data[i].sendTime==data[i].readTime){
 						tr.css({
-							'backgroundColor':'rgb(235,238,250)'
+							'backgroundColor':'#f9f9f8'
 						})
 					}
 					$('<td></td>').html(data[i].senderName).appendTo(tr);
