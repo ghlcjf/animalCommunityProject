@@ -96,7 +96,7 @@
 		}
 		table.col{
 			border: 3px solid rgb(136, 154, 233);
-			margin-top: 0px;
+			margin-top: 0px; width: 300px;
 		}
 		.loginId{
 			padding: 10px;
@@ -111,7 +111,7 @@
 			margin-top: 15px;	 margin-bottom: 5px;
 		}
 		button[type="submit"]{
-			padding: 5px;   border: none;
+			padding: 5px;   border: none; width: 70px;
 			height: 50px; 	border-radius: 10px;
 			color: white;   font-weight:bolder;
 			background: rgb(136, 154, 233);
@@ -120,7 +120,7 @@
 			
 		}
 		.kakaoSmalllogo{
-			width:57px;
+			width:70px;
 			height:30px;
 			border-radius: 10px;
 			margin-top:2px;
