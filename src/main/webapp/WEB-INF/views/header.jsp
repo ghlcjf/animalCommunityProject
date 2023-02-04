@@ -97,10 +97,6 @@
 		background: linear-gradient(0deg, rgb(184, 194, 238) 0%, rgb(136, 154, 233)  100%);
 		color: white;
 		}
-		.text-bg-primary-header-cs:hover {
-		background: rgb(101, 121, 207);
-		background: linear-gradient(0deg, rgb(77, 101, 204) 0%, rgb(101, 121, 207) 100%);
-		}
 	</style>
 
 </head>
