@@ -237,7 +237,7 @@ img {
 					</tr>
 					<tr>
 						<th scope="row" class="table-primary-cs">작성자</th>
-							<td colspan="6" style="padding-left: 110px; padding-right: 20px"> 
+							<td colspan="6" style="padding-left: 130px; padding-right: 20px"> 
 							<%-- ${freeBoard.name} --%>
 							<c:if test="${freeBoard.name!=userInfo.name}">
 								<input type="hidden" id="receiverName" value="${freeBoard.name}">
