@@ -218,27 +218,29 @@ img {
 					</tr>
 					<tr>
 						<th scope="row" class="table-primary-cs">글 번호</th>
-							<td colspan="3" class="td-text-align">${freeBoard.boardNum}</td>
+						<td class="td-text-align">${freeBoard.boardNum}</td>
 						<th scope="row" class="table-primary-cs">카테고리</th>
-							<td colspan="4" class="td-text-align">${freeBoard.boardCategory }</td>
+						<td class="td-text-align">${freeBoard.boardCategory }</td>
+					</tr>
+					<tr>
 						<th scope="row" class="table-primary-cs">작성일</th>
-							<td colspan="4" class="td-text-align"><fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
+						<td class="td-text-align"><fmt:formatDate value="${freeBoard.writeDate}" pattern="yyyy-MM-dd"/></td>
+						<th scope="row" class="table-primary-cs">조회수</th>
+						<td class="td-text-align">${freeBoard.viewCount}</td>	
 					</tr>
 					<tr>
 						<th scope="row" class="table-primary-cs">작성자</th>
-							<td colspan="6" class="td-text-align"> 
-							${freeBoard.name}
-							<c:if test="${freeBoard.name!=userInfo.name}">
-								<input type="hidden" id="receiverName" value="${freeBoard.name}">
-									<a class="messageBtn" href="#" onclick="sendMessage(); return false;">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-										  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-										</svg>
-									</a>
-								</c:if>
-							</td>
-						<th colspan="4" scope="row" class="table-primary-cs">조회수</th>
-							<td class="td-text-align">${freeBoard.viewCount}</td>					
+						<td colspan="6" style="padding-left: 130px; padding-right: 20px"> 
+						${freeBoard.name}
+						<c:if test="${freeBoard.name!=userInfo.name}">
+							<input type="hidden" id="receiverName" value="${freeBoard.name}">
+								<a class="messageBtn" href="#" onclick="sendMessage(); return false;">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+									  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+									</svg>
+								</a>
+							</c:if>
+						</td>
 					</tr>
 				</table>
 					
