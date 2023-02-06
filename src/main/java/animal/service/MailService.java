@@ -52,8 +52,8 @@ public class MailService {
 			// 보내는 날짜 지정
 			msg.setSentDate(new Date());
 
-			// 발송자를 지정한다. 발송자의 메일, 발송자명
-			msg.setFrom(new InternetAddress("ghlcjf9676@gamil.com", "[반려동물 커뮤니티]"));
+			// 발송자를 지정한다. 발송자의 메일, 발송자명 ***메일 입력해야 이메일 발송 가능
+			msg.setFrom(new InternetAddress("", "[반려동물 커뮤니티]"));
 			
             // 수신자의 메일을 생성한다.
 			InternetAddress to = new InternetAddress(user.getEmail());
