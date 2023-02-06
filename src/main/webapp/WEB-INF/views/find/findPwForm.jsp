@@ -35,7 +35,7 @@
 			font-size:20px;
 		}
 		.findBtn{
-			height: 80px; width:80px;	
+			height: 80px; width:90px;	
 			
 
 		}

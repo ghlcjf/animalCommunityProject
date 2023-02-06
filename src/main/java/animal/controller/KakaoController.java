@@ -52,6 +52,8 @@ public class KakaoController {
 			if(nicknameUser!=null) {
 				int cnt = kakaoService.getUserNum();
 				regreq.setName(nickname+"kakao"+cnt);
+				System.out.println(regreq.getName());
+				
 			}else {
 				regreq.setName(nickname);
 			}

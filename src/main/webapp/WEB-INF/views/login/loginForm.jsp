@@ -106,7 +106,7 @@
 							<button  type="submit" onclick="return loginCheck()">
 								<spring:message code="login.btn"/>
 							</button>
-							<a href="https://kauth.kakao.com/oauth/authorize?client_id=3e99b1f9d093993529dc3f7a28116951&redirect_uri=http://localhost:8090/animalCommunity/kakaoLogin&response_type=code"><img class="kakaologo" alt="카카오 로그인" src="/imageFolder/kakaomediumlogo.png"></a>
+							<a href="https://kauth.kakao.com/oauth/authorize?client_id=3e99b1f9d093993529dc3f7a28116951&redirect_uri=http://192.168.0.51:8090/animalCommunity/kakaoLogin&response_type=code"><img class="kakaologo" alt="카카오 로그인" src="/imageFolder/kakaomediumlogo.png"></a>
 						</th>						
 					</tr>
 
